@@ -2,7 +2,7 @@ import React from "react";
 
 import { Text } from "Components";
 
-const HowToEncouragePeopleToSignUpWhitenoicon = (props) => {
+const WhiteIcon = (props) => {
   return (
     <>
       <div className={props.className}>
@@ -18,8 +18,8 @@ const HowToEncouragePeopleToSignUpWhitenoicon = (props) => {
   );
 };
 
-HowToEncouragePeopleToSignUpWhitenoicon.defaultProps = {
+WhiteIcon.defaultProps = {
   streamplays: "Watch trailer",
 };
 
-export default HowToEncouragePeopleToSignUpWhitenoicon;
+export default WhiteIcon;

@@ -2,7 +2,7 @@ import React from "react";
 
 import { Button, Img, Text } from "Components";
 
-const HowToEncouragePeopleToSignUpStreamcards = (props) => {
+const StreamCards = (props) => {
   return (
     <>
       <div className={props.className}>
@@ -68,7 +68,7 @@ const HowToEncouragePeopleToSignUpStreamcards = (props) => {
   );
 };
 
-HowToEncouragePeopleToSignUpStreamcards.defaultProps = {
+StreamCards.defaultProps = {
   rectangleeight: "images/img_rectangle8.png",
   bridegroomforsaOne: "Bridegroom for sale.",
   description:
@@ -78,4 +78,4 @@ HowToEncouragePeopleToSignUpStreamcards.defaultProps = {
 
 };
 
-export default HowToEncouragePeopleToSignUpStreamcards;
+export default StreamCards;

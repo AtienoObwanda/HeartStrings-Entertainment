@@ -2,7 +2,7 @@ import React from "react";
 
 import { Img } from "Components";
 
-const SignupColumndummylogotwo = (props) => {
+const SignupColumnlogotwo = (props) => {
   return (
     <>
       <div className={props.className}>
@@ -16,6 +16,6 @@ const SignupColumndummylogotwo = (props) => {
   );
 };
 
-SignupColumndummylogotwo.defaultProps = {};
+SignupColumnlogotwo.defaultProps = {};
 
-export default SignupColumndummylogotwo;
+export default SignupColumnlogotwo;

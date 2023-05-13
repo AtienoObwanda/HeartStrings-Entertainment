@@ -3,11 +3,10 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Button, Img, List, Text } from "Components";
-import HowToEncouragePeopleToSignUpColumnprice from "Components/HowToEncouragePeopleToSignUpColumnprice";
+import ColumnPrice from "Components/ColumnPrice/ColumnPrice";
 import Footer from "Components/Footer/Footer";
-import HowToEncouragePeopleToSignUpStreamcards from "Components/StreamCards";
-import HowToEncouragePeopleToSignUpWhitenoicon from "Components/WhiteNoIcon";
-import LandingPageNavbarhifi from "Components/LandingPageNavbarhifi";
+import StreamCards from "Components/StreamCards";
+import WhiteIcon from "Components/WhiteIcon";
 import Navbar from "Components/Navbar/Navbar";
 
 const HomePage = () => {
@@ -64,7 +63,7 @@ const HomePage = () => {
             <div className="flex flex-col items-center justify-start w-full">
               <div className="bg-black_900_01 flex md:flex-col flex-row md:gap-5 items-start justify-start p-6 sm:px-5 rounded-lg w-full">
                 <div className="flex sm:flex-1 flex-col gap-6 items-start justify-center self-stretch w-auto sm:w-full mr-8">
-                  <HowToEncouragePeopleToSignUpColumnprice
+                  <ColumnPrice
                     className="bg-black_900 border-2 border-red_900 border-solid flex flex-col gap-2.5 items-center justify-center px-5 py-2.5 rounded-lg self-stretch w-auto sm:w-full"
                     price="We’ve got a special offer for you: BOGOF show @ 3pm on Sat 1st . KES 1,000"
                   />
@@ -181,7 +180,7 @@ const HomePage = () => {
             orientation="horizontal"
           >
             <div className="h-[559px] relative w-full">
-              <HowToEncouragePeopleToSignUpStreamcards
+              <StreamCards
                 className="absolute bg-black_900_01 flex flex-col h-full inset-[0] items-center justify-center m-auto p-4 rounded-lg w-full"
                 rectangleeight="images/img_rectangle8.png"
                 bridegroomforsaOne="Bridegroom for sale."
@@ -189,14 +188,14 @@ const HomePage = () => {
                 rentPlay="Rent play"
               />
             </div>
-            <HowToEncouragePeopleToSignUpStreamcards
+            <StreamCards
               className="bg-black_900_01 flex flex-col items-center justify-start p-4 rounded-lg w-full"
               rectangleeight="images/img_rectangle8_191x332.png"
               bridegroomforsaOne="Bridegroom for sale."
               description="vvv The synopsis goes here and here and here, once it starts overflowing it goes here ,the synopsis goes here and here and here, once it starts overflowing it goes here.."
               rentPlay="Rent play"
             />
-            <HowToEncouragePeopleToSignUpStreamcards
+            <StreamCards
               className="bg-black_900_01 flex flex-col items-center justify-start p-4 rounded-lg w-full"
               rectangleeight="images/img_rectangle8_1.png"
               bridegroomforsaOne="Bridegroom for sale."

@@ -2,7 +2,7 @@ import React from "react";
 
 import { Text } from "Components";
 
-const HowToEncouragePeopleToSignUpColumnprice = (props) => {
+const ColumnPrice = (props) => {
   return (
     <>
       <div className={props.className}>
@@ -17,9 +17,9 @@ const HowToEncouragePeopleToSignUpColumnprice = (props) => {
   );
 };
 
-HowToEncouragePeopleToSignUpColumnprice.defaultProps = {
+ColumnPrice.defaultProps = {
   price:
     "We’ve got a special offer for you: BOGOF show @ 3pm on Sat 1st . KES 1,000",
 };
 
-export default HowToEncouragePeopleToSignUpColumnprice;
+export default ColumnPrice;
