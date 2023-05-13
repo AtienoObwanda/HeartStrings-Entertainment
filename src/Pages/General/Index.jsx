@@ -1,163 +1,65 @@
 import React from "react";
 
-import { Img, Text } from "components";
-import LandingPageNavbarhifi from "components/LandingPageNavbarhifi";
+import { Button, Img, Text } from "components";
+import SignupColumndummylogotwo from "components/SignupColumndummylogotwo";
 
-const AboutUsPage = () => {
+const AccessDeniedPage = () => {
   return (
     <>
-      <div className="bg-black_900 flex flex-col font-roboto sm:gap-10 md:gap-10 gap-24 items-center justify-start mx-auto pb-24 w-full">
-        <LandingPageNavbarhifi
-          className="flex flex-row items-center justify-center md:px-5 w-full"
-          buyTicketS="Buy ticket (s)"
-          streamPlays="Stream plays"
-          account="Account"
-        />
-
-
-
-
-        <div className="flex flex-col md:gap-10 gap-16 items-center justify-start max-w-[1159px] mx-auto md:px-5 self-stretch w-full">
-          <div className="flex flex-col gap-6 items-center justify-center self-stretch w-auto md:w-full">
-            <Text
-              className="font-normal not-italic text-gray_300 text-left w-auto"
-              as="h5"
-              variant="h5"
-            >
-              About us
-            </Text>
-            <Text
-              className="leading-[175.00%] max-w-[1159px] md:max-w-full text-center text-white_A700"
-              as="h1"
-              variant="h1"
-            >
-              Multi award winners and the most popular authority in Kenyan
-              theater and live stagecomedy in Kenya!{" "}
-            </Text>
-          </div>
-
-
+      <div className="bg-black_900 flex flex-col font-roboto sm:gap-10 md:gap-10 gap-[77px] items-center justify-start mx-auto pb-[77px] w-full">
+        <SignupColumndummylogotwo className="flex flex-col items-center justify-start p-8 sm:px-5 w-full" />
+        <div className="flex flex-col gap-4 items-center justify-center md:px-5 self-stretch w-auto md:w-full">
           <Text
-            className="font-normal leading-[175.00%] not-italic text-center text-gray_300"
+            className="text-left text-white_A700 w-auto"
+            as="h1"
+            variant="h1"
+          >
+            Access denied
+          </Text>
+          <Text
+            className="font-normal leading-[175.00%] not-italic text-center text-white_A700"
             as="h6"
             variant="h6"
           >
             <>
-              Aliqua id fugiat nostrud irure ex duis ea quis id quis ad et. Sunt
-              qui esse pariatur duis deserunt mollit dolore cillum minim tempor
-              enim. Elit aute irure tempor cupidatat incididunt sint deserunt ut
-              voluptate aute id deserunt nisi.Nulla Lorem mollit cupidatat
-              irure. Laborum magna nulla duis ullamco cillum dolor. Voluptate
-              exercitation inAliqua id fugiat nostrud irure ex duis ea quis id
-              quis ad et. <br />
-              Sunt qui esse pariatur duis deserunt mollit dolore cillum minim
-              tempor enim. Elit aute irure tempor cupidatat incididunt sint
-              deserunt ut voluptate aute id deserunt nisi.Nulla Lorem mollit
-              cupidatat irure. Laborum magna nulla duis ullamco cillum dolor.
-              Voluptate exercitation in
+              We&#39;re sorry, but you don&#39;t have the necessary permissions
+              to access this page. <br />
+              Please log in or contact an administrator for help.
             </>
           </Text>
-
-
-          <div className="flex sm:flex-col flex-row sm:gap-10 gap-[79px] items-center justify-start self-stretch w-auto sm:w-full">
-            <div className="flex flex-col gap-6 items-center justify-center self-stretch w-auto">
-              <div className="flex flex-col gap-10 items-center justify-start w-auto md:w-full">
-                <Text
-                  className="font-normal not-italic text-gray_300 text-left w-auto"
-                  as="h5"
-                  variant="h5"
-                >
-                  Actors
-                </Text>
-                <Text
-                  className="text-center text-white_A700 w-auto"
-                  as="h2"
-                  variant="h2"
-                >
-                  50+
-                </Text>
-              </div>
-              <Text
-                className="font-normal not-italic text-gray_300 text-left w-auto"
-                variant="body4"
-              >
-                Join our team
-              </Text>
-            </div>
-            <div className="flex flex-col gap-6 items-center justify-center self-stretch w-auto">
-              <Text
-                className="font-normal not-italic text-gray_300 text-left w-auto"
-                as="h5"
-                variant="h5"
-              >
-                Locations
-              </Text>
-              <Text
-                className="text-center text-white_A700 w-auto"
-                as="h2"
-                variant="h2"
-              >
-                3
-              </Text>
-              <Text
-                className="font-normal not-italic text-gray_300 text-left w-auto"
-                variant="body4"
-              >
-                Find near you
-              </Text>
-            </div>
-            <div className="flex flex-col gap-6 items-center justify-center self-stretch w-auto">
-              <Text
-                className="font-normal not-italic text-gray_300 text-left w-auto"
-                as="h5"
-                variant="h5"
-              >
-                Plays
-              </Text>
-              <Text
-                className="text-center text-white_A700 w-auto"
-                as="h2"
-                variant="h2"
-              >
-                100+
-              </Text>
-              <Text
-                className="font-normal not-italic text-gray_300 text-left w-auto"
-                variant="body4"
-              >
-                Stream our plays
-              </Text>
-            </div>
+          <div className="flex md:flex-col flex-row gap-[45px] items-center justify-start self-stretch w-auto md:w-full">
+            <Text
+              className="text-left text-white_A700 w-auto"
+              as="h4"
+              variant="h4"
+            >
+              4
+            </Text>
+            <Img
+              src="images/img_iconsaxboldlock1.svg"
+              className="h-56 w-56"
+              alt="iconsaxboldlock"
+            />
+            <Text
+              className="text-left text-white_A700 w-auto"
+              as="h4"
+              variant="h4"
+            >
+              3
+            </Text>
           </div>
-
-
-          <div className="flex flex-row gap-2 items-start justify-start self-stretch w-auto">
-            <Img
-              src="images/img_youtube1.png"
-              className="h-8 md:h-auto object-cover w-8"
-              alt="youtubeOne"
-            />
-            <Img
-              src="images/img_instagram2.png"
-              className="h-8 md:h-auto object-cover w-8"
-              alt="instagramTwo"
-            />
-            <Img
-              src="images/img_twitter1.png"
-              className="h-8 md:h-auto object-cover w-8"
-              alt="twitterOne"
-            />
-            <Img
-              src="images/img_facebook1.png"
-              className="h-8 md:h-auto object-cover w-8"
-              alt="facebookOne"
-            />
-          </div>
-          
+          <Button
+            className="cursor-pointer font-bold min-w-[293px] text-center text-white_A700 text-xl w-auto"
+            shape="RoundedBorder8"
+            size="lg"
+            variant="FillRed900"
+          >
+            Go back to the previous page
+          </Button>
         </div>
       </div>
     </>
   );
 };
 
-export default AboutUsPage;
+export default AccessDeniedPage;

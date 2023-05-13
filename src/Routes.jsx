@@ -83,7 +83,7 @@ const ProjectRoutes = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="*" element={<NotFound />} />
           <Route path="/about-us" element={<AboutUs />} />
-          <Route path="/termsandconditions" element={<TermsAndConditions />} />
+          <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
           <Route path="/not-found" element={<NotFound />} />
           <Route path="/access-denied" element={<AccessDenied />} />
           <Route path="/contactus" element={<ContactUs />} />
