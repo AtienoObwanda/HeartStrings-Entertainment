@@ -2,7 +2,7 @@ import React from "react";
 
 import { Img } from "Components";
 
-const DetailsPagePlayRowyoutubeone = (props) => {
+const DetailsPagePlayRow = (props) => {
   return (
     <>
       <div className={props.className}>
@@ -31,6 +31,6 @@ const DetailsPagePlayRowyoutubeone = (props) => {
   );
 };
 
-DetailsPagePlayRowyoutubeone.defaultProps = {};
+DetailsPagePlayRow.defaultProps = {};
 
-export default DetailsPagePlayRowyoutubeone;
+export default DetailsPagePlayRow;

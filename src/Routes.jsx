@@ -2,52 +2,59 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // General Pages
-import AboutUs from "Pages/General/AboutUs";
-import AccessDenied from "Pages/General/AccessDenied";
-import ContactUs from "Pages/General/ContactUs";
 import HomePage from "Pages/General/HomePage";
-import NotFound from "Pages/General/NotFound";
-import TermsAndConditions from "Pages/General/Terms&Conditions";
+const AboutUs = React.lazy(() => import("Pages/General/AboutUs"));
+const ContactUs = React.lazy(() => import("Pages/General/ContactUs"));
+const TermsAndConditions = React.lazy(() => import("Pages/General/Terms&Conditions"));
+const AccessDenied = React.lazy(() => import("Pages/General/AccessDenied"));
+const NotFound = React.lazy(() => import("Pages/General/NotFound"));
+
+// Content
+const AllStreams = React.lazy(() => import("Pages/Content/AllStreams"));
+const StreamDetails = React.lazy(() => import("Pages/Content/StreamDetails"));
+const PlayDetails = React.lazy(() => import("Pages/Content/PlayDetails"));
+
+// Users 
+// Authentication
+const Signup = React.lazy(() => import("Pages/Users/Auth/SignUp"));
+const SignUpSuccessful = React.lazy(() => import("Pages/Users/Auth/SignUpSuccessful"));
+const Login = React.lazy(() => import("Pages/Users/Auth/Login"));
+const ForgotPassword = React.lazy(() => import("Pages/Users/Auth/ForgotPassword"));
+const ResetPassword = React.lazy(() => import("Pages/Users/Auth/ResetPassword"));
+const ResetComplete = React.lazy(() => import("Pages/Users/Auth/ResetComplete"));
+// User Account
+const MyAccount = React.lazy(() => import("Pages/Users/Account/MyAccount"));
+const EditMyAccount = React.lazy(() => import("Pages/Users/Account/EditMyAccount"));
+// User Content
+const MyTickets = React.lazy(() => import("Pages/Users/MyContent/MyTickets"));
+const TicketPopUp = React.lazy(() => import("Pages/Users/MyContent/TicketPopUp"));
+const MyStreams = React.lazy(() => import("Pages/Users/MyContent/MyStreams"));
+const MyStreamLibrary = React.lazy(() => import("Pages/Users/MyContent/MyStreamLibrary"));
+
+// Payments
 
 
+// Renting Play
 
+// Ticket
 
-// Users
 
 // const RentingPlayPayment = React.lazy(() => import("pages/RentingPlayPayment"));
 // const RentingPlay = React.lazy(() => import("pages/RentingPlay"));
-// const MyStreamLibrary = React.lazy(() => import("pages/MyStreamLibrary"));
-// const TicketPopUp = React.lazy(() => import("pages/TicketPopUp"));
-// const MyTickets = React.lazy(() => import("pages/MyTickets"));
-// const MyStreams = React.lazy(() => import("pages/MyStreams"));
-// const MyAccount = React.lazy(() => import("pages/MyAccount"));
-// const EditMyAccount = React.lazy(() => import("pages/EditMyAccount"));
+
 // const CreditCardPayment1 = React.lazy(() => import("pages/CreditCardPayment1"));
 // const BuyingTickets = React.lazy(() => import("pages/BuyingTickets"));
-// const TermsAndConditions = React.lazy(() => import("pages/TermsAndConditions"));
-// const AboutUs = React.lazy(() => import("pages/AboutUs"));
+
 // const PlayTicketPaymentConfirmation = React.lazy(() =>
 //   import("pages/PlayTicketPaymentConfirmation")
 // );
-// const ContactUs = React.lazy(() => import("pages/ContactUs"));
 // const RentPlayPaymentConfirmation = React.lazy(() =>
 //   import("pages/RentPlayPaymentConfirmation")
 // );
 // const CreditCardPayment = React.lazy(() => import("pages/CreditCardPayment"));
 // const PayNow = React.lazy(() => import("pages/PayNow"));
 // const BuyingTicket = React.lazy(() => import("pages/BuyingTicket"));
-// const AllStreams = React.lazy(() => import("pages/AllStreams"));
-// const StreamDetails = React.lazy(() => import("pages/StreamDetails"));
-// const PlayDetails = React.lazy(() => import("pages/PlayDetails"));
-// const HomePage = React.lazy(() => import("pages/HomePage"));
-// const AccessDenied = React.lazy(() => import("pages/AccessDenied"));
-// const NotFound1 = React.lazy(() => import("pages/NotFound1"));
-// const SignUpSuccessful = React.lazy(() => import("pages/SignUpSuccessful"));
-// const ResetComplete = React.lazy(() => import("pages/ResetComplete"));
-// const ResetPassword = React.lazy(() => import("pages/ResetPassword"));
-// const ForgotPassword = React.lazy(() => import("pages/ForgotPassword"));
-// const Login = React.lazy(() => import("pages/Login"));
-// const Signup = React.lazy(() => import("pages/Signup"));
+
 
 // Admin Pages
 
@@ -80,6 +87,7 @@ const ProjectRoutes = () => {
     <React.Suspense fallback={<>Loading...</>}>
       <Router>
         <Routes>
+          {/* General Routes */}
           <Route path="/" element={<HomePage />} />
           <Route path="*" element={<NotFound />} />
           <Route path="/about-us" element={<AboutUs />} />
@@ -88,21 +96,28 @@ const ProjectRoutes = () => {
           <Route path="/access-denied" element={<AccessDenied />} />
           <Route path="/contact-us" element={<ContactUs />} />
 
-            {/* UserRoutes */}
+          {/* Content Routes */}
+          <Route path="/play-details" element={<PlayDetails />} />
+          <Route path="/stream-details" element={<StreamDetails />} />
+          <Route path="/all-streams" element={<AllStreams />} />
 
-          {/* <Route path="/signup" element={<Signup />} />
+          {/* UserRoutes */}
+          {/* Authentication Routes */}
+          <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/forgotpassword" element={<ForgotPassword />} />
-          <Route path="/resetpassword" element={<ResetPassword />} />
-          <Route path="/resetcomplete" element={<ResetComplete />} />
-          <Route path="/signupsuccessful" element={<SignUpSuccessful />} />
-             */}
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
+          <Route path="/reset-complete" element={<ResetComplete />} />
+          <Route path="/signup-successful" element={<SignUpSuccessful />} />
+            
+          {/* Authenticated UserRoutes */}
+          {/* Account Route */}
+          <Route path="/edit-my-account" element={<EditMyAccount />} />
+          <Route path="/my-account" element={<MyAccount />} />
 
-            {/* Authenticated UserRoutes */}
-          
-          {/* <Route path="/playdetails" element={<PlayDetails />} />
-          <Route path="/streamdetails" element={<StreamDetails />} />
-          <Route path="/allstreams" element={<AllStreams />} />
+
+          {/* 
+         
           <Route path="/buyingticket" element={<BuyingTicket />} />
           <Route path="/paynow" element={<PayNow />} />
           <Route path="/creditcardpayment" element={<CreditCardPayment />} />
@@ -117,8 +132,7 @@ const ProjectRoutes = () => {
           
           <Route path="/buyingtickets" element={<BuyingTickets />} />
           <Route path="/creditcardpayment1" element={<CreditCardPayment1 />} />
-          <Route path="/editmyaccount" element={<EditMyAccount />} />
-          <Route path="/myaccount" element={<MyAccount />} />
+          
           <Route path="/mystreams" element={<MyStreams />} />
           <Route path="/mytickets" element={<MyTickets />} />
           <Route path="/ticketpopup" element={<TicketPopUp />} />
