@@ -104,11 +104,11 @@ const ProjectRoutes = () => {
           {/* UserRoutes */}
           {/* Authentication Routes */}
           <Route path="/signup" element={<Signup />} />
+          <Route path="/signup-successful" element={<SignUpSuccessful />} />
           <Route path="/login" element={<Login />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/reset-complete" element={<ResetComplete />} />
-          <Route path="/signup-successful" element={<SignUpSuccessful />} />
             
           {/* Authenticated UserRoutes */}
           {/* Account Route */}
