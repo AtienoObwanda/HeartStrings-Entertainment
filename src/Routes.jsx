@@ -86,7 +86,7 @@ const ProjectRoutes = () => {
           <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
           <Route path="/not-found" element={<NotFound />} />
           <Route path="/access-denied" element={<AccessDenied />} />
-          <Route path="/contactus" element={<ContactUs />} />
+          <Route path="/contact-us" element={<ContactUs />} />
 
             {/* UserRoutes */}
 
