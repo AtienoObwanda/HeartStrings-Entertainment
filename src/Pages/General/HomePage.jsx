@@ -24,6 +24,7 @@ const HomePage = () => {
           account="Account"
         />
         {/* Hero Section */}
+        
 
         {/* Footer Section*/}
         <Footer className="border-gray_800 border-solid border-t-[13px] flex items-center justify-center mt-24 md:px-5 w-full"
