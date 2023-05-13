@@ -1,5 +1,8 @@
 import React from 'react'
 import { useNavigate } from "react-router-dom";
+import Footer from "Components/HowToEncouragePeopleToSignUpFooter/Footer";
+import Navbar from "Components/LandingPageNavbarhifi/Navbar";
+
 
 const TermsAndConditions = () => {
   const navigate = useNavigate();
