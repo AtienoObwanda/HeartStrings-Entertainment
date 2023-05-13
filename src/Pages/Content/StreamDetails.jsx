@@ -21,6 +21,9 @@ const StreamDetails = () => {
           streamPlays="Stream plays"
           account="Account"
         />
+
+
+
         {/* Hero Section */}
         <div className="h-[600px] md:px-5 relative w-full">
           <Img
@@ -43,6 +46,10 @@ const StreamDetails = () => {
             ></Text>
           </div>
         </div>
+
+
+
+        {/* Play Trailer CTA */}
         <div className="flex flex-col items-center justify-start max-w-[1140px] mt-24 mx-auto md:px-5 w-full">
           <div className="h-[570px] relative w-full">
             <div className="h-[570px] m-auto w-full">
@@ -85,6 +92,8 @@ const StreamDetails = () => {
           </div>
         </div>
       </div>
+
+      {/* Play details: Title and duration */}
       <div className="flex flex-col gap-4 items-start justify-start md:ml-[0] ml-[150px] md:px-5 self-stretch w-auto md:w-full">
         <Text
           className="text-left text-white_A700 w-auto"
@@ -114,7 +123,15 @@ const StreamDetails = () => {
           variant="h6"
         ></Text>
       </div>
+
+
+
       <div className="flex flex-col md:gap-10 gap-24 items-center w-full">
+      
+      
+      
+      
+        {/* Cast Details */}
         <div className="flex flex-col gap-6 items-center justify-center max-w-[1140px] mx-auto md:px-5 self-stretch w-full">
           <div className="flex flex-col items-start justify-start self-stretch w-auto md:w-full">
             <div className="flex flex-col gap-[34px] items-start justify-start w-full">
