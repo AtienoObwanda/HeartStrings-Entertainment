@@ -23,14 +23,14 @@ const TermsAndConditions = () => {
 
         <div className="flex flex-col gap-5 h-[1114px] md:h-auto items-start justify-start md:ml-[0] ml-[150px] mr-20 mt-24 pb-[10px] md:px-5 self-stretch w-auto md:w-full">
           <Text
-            className="text-left text-white_A700 w-auto"
+            className="text-left text-white_A700 w-auto md:m-5 sm:m-10"
             as="h2"
             variant="h2"
           >
             Terms & Conditions
           </Text>
           <Text
-            className="font-normal leading-[175.00%] not-italic text-left text-white_A700"
+            className="font-normal leading-[175.00%] not-italic text-left text-white_A700 md:m-5 sm:m-10"
             as="h6"
             variant="h6"
           >
@@ -42,7 +42,6 @@ const TermsAndConditions = () => {
               enim. Elit aute irure tempor cupidatat incididunt sint deserunt ut
               voluptate aute id deserunt nisi.
               <br  />
-              {/* <br  /> */}
 
               Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis
               ullamco cillum dolor. Voluptate exercitation incididunt aliquip
