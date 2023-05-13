@@ -30,7 +30,7 @@ const HomePage = () => {
             alt="c2p60a0oOne"
           />
           <Text
-            className="absolute bottom-[13%] inset-x-[0] mx-auto text-left text-white_A700 w-max"
+            className="absolute bottom-[13%] insmd:m-5et-x-[0] mx-auto text-left text-white_A700 w-max"
             as="h3"
             variant="h3"
           >
@@ -75,7 +75,7 @@ const HomePage = () => {
                     >
                       Bridegroom for sale.
                     </Text>
-                    <div className="flex flex-col gap-4 items-start justify-start self-stretch w-auto sm:w-full">
+                    <div className="flex flex-col gap-4 mb-10 items-start justify-start self-stretch w-auto sm:w-full">
                       <Text
                         className="font-normal leading-[175.00%] max-w-[532px] md:max-w-full not-italic text-gray_300 text-left"
                         as="h6"
@@ -128,7 +128,7 @@ const HomePage = () => {
                       </div>
                     </div>
                     <Button
-                      className="cursor-pointer font-bold min-w-[149px] text-center text-white_A700 text-xl w-auto"
+                      className="md:hidden  mt-4 mb-4 cursor-pointer font-bold min-w-[149px] text-center text-white_A700 text-xl w-auto"
                       shape="RoundedBorder8"
                       size="lg"
                       variant="FillRed900"
@@ -138,13 +138,21 @@ const HomePage = () => {
                   </div>
                 </div>
 
-                <div className="flex sm:flex-1 flex-col h-[560px] sm:h-auto items-center justify-start w-[560px] sm:w-full">
+                <div className="mb-[40px] flex sm:flex-1 flex-col h-[560px] sm:h-auto items-center justify-start w-[560px] sm:w-full">
                   <Img
                     src="images/img_rectangle4.png"
-                    className="h-[560px] md:h-auto object-cover rounded-lg w-[560px] sm:w-full"
-                    alt="rectangleFour"
+                    className="h-[560px] md:h-auto md:ml-[20px] object-cover rounded-lg w-[560px] sm:w-full"
+                    alt="Heartstrings entertainment Play poster"
                   />
                 </div>
+                <Button
+                      className="hidden md:flex  mb-4 cursor-pointer font-bold min-w-[149px] text-center text-white_A700 text-xl w-auto"
+                      shape="RoundedBorder8"
+                      size="lg"
+                      variant="FillRed900"
+                    >
+                      Get ticket (s)
+                    </Button>
 
               </div>
             </div>
