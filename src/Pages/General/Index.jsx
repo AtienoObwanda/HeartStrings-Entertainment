@@ -2,28 +2,26 @@ import React from "react";
 
 import { useNavigate } from "react-router-dom";
 
-import { Button, Img, List, Text } from "Components";
-import HowToEncouragePeopleToSignUpColumnprice from "Components/HowToEncouragePeopleToSignUpColumnprice";
-import Footer from "Components/HowToEncouragePeopleToSignUpFooter/Footer";
-import HowToEncouragePeopleToSignUpStreamcards from "Components/HowToEncouragePeopleToSignUpStreamcards";
-import HowToEncouragePeopleToSignUpWhitenoicon from "Components/HowToEncouragePeopleToSignUpWhitenoicon";
-import LandingPageNavbarhifi from "Components/LandingPageNavbarhifi";
-import Navbar from "Components/LandingPageNavbarhifi/Navbar";
+import { Button, Img, List, Text } from "components";
+import HowToEncouragePeopleToSignUpColumnprice from "components/HowToEncouragePeopleToSignUpColumnprice";
+import HowToEncouragePeopleToSignUpFooter from "components/HowToEncouragePeopleToSignUpFooter";
+import HowToEncouragePeopleToSignUpStreamcards from "components/HowToEncouragePeopleToSignUpStreamcards";
+import HowToEncouragePeopleToSignUpWhitenoicon from "components/HowToEncouragePeopleToSignUpWhitenoicon";
+import LandingPageNavbarhifi from "components/LandingPageNavbarhifi";
 
-const HomePage = () => {
+const HomePagePage = () => {
   const navigate = useNavigate();
 
   return (
     <>
-    <div className="bg-black_900 flex flex-col font-roboto items-center justify-start mx-auto w-full">
-        {/* Navbar Section */}
-        <Navbar
+      <div className="bg-black_900 flex flex-col font-roboto items-center justify-start mx-auto w-full">
+        <LandingPageNavbarhifi
           className="flex flex-row items-center justify-center md:px-5 w-full"
           buyTicketS="Buy ticket (s)"
           streamPlays="Stream plays"
           account="Account"
         />
-        {/* Hero Section */}
+
         <div className="h-[760px] md:px-5 relative w-full">
           <Img
             src="images/img_c2p60a0o1.png"
@@ -41,9 +39,8 @@ const HomePage = () => {
 
         <div className="bg-gray_900 h-[13px] w-full"></div>
 
-      {/* Plays At The Theatre Section */}
 
-      <div className="flex flex-col gap-12 items-center justify-center max-w-[1140px] mt-24 mx-auto md:px-5 self-stretch w-full">
+        <div className="flex flex-col gap-12 items-center justify-center max-w-[1140px] mt-24 mx-auto md:px-5 self-stretch w-full">
           <div className="flex flex-col gap-1 items-center justify-center self-stretch w-auto md:w-full">
             <Text
               className="text-left text-white_A700 w-auto"
@@ -63,7 +60,7 @@ const HomePage = () => {
           <div className="flex flex-col items-center justify-start w-full">
             <div className="flex flex-col items-center justify-start w-full">
               <div className="bg-black_900_01 flex md:flex-col flex-row md:gap-5 items-start justify-start p-6 sm:px-5 rounded-lg w-full">
-                <div className="flex sm:flex-1 flex-col gap-6 items-start justify-center self-stretch w-auto sm:w-full mr-8">
+                <div className="flex sm:flex-1 flex-col gap-6 items-start justify-center self-stretch w-auto sm:w-full">
                   <HowToEncouragePeopleToSignUpColumnprice
                     className="bg-black_900 border-2 border-red_900 border-solid flex flex-col gap-2.5 items-center justify-center px-5 py-2.5 rounded-lg self-stretch w-auto sm:w-full"
                     price="We’ve got a special offer for you: BOGOF show @ 3pm on Sat 1st . KES 1,000"
@@ -108,24 +105,19 @@ const HomePage = () => {
                             </Text>
                           </div>
                         </div>
-
                         <div className="flex flex-row gap-2 items-start justify-start self-stretch w-auto">
                           <Img
                             src="images/img_materialsymbolslocationon.svg"
                             className="h-6 w-6"
                             alt="materialsymbols"
                           />
-
                           <div className="flex flex-col items-start justify-start self-stretch w-auto">
                             <Text
                               className="font-normal not-italic text-gray_300 text-left w-auto"
                               variant="body4"
-                            >Kenya Cinema</Text>
+                            ></Text>
                           </div>
-
                         </div>
-
-
                       </div>
                     </div>
                     <Button
@@ -138,7 +130,6 @@ const HomePage = () => {
                     </Button>
                   </div>
                 </div>
-
                 <div className="flex sm:flex-1 flex-col h-[560px] sm:h-auto items-center justify-start w-[560px] sm:w-full">
                   <Img
                     src="images/img_rectangle4.png"
@@ -146,7 +137,6 @@ const HomePage = () => {
                     alt="rectangleFour"
                   />
                 </div>
-
               </div>
             </div>
           </div>
@@ -154,12 +144,10 @@ const HomePage = () => {
 
 
 
-      <div className="bg-gray_900 h-[13px] mt-24 w-full"></div>
+        <div className="bg-gray_900 h-[13px] mt-24 w-full"></div>
 
 
-
-      {/* Streaming Plays */}
-      <div className="flex flex-col gap-12 items-center justify-center max-w-[1140px] mt-[89px] mx-auto md:px-5 self-stretch w-full">
+        <div className="flex flex-col gap-12 items-center justify-center max-w-[1140px] mt-[89px] mx-auto md:px-5 self-stretch w-full">
           <div className="flex flex-col gap-1 items-center justify-center self-stretch w-auto sm:w-full">
             <Text
               className="text-center text-white_A700 w-auto"
@@ -181,6 +169,10 @@ const HomePage = () => {
             orientation="horizontal"
           >
             <div className="h-[559px] relative w-full">
+              <HowToEncouragePeopleToSignUpWhitenoicon
+                className="bg-white_A700 border border-solid border-white_A700 flex flex-col gap-4 h-full items-center justify-center ml-auto mr-[92px] mt-[148px] px-5 py-2.5 rounded-lg self-stretch w-auto sm:w-full"
+                streamplays="Watch trailer"
+              />
               <HowToEncouragePeopleToSignUpStreamcards
                 className="absolute bg-black_900_01 flex flex-col h-full inset-[0] items-center justify-center m-auto p-4 rounded-lg w-full"
                 rectangleeight="images/img_rectangle8.png"
@@ -193,7 +185,7 @@ const HomePage = () => {
               className="bg-black_900_01 flex flex-col items-center justify-start p-4 rounded-lg w-full"
               rectangleeight="images/img_rectangle8_191x332.png"
               bridegroomforsaOne="Bridegroom for sale."
-              description="vvv The synopsis goes here and here and here, once it starts overflowing it goes here ,the synopsis goes here and here and here, once it starts overflowing it goes here.."
+              description="The synopsis goes here and here and here, once it starts overflowing it goes here ,the synopsis goes here and here and here, once it starts overflowing it goes here.."
               rentPlay="Rent play"
             />
             <HowToEncouragePeopleToSignUpStreamcards
@@ -202,14 +194,9 @@ const HomePage = () => {
               bridegroomforsaOne="Bridegroom for sale."
               description="The synopsis goes here and here and here, once it starts overflowing it goes here ,the synopsis goes here and here and here, once it starts overflowing it goes here.."
               rentPlay="Rent play"
-              
             />
           </List>
         </div>
-
-
-
-        {/* Pre-footer CTA Button */}
         <Button
           className="common-pointer cursor-pointer font-bold mt-24 text-center text-white_A700 text-xl w-[200px]"
           onClick={() => navigate("/allstreams")}
@@ -221,14 +208,17 @@ const HomePage = () => {
         </Button>
 
 
-        {/* Footer Section*/}
-        <Footer className="border-gray_800 border-solid border-t-[13px] flex items-center justify-center mt-24 md:px-5 w-full"
+
+
+
+        
+        <HowToEncouragePeopleToSignUpFooter
+          className="border-gray_800 border-solid border-t-[13px] flex items-center justify-center mt-24 md:px-5 w-full"
           copyrightheartsOne="Copyright Heartstrings Entertainment"
         />
-
       </div>
     </>
-  )
-}
+  );
+};
 
-export default HomePage
+export default HomePagePage;

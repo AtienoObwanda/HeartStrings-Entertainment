@@ -49,10 +49,10 @@ const HowToEncouragePeopleToSignUpStreamcards = (props) => {
             <div className="flex flex-row gap-2 items-center justify-center self-stretch w-auto">
               <Img
                 src="images/img_mdiclocktimenine.svg"
-                className="h-6 w-6"
+                className="h-6 w-6 mt-1"
                 alt="mdiclocktimenin"
               />
-              <div className="flex flex-col items-start justify-start self-stretch w-auto">
+              <div className="flex flex-col items-start justify-start self-stretch w-auto my-4">
                 <Text
                   className="font-normal font-roboto not-italic text-left text-white_A700 w-auto"
                   variant="body4"
@@ -72,9 +72,10 @@ HowToEncouragePeopleToSignUpStreamcards.defaultProps = {
   rectangleeight: "images/img_rectangle8.png",
   bridegroomforsaOne: "Bridegroom for sale.",
   description:
-    "The synopsis goes here and here and here, once it starts overflowing it goes here ,the synopsis goes here and here and here, once it starts overflowing it goes here..",
+    "XXX The synopsis goes here and here and here, once it starts overflowing it goes here ,the synopsis goes here and here and here, once it starts overflowing it goes here..",
   rentPlay: "Rent play",
-  time: "1hr 20mins",
+  time: "1hr 10mins",
+
 };
 
 export default HowToEncouragePeopleToSignUpStreamcards;
