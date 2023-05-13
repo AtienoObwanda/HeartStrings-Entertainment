@@ -1,9 +1,312 @@
-import React from 'react'
+import React from "react";
+
+import { useNavigate } from "react-router-dom";
+
+import { Button, Img, Input, Line, Text } from "Components";
+
+
 
 const MyAccount = () => {
-  return (
-    <div>MyAccount</div>
-  )
-}
+    const navigate = useNavigate();
+
+    return (
+      <>
+        <div className="bg-black_900_01 flex flex-col font-roboto items-center justify-start mx-auto w-full">
+          <div className="flex md:flex-col flex-row md:gap-5 items-start justify-evenly w-full">
+            <aside className="flex flex-col md:hidden justify-start md:px-5 w-[247px]">
+              <div className="flex flex-col justify-start mb-[476px] mt-12 mx-auto w-[81%]">
+                <Img
+                  src="images/img_dummylogo02.svg"
+                  className="common-pointer h-14 w-auto"
+                  alt="dummylogoTwo"
+                  onClick={() => navigate("/")}
+                />
+                <div className="bg-gray_800 flex flex-row gap-2 items-center justify-center mt-16 pl-6 md:pr-10 pr-[58px] sm:px-5 py-2.5 rounded-lg self-stretch w-auto">
+                  <Img
+                    src="images/img_iconsaxbolduser.svg"
+                    className="h-6 w-6"
+                    alt="iconsaxbolduser"
+                  />
+                  <Text
+                    className="font-normal not-italic text-left text-white_A700 w-auto"
+                    variant="body4"
+                  >
+                    My Account
+                  </Text>
+                </div>
+                <div
+                  className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-8 self-stretch w-auto"
+                  onClick={() => navigate("/mystreams")}
+                >
+                  <Img
+                    src="images/img_iconsaxboldelement2.svg"
+                    className="h-6 w-6"
+                    alt="iconsaxboldelem"
+                  />
+                  <Text
+                    className="font-normal not-italic text-gray_300 text-left w-auto"
+                    variant="body4"
+                  >
+                    My streams
+                  </Text>
+                </div>
+                <div
+                  className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-8 self-stretch w-auto"
+                  onClick={() => navigate("/mytickets")}
+                >
+                  <Img
+                    src="images/img_iconsaxboldreceipt1_gray_300.svg"
+                    className="h-6 w-6"
+                    alt="iconsaxboldrece"
+                  />
+                  <Text
+                    className="font-normal not-italic text-gray_300 text-left w-auto"
+                    variant="body4"
+                  >
+                    My Tickets
+                  </Text>
+                </div>
+                <Line className="bg-gray_800 h-px mt-[60px] w-full" />
+                <div className="flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-[63px] self-stretch w-auto">
+                  <Img
+                    src="images/img_iconsaxboldmessagequestion_gray_300.svg"
+                    className="h-6 w-6"
+                    alt="iconsaxboldmess"
+                  />
+                  <Text
+                    className="font-normal not-italic text-gray_300 text-left w-auto"
+                    variant="body4"
+                  >
+                    Help
+                  </Text>
+                </div>
+                <div className="flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-8 self-stretch w-auto">
+                  <Img
+                    src="images/img_iconsaxboldlogout.svg"
+                    className="h-6 w-6"
+                    alt="iconsaxboldlogo"
+                  />
+                  <a
+                    href="javascript:"
+                    className="font-normal not-italic text-base text-gray_300 text-left w-auto"
+                  >
+                    <Text className="">Logout</Text>
+                  </a>
+                </div>
+              </div>
+            </aside>
+            <div className="flex flex-1 flex-col items-center justify-start md:px-5 w-full">
+              <div className="flex sm:flex-col flex-row md:gap-10 items-center justify-between p-7 sm:px-5 w-full">
+                <div className="flex flex-col items-center justify-center ml-5 sm:ml-[0] self-stretch w-auto">
+                  <Text
+                    className="text-left text-white_A700 w-auto"
+                    as="h2"
+                    variant="h2"
+                  >
+                    Account overview
+                  </Text>
+                </div>
+                <div className="flex flex-row gap-[21px] items-center justify-start mr-5 self-stretch w-auto">
+                  <Img
+                    src="images/img_share.svg"
+                    className="h-6 w-6"
+                    alt="share"
+                  />
+                  <div className="flex flex-col items-start justify-center self-stretch w-auto">
+                    <Text
+                      className="font-normal not-italic text-left text-white_A700 w-auto"
+                      variant="body4"
+                    >
+                      Hi, Gloria
+                    </Text>
+                  </div>
+                </div>
+              </div>
+              <div className="flex flex-col items-center justify-start pb-[26px] sm:px-5 px-[26px] w-full">
+                <div className="flex flex-col gap-12 items-start justify-start w-[97%] md:w-full">
+                  <div className="flex sm:flex-col flex-row md:gap-10 items-start justify-between w-full">
+                    <div className="flex flex-col gap-2 items-start justify-center self-stretch w-auto">
+                      <Text
+                        className="font-bold text-left text-white_A700 w-auto"
+                        as="h5"
+                        variant="h5"
+                      >
+                        Personal information
+                      </Text>
+                      <Text
+                        className="font-normal not-italic text-gray_300 text-left w-auto"
+                        variant="body4"
+                      >
+                        Update your personal information
+                      </Text>
+                    </div>
+                    <div className="flex flex-row gap-[25px] items-start justify-start self-stretch w-auto">
+                      <Button
+                        className="cursor-pointer font-bold min-w-[94px] text-center text-white_A700 text-xl w-auto"
+                        shape="RoundedBorder8"
+                        size="lg"
+                        variant="OutlineWhiteA700_1"
+                      >
+                        Cancel
+                      </Button>
+                      <Button
+                        className="cursor-pointer font-bold min-w-[76px] text-center text-white_A700 text-xl w-auto"
+                        shape="RoundedBorder8"
+                        size="lg"
+                        variant="FillGray900"
+                      >
+                        Save
+                      </Button>
+                    </div>
+                  </div>
+                  <div className="flex flex-col gap-12 items-start justify-start self-stretch w-auto sm:w-full">
+                    <div className="flex flex-col gap-4 items-start justify-start self-stretch w-auto sm:w-full">
+                      <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto sm:w-full">
+                        <Text
+                          className="font-normal not-italic text-left text-white_A700 w-auto"
+                          variant="body4"
+                        >
+                          Name
+                        </Text>
+                        <Input
+                          wrapClassName="w-full"
+                          className="font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
+                          name="groupThirtyTwo"
+                          placeholder="Wade Warren"
+                          shape="RoundedBorder4"
+                          size="md"
+                          variant="FillGray800"
+                        ></Input>
+                      </div>
+                      <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto sm:w-full">
+                        <Text
+                          className="font-normal not-italic text-left text-white_A700 w-auto"
+                          variant="body4"
+                        >
+                          Email address
+                        </Text>
+                        <Input
+                          wrapClassName="w-full"
+                          className="font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
+                          type="email"
+                          name="email"
+                          placeholder="sara.cruz@example.com"
+                          shape="RoundedBorder4"
+                          size="md"
+                          variant="FillGray800"
+                        ></Input>
+                      </div>
+                      <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto sm:w-full">
+                        <Text
+                          className="font-normal not-italic text-left text-white_A700 w-auto"
+                          variant="body4"
+                        >
+                          Phone number
+                        </Text>
+                        <Input
+                          wrapClassName="w-full"
+                          className="font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
+                          name="groupThirtyFour"
+                          placeholder="(205) 555-0100"
+                          shape="RoundedBorder4"
+                          size="md"
+                          variant="FillGray800"
+                        ></Input>
+                      </div>
+                      <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto sm:w-full">
+                        <Text
+                          className="font-normal not-italic text-left text-white_A700 w-auto"
+                          variant="body4"
+                        >
+                          Password
+                        </Text>
+                        <Input
+                          wrapClassName="w-full"
+                          className="font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
+                          name="password_One"
+                          placeholder="******************"
+                          shape="RoundedBorder4"
+                          size="md"
+                          variant="FillGray800"
+                        ></Input>
+                      </div>
+                    </div>
+                    <div className="flex flex-col gap-4 items-start justify-start self-stretch w-auto sm:w-full">
+                      <Text
+                        className="font-bold text-left text-white_A700 w-auto"
+                        as="h6"
+                        variant="h6"
+                      >
+                        Password settings
+                      </Text>
+                      <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto sm:w-full">
+                        <Text
+                          className="font-normal not-italic text-left text-white_A700 w-auto"
+                          variant="body4"
+                        >
+                          Enter current password
+                        </Text>
+                        <Input
+                          wrapClassName="w-full"
+                          className="font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
+                          name="password_Two"
+                          placeholder="******************"
+                          shape="RoundedBorder4"
+                          size="md"
+                          variant="FillGray800"
+                        ></Input>
+                      </div>
+                      <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto sm:w-full">
+                        <Text
+                          className="font-normal not-italic text-left text-white_A700 w-auto"
+                          variant="body4"
+                        >
+                          New password
+                        </Text>
+                        <Input
+                          wrapClassName="w-full"
+                          className="font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
+                          name="password_Three"
+                          placeholder="******************"
+                          shape="RoundedBorder4"
+                          size="md"
+                          variant="FillGray800"
+                        ></Input>
+                      </div>
+                      <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto sm:w-full">
+                        <Text
+                          className="font-normal not-italic text-left text-white_A700 w-auto"
+                          variant="body4"
+                        >
+                          Confirm password
+                        </Text>
+                        <Input
+                          wrapClassName="w-full"
+                          className="font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
+                          name="password_Four"
+                          placeholder="******************"
+                          shape="RoundedBorder4"
+                          size="md"
+                          variant="FillGray800"
+                        ></Input>
+                      </div>
+                      <Button
+                        className="cursor-pointer font-bold min-w-[168px] text-center text-white_A700 text-xl w-auto"
+                        shape="RoundedBorder8"
+                        size="lg"
+                        variant="FillRed900"
+                      >
+                        Save password
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  };
 
 export default MyAccount
