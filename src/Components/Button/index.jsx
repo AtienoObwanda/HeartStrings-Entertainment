@@ -23,7 +23,7 @@ const variants = {
   icbFillGray800: "bg-gray_800",
 };
 const sizes = {
-  sm: "p-[9px]",
+  sm: "p-[5px]",
   md: "p-3",
   lg: "p-[15px]",
   smIcn: "p-[11px]",
