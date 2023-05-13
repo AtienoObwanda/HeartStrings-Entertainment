@@ -93,7 +93,7 @@ const AboutUs = () => {
       className="font-normal not-italic text-gray_300 text-left w-auto"
       variant="body4"
     >
-      Join our team
+      <a href='#'>Join our team</a>
     </Text>
   </div>
   <div className="flex flex-col gap-6 items-center justify-center self-stretch w-auto">
@@ -115,7 +115,7 @@ const AboutUs = () => {
       className="font-normal not-italic text-gray_300 text-left w-auto"
       variant="body4"
     >
-      Find near you
+      <a href='#'> Find near you</a>
     </Text>
   </div>
   <div className="flex flex-col gap-6 items-center justify-center self-stretch w-auto">
@@ -137,7 +137,7 @@ const AboutUs = () => {
       className="font-normal not-italic text-gray_300 text-left w-auto"
       variant="body4"
     >
-      Stream our plays
+      <a href='#'>Stream our plays</a>
     </Text>
   </div>
 </div>
