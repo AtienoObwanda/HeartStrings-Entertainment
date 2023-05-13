@@ -6,7 +6,17 @@ module.exports = {
   ],
   darkMode: "class",
   theme: {
-    screens: { md: { max: "1050px" }, sm: { max: "550px" } },
+    screens: { 
+      md: { max: "1050px" }, 
+      sm: { max: "550px" },
+      // xs: "480px",
+      // ss: "620px",
+      // sm: "768px",
+      // md: "1060px",
+      // lg: "1200px",
+      // xl: "1700px",
+    
+    },
     extend: {
       colors: {
         gray_300_87: "#e6e6e687",
@@ -28,6 +38,10 @@ module.exports = {
         white_A700: "#ffffff",
         black_900_02: "#08040c",
         gray_300_a2: "#e6e6e6a2",
+      },
+      backgroundImage: {
+        'red-gradient': 'linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(156,20,20,1) 80%)',
+        'black-gradient': 'linear-gradient(144.39deg,#ffffff -278.56%,#000 -78.47%, #9c1414 91.61% )',
       },
       fontFamily: { roboto: "Roboto", mulish: "Mulish", inter: "Inter" },
       boxShadow: {

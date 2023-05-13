@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AboutUs from "Pages/General/AboutUs";
 import AccessDenied from "Pages/General/AccessDenied";
 import ContactUs from "Pages/General/ContactUs";
-import Home from "Pages/General/Home";
+import HomePage from "Pages/General/HomePage";
 import NotFound from "Pages/General/NotFound";
 import TermsAndConditions from "Pages/General/Terms&Conditions";
 
@@ -80,7 +80,7 @@ const ProjectRoutes = () => {
     <React.Suspense fallback={<>Loading...</>}>
       <Router>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<HomePage />} />
           <Route path="*" element={<NotFound />} />
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/termsandconditions" element={<TermsAndConditions />} />
