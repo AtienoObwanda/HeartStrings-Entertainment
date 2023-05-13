@@ -4,11 +4,11 @@ import { useNavigate } from "react-router-dom";
 
 import { Button, Img, List, Text } from "Components";
 import HowToEncouragePeopleToSignUpColumnprice from "Components/HowToEncouragePeopleToSignUpColumnprice";
-import Footer from "Components/HowToEncouragePeopleToSignUpFooter/Footer";
-import HowToEncouragePeopleToSignUpStreamcards from "Components/HowToEncouragePeopleToSignUpStreamcards";
-import HowToEncouragePeopleToSignUpWhitenoicon from "Components/HowToEncouragePeopleToSignUpWhitenoicon";
+import Footer from "Components/Footer/Footer";
+import HowToEncouragePeopleToSignUpStreamcards from "Components/StreamCards";
+import HowToEncouragePeopleToSignUpWhitenoicon from "Components/WhiteNoIcon";
 import LandingPageNavbarhifi from "Components/LandingPageNavbarhifi";
-import Navbar from "Components/LandingPageNavbarhifi/Navbar";
+import Navbar from "Components/Navbar/Navbar";
 
 const HomePage = () => {
   const navigate = useNavigate();

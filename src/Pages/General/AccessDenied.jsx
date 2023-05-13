@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 // import Navbar from "Components/LandingPageNavbarhifi/Navbar";
 
 import { Button, Img, Text } from "Components";
-import SignupColumndummylogotwo from "Components/SignupColumndummylogotwo";
+import SignupColumndummylogotwo from "Components/SignupColumn";
 
 const AccessDenied = () => {
   const navigate = useNavigate();

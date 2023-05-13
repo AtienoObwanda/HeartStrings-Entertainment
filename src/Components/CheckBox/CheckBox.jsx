@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { ErrorMessage } from "../../Components/ErrorMessage";
+import { ErrorMessage } from "../ErrorMessage";
 
 const sizes = { sm: "pb-1 pt-2 px-1" };
 

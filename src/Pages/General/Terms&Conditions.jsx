@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from "react-router-dom";
-import Footer from "Components/HowToEncouragePeopleToSignUpFooter/Footer";
-import Navbar from "Components/LandingPageNavbarhifi/Navbar";
+import Footer from "Components/Footer/Footer";
+import Navbar from "Components/Navbar/Navbar";
 import { Text } from "Components";
 
 

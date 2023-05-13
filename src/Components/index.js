@@ -1,5 +1,5 @@
-export { Button } from "./Button";
-export { CheckBox } from "./CheckBox";
+export { Button } from "./Button/Button";
+export { CheckBox } from "./CheckBox/CheckBox";
 export { Img } from "./Img";
 export { Input } from "./Input";
 export { Line } from "./Line";
