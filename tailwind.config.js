@@ -38,7 +38,9 @@ module.exports = {
         white_A700: "#ffffff",
         black_900_02: "#08040c",
         gray_300_a2: "#e6e6e6a2",
+        border_color: "#ffffff" ,
       },
+     
       backgroundImage: {
         'red-gradient': 'linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(156,20,20,1) 80%)',
         'black-gradient': 'linear-gradient(144.39deg,#ffffff -278.56%,#000 -78.47%, #9c1414 91.61% )',
