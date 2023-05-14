@@ -8,7 +8,7 @@ const ContactUs = React.lazy(() => import("Pages/General/ContactUs"));
 const TermsAndConditions = React.lazy(() => import("Pages/General/Terms&Conditions"));
 const AccessDenied = React.lazy(() => import("Pages/General/AccessDenied"));
 const NotFound = React.lazy(() => import("Pages/General/NotFound"));
-
+const PrivacyPolicy = React.lazy(() => import("Pages/General/PrivacyPolicy"));
 // Content
 const AllStreams = React.lazy(() => import("Pages/Content/AllStreams"));
 const StreamDetails = React.lazy(() => import("Pages/Content/StreamDetails"));
@@ -95,6 +95,7 @@ const ProjectRoutes = () => {
           <Route path="/not-found" element={<NotFound />} />
           <Route path="/access-denied" element={<AccessDenied />} />
           <Route path="/contact-us" element={<ContactUs />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
 
           {/* Content Routes */}
           <Route path="/play-details" element={<PlayDetails />} />
