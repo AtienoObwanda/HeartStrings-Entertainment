@@ -12,7 +12,7 @@ const ForgotPassword = () => {
     <>
       <div className="bg-black_900 flex flex-col font-roboto sm:gap-10 md:gap-10 gap-24 items-center justify-start mx-auto pb-[429px] w-full">
         <SignupColumnlogotwo className="flex flex-col items-center justify-start p-8 sm:px-5 w-full" />
-        <div className="flex flex-col gap-8 items-center justify-start md:px-5 self-stretch w-auto sm:w-full">
+        <div className="flex flex-col gap-8 items-center justify-start md:px-5 md:pb-[350px] self-stretch w-auto sm:w-full">
           <a
             href="javascript:"
             className="font-bold text-2xl md:text-[22px] text-left text-white_A700 sm:text-xl w-auto"
@@ -35,8 +35,8 @@ const ForgotPassword = () => {
             <div className="flex flex-col items-center justify-center self-stretch w-auto sm:w-full">
               <div className="flex flex-col gap-6 items-center justify-center self-stretch w-auto sm:w-full">
                 <div className="flex flex-col items-start justify-start self-stretch w-auto sm:w-full">
-                  <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto sm:w-full">
-                    <Text
+                  <div className="flex flex-col gap-2 items-start justify-start self-stretch w-[430px] sm:w-full mt-2 mx-auto">
+                     <Text
                       className="font-normal not-italic text-left text-white_A700 w-auto"
                       variant="body4"
                     >
@@ -45,15 +45,18 @@ const ForgotPassword = () => {
                     <Input
                       wrapClassName="flex h-12 w-full"
                       className="p-0 w-full"
-                      name="rectangleNine"
-                      placeholder=""
+                      // value={email} onChange={(e) => setEmail(e.target.value)}
+                      type="email"
+                      name="email"
+                      placeholder="your-email@gmail.com"
                       shape="RoundedBorder4"
                       variant="FillGray800"
                     ></Input>
                   </div>
                 </div>
                 <Button
-                  className="cursor-pointer font-bold text-center text-white_A700 text-xl w-[430px]"
+                  className="cursor-pointer font-bold text-center text-white_A700 text-xl w-[430px] sm:w-full mt-2"
+                  // className="cursor-pointer font-bold text-center text-white_A700 text-xl w-[430px]"
                   shape="RoundedBorder8"
                   size="lg"
                   variant="FillRed900"
