@@ -22,38 +22,33 @@ const Login = React.lazy(() => import("Pages/Users/Auth/Login"));
 const ForgotPassword = React.lazy(() => import("Pages/Users/Auth/ForgotPassword"));
 const ResetPassword = React.lazy(() => import("Pages/Users/Auth/ResetPassword"));
 const ResetComplete = React.lazy(() => import("Pages/Users/Auth/ResetComplete"));
+
 // User Account
 const MyAccount = React.lazy(() => import("Pages/Users/Account/MyAccount"));
 const EditMyAccount = React.lazy(() => import("Pages/Users/Account/EditMyAccount"));
+
 // User Content
 const MyTickets = React.lazy(() => import("Pages/Users/MyContent/MyTickets"));
 const TicketPopUp = React.lazy(() => import("Pages/Users/MyContent/TicketPopUp"));
 const MyStreams = React.lazy(() => import("Pages/Users/MyContent/MyStreams"));
 const MyStreamLibrary = React.lazy(() => import("Pages/Users/MyContent/MyStreamLibrary"));
 
-// Payments
-
+// Ticket
+const BuyingTickets = React.lazy(() => import("Pages/Users/BuyTickets/BuyingTickets"));
+const BuyingTicket = React.lazy(() => import("Pages/Users/BuyTickets/BuyingTicket"));
 
 // Renting Play
+const RentingPlay = React.lazy(() => import("Pages/Users/RentingPlay/RentingPlay"));
 
-// Ticket
 
+// Payments
+const CreditCardPayments = React.lazy(() => import("Pages/Users/Payments/CreditCardPayments"));
+const PlayTicketPaymentConfirmation = React.lazy(() => import("Pages/Users/Payments/PlayTicketPaymentConfirmation") );
+const RentPlayPaymentConfirmation = React.lazy(() => import("Pages/Users/Payments/RentPlayPaymentConfirmation") );
+const CreditCardPayment = React.lazy(() => import("Pages/Users/Payments/CreditCardPayment"));
+const PayNow = React.lazy(() => import("Pages/Users/Payments/PayNow"));
+const RentingPlayPayment = React.lazy(() => import("Pages/Users/Payments/RentingPlayPayment"));
 
-// const RentingPlayPayment = React.lazy(() => import("pages/RentingPlayPayment"));
-// const RentingPlay = React.lazy(() => import("pages/RentingPlay"));
-
-// const CreditCardPayment1 = React.lazy(() => import("pages/CreditCardPayment1"));
-// const BuyingTickets = React.lazy(() => import("pages/BuyingTickets"));
-
-// const PlayTicketPaymentConfirmation = React.lazy(() =>
-//   import("pages/PlayTicketPaymentConfirmation")
-// );
-// const RentPlayPaymentConfirmation = React.lazy(() =>
-//   import("pages/RentPlayPaymentConfirmation")
-// );
-// const CreditCardPayment = React.lazy(() => import("pages/CreditCardPayment"));
-// const PayNow = React.lazy(() => import("pages/PayNow"));
-// const BuyingTicket = React.lazy(() => import("pages/BuyingTicket"));
 
 
 // Admin Pages
@@ -115,35 +110,32 @@ const ProjectRoutes = () => {
           {/* Account Route */}
           <Route path="/edit-my-account" element={<EditMyAccount />} />
           <Route path="/my-account" element={<MyAccount />} />
-
-
-          {/* 
-         
-          <Route path="/buyingticket" element={<BuyingTicket />} />
-          <Route path="/paynow" element={<PayNow />} />
-          <Route path="/creditcardpayment" element={<CreditCardPayment />} />
-          <Route
-            path="/rentplaypaymentconfirmation"
-            element={<RentPlayPaymentConfirmation />}
-          />
-          <Route
-            path="/playticketpaymentconfirmation"
-            element={<PlayTicketPaymentConfirmation />}
-          />
-          
-          <Route path="/buyingtickets" element={<BuyingTickets />} />
-          <Route path="/creditcardpayment1" element={<CreditCardPayment1 />} />
-          
+          {/* My Content */}
+          <Route path="/mystreamlibrary" element={<MyStreamLibrary />} />
           <Route path="/mystreams" element={<MyStreams />} />
           <Route path="/mytickets" element={<MyTickets />} />
-          <Route path="/ticketpopup" element={<TicketPopUp />} />
-          <Route path="/mystreamlibrary" element={<MyStreamLibrary />} />
+
+
+          {/* Plays */}
           <Route path="/rentingplay" element={<RentingPlay />} />
-          <Route path="/rentingplaypayment" element={<RentingPlayPayment />} />
-          <Route
-            path="/rentingplaypaymentconfirmation"
-            element={<RentingPlayPaymentConfirmation />}
-          /> */}
+
+          {/* Tickets */}
+          <Route path="/ticketpopup" element={<TicketPopUp />} />
+          <Route path="/buying-tickets" element={<BuyingTickets />} />
+          <Route path="/buyingticket" element={<BuyingTicket />} />
+
+          {/* Payments */}
+          <Route path="/renting-play-payment" element={<RentingPlayPayment />} />
+          <Route path="/rent-play-payment-confirmation" element={<RentPlayPaymentConfirmation />}/>
+          <Route path="/credit-card-payments" element={<CreditCardPayments />} />
+
+          <Route path="/paynow" element={<PayNow />} />
+          <Route path="/credit-card-payment" element={<CreditCardPayment />} />
+          <Route path="/rent-play-payment-confirmation" element={<RentPlayPaymentConfirmation />} />
+          <Route path="/play-ticket-payment-confirmation" element={<PlayTicketPaymentConfirmation />}/>
+          
+          
+         
 
           {/* Admin Routes */}
 
