@@ -9,30 +9,33 @@ const ResetPassword = () => {
 
   return (
     <>
-      <div className="bg-black_900 flex flex-col font-roboto sm:gap-10 md:gap-10 gap-24 items-center justify-start mx-auto pb-[341px] w-full">
+      <div className="bg-black_900 flex flex-col font-roboto sm:gap-10 md:gap-10 gap-24 items-center justify-start mx-auto pb-[680px] w-full">
         <SignupColumnlogotwo className="flex flex-col items-center justify-start p-8 sm:px-5 w-full" />
         <div className="flex flex-col gap-12 items-center justify-start md:px-5 self-stretch w-auto sm:w-full">
           <a
             href="javascript:"
             className="font-bold text-2xl md:text-[22px] text-left text-white_A700 sm:text-xl w-auto"
           >
-            <Text className="">Reset password</Text>
+            <Text 
+            className="">Reset password</Text>
           </a>
           <div className="flex flex-col gap-4 items-start justify-start self-stretch w-auto sm:w-full">
             <div className="flex flex-col gap-4 items-center justify-start self-stretch w-auto sm:w-full">
-              <Input
-                wrapClassName="w-[73%]"
-                className="font-normal not-italic p-0 placeholder:text-white_A700 text-base text-left text-white_A700 w-full"
-                type="email"
-                name="description"
-                placeholder="Enter your email address to reset password."
-              ></Input>
+            <a
+            href="javascript:"
+            className="font-normal md:text-[15px] text-left text-white_A700 sm:text-xl w-auto"
+          >
+            <Text 
+            className="">Enter your email address to reset password.</Text>
+          </a>
+          
               <Line className="bg-gray_900_63 h-px w-full" />
             </div>
             <div className="flex flex-col gap-8 items-center justify-center self-stretch w-auto sm:w-full">
               <div className="flex flex-col gap-6 items-center justify-center self-stretch w-auto sm:w-full">
                 <div className="flex flex-col gap-4 items-start justify-start self-stretch w-auto sm:w-full">
-                  <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto sm:w-full">
+                 
+                <div className="flex flex-col gap-2 items-start justify-start self-stretch w-[430px] sm:w-full mt-2 mx-auto">
                     <Text
                       className="font-normal not-italic text-left text-white_A700 w-auto"
                       variant="body4"
@@ -48,7 +51,7 @@ const ResetPassword = () => {
                       variant="FillGray800"
                     ></Input>
                   </div>
-                  <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto sm:w-full">
+                  <div className="flex flex-col gap-2 items-start justify-start self-stretch w-[430px] sm:w-full mt-2 mx-auto">
                     <Text
                       className="font-normal not-italic text-left text-white_A700 w-auto"
                       variant="body4"
@@ -64,15 +67,17 @@ const ResetPassword = () => {
                       variant="FillGray800"
                     ></Input>
                   </div>
+
                 </div>
                 <Button
-                  className="cursor-pointer font-bold text-center text-white_A700 text-xl w-[430px]"
-                  shape="RoundedBorder8"
-                  size="lg"
-                  variant="FillRed900"
-                >
-                  Reset password
-                </Button>
+                      className="cursor-pointer font-bold text-center text-white_A700 text-xl w-[430px] sm:w-full mt-2"
+                      shape="RoundedBorder8"
+                      size="lg"
+                      variant="FillRed900"
+                      type="submit"
+                    >
+                      Reset Password
+                    </Button>
               </div>
               <div
                 className="common-pointer flex flex-col items-center justify-start self-stretch w-auto"
