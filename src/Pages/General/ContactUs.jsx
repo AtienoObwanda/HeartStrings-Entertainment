@@ -54,9 +54,7 @@ const ContactUs = () => {
 
         
         {/* Main Page Section */}
-          <div className="flex flex-col gap-12 items-center justify-start mt-20 md:px-5 self-stretch w-auto sm:w-full">
-          {/* Contact Form */}
-              
+          <div className="flex flex-col gap-12 items-center justify-start mt-20 md:px-5 self-stretch w-auto sm:w-full">              
           <div className="flex flex-col items-center justify-center mt-20 md:px-5 self-stretch w-full">
             <div className="flex flex-col gap-6 items-center justify-center w-full">
               <Text
@@ -74,66 +72,77 @@ const ContactUs = () => {
                 Our team will get back to you in a jiffy.
               </Text>
             </div>
-
-            <div className="mt-10 flex flex-col gap-12 items-center justify-center w-full max-w-[480px]">
-              {/* Contact Form */}
-              <div className="flex flex-col gap-8 items-start justify-start self-stretch w-full">
-                <div className="flex flex-col gap-2 items-start justify-start self-stretch w-full">
-                  <Text className="font-normal not-italic text-left text-white_A700" variant="body4">
-                    Full name
-                  </Text>
-                  
-                  <Input
-                    wrapClassName="flex h-12 w-full"
-                    className="p-0 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
-                    name="name"
-                    placeholder=""
-                    shape="RoundedBorder4"
-                    variant="FillGray800"
-                  />
-                </div>
-                <div className="flex flex-col gap-2 items-start justify-start self-stretch w-full">
-                  <Text className="font-normal not-italic text-left text-white_A700" variant="body4">
-                    Email address
-                  </Text>
-                  <Input
-                    wrapClassName="flex h-12 w-full"
-                    className="p-0 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
-                    name="email"
-                    placeholder=""
-                    shape="RoundedBorder4"
-                    variant="FillGray800"
-                  />
-                </div>
-                <div className="flex flex-col gap-2 items-start justify-start self-stretch w-full">
-                  <Text className="font-normal not-italic text-left text-white_A700" variant="body4">
-                    Message
-                  </Text>
-                  <Input
-                    wrapClassName="flex flex-col justify-center h-48 w-full p-0 rounded"
-                    className="bg-gray_800 border-2 border-transparent focus:border-white_A700 rounded-md font-normal h-full not-italic pl-3 sm:pr-5 py-3.5 rounded text-left text-white_A700"
-                    name="message"
-                    placeholder="Enter your message here"
-                    shape="RoundedBorder4"
-                    variant="FillGray800"
-                  />
-                </div>
-                <Button
-                  className="cursor-pointer font-bold text-center text-white_A700 text-xl w-full mt-10"
-                  shape="RoundedBorder8"
-                  size="lg"
-                  variant="FillRed90001"
-                  type="submit"
-                >
-                  Send message
-                </Button>
-
-              
+            {/* <div> */}
+            <form className="mt-10 flex flex-col gap-12 items-center justify-center w-full max-w-[480px]">
               
             
+
+              <div className="flex flex-col gap-8 items-start justify-start self-stretch w-full">
+                
+                {/* Contact Form */}
+
+                  <div className="flex flex-col gap-2 items-start justify-start self-stretch w-full">
+                    <Text className="font-normal not-italic text-left text-white_A700" variant="body4">
+                      Full name
+                    </Text>
+                    
+                    <Input
+                      wrapClassName="flex h-12 w-full"
+                      className="p-0 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
+                      name="name"
+                      type="text"
+                      value="name"
+                      placeholder=""
+                      shape="RoundedBorder4"
+                      variant="FillGray800"
+                    />
+                  </div>
+                  <div className="flex flex-col gap-2 items-start justify-start self-stretch w-full">
+                    <Text className="font-normal not-italic text-left text-white_A700" variant="body4">
+                      Email address
+                    </Text>
+                    <Input
+                      wrapClassName="flex h-12 w-full"
+                      className="p-0 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
+                      name="email"
+                      type="email"
+                      value={email}
+                      placeholder=""
+                      shape="RoundedBorder4"
+                      variant="FillGray800"
+                    />
+                  </div>
+                  <div className="flex flex-col gap-2 items-start justify-start self-stretch w-full">
+                    <Text className="font-normal not-italic text-left text-white_A700" variant="body4">
+                      Message
+                    </Text>
+                    <Input
+                      wrapClassName="flex flex-col justify-center h-48 w-full p-0 rounded"
+                      className="bg-gray_800 border-2 border-transparent focus:border-white_A700 rounded-md font-normal h-full not-italic pl-3 sm:pr-5 py-3.5 rounded text-left text-white_A700"
+                      name="message"
+                      type="text"
+                      value="message"
+                      placeholder="Enter your message here"
+                      shape="RoundedBorder4"
+                      variant="FillGray800"
+                    />
+                  </div>
+                  <Button
+                    className="cursor-pointer font-bold text-center text-white_A700 text-xl w-full mt-10"
+                    shape="RoundedBorder8"
+                    size="lg"
+                    variant="FillRed90001"
+                    type="submit"
+                  >
+                    Send message
+                  </Button>
+
               </div>
+              {/* </div> */}
+               </form>
+
           
-        </div>
+        
         
       </div>
 

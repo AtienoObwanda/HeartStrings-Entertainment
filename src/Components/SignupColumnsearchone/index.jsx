@@ -6,10 +6,10 @@ const SignupColumnsearchone = (props) => {
   return (
     <>
       <div className={props.className}>
-        <div className="bg-gray_900 flex sm:flex-col flex-row gap-[29px] items-center justify-center p-4 rounded-lg w-full">
+        <div className="bg-gray_900 flex sm:flex-row flex-row gap-[29px] items-center justify-center p-4 mt-2 mb-4 rounded-lg w-full">
           <Img
             src="images/img_search1.png"
-            className="h-[25px] md:h-auto ml-16 sm:ml-[0] object-cover w-[25px]"
+            className="h-[25px] md:h-auto ml-16 sm:ml-[45px] object-cover w-[25px]"
             alt="searchOne"
           />
           <Text
