@@ -50,7 +50,6 @@ const PayNow = React.lazy(() => import("Pages/Users/Payments/PayNow"));
 const RentingPlayPayment = React.lazy(() => import("Pages/Users/Payments/RentingPlayPayment"));
 
 
-
 // Admin Pages
 
 // const AdminUserManagement = React.lazy(() =>
@@ -127,12 +126,12 @@ const ProjectRoutes = () => {
 
           {/* Payments */}
           <Route path="/renting-play-payment" element={<RentingPlayPayment />} />
-          <Route path="/rent-play-payment-confirmation" element={<RentPlayPaymentConfirmation />}/>
-          <Route path="/credit-card-payments" element={<CreditCardPayments />} />
-
+          {/* <Route path="/rent-play-payment-confirmation" element={<RentPlayPaymentConfirmation />}/> */}
+          {/* <Route path="/credit-card-payments" element={<CreditCardPayments />} /> */}
+          {/* <Route path="/renting-play-payment-confirmation" element={<RentingPlayPaymentConfirmation />}/> */}
           <Route path="/paynow" element={<PayNow />} />
           <Route path="/credit-card-payment" element={<CreditCardPayment />} />
-          <Route path="/rent-play-payment-confirmation" element={<RentPlayPaymentConfirmation />} />
+          {/* <Route path="/renting-play-payment-confirmation" element={<RentingPlayPaymentConfirmation />} /> */}
           <Route path="/play-ticket-payment-confirmation" element={<PlayTicketPaymentConfirmation />}/>
           
           
