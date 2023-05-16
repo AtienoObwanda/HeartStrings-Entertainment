@@ -115,13 +115,13 @@ const ProjectRoutes = () => {
           <Route path="/my-stream-library" element={<MyStreamLibrary />} />
           <Route path="/my-streams" element={<MyStreams />} />
           <Route path="/my-tickets" element={<MyTickets />} />
+          <Route path="/ticket-popup" element={<TicketPopUp />} />
 
 
           {/* Plays */}
           <Route path="/renting-play" element={<RentingPlay />} />
 
           {/* Tickets */}
-          <Route path="/ticket-popup" element={<TicketPopUp />} />
           <Route path="/buying-tickets" element={<BuyingTickets />} />
           <Route path="/buying-ticket" element={<BuyingTicket />} />
 
