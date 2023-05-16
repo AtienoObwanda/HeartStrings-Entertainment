@@ -35,7 +35,7 @@ const MyStreamLibrary = React.lazy(() => import("Pages/Users/MyContent/MyStreamL
 
 // Ticket
 const BuyingTickets = React.lazy(() => import("Pages/Users/BuyTickets/BuyingTickets"));
-const BuyingTicket = React.lazy(() => import("Pages/Users/BuyTickets/BuyingTicket"));
+const BuyingTicket = React.lazy(() => import("Pages/Users/BuyTickets/BuyTicket"));
 
 // Renting Play
 const RentingPlay = React.lazy(() => import("Pages/Users/RentingPlay/RentingPlay"));
@@ -110,19 +110,20 @@ const ProjectRoutes = () => {
           {/* Account Route */}
           <Route path="/edit-my-account" element={<EditMyAccount />} />
           <Route path="/my-account" element={<MyAccount />} />
-          {/* My Content */}
-          <Route path="/mystreamlibrary" element={<MyStreamLibrary />} />
-          <Route path="/mystreams" element={<MyStreams />} />
-          <Route path="/mytickets" element={<MyTickets />} />
+
+          {/* User Content */}
+          <Route path="/my-stream-library" element={<MyStreamLibrary />} />
+          <Route path="/my-streams" element={<MyStreams />} />
+          <Route path="/my-tickets" element={<MyTickets />} />
 
 
           {/* Plays */}
-          <Route path="/rentingplay" element={<RentingPlay />} />
+          <Route path="/renting-play" element={<RentingPlay />} />
 
           {/* Tickets */}
-          <Route path="/ticketpopup" element={<TicketPopUp />} />
+          <Route path="/ticket-popup" element={<TicketPopUp />} />
           <Route path="/buying-tickets" element={<BuyingTickets />} />
-          <Route path="/buyingticket" element={<BuyingTicket />} />
+          <Route path="/buying-ticket" element={<BuyingTicket />} />
 
           {/* Payments */}
           <Route path="/renting-play-payment" element={<RentingPlayPayment />} />
