@@ -4,7 +4,7 @@ import { Button, Img, Input, Line, Text } from "Components";
 import close from "../../../assets/close.svg";
 import  menu from "../../../assets/menu.svg";
 
-const EditMyAccount  = (props) => {
+const MyAccount = (props) => {
   const navigate = useNavigate();
   const [active, setActive] = useState("Home");
   const [toggle, setToggle] = useState(false);
@@ -139,7 +139,7 @@ const EditMyAccount  = (props) => {
                         />
                       </div>
                       <div className={`${toggle ? 'flex' : 'hidden'}
-                        p-6 bg-black_900_01 absolute top-20 left-0 mx-4 my-2 min-w-[160px] rounded-xl sidebar`}
+                        p-6 bg-black_900_01 absolute top-20 left-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar`}
                         >
                         <ul className="list-none justify-start items-center flex-1">
                             <li className="py-3 cursor-pointer text-16">
@@ -241,7 +241,7 @@ const EditMyAccount  = (props) => {
 
             <div className="flex flex-1 flex-col items-center justify-start md:px-5 w-full">
               {/* User Nav */}
-              <div className="flex sm:flex flex-row md:gap-10 items-center justify-between p-7 sm:px-5 w-full md:mt-[-400px]">
+              <div className="flex sm:flex flex-row md:gap-10 items-center justify-between p-7 sm:px-5 w-full md:mt-[-450px]">
                 
                 <div className="flex flex-col items-start justify-center ml-5 sm:ml-0 self-stretch w-auto">
                   <Text
@@ -317,115 +317,3 @@ const EditMyAccount  = (props) => {
                     {/* End of top Section */}
 
                   {/* Edit Details section */}
-                <div className="flex flex-col gap-8 items-start justify-start self-stretch w-auto sm:w-full">
-                  <div className="flex flex-col gap-4 items-start justify-start self-stretch w-auto sm:w-full">
-                    <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto sm:w-full">
-                      <Text
-                        className="font-normal not-italic text-left text-white_A700 w-auto"
-                        variant="body4"
-                      >
-                        Name
-                      </Text>
-                      <Input
-                        wrapClassName="w-full"
-                        className="font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
-                        name="groupTwentyFour"
-                        placeholder="Wade Warren"
-                        shape="RoundedBorder4"
-                        size="md"
-                        variant="FillGray800"
-                      ></Input>
-                    </div>
-                    <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto sm:w-full">
-                      <Text
-                        className="font-normal not-italic text-left text-white_A700 w-auto"
-                        variant="body4"
-                      >
-                        Email address
-                      </Text>
-                      <Input
-                        wrapClassName="w-full"
-                        className="font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
-                        type="email"
-                        name="email"
-                        placeholder="sara.cruz@example.com"
-                        shape="RoundedBorder4"
-                        size="md"
-                        variant="FillGray800"
-                      ></Input>
-                    </div>
-                    <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto sm:w-full">
-                      <Text
-                        className="font-normal not-italic text-left text-white_A700 w-auto"
-                        variant="body4"
-                      >
-                        Phone number
-                      </Text>
-                      <Input
-                        wrapClassName="w-full"
-                        className="font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
-                        name="groupTwentySix"
-                        placeholder="(205) 555-0100"
-                        shape="RoundedBorder4"
-                        size="md"
-                        variant="FillGray800"
-                      ></Input>
-                    </div>
-                    <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto sm:w-full">
-                      <Text
-                        className="font-normal not-italic text-left text-white_A700 w-auto"
-                        variant="body4"
-                      >
-                        Password
-                      </Text>
-                      <Input
-                        wrapClassName="w-full"
-                        className="font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
-                        name="password_One"
-                        placeholder="******************"
-                        shape="RoundedBorder4"
-                        size="md"
-                        variant="FillGray800"
-                      ></Input>
-                    </div>
-                  </div>
-                  <div className="flex flex-col gap-4 items-start justify-start self-stretch w-auto">
-                    <Text
-                      className="font-bold text-left text-white_A700 w-auto"
-                      as="h6"
-                      variant="h6"
-                    >
-                      Password settings
-                    </Text>
-                    <Button
-                      className="common-pointer cursor-pointer flex items-center justify-center min-w-[209px] w-auto"
-                      onClick={() => navigate("/myaccount")}
-                      leftIcon={
-                        <Img
-                          src="images/img_iconsax_linear_passwordcheck.svg"
-                          className="mr-4"
-                          alt="Iconsax/Linear/passwordcheck"
-                        />
-                      }
-                      shape="RoundedBorder8"
-                      size="md"
-                      variant="OutlineWhiteA700_1"
-                    >
-                      <div className="font-bold text-base text-left text-white_A700">
-                        Change password
-                      </div>
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-          </div>
-        </div>
-        </div>
-      </>
-    );
-  };
-  
-
-export default EditMyAccount

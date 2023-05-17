@@ -24,8 +24,8 @@ const ResetPassword = React.lazy(() => import("Pages/Users/Auth/ResetPassword"))
 const ResetComplete = React.lazy(() => import("Pages/Users/Auth/ResetComplete"));
 
 // User Account
-const MyAccount = React.lazy(() => import("Pages/Users/Account/MyAccount"));
 const EditMyAccount = React.lazy(() => import("Pages/Users/Account/EditMyAccount"));
+const MyAccount = React.lazy(() => import("Pages/Users/Account/MyAccount"));
 
 // User Content
 const MyTickets = React.lazy(() => import("Pages/Users/MyContent/MyTickets"));
@@ -107,8 +107,8 @@ const ProjectRoutes = () => {
             
           {/* Authenticated UserRoutes */}
           {/* Account Route */}
-          <Route path="/edit-my-account" element={<EditMyAccount />} />
-          <Route path="/my-account" element={<MyAccount />} />
+          <Route path="/edit-my-password" element={<EditMyAccount />} />
+          <Route path="/edit-my-account" element={<MyAccount />} />
 
           {/* User Content */}
           <Route path="/my-stream-library" element={<MyStreamLibrary />} />

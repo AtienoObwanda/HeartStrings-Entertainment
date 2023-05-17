@@ -2,8 +2,8 @@ import React from "react";
 
 const variantClasses = {
   h1: "font-bold sm:text-5xl md:text-5xl text-7xl",
-  h2: "font-bold text-4xl sm:text-[32px] md:text-[34px]",
-  h3: "font-bold md:text-3xl sm:text-[28px] text-[32px]",
+  h2: "font-bold text-4xl sm:text-[20px] md:text-[30px]",
+  h3: "font-bold md:text-3xl sm:text-[18px] text-[32px]",
   h4: "font-bold sm:text-5xl md:text-5xl text-[300px]",
   h5: "text-2xl md:text-[22px] sm:text-xl",
   h6: "text-xl",
