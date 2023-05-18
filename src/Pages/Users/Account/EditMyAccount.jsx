@@ -16,7 +16,7 @@ const EditMyAccount  = (props) => {
             {/* Side Bar */}
             {/* Display on Large Screens  */}
             {/* <aside className="flex flex-col md:hidden justify-start md:px-5 w-[247px]"> */}
-            <aside className="md:hidden flex justify-start md:px-5 w-[247px]">
+            <aside className="md:hidden flex bg-black_900 justify-start md:px-5 w-[247px]">
 
               <div className="flex flex-col justify-start mb-[476px] mt-12 mx-auto w-[81%]">
                 <Img
@@ -139,7 +139,7 @@ const EditMyAccount  = (props) => {
                         />
                       </div>
                       <div className={`${toggle ? 'flex' : 'hidden'}
-                        p-6 bg-black_900_01 absolute top-20 left-0 mx-4 my-2 min-w-[160px] rounded-xl sidebar`}
+                        p-6 bg-black_900 absolute top-20 left-0 mx-4 my-2 min-w-[160px] rounded-xl sidebar`}
                         >
                         <ul className="list-none justify-start items-center flex-1">
                             <li className="py-3 cursor-pointer text-16">
