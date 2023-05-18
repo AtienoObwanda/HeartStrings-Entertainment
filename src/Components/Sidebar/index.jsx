@@ -1,11 +1,18 @@
-import React from "react";
-
-import { Img, Line, Text } from "Components";
+import React, { useState } from "react";
+import { Button, Img, Input, Line, List, Text } from "Components";
+import { useNavigate } from "react-router-dom";
+import close from "../../assets/close.svg";
+import  menu from "../../assets/menu.svg";
 
 const Sidebar = (props) => {
+  const navigate = useNavigate();
+  const [active, setActive] = useState("Home");
+  const [toggle, setToggle] = useState(false);
   return (
     <>
+
       <aside className={props.className}>
+
         <Img
           src="images/img_dummylogo02.svg"
           className="h-14 ml-6 md:ml-[0] mr-[87px] mt-12 w-auto"
@@ -78,6 +85,14 @@ const Sidebar = (props) => {
           </Text>
         </div>
       </aside>
+    
+    
+
+            {/* End Of Sidebar */}
+    
+    
+    
+    
     </>
   );
 };
