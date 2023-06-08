@@ -8,15 +8,17 @@ const TheatrePlays = () => {
     <>
       {/* Plays At The Theatre Section */}
 
-      <div className="flex flex-col gap-12 items-center justify-center max-w-[1140px] mt-24 mx-auto md:px-5 self-stretch w-full">
+      <div className="flex flex-col gap-12 items-center justify-center max-w-[1140px] mt-10 mx-auto md:px-5 self-stretch w-full">
           <div className="flex flex-col gap-1 items-center justify-center self-stretch w-auto md:w-full">
-            <Text
-              className="text-left text-white_A700 w-auto"
-              as="h1"
-              variant="h1"
+          <Text
+            className="text-left text-white_A700 w-auto font-roboto"
+            as="h1"
+            variant="h1"
+            style={{ fontSize: '52px', lineHeight: '106px' }}
             >
-              Plays at the theatre
+            Plays at the theatre
             </Text>
+
             <Text
               className="font-normal not-italic text-gray_300 text-left w-auto"
               as="h5"
