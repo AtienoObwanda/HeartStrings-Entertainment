@@ -14,7 +14,7 @@ const TheatrePlays = () => {
             className="text-left text-white_A700 w-auto font-roboto"
             as="h1"
             variant="h1"
-            style={{ fontSize: '52px', lineHeight: '106px' }}
+            style={{ fontSize: '45px', lineHeight: '80px' }}
             >
             Plays at the theatre
             </Text>
@@ -23,6 +23,8 @@ const TheatrePlays = () => {
               className="font-normal not-italic text-gray_300 text-left w-auto"
               as="h5"
               variant="h5"
+              style={{ fontSize: '24px', lineHeight: '42px' }}
+
             >
               Our lineup is better than before!
             </Text>
