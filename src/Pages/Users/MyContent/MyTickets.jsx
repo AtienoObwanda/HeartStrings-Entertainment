@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createColumnHelper } from "@tanstack/react-table";
-import { Img, Line, ReactTable, Text } from "Components";
+import { Img, Line, ReactTable, Text } from "UI_Components";
 // import { Button, Img, Input, Line, List, Text } from "Components";
 import close from "../../../assets/close.svg";
 import menu from "../../../assets/menu.svg";

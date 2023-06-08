@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button, Img, Input, Line, Text } from "Components";
+import { Button, Img, Input, Line, Text } from "UI_Components";
 import close from "../../../assets/close.svg";
 import  menu from "../../../assets/menu.svg";
 

@@ -1,10 +1,10 @@
 import React from 'react'
 import { useNavigate } from "react-router-dom";
 
-import Footer from "Components/Footer/Footer";
-import Navbar from "Components/Navbar/Navbar";
+import Footer from "Layout/Footer/Footer";
+import Navbar from "Layout/Navbar/Navbar";
 
-import { Img, Text } from "Components";
+import { Img, Text } from "UI_Components";
 
 
 

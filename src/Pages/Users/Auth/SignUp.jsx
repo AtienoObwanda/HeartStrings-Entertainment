@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 
-import { Button, Img, Input, Line, Text } from "Components";
-import SignupColumnlogotwo from "Components/SignupColumn";
-import SignupColumnsearchone from "Components/SignupColumnsearchone";
+import { Button, Img, Input, Line, Text } from "UI_Components";
+import SignupColumnlogotwo from "UI_Components/SignupColumn";
+import SignupColumnsearchone from "UI_Components/SignupColumnsearchone";
 import { useNavigate } from "react-router-dom";
 
 

@@ -1,9 +1,9 @@
 import React from "react";
 
-import { Button, Img, PagerIndicator, Slider, Text } from "Components";
-import DetailsPagePlayColumn from "Components/DetailsPagePlayColumn";
-import Footer from "Components/Footer/Footer";
-import Navbar from "Components/Navbar/Navbar";
+import { Button, Img, PagerIndicator, Slider, Text } from "UI_Components";
+import DetailsPagePlayColumn from "UI_Components/DetailsPagePlayColumn";
+import Footer from "Layout/Footer/Footer";
+import Navbar from "Layout/Navbar/Navbar";
 
 const StreamDetails = () => {
   const sliderRef = React.useRef(null);

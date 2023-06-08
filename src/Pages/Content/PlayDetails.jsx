@@ -2,13 +2,13 @@ import React from "react";
 
 import { useNavigate } from "react-router-dom";
 
-import { Button, Img, PagerIndicator, Slider, Text } from "Components";
+import { Button, Img, PagerIndicator, Slider, Text } from "UI_Components";
 
-import DetailsPagePlayColumn from "Components/DetailsPagePlayColumn/index";
-import DetailsPagePlayRow from "Components/DetailsPagePlayRow/index";
-import Columnprice from "Components/ColumnPrice/ColumnPrice";
-import Footer from "Components/Footer/Footer";
-import Navbar from "Components/Navbar/Navbar";
+import DetailsPagePlayColumn from "UI_Components/DetailsPagePlayColumn/index";
+import DetailsPagePlayRow from "UI_Components/DetailsPagePlayRow/index";
+import Columnprice from "UI_Components/ColumnPrice/ColumnPrice";
+import Footer from "Layout/Footer/Footer";
+import Navbar from "Layout/Navbar/Navbar";
 
 
 

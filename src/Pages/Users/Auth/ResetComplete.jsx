@@ -1,8 +1,8 @@
 import React from 'react'
 import { useNavigate } from "react-router-dom";
 
-import { Button, Input, Line, Text } from "Components";
-import SignupColumnlogotwo from "Components/SignupColumn";
+import { Button, Input, Line, Text } from "UI_Components";
+import SignupColumnlogotwo from "UI_Components/SignupColumn";
 
 
 

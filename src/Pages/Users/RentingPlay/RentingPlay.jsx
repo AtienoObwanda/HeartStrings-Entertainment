@@ -1,7 +1,7 @@
 import React from "react";
 
-import { Button, Img, Text } from "Components";
-import Sidebar from "Components/Sidebar";
+import { Button, Img, Text } from "UI_Components";
+import Sidebar from "UI_Components/Sidebar";
 
 const RentingPlay = () => {
   return (

@@ -1,11 +1,11 @@
 import React from "react";
 
-import { Button, Img, List, Text } from "Components";
-import Footer from "Components/Footer/Footer";
-import Navbar from "Components/Navbar/Navbar";
-import SelectingShowTimeColumn from "Components/SelectingShowTimeColumn";
-import SelectingShowTimeColumn1 from "Components/SelectingShowTimeColumn1";
-import SelectingShowTimeRowa from "Components/SelectingShowTimeRow";
+import { Button, Img, List, Text } from "UI_Components";
+import Footer from "Layout/Footer/Footer";
+import Navbar from "Layout/Navbar/Navbar";
+import SelectingShowTimeColumn from "UI_Components/SelectingShowTimeColumn";
+import SelectingShowTimeColumn1 from "UI_Components/SelectingShowTimeColumn1";
+import SelectingShowTimeRowa from "UI_Components/SelectingShowTimeRow";
 
 const BuyingTicket = () => {
   return (

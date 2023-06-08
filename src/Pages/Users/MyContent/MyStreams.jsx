@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 // import Sidebar from "Components/Sidebar";
-import { Button, Img, Input, Line, List, Text } from "Components";
+import { Button, Img, Input, Line, List, Text } from "UI_Components";
 import close from "../../../assets/close.svg";
 import menu from "../../../assets/menu.svg";
 

@@ -2,9 +2,9 @@ import React, {useState } from "react";
 
 import { useNavigate } from "react-router-dom";
 
-import { Button, Img, Input, Line, Text } from "Components";
-import SignupColumnlogotwo from "Components/SignupColumn";
-import SignupColumnsearchone from "Components/SignupColumnsearchone";
+import { Button, Img, Input, Line, Text } from "UI_Components";
+import SignupColumnlogotwo from "UI_Components/SignupColumn";
+import SignupColumnsearchone from "UI_Components/SignupColumnsearchone";
 
 const Login = () => {
   const navigate = useNavigate();

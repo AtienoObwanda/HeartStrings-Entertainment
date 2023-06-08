@@ -1,10 +1,10 @@
 import React from "react";
 
-import { Text } from "Components";
-import Footer from "Components/Footer/Footer";
-import StreamCards from "Components/StreamCards/index";
+import { Text } from "UI_Components";
+import Footer from "Layout/Footer/Footer";
+import StreamCards from "UI_Components/StreamCards/index";
 // import WhitenIcon from "Components/WhiteIcon";
-import Navbar from "Components/Navbar/Navbar";
+import Navbar from "Layout/Navbar/Navbar";
 
 const AllStreams = () => {
   return (

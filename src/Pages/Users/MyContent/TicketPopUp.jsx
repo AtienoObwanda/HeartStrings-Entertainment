@@ -2,7 +2,7 @@ import React from "react";
 
 import { createColumnHelper } from "@tanstack/react-table";
 
-import { Img, Line, ReactTable, Text } from "Components";
+import { Img, Line, ReactTable, Text } from "UI_Components";
 
 const TicketPopUp = () => {
   const table1Data = React.useRef([

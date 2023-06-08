@@ -1,8 +1,8 @@
 import React from "react";
 
-import { Button, Text } from "Components";
-import Footer from "Components/Footer/Footer";
-import Navbar from "Components/Navbar/Navbar";
+import { Button, Text } from "UI_Components";
+import Footer from "Layout/Footer/Footer";
+import Navbar from "Layout/Navbar/Navbar";
 
 const BuyingTickets = () => {
   return (

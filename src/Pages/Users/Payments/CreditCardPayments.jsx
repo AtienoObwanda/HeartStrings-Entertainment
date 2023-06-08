@@ -2,9 +2,9 @@ import React from "react";
 
 import { useNavigate } from "react-router-dom";
 
-import { Img } from "Components";
-import Footer from "Components/Footer/Footer";
-import Navbar from "Components/Navbar/Navbar";
+import { Img } from "UI_Components";
+import Footer from "Layout/Footer/Footer";
+import Navbar from "Layout/Navbar/Navbar";
 
 const CreditCardPayments = () => {
   const navigate = useNavigate();

@@ -1,8 +1,8 @@
 import React from 'react'
 import { useNavigate } from "react-router-dom";
-import Footer from "Components/Footer/Footer";
-import Navbar from "Components/Navbar/Navbar";
-import { Text } from "Components";
+import Footer from "Layout/Footer/Footer";
+import Navbar from "Layout/Navbar/Navbar";
+import { Text } from "UI_Components";
 
 
 const PrivacyPolicy = () => {
