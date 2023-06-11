@@ -52,7 +52,7 @@ const StreamCards = (props) => {
                 className="h-6 w-6 mt-1"
                 alt="mdiclocktimenin"
               />
-              <div className="flex flex-col items-start justify-start self-stretch w-auto my-4">
+              <div className="flex flex-col items-start justify-start self-stretch w-auto my-6">
                 <Text
                   className="font-normal font-roboto not-italic text-left text-white_A700 w-auto"
                   variant="body4"
@@ -72,7 +72,7 @@ StreamCards.defaultProps = {
   rectangleeight: "images/img_rectangle8.png",
   bridegroomforsaOne: "Bridegroom for sale.",
   description:
-    "XXX The synopsis goes here and here and here, once it starts overflowing it goes here ,the synopsis goes here and here and here, once it starts overflowing it goes here..",
+    "The synopsis goes here and here and here, once it starts overflowing it goes here ,the synopsis goes here and here and here, once it starts overflowing it goes here..",
   rentPlay: "Rent play",
   time: "1hr 10mins",
 

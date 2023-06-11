@@ -35,7 +35,7 @@ const StreamPlays = () => {
                 className="absolute bg-black_900_01 flex flex-col h-full inset-[0] items-center justify-center m-auto p-4 rounded-lg w-full"
                 rectangleeight="images/img_rectangle8.png"
                 bridegroomforsaOne="Bridegroom for sale."
-                description="The synopsis goes here and here and here, once it starts overflowing it goes here ,the synopsis goes here and here and here, once it starts overflowing it goes here.."
+                description="111 The synopsis goes here and here and here, once it starts overflowing it goes here ,the synopsis goes here and here and here, once it starts overflowing it goes here.."
                 rentPlay="Rent play"
               />
             </div>
@@ -43,14 +43,14 @@ const StreamPlays = () => {
               className="bg-black_900_01 flex flex-col items-center justify-start p-4 rounded-lg w-full"
               rectangleeight="images/img_rectangle8_191x332.png"
               bridegroomforsaOne="Bridegroom for sale."
-              description="vvv The synopsis goes here and here and here, once it starts overflowing it goes here ,the synopsis goes here and here and here, once it starts overflowing it goes here.."
+              description="222 The synopsis goes here and here and here, once it starts overflowing it goes here ,the synopsis goes here and here and here, once it starts overflowing it goes here.."
               rentPlay="Rent play"
             />
             <StreamCards
               className="bg-black_900_01 flex flex-col items-center justify-start p-4 rounded-lg w-full"
               rectangleeight="images/img_rectangle8_1.png"
               bridegroomforsaOne="Bridegroom for sale."
-              description="The synopsis goes here and here and here, once it starts overflowing it goes here ,the synopsis goes here and here and here, once it starts overflowing it goes here.."
+              description="333 The synopsis goes here and here and here, once it starts overflowing it goes here ,the synopsis goes here and here and here, once it starts overflowing it goes here.."
               rentPlay="Rent play"
               
             />
