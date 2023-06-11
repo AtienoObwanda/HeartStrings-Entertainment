@@ -5,6 +5,8 @@ import Footer from "Layout/Footer/Footer";
 import Navbar from "Layout/Navbar/Navbar";
 
 import { Img, Text } from "UI_Components";
+import Stats from 'Components/General/AboutUs/Stats';
+import Hero from 'Components/General/AboutUs/Hero';
 
 
 
@@ -30,118 +32,8 @@ const AboutUs = () => {
           
           {/* Hero Section */}
           <div className="flex flex-col md:gap-10 gap-16 items-center justify-start max-w-[1159px] mx-auto md:px-5 self-stretch w-full">
-          <div className="flex flex-col gap-6 items-center justify-center self-stretch w-auto md:w-full">
-            <Text
-              className="font-normal not-italic text-gray_300 text-left w-auto"
-              as="h5"
-              variant="h5"
-            >
-              About us
-            </Text>
-            <Text
-              className="leading-[175.00%] max-w-[1159px] md:max-w-full text-center text-white_A700"
-              as="h1"
-              variant="h1"
-            >
-              Multi award winners and the most popular authority in Kenyan
-              theater and live stagecomedy in Kenya!{" "}
-            </Text>
-          </div>
-
-
-          <Text
-            className="font-normal leading-[175.00%] not-italic text-center text-gray_300"
-            as="h6"
-            variant="h6"
-          >
-            <>
-              Aliqua id fugiat nostrud irure ex duis ea quis id quis ad et. Sunt
-              qui esse pariatur duis deserunt mollit dolore cillum minim tempor
-              enim. Elit aute irure tempor cupidatat incididunt sint deserunt ut
-              voluptate aute id deserunt nisi.Nulla Lorem mollit cupidatat
-              irure. Laborum magna nulla duis ullamco cillum dolor. Voluptate
-              exercitation inAliqua id fugiat nostrud irure ex duis ea quis id
-              quis ad et. <br />
-              Sunt qui esse pariatur duis deserunt mollit dolore cillum minim
-              tempor enim. Elit aute irure tempor cupidatat incididunt sint
-              deserunt ut voluptate aute id deserunt nisi.Nulla Lorem mollit
-              cupidatat irure. Laborum magna nulla duis ullamco cillum dolor.
-              Voluptate exercitation in
-            </>
-          </Text>
-
-          {/* Stats Section */}
-          <div className="flex sm:flex-col flex-row sm:gap-10 gap-[79px] items-center justify-center self-stretch w-auto sm:w-full">
-  <div className="flex flex-col gap-6 items-center justify-center self-stretch w-auto">
-    <div className="flex flex-col gap-10 items-center justify-start w-auto md:w-full">
-      <Text
-        className="font-normal not-italic text-gray_300 text-left w-auto"
-        as="h5"
-        variant="h5"
-      >
-        Actors
-      </Text>
-      <Text
-        className="text-center text-white_A700 w-auto"
-        as="h2"
-        variant="h2"
-      >
-        50+
-      </Text>
-    </div>
-    <Text
-      className="font-normal not-italic text-gray_300 text-left w-auto"
-      variant="body4"
-    >
-      <a href='#'>Join our team</a>
-    </Text>
-  </div>
-  <div className="flex flex-col gap-6 items-center justify-center self-stretch w-auto">
-    <Text
-      className="font-normal not-italic text-gray_300 text-left w-auto"
-      as="h5"
-      variant="h5"
-    >
-      Locations
-    </Text>
-    <Text
-      className="text-center text-white_A700 w-auto"
-      as="h2"
-      variant="h2"
-    >
-      3
-    </Text>
-    <Text
-      className="font-normal not-italic text-gray_300 text-left w-auto"
-      variant="body4"
-    >
-      <a href='#'> Find near you</a>
-    </Text>
-  </div>
-  <div className="flex flex-col gap-6 items-center justify-center self-stretch w-auto">
-    <Text
-      className="font-normal not-italic text-gray_300 text-left w-auto"
-      as="h5"
-      variant="h5"
-    >
-      Plays
-    </Text>
-    <Text
-      className="text-center text-white_A700 w-auto"
-      as="h2"
-      variant="h2"
-    >
-      100+
-    </Text>
-    <Text
-      className="font-normal not-italic text-gray_300 text-left w-auto"
-      variant="body4"
-    >
-      <a href='#'>Stream our plays</a>
-    </Text>
-  </div>
-</div>
-
+          <Hero/>
+          <Stats/>
 
 
           {/* <div className="flex sm:flex-col flex-row sm:gap-10 gap-[79px] items-center justify-start self-stretch w-auto sm:w-full">
