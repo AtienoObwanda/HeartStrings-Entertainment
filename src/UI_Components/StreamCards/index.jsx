@@ -1,15 +1,16 @@
 import React from "react";
-
 import { Button, Img, Text } from "UI_Components";
+
+
 
 const StreamCards = (props) => {
   return (
     <>
       <div className={props.className}>
         <div className="flex flex-col items-center justify-start w-full">
-          <div className="h-[191px] relative w-full">
-            <Img
-              src={props?.rectangleeight}
+        <div className="h-[191px] relative w-full">
+          <Img
+              src={props?.playPoster}
               className="absolute h-[191px] inset-[0] justify-center m-auto object-cover rounded-lg w-full"
               alt="rectangleEight"
             />
@@ -20,44 +21,43 @@ const StreamCards = (props) => {
             />
           </div>
         </div>
-        <div className="flex flex-col gap-8 items-start justify-start self-stretch w-auto">
-          <div className="flex flex-col gap-4 items-start justify-start self-stretch w-auto">
+        <div className="flex flex-col gap-8 items-start justify-start w-auto">
+          <div className="flex flex-col gap-4 items-start justify-start w-auto">
             <Text
-              className="font-bold font-roboto text-left text-white_A700 w-auto"
-              as="h5"
-              variant="h5"
+              className="text-2xl md:text-[22px] text-white sm:text-xl w-auto"
+              size="txtRobotoRomanBold24"
             >
-              {props?.bridegroomforsaOne}
+              {props?.playTitle}
             </Text>
             <Text
-              className="font-normal font-roboto leading-[175.00%] max-w-[332px] md:max-w-full not-italic text-gray_300 text-left"
-              as="h6"
-              variant="h6"
+              className="leading-[175.00%] max-w-[332px] md:max-w-full text-gray-300 text-xl"
+              size="txtRobotoRomanRegular20Gray300"
             >
-              {props?.description}
+              {props?.playDescription}
             </Text>
           </div>
-          <div className="flex flex-row gap-[103px] items-center justify-between self-stretch w-auto">
-            <Button
-              className="cursor-pointer font-bold font-roboto min-w-[116px] text-center text-white_A700 text-xl w-auto"
-              shape="RoundedBorder8"
-              size="lg"
-              variant="FillGray900"
+          <div className="flex flex-row gap-[103px] items-center justify-between w-auto">
+            <Button 
+            className="cursor-pointer font-bold font-roboto min-w-[116px] text-center text-white_A700 text-xl w-auto"
+                          shape="RoundedBorder8"
+                          size="lg"
+                          variant="FillGray900"
+            // className="bg-gray-900 cursor-pointer font-bold font-roboto min-w-[116px] py-[15px] rounded-lg text-center text-white-A700 text-xl"
             >
-              {props?.rentPlay}
+              {props?.userbuttonlabel}
             </Button>
-            <div className="flex flex-row gap-2 items-center justify-center self-stretch w-auto">
+            <div className="flex flex-row gap-2 items-center justify-center w-auto">
               <Img
+                className="h-6 w-6"
                 src="images/img_mdiclocktimenine.svg"
-                className="h-6 w-6 mt-1"
                 alt="mdiclocktimenin"
               />
-              <div className="flex flex-col items-start justify-start self-stretch w-auto my-6">
+              <div className="flex flex-col items-start justify-start w-auto text-white">
                 <Text
-                  className="font-normal font-roboto not-italic text-left text-white_A700 w-auto"
-                  variant="body4"
+                  className="text-base text-white-A700 w-auto"
+                  size="txtRobotoRomanRegular16"
                 >
-                  {props?.time}
+                  {props?.usertime}
                 </Text>
               </div>
             </div>
@@ -69,13 +69,13 @@ const StreamCards = (props) => {
 };
 
 StreamCards.defaultProps = {
-  rectangleeight: "images/img_rectangle8.png",
-  bridegroomforsaOne: "Bridegroom for sale.",
-  description:
+  playPoster: "images/img_rectangle8.png",
+  playTitle: "Bridegroom for sale.",
+  playDescription:
     "The synopsis goes here and here and here, once it starts overflowing it goes here ,the synopsis goes here and here and here, once it starts overflowing it goes here..",
-  rentPlay: "Rent play",
-  time: "1hr 10mins",
-
+  userbuttonlabel: "Rent play",
+  usertime: "1hr 20mins",
 };
+
 
 export default StreamCards;

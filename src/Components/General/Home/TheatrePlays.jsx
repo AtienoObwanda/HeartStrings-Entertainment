@@ -29,14 +29,20 @@ const TheatrePlays = () => {
               Our lineup is better than before!
             </Text>
           </div>
+
           <div className="flex flex-col items-center justify-start w-full">
             <div className="flex flex-col items-center justify-start w-full">
               <div className="bg-black_900_01 flex md:flex-col flex-row md:gap-5 items-start justify-start p-6 sm:px-5 rounded-lg w-full">
-                <div className="flex sm:flex-1 flex-col gap-6 items-start justify-center self-stretch w-auto sm:w-full mr-8">
-                  <ColumnPrice
-                    className="bg-black_900 border-2 border-red_900 border-solid flex flex-col gap-2.5 items-center justify-center px-5 py-2.5 rounded-lg self-stretch w-auto sm:w-full"
-                    price="We’ve got a special offer for you: BOGOF show @ 3pm on Sat 1st . KES 1,000"
+              {/* IMg */}
+              <div className="mb-[40px] flex sm:flex-1 flex-col h-[560px] sm:h-auto items-center justify-start w-[560px] sm:w-full">
+                  <Img
+                    src="images/img_rectangle4.png"
+                    className="h-[560px] md:h-auto md:ml-[20px] object-cover rounded-lg w-[560px] sm:w-full"
+                    alt="Heartstrings entertainment Play poster"
                   />
+                </div>
+                {/* texts */}
+                <div className="flex sm:flex-1 flex-col gap-6 items-start justify-center self-stretch w-auto sm:w-full ml-8">
                   <div className="flex flex-col gap-6 items-start justify-start self-stretch w-auto sm:w-full">
                     <Text
                       className="text-left text-white_A700 w-auto"
@@ -97,6 +103,10 @@ const TheatrePlays = () => {
 
                       </div>
                     </div>
+                    <ColumnPrice
+                    className="bg-black_900 border-2 border-red_900 border-solid flex flex-col gap-2.5 items-center justify-center px-5 py-2.5 rounded-lg self-stretch w-auto sm:w-full"
+                    price="We’ve got a special offer for you: BOGOF show @ 3pm on Sat 1st . KES 1,000"
+                  />
                     <Button
                       className="md:hidden  mt-4 mb-4 cursor-pointer font-bold min-w-[149px] text-center text-white_A700 text-xl w-auto"
                       shape="RoundedBorder8"
@@ -105,24 +115,9 @@ const TheatrePlays = () => {
                     >
                       Get ticket (s)
                     </Button>
+                    
                   </div>
                 </div>
-
-                <div className="mb-[40px] flex sm:flex-1 flex-col h-[560px] sm:h-auto items-center justify-start w-[560px] sm:w-full">
-                  <Img
-                    src="images/img_rectangle4.png"
-                    className="h-[560px] md:h-auto md:ml-[20px] object-cover rounded-lg w-[560px] sm:w-full"
-                    alt="Heartstrings entertainment Play poster"
-                  />
-                </div>
-                <Button
-                      className="hidden md:flex  mb-4 cursor-pointer font-bold min-w-[149px] text-center text-white_A700 text-xl w-auto"
-                      shape="RoundedBorder8"
-                      size="lg"
-                      variant="FillRed900"
-                    >
-                      Get ticket (s)
-                    </Button>
 
               </div>
             </div>

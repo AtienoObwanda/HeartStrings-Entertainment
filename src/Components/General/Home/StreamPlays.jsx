@@ -27,34 +27,24 @@ const StreamPlays = () => {
             </Text>
           </div>
           <List
-            className="sm:flex-col flex-row gap-6 grid sm:grid-cols-1 md:grid-cols-2 grid-cols-3 justify-start self-stretch w-auto md:w-full"
-            orientation="horizontal"
-          >
-            <div className="h-[559px] relative w-full">
+              className="sm:flex-col flex-row gap-6 grid sm:grid-cols-1 md:grid-cols-2 grid-cols-3 justify-start w-auto md:w-full"
+              orientation="horizontal"
+            >
+              <div className="relative w-full">
+                <Button className="absolute bg-white-A700 border border-solid border-white-A700 cursor-pointer font-bold min-w-[155px] py-[15px] right-1/4 rounded-lg text-black-900 text-center text-xl top-[26%]">
+                  Watch trailer
+                </Button>
+                <StreamCards className="bg-black_900_01 flex flex-col gap-4 items-center justify-start m-auto p-4 relative rounded-lg w-full" />
+              </div>
               <StreamCards
-                className="absolute bg-black_900_01 flex flex-col h-full inset-[0] items-center justify-center m-auto p-4 rounded-lg w-full"
-                rectangleeight="images/img_rectangle8.png"
-                bridegroomforsaOne="Bridegroom for sale."
-                description="111 The synopsis goes here and here and here, once it starts overflowing it goes here ,the synopsis goes here and here and here, once it starts overflowing it goes here.."
-                rentPlay="Rent play"
+                className="bg-black_900_01 flex flex-col gap-4 items-center justify-start p-4 rounded-lg w-full"
+                rectangleeight="images/img_rectangle8_191x332.png"
               />
-            </div>
-            <StreamCards
-              className="bg-black_900_01 flex flex-col items-center justify-start p-4 rounded-lg w-full"
-              rectangleeight="images/img_rectangle8_191x332.png"
-              bridegroomforsaOne="Bridegroom for sale."
-              description="222 The synopsis goes here and here and here, once it starts overflowing it goes here ,the synopsis goes here and here and here, once it starts overflowing it goes here.."
-              rentPlay="Rent play"
-            />
-            <StreamCards
-              className="bg-black_900_01 flex flex-col items-center justify-start p-4 rounded-lg w-full"
-              rectangleeight="images/img_rectangle8_1.png"
-              bridegroomforsaOne="Bridegroom for sale."
-              description="333 The synopsis goes here and here and here, once it starts overflowing it goes here ,the synopsis goes here and here and here, once it starts overflowing it goes here.."
-              rentPlay="Rent play"
-              
-            />
-          </List>
+              <StreamCards
+                className="bg-black_900_01 flex flex-col gap-4 items-center justify-start p-4 rounded-lg w-full"
+                rectangleeight="images/img_rectangle8_1.png"
+              />
+            </List>
         </div>
 
         {/* Pre-footer CTA Button */}
