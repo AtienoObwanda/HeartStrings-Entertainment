@@ -131,14 +131,6 @@ const BuyingTicket = () => {
                       alt="Scroll Right"
                     />
                   </div>
-
-
-
-
-
-
-
-
                   <div className="flex flex-col gap-4 items-start justify-start self-stretch w-auto sm:w-full">
                     <Text
                       className="font-normal not-italic text-left text-white_A700 w-auto"
