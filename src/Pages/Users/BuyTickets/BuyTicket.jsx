@@ -45,14 +45,24 @@ const BuyingTicket = () => {
       const imageSrc = 'images/img_group39896.svg';
 
       const calendarDay = (
+        // <SelectingShowTimeColumn
+        //   key={currentDate.toString()}
+        //   className="flex flex-col items-center justify-start p-[31px] sm:px-5 w-full"
+        //   language={dayOfWeek + ' '}
+        //   p1st={dayOfMonth}
+        // >
+        //   <img src={imageSrc} alt="" style={{ height: '118px', width: '54px' }} />
+        // </SelectingShowTimeColumn>
         <SelectingShowTimeColumn
-          key={currentDate.toString()}
-          className="flex flex-col items-center justify-start p-[31px] sm:px-5 w-full"
-          language={dayOfWeek + ' '}
-          p1st={dayOfMonth}
-        >
-          <img src={imageSrc} alt="" style={{ height: '118px', width: '54px' }} />
-        </SelectingShowTimeColumn>
+        key={currentDate.toString()}
+        className="bg-cover bg-no-repeat flex flex-col h-[118px] w-[54px] items-center justify-start p-[4em] sm:px-5"
+        style={{
+          backgroundImage: "url('images/img_group39896.svg')",
+        }}
+        language={dayOfWeek + ' '}
+        p1st={dayOfMonth}
+      />
+
       );
 
       calendarDays.push(calendarDay);
@@ -120,7 +130,7 @@ const BuyingTicket = () => {
                       alt="Scroll Left"
                     />
 
-                    <List className="sm:flex-col flex-row gap-2 grid grid-cols-4 w-[36%] md:w-full" orientation="horizontal">
+                    <List className="sm:flex-col flex-row gap-2 grid grid-cols-7 w-[100%] md:w-full" orientation="horizontal">
                       {generateCalendar()}
                     </List>
 
