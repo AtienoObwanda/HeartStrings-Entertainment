@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useRef, useEffect } from 'react';
+import { useState } from 'react';
+import moment from 'moment';
 
 import { Button, Img, List, Text } from "UI_Components";
 import Footer from "Layout/Footer/Footer";
@@ -6,8 +8,62 @@ import Navbar from "Layout/Navbar/Navbar";
 import SelectingShowTimeColumn from "UI_Components/SelectingShowTimeColumn";
 import SelectingShowTimeColumn1 from "UI_Components/SelectingShowTimeColumn1";
 import SelectingShowTimeRowa from "UI_Components/SelectingShowTimeRow";
+import BookingCalendar from "Components/BookingCalendar";
+
+
+const getDayOfMonthString = (dayOfMonth) => {
+  const suffixes = ['th', 'st', 'nd', 'rd'];
+  const lastTwoDigits = dayOfMonth % 100;
+  const lastDigit = dayOfMonth % 10;
+  let suffix = suffixes[lastDigit] || suffixes[0];
+
+  // Special case for numbers ending in 11, 12, and 13
+  if (lastTwoDigits >= 11 && lastTwoDigits <= 13) {
+    suffix = 'th';
+  }
+
+  return dayOfMonth + suffix;
+};
+
 
 const BuyingTicket = () => {
+
+  const [currentMonth, setCurrentMonth] = useState(moment());
+
+  const generateCalendar = () => {
+    const startDate = moment(currentMonth).startOf('month');
+    const endDate = moment(currentMonth).endOf('month');
+
+    const calendarDays = [];
+
+    let currentDate = moment(startDate);
+
+    while (currentDate.isSameOrBefore(endDate)) {
+      const dayOfWeek = currentDate.format('ddd');
+      const dayOfMonth = getDayOfMonthString(currentDate.format('D'));
+
+      const imageSrc = 'images/img_group39896.svg';
+
+      const calendarDay = (
+        <SelectingShowTimeColumn
+          key={currentDate.toString()}
+          className="flex flex-col items-center justify-start p-[31px] sm:px-5 w-full"
+          language={dayOfWeek + ' '}
+          p1st={dayOfMonth}
+        >
+          <img src={imageSrc} alt="" style={{ height: '118px', width: '54px' }} />
+        </SelectingShowTimeColumn>
+      );
+
+      calendarDays.push(calendarDay);
+
+      currentDate.add(1, 'day');
+    }
+
+    return calendarDays;
+  };
+
+
   return (
     <>
       <div className="bg-black_900 flex flex-col font-roboto items-center justify-start mx-auto w-full">
@@ -17,6 +73,7 @@ const BuyingTicket = () => {
           streamPlays="Stream plays"
           account="Account"
         />
+
         <div className="flex flex-col gap-12 items-start justify-start max-w-[1186px] mt-[155px] mx-auto md:px-5 self-stretch w-full">
           <div className="flex flex-col gap-6 items-start justify-start self-stretch w-auto md:w-full">
             <Text
@@ -27,6 +84,25 @@ const BuyingTicket = () => {
               Select show time
             </Text>
             <div className="flex flex-col items-start justify-start self-stretch w-auto md:w-full">
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
               <div className="bg-black_900_01 flex flex-col gap-4 items-start justify-start max-w-[1186px] p-12 md:px-10 sm:px-5 rounded-lg w-full">
                 <Text
                   className="font-normal not-italic text-left text-white_A700 w-auto"
@@ -36,73 +112,33 @@ const BuyingTicket = () => {
                 </Text>
                 <div className="flex flex-col gap-8 items-start justify-start self-stretch w-auto md:w-full">
                   <div className="flex md:flex-col flex-row gap-2 items-start justify-start self-stretch w-auto md:w-full">
+                    {/* Scroll Left */}
+
                     <Img
                       src="images/img_group40097.svg"
-                      className="h-[118px] w-[54px]"
-                      alt="group40097"
+                      className="h-[118px] w-[54px] pb-[2em]"
+                      alt="Scroll Left"
                     />
-                    <List
-                      className="sm:flex-col flex-row gap-2 grid grid-cols-4 w-[36%] md:w-full"
-                      orientation="horizontal"
-                    >
-                      <SelectingShowTimeColumn
-                        className="bg-cover bg-no-repeat flex flex-col h-[117px] items-center justify-start p-[31px] sm:px-5 w-full"
-                        style={{
-                          backgroundImage: "url('images/img_group39896.svg')",
-                        }}
-                        language="Sat "
-                        p1st="1st"
-                      />
-                      <SelectingShowTimeColumn1
-                        className="bg-cover bg-no-repeat flex flex-col h-[117px] items-center justify-start p-7 sm:px-5 w-full"
-                        style={{
-                          backgroundImage: "url('images/img_group39897.svg')",
-                        }}
-                        language="Sun "
-                        p2nd="2nd"
-                      />
-                      <SelectingShowTimeColumn
-                        className="bg-cover bg-no-repeat flex flex-col h-[117px] items-center justify-start p-[30px] sm:px-5 w-full"
-                        style={{
-                          backgroundImage: "url('images/img_group39896.svg')",
-                        }}
-                        language="Thur"
-                        p1st="6th"
-                      />
-                      <SelectingShowTimeColumn
-                        className="bg-cover bg-no-repeat flex flex-col h-[117px] items-center justify-start p-[31px] sm:px-5 w-full"
-                        style={{
-                          backgroundImage: "url('images/img_group39896.svg')",
-                        }}
-                        language="Fri "
-                        p1st="7th"
-                      />
+
+                    <List className="sm:flex-col flex-row gap-2 grid grid-cols-4 w-[36%] md:w-full" orientation="horizontal">
+                      {generateCalendar()}
                     </List>
-                    <List
-                      className="sm:flex-col flex-row gap-2 grid sm:grid-cols-1 grid-cols-6 w-[53%] md:w-full"
-                      orientation="horizontal"
-                    >
-                      {new Array(6).fill({}).map((props, index) => (
-                        <React.Fragment key={`SelectingShowTimeColumn${index}`}>
-                          <SelectingShowTimeColumn
-                            className="bg-cover bg-no-repeat flex flex-col h-[117px] items-center justify-start p-[27px] sm:px-5 w-full"
-                            style={{
-                              backgroundImage:
-                                "url('images/img_group39896.svg')",
-                            }}
-                            language="sat"
-                            p1st="13th"
-                            {...props}
-                          />
-                        </React.Fragment>
-                      ))}
-                    </List>
+
+                    {/* Scroll Right */}
                     <Img
                       src="images/img_group40096.svg"
-                      className="h-[118px] w-[54px]"
-                      alt="group40096"
+                      className="h-[118px] w-[54px] pt-[2em]"
+                      alt="Scroll Right"
                     />
                   </div>
+
+
+
+
+
+
+
+
                   <div className="flex flex-col gap-4 items-start justify-start self-stretch w-auto sm:w-full">
                     <Text
                       className="font-normal not-italic text-left text-white_A700 w-auto"
@@ -139,6 +175,28 @@ const BuyingTicket = () => {
                   </div>
                 </div>
               </div>
+            
+            
+            
+            
+            
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
             </div>
           </div>
           <div className="flex flex-col gap-6 items-start justify-center self-stretch w-auto md:w-full">
@@ -278,11 +336,14 @@ const BuyingTicket = () => {
             </div>
           </div>
         </div>
+
         <Footer
           className="border-gray_800 border-solid border-t-[13px] flex items-center justify-center mt-[91px] md:px-5 w-full"
           copyrightheartsOne="Copyright Heartstrings Entertainment"
         />
       </div>
+
+
     </>
   );
 };
