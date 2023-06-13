@@ -112,7 +112,8 @@ const ProjectRoutes = () => {
 
           {/* User Content */}
           <Route path="/my-stream-library" element={<MyStreamLibrary />} />
-          <Route path="/my-streams" element={<MyStreams />} />
+          <Route path="/my-streams" element={<MyStreamLibrary />} />
+          {/* <Route path="/my-streams" element={<MyStreams />} /> */}
           <Route path="/my-tickets" element={<MyTickets />} />
           <Route path="/ticket-popup" element={<TicketPopUp />} />
 

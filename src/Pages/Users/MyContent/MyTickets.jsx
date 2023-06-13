@@ -164,7 +164,7 @@ const MyTickets = () => {
 
   return (
     <>
-      <div className="bg-black_900_01 flex sm:flex-col md:flex-col flex-row font-roboto sm:gap-5 md:gap-5 items-center mx-auto w-full">
+      <div className="bg-black_900_01 flex sm:flex-col md:flex-col flex-row font-roboto md:gap-5 sm:gap-5 sm:pb-5 md:pb-[20em] items-center mx-auto w-full">
       <div className="flex md:flex-col flex-row md:gap-5 items-start justify-evenly w-full">
           {/* Side Bar */}
           {/* Large Screens */}
@@ -394,13 +394,15 @@ const MyTickets = () => {
 
             {/* Tickets */}
 
-            <div className="flex flex-col items-center justify-start pb-[26px] sm:px-5 px-[26px] w-full">
-            <div className="overflow-auto mt-auto mx-auto w-full">
+            <div className="flex flex-col items-center justify-start pb-[26px] sm:px-5 px-[26px] w-full md:mb-[15em] sm:mb-[5em]">
+            <div className="overflow-auto mt-auto mx-auto w-full pb-5">
             <ReactTable
               columns={tableColumns}
               data={tableData.current}
               rowClass={""}
               headerClass=""
+              style={{ fontSize: "18px"}} // Add this line
+
             />
           </div>
               </div>
