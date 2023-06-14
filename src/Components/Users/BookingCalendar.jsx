@@ -31,34 +31,34 @@ const BookingCalendar = () => {
     const [currentMonth, setCurrentMonth] = useState(moment());
     const nextEl = useRef(null);
   const prevEl = useRef(null);
-  
 
-    // const generateCalendar = () => {
-    //     const startDate = moment(currentMonth).startOf("month");
-    //     const endDate = moment(currentMonth).endOf("month");
-      
-    //     const calendarDays = [];
-    //     let weekDays = [];
-      
-    //     let currentDate = moment(startDate);
-      
-    //     while (currentDate.isSameOrBefore(endDate)) {
-    //       weekDays.push(currentDate.clone());
-      
-    //       if (weekDays.length === 7) {
-    //         calendarDays.push(weekDays);
-    //         weekDays = [];
-    //       }
-      
-    //       currentDate.add(1, "day");
-    //     }
-      
-    //     if (weekDays.length > 0) {
-    //       calendarDays.push(weekDays);
-    //     }
-      
-    //     return calendarDays;
-    //   };
+  const generateCalendar = () => {
+    const startDate = moment(currentMonth).startOf("month");
+    const endDate = moment(currentMonth).endOf("month");
+  
+    const calendarDays = [];
+    let weekDays = [];
+  
+    let currentDate = moment(startDate);
+  
+    while (currentDate.isSameOrBefore(endDate)) {
+      weekDays.push(currentDate.clone());
+  
+      if (weekDays.length === 7) {
+        calendarDays.push(weekDays);
+        weekDays = [];
+      }
+  
+      currentDate.add(1, "day");
+    }
+  
+    if (weekDays.length > 0) {
+      calendarDays.push(weekDays);
+    }
+  
+    return calendarDays;
+  };
+  
 
 
       
