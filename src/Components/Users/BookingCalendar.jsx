@@ -26,11 +26,11 @@ const getDayOfMonthString = (dayOfMonth) => {
 
 
 const BookingCalendar = () => {
-    const [nextE1, setNextE1] = useState(null)
-    const [preEv1, setPrevtE1] = useState(null)
+    // const [nextE1, setNextE1] = useState(null)
+    // const [preEv1, setPrevtE1] = useState(null)
     const [currentMonth, setCurrentMonth] = useState(moment());
     const nextEl = useRef(null);
-  const prevEl = useRef(null);
+    const prevEl = useRef(null);
 
   const generateCalendar = () => {
     const startDate = moment(currentMonth).startOf("month");
@@ -92,7 +92,7 @@ const BookingCalendar = () => {
           ref={prevEl}
         />
 
-        <Swiper
+        {/* <Swiper
           navigation={{ nextEl: nextEl.current, prevEl: prevEl.current }}
           slidesPerView={1}
           spaceBetween={10}
@@ -116,7 +116,48 @@ const BookingCalendar = () => {
               </div>
             </SwiperSlide>
           ))}
-        </Swiper>
+        </Swiper> */}
+       <Swiper
+  navigation={{ nextEl: nextEl.current, prevEl: prevEl.current }}
+  slidesPerView={1}
+  spaceBetween={10}
+  loop={true}
+  modules={[Navigation]}
+>
+  {generateCalendar().map((week, index) => (
+    <SwiperSlide key={index}>
+      <div className="flex flex-row gap-6">
+        {week.map((day) => {
+          const isCurrentDate = day.isSame(new Date(), "day");
+          const isSelectedDate = 7; // add your logic to determine if the day is selected
+          let backgroundColor = "";
+          if (isCurrentDate) {
+            backgroundColor = "#000";
+          } else if (isSelectedDate) {
+            backgroundColor = "black_900_01";
+          } else {
+            backgroundColor = "white";
+          }
+
+          return (
+            <SelectingShowTimeColumn
+              key={day.toString()}
+              className={`bg-${backgroundColor}-500 bg-cover bg-no-repeat flex flex-col h-[118px] w-[54px] items-center justify-start p-[4em] sm:px-5`}
+              style={{
+                backgroundImage: isCurrentDate ? "url('images/img_group39896.svg')" : ""
+              }}
+              language={day.format("ddd") + " "}
+              p1st={getDayOfMonthString(day.format("D"))}
+              // month={currentMonthName}
+            />
+          );
+        })}
+      </div>
+    </SwiperSlide>
+  ))}
+</Swiper>
+
+
 
         {/* Scroll Right */}
         <img
