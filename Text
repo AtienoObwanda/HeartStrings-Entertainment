@@ -1,0 +1,19 @@
+Selected(Red): <Img
+                    src="images/img_mdiloveseat_red_900.svg"
+                    className="h-6 w-6"
+                    alt="mdiloveseat_Three"
+                  />
+
+
+Avalable(White):  <Img
+src="images/img_mdiloveseat.svg"
+className="h-6 w-6"
+alt="mdiloveseat_Five"
+/>
+
+
+Reserved(Gray): <Img
+src="images/img_mdiloveseat_gray_800.svg"
+className="h-6 w-6"
+alt="mdiloveseat"
+/> 

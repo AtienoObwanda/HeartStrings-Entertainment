@@ -7,65 +7,12 @@ import Footer from "Layout/Footer/Footer";
 import Navbar from "Layout/Navbar/Navbar";
 import SelectingShowTimeColumn from "UI_Components/SelectingShowTimeColumn";
 import SelectingShowTimeColumn1 from "UI_Components/SelectingShowTimeColumn1";
-import SelectingShowTimeRowa from "UI_Components/SelectingShowTimeRow";
 import BookingCalendar from 'Components/Users/BookingCalendar';
+import SeatSelection from 'Components/Users/SeatSelection';
 
-
-// const getDayOfMonthString = (dayOfMonth) => {
-//   const suffixes = ['th', 'st', 'nd', 'rd'];
-//   const lastTwoDigits = dayOfMonth % 100;
-//   const lastDigit = dayOfMonth % 10;
-//   let suffix = suffixes[lastDigit] || suffixes[0];
-
-//   // Special case for numbers ending in 11, 12, and 13
-//   if (lastTwoDigits >= 11 && lastTwoDigits <= 13) {
-//     suffix = 'th';
-//   }
-
-//   return dayOfMonth + suffix;
-// };
 
 
 const BuyingTicket = () => {
-
-  // const [currentMonth, setCurrentMonth] = useState(moment());
-
-  // const generateCalendar = () => {
-  //   const startDate = moment(currentMonth).startOf('month');
-  //   const endDate = moment(currentMonth).endOf('month');
-
-  //   const calendarDays = [];
-
-  //   let currentDate = moment(startDate);
-
-  //   while (currentDate.isSameOrBefore(endDate)) {
-  //     const dayOfWeek = currentDate.format('ddd');
-  //     const dayOfMonth = getDayOfMonthString(currentDate.format('D'));
-
-  //     const imageSrc = 'images/img_group39896.svg';
-
-  //     const calendarDay = (
-      
-  //       <SelectingShowTimeColumn
-  //       key={currentDate.toString()}
-  //       className="bg-cover bg-no-repeat flex flex-col h-[118px] w-[54px] items-center justify-start p-[4em] sm:px-5"
-  //       style={{
-  //         backgroundImage: "url('images/img_group39896.svg')",
-  //       }}
-  //       language={dayOfWeek + ' '}
-  //       p1st={dayOfMonth}
-  //     />
-
-  //     );
-
-  //     calendarDays.push(calendarDay);
-
-  //     currentDate.add(1, 'day');
-  //   }
-
-  //   return calendarDays;
-  // };
-
 
   return (
     <>
@@ -80,42 +27,8 @@ const BuyingTicket = () => {
         <div className="flex flex-col gap-12 items-start justify-start max-w-[1186px] mt-[155px] mx-auto md:px-5 self-stretch w-full">
         {/* Calendar: */}
          <BookingCalendar/>
-
-        {/* Seat selection */}
-          <div className="flex flex-col gap-6 items-start justify-center self-stretch w-auto md:w-full">
-            <Text
-              className="text-left text-white_A700 w-auto"
-              as="h2"
-              variant="h2"
-            >
-              Select seat (s)
-            </Text>
-            <SelectingShowTimeRowa
-              className="bg-black_900_01 flex flex-row items-start justify-between pb-8 sm:px-5 px-8 w-full"
-              a="A"
-              b="B"
-              c="C"
-              d="D"
-              e="E"
-              f="F"
-              g="G"
-              h="H"
-              i="I"
-              stage="STAGE"
-              available="Available"
-              reserved="Reserved"
-              selected="Selected"
-              aOne="A"
-              bOne="B"
-              cOne="C"
-              dOne="D"
-              eOne="E"
-              fOne="F"
-              gOne="G"
-              hOne="H"
-              iOne="I"
-            />
-          </div>
+         {/* Seat Selection */}
+         <SeatSelection/>
           {/* Checkout: */}
           <div className="flex flex-col gap-6 items-start justify-center self-stretch w-auto md:w-full">
             <Text
