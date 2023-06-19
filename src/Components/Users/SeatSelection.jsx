@@ -1,7 +1,12 @@
 import React from 'react'
+// import { io } from "socket.io-client";
 
 import SelectingShowTimeRowa from "UI_Components/SelectingShowTimeRow";
 import { Button, Img, List, Text } from "UI_Components";
+
+
+
+
 
 
 const SeatSelection = () => {
@@ -31,15 +36,7 @@ const SeatSelection = () => {
               available="Available"
               reserved="Reserved"
               selected="Selected"
-              aOne="A"
-              bOne="B"
-              cOne="C"
-              dOne="D"
-              eOne="E"
-              fOne="F"
-              gOne="G"
-              hOne="H"
-              iOne="I"
+              
             />
           </div>
     </>

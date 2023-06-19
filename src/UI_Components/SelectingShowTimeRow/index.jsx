@@ -1,8 +1,41 @@
-import React from "react";
-
+import React, { useEffect, useState } from "react";
 import { Img, List, Text } from "UI_Components";
 
+
+
+// Alliance Francaise
 const SelectingShowTimeRowa = (props) => {
+  const { className, a, b, c, d, e, f, g, h, i, stage, available, reserved, selected } = props;
+
+  const SeatIcons = {
+    Selected:(
+      <Img
+        src="images/img_mdiloveseat_red_900.svg"
+        className="h-6 w-6"
+        alt="mdiloveseat_Three"
+      />
+    ),
+  
+    Available:(
+      <Img
+      src="images/img_mdiloveseat.svg"
+      className="h-6 w-6"
+      alt="mdiloveseat_Five"
+      />
+  
+    ),
+  
+    Reserved:(
+    <Img
+      src="images/img_mdiloveseat_gray_800.svg"
+      className="h-6 w-6"
+      alt="mdiloveseat"
+      />
+       )
+  
+  };
+
+
   return (
     <>
       <div className={props.className}>
@@ -80,203 +113,61 @@ const SelectingShowTimeRowa = (props) => {
           <div className="flex flex-col md:gap-10 gap-16 items-center justify-start self-stretch w-auto md:w-full">
             <div className="flex md:flex-col flex-row gap-[35px] items-start justify-center self-stretch w-auto md:w-full">
               <div className="flex flex-col gap-4 items-start justify-center self-stretch w-auto">
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
+    
 {/* ***************************************************************************** */}
 {/* Left Wing */}
                 
                 <div className="flex flex-row gap-2 items-center justify-center sm:pl-5 pl-8 self-stretch w-auto">
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
+                  {SeatIcons[selected]}
+                  {SeatIcons[selected]}
+                  {SeatIcons[selected]}
                 </div>
                 
                 <div className="flex flex-row gap-2 items-center justify-center sm:pl-5 pl-6 self-stretch w-auto">
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                   <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Six"
-                  />
+                {SeatIcons[selected]}
+                {SeatIcons[selected]}
+                {SeatIcons[selected]}
+                {SeatIcons[selected]}
                 </div>
                 <List
                   className="flex-col gap-4 grid items-center w-full"
                   orientation="vertical"
                 >
                   <div className="flex flex-row gap-2 items-center justify-center pl-[18px] self-stretch w-auto">
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                    <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                    <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                    <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_Four"
-                    />
+                  {SeatIcons[selected]}
+                  {SeatIcons[selected]}
+                  {SeatIcons[selected]}
+                  {SeatIcons[selected]}
+                  {SeatIcons[selected]}
                   </div>
                   <div className="flex flex-row gap-2 items-center justify-center pl-3 self-stretch w-auto">
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat"
-                    />
-                    <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_Two"
-                    />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_Three"
-                    />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_Four"
-                    />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_Five"
-                    />
+                    
+                  {SeatIcons[selected]}
+                  {SeatIcons[selected]}
+                  {SeatIcons[selected]}
+                  {SeatIcons[selected]}
+                  {SeatIcons[selected]}
+                  {SeatIcons[selected]}
                   </div>
                   <div className="flex flex-row gap-2 items-center justify-center pl-1.5 self-stretch w-auto">
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat"
-                    />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_One"
-                    />
-                    <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                    <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                    <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                    <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                    <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
+                  {SeatIcons[selected]}
+                  {SeatIcons[selected]}
+                  {SeatIcons[selected]}
+                  {SeatIcons[selected]}
+                  {SeatIcons[selected]}
+                  {SeatIcons[selected]}
+                  {SeatIcons[selected]}
                   </div>
                   <div className="flex flex-row gap-2 items-center justify-center self-stretch w-auto">
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat"
-                    />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_One"
-                    />
-                    <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                    <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                    <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                    <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                    <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                    <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
+                    
+                  {SeatIcons[selected]}
+                  {SeatIcons[selected]}
+                  {SeatIcons[selected]}
+                  {SeatIcons[selected]}
+                  {SeatIcons[selected]}
+                  {SeatIcons[selected]}
+                  {SeatIcons[selected]}
+                  {SeatIcons[selected]}
                   </div>
                 </List>
               </div>
@@ -307,845 +198,195 @@ const SelectingShowTimeRowa = (props) => {
                   orientation="vertical"
                 >
                   <div className="flex sm:flex-1 sm:flex-col flex-row gap-2 items-center justify-center self-stretch w-auto sm:w-full">
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                    <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                    <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                    <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                    <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                    <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                    <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                    <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                    <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                    <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                    <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                    <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                    <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                    <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
                   </div>
                   {/* End of first row-Second row begins */}
                   <div className="flex sm:flex-1 sm:flex-col flex-row gap-2 items-center justify-center self-stretch w-auto sm:w-full">
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat"
-                    />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_One"
-                    />
-                    <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_Three"
-                    />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_Four"
-                    />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_Five"
-                    />
-                    <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                    <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_Eight"
-                    />
-                    <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                    <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                   <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_Twelve"
-                    />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_Thirteen"
-                    />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_Fourteen"
-                    />
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
                   </div>
                   {/* End of second row */}
                   <div className="flex sm:flex-1 sm:flex-col flex-row gap-2 items-center justify-center self-stretch w-auto sm:w-full">
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                    <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                    <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_Three"
-                    />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_Four"
-                    />
-                    <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                    <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                    <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                   <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                    <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                    <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_Eleven"
-                    />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_Twelve"
-                    />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_Thirteen"
-                    />
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+
                   </div>
                   {/* End of third row-Fourth row begins */}
                   <div className="flex sm:flex-1 sm:flex-col flex-row gap-2 items-center justify-center self-stretch w-auto sm:w-full">
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                    <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_One"
-                    />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_Two"
-                    />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_Three"
-                    />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_Four"
-                    />
-                    <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                    <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_Eight"
-                    />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_Nine"
-                    />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_Ten"
-                    />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_Eleven"
-                    />
-                    <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_Thirteen"
-                    />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_Fourteen"
-                    />
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+
+                  
                   </div>
                   {/* End of fourth row-Fifth row begins */}
                   <div className="flex sm:flex-1 sm:flex-col flex-row gap-2 items-center justify-center self-stretch w-auto sm:w-full">
-                    
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                 
                   
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat"
-                    />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_One"
-                    />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_Two"
-                    />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_Three"
-                    />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_Four"
-                    />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_Five"
-                    />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_Six"
-                    />
-                    <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_Eight"
-                    />
-                    <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                    <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_Thirteen"
-                    />
+
                   </div>
                   {/* End Of Fifth row, sixth row begins */}
                   <div className="flex sm:flex-1 sm:flex-col flex-row gap-2 items-center justify-center self-stretch w-auto sm:w-full">
-                    
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat"
-                    />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_One"
-                    />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_Two"
-                    />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_Three"
-                    />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_Four"
-                    />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_Five"
-                    />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_Six"
-                    />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_Seven"
-                    />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_Eight"
-                    />
-                    <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  
+                  
                   </div>
                   {/* End of sixth row - Seventh row begins */}
                   <div className="flex sm:flex-1 sm:flex-col flex-row gap-2 items-center justify-center self-stretch w-auto sm:w-full">
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-
-                    <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_Seven"
-                    />
-                    <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                    <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                    <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_Eleven"
-                    />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_Twelve"
-                    />
-                   <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                 
+                   
                   </div>
                   {/* End of Seventh row- eighth row begins */}
                   <div className="flex sm:flex-1 sm:flex-col flex-row gap-2 items-center justify-center self-stretch w-auto sm:w-full">
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat"
-                    />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_One"
-                    />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_Two"
-                    />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_Three"
-                    />
-                    
-                    <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_Ten"
-                    />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_Eleven"
-                    />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_Twelve"
-                    />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_Thirteen"
-                    />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_Fourteen"
-                    />
+                  
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+
                   </div>
                   {/* End of seventh row, eigth row begins */}
                   <div className="flex sm:flex-1 sm:flex-col flex-row gap-2 items-center justify-center self-stretch w-auto sm:w-full">
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat"
-                    />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_One"
-                    />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_Two"
-                    />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_Three"
-                    />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_Four"
-                    />
-                    <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_Nine"
-                    />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_Ten"
-                    />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_Eleven"
-                    />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_Twelve"
-                    />
-                    <Img
-                      src="images/img_mdiloveseat.svg"
-                      className="h-6 w-6"
-                      alt="mdiloveseat_Thirteen"
-                    />
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
                   </div>
                 </List>
               </div>
@@ -1166,45 +407,16 @@ const SelectingShowTimeRowa = (props) => {
               {/* <div className="flex flex-col gap-4 items-start justify-center rotate-[180deg] self-stretch w-auto"> */}
             <div className="flex flex-col gap-4 items-start justify-center self-stretch w-auto">
               <div className="flex flex-row gap-2 items-center justify-center sm:pl-5 pl-8 self-stretch w-auto">
-                
-                <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
+              {SeatIcons[available]}
+              {SeatIcons[available]}
+              {SeatIcons[available]}
                 </div>
                 {/* EndOfFirstRow */}
                 <div className="flex flex-row gap-2 items-center justify-center sm:pl-5 pl-6 self-stretch w-auto">
-                <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
                 </div>
                 {/* EndOfSecondRow */}
                 <List
@@ -1212,150 +424,46 @@ const SelectingShowTimeRowa = (props) => {
                   orientation="vertical"
                 >
                   <div className="flex flex-row gap-2 items-center justify-center pl-[18px] self-stretch w-auto">
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                   <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                    <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                    <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                   <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
+                  
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
                   </div>
                   {/* EndOfThirdRow */}
 
                   <div className="flex flex-row gap-2 items-center justify-center pl-3 self-stretch w-auto">
-                    <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                    <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
                   </div>
                   {/* EndOfFourthRow */}
                   <div className="flex flex-row gap-2 items-center justify-center pl-1.5 self-stretch w-auto">
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
+                  
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
 
                   </div>
                   {/* EndOfFifthRow */}
 
                   <div className="flex flex-row gap-2 items-center justify-center self-stretch w-auto">
-                    
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
-                  <Img
-                    src="images/img_mdiloveseat.svg"
-                    className="h-6 w-6"
-                    alt="mdiloveseat_Five"
-                  />
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
+                  {SeatIcons[available]}
 
                   </div>
                   {/* EndOfSixthRow */}
@@ -1497,15 +605,16 @@ SelectingShowTimeRowa.defaultProps = {
   available: "Available",
   reserved: "Reserved",
   selected: "Selected",
-  aOne: "A",
-  bOne: "B",
-  cOne: "C",
-  dOne: "D",
-  eOne: "E",
-  fOne: "F",
-  gOne: "G",
-  hOne: "H",
-  iOne: "I",
 };
+  // aOne: "A",
+  // bOne: "B",
+  // cOne: "C",
+  // dOne: "D",
+  // eOne: "E",
+  // fOne: "F",
+  // gOne: "G",
+  // hOne: "H",
+  // iOne: "I",
+// };
 
 export default SelectingShowTimeRowa;

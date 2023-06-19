@@ -122,8 +122,10 @@ const ProjectRoutes = () => {
           <Route path="/renting-play" element={<RentingPlay />} />
 
           {/* Tickets */}
+          {/* ***************************************8 */}
           <Route path="/buying-tickets" element={<BuyingTickets />} />
           <Route path="/buying-ticket" element={<BuyingTicket />} />
+          {/* ***************************************8 */}
 
           {/* Payments */}
           <Route path="/renting-play-payment" element={<RentingPlayPayment />} />
