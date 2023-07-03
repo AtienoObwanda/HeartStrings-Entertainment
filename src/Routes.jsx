@@ -138,18 +138,13 @@ const ProjectRoutes = () => {
           <Route path="/admin-password-reset" element={<AdminPasswordReset />} />
           <Route path="/admin-password-reset-complete" element={<AdminPasswordResetComplete />} />
           {/* 
-          <Route path="/admindashboard" element={<AdminDashboard />} />
-          <Route path="/adminallplays" element={<AdminAllPlays />} />
-          <Route path="/adminaddplay" element={<AdminAddPlay />} />
-          <Route path="/adminallstreams" element={<AdminAllStreams />} />
-          <Route path="/adminaddstream" element={<AdminAddStream />} />
-          <Route
-            path="/adminticketmanagement"
-            element={<AdminTicketManagement />}
-          />
-          <Route
-            path="/adminusermanagement"
-            element={<AdminUserManagement />}
+          <Route path="/admin-dashboard" element={<AdminDashboard />} />
+          <Route path="/admin-allplays" element={<AdminAllPlays />} />
+          <Route path="/admin-addplay" element={<AdminAddPlay />} />
+          <Route path="/all-streams" element={<AdminAllStreams />} />
+          <Route path="/add-stream" element={<AdminAddStream />} />
+          <Route path="/ticket-management" element={<AdminTicketManagement />} />
+          <Route path="/user-management" element={<AdminUserManagement />}
           /> */}
           
         </Routes>

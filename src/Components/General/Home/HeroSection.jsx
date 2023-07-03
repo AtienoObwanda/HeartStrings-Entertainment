@@ -6,7 +6,7 @@ import { Button, Img, List, Text } from "UI_Components";
 const HeroSection = () => {
   return (
     <>
-    <div className="h-[630px] md:px-5 relative w-full">
+    <div className="h-[820px] md:px-5 relative w-full">
   <div style={{ maxHeight: '760px', height: '100%', overflow: 'hidden' }}>
     <Img
       src="images/img_c2p60a0o1.png"
