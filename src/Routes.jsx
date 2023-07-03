@@ -51,30 +51,20 @@ const RentingPlayPayment = React.lazy(() => import("Pages/Users/Payments/Renting
 
 
 // Admin Pages
+const AdminSignUp = React.lazy(() => import("Pages/Admin/Auth/AdminSignUp"));
+const AdminLogin = React.lazy(() => import("Pages/Admin/Auth/AdminLogin"));
+const AdminForgotPassword = React.lazy(() => import("Pages/Admin/Auth/AdminForgotPassword"));
+const AdminPasswordReset = React.lazy(() => import("Pages/Admin/Auth/AdminPasswordReset"));
+const AdminPasswordResetComplete = React.lazy(() => import("Pages/Admin/Auth/AminPasswordResetComplete"));
 
-// const AdminUserManagement = React.lazy(() =>
-//   import("pages/AdminUserManagement")
-// );
-// const AdminTicketManagement = React.lazy(() =>
-//   import("pages/AdminTicketManagement")
-// );
+// const AdminUserManagement = React.lazy(() => import("pages/AdminUserManagement"));
+// const AdminTicketManagement = React.lazy(() => import("pages/AdminTicketManagement"));
 // const AdminAddStream = React.lazy(() => import("pages/AdminAddStream"));
 // const AdminAllStreams = React.lazy(() => import("pages/AdminAllStreams"));
 // const AdminAddPlay = React.lazy(() => import("pages/AdminAddPlay"));
 // const AdminAllPlays = React.lazy(() => import("pages/AdminAllPlays"));
 // const AdminDashboard = React.lazy(() => import("pages/AdminDashboard"));
-// const AdminPasswordResetComplete = React.lazy(() =>
-//   import("pages/AdminPasswordResetComplete")
-// );
-// const AdminPasswordReset = React.lazy(() => import("pages/AdminPasswordReset"));
-// const AdminForgotPassword = React.lazy(() =>
-//   import("pages/AdminForgotPassword")
-// );
-// const AdminLogin = React.lazy(() => import("pages/AdminLogin"));
-// const AdminSignUp = React.lazy(() => import("pages/AdminSignUp"));
-// const RentingPlayPaymentConfirmation = React.lazy(() =>
-//   import("pages/RentingPlayPaymentConfirmation")
-// );
+// const RentingPlayPaymentConfirmation = React.lazy(() => import("pages/RentingPlayPaymentConfirmation"));
 
 const ProjectRoutes = () => {
   return (
@@ -142,17 +132,12 @@ const ProjectRoutes = () => {
 
           {/* Admin Routes */}
 
-          {/* <Route path="/adminsignup" element={<AdminSignUp />} />
-          <Route path="/adminlogin" element={<AdminLogin />} />
-          <Route
-            path="/adminforgotpassword"
-            element={<AdminForgotPassword />}
-          />
-          <Route path="/adminpasswordreset" element={<AdminPasswordReset />} />
-          <Route
-            path="/adminpasswordresetcomplete"
-            element={<AdminPasswordResetComplete />}
-          />
+          <Route path="/admin-signup" element={<AdminSignUp />} />
+          <Route path="/admin-login" element={<AdminLogin />} />
+          <Route path="/admin-forgot-password" element={<AdminForgotPassword />}/>
+          <Route path="/admin-password-reset" element={<AdminPasswordReset />} />
+          <Route path="/admin-password-reset-complete" element={<AdminPasswordResetComplete />} />
+          {/* 
           <Route path="/admindashboard" element={<AdminDashboard />} />
           <Route path="/adminallplays" element={<AdminAllPlays />} />
           <Route path="/adminaddplay" element={<AdminAddPlay />} />

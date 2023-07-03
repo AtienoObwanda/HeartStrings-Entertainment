@@ -150,24 +150,24 @@ const SelectingShowTimeRowa = (props) => {
                   {SeatIcons[selected]}
                   </div>
                   <div className="flex flex-row gap-2 items-center justify-center pl-1.5 self-stretch w-auto">
+                  {/* {SeatIcons[selected]}
                   {SeatIcons[selected]}
                   {SeatIcons[selected]}
                   {SeatIcons[selected]}
                   {SeatIcons[selected]}
                   {SeatIcons[selected]}
-                  {SeatIcons[selected]}
-                  {SeatIcons[selected]}
+                  {SeatIcons[selected]} */}
                   </div>
                   <div className="flex flex-row gap-2 items-center justify-center self-stretch w-auto">
                     
+                  {/* {SeatIcons[selected]}
                   {SeatIcons[selected]}
                   {SeatIcons[selected]}
                   {SeatIcons[selected]}
                   {SeatIcons[selected]}
                   {SeatIcons[selected]}
-                  {SeatIcons[selected]}
-                  {SeatIcons[selected]}
-                  {SeatIcons[selected]}
+                  {SeatIcons[selected]} */}
+                  {/* {SeatIcons[selected]} */}
                   </div>
                 </List>
               </div>
@@ -317,6 +317,7 @@ const SelectingShowTimeRowa = (props) => {
                   </div>
                   {/* End of sixth row - Seventh row begins */}
                   <div className="flex sm:flex-1 sm:flex-col flex-row gap-2 items-center justify-center self-stretch w-auto sm:w-full">
+                  {/* {SeatIcons[available]}
                   {SeatIcons[available]}
                   {SeatIcons[available]}
                   {SeatIcons[available]}
@@ -334,14 +335,14 @@ const SelectingShowTimeRowa = (props) => {
                   {SeatIcons[available]}
                   {SeatIcons[available]}
                   {SeatIcons[available]}
-                  {SeatIcons[available]}
-                  {SeatIcons[available]}
+                  {SeatIcons[available]} */}
                  
                    
                   </div>
                   {/* End of Seventh row- eighth row begins */}
                   <div className="flex sm:flex-1 sm:flex-col flex-row gap-2 items-center justify-center self-stretch w-auto sm:w-full">
                   
+                  {/* {SeatIcons[available]}
                   {SeatIcons[available]}
                   {SeatIcons[available]}
                   {SeatIcons[available]}
@@ -360,12 +361,12 @@ const SelectingShowTimeRowa = (props) => {
                   {SeatIcons[available]}
                   {SeatIcons[available]}
                   {SeatIcons[available]}
-                  {SeatIcons[available]}
-                  {SeatIcons[available]}
+                  {SeatIcons[available]} */}
 
                   </div>
                   {/* End of seventh row, eigth row begins */}
                   <div className="flex sm:flex-1 sm:flex-col flex-row gap-2 items-center justify-center self-stretch w-auto sm:w-full">
+                  {/* {SeatIcons[available]}
                   {SeatIcons[available]}
                   {SeatIcons[available]}
                   {SeatIcons[available]}
@@ -385,8 +386,7 @@ const SelectingShowTimeRowa = (props) => {
                   {SeatIcons[available]}
                   {SeatIcons[available]}
                   {SeatIcons[available]}
-                  {SeatIcons[available]}
-                  {SeatIcons[available]}
+                  {SeatIcons[available]} */}
                   </div>
                 </List>
               </div>
@@ -444,26 +444,26 @@ const SelectingShowTimeRowa = (props) => {
                   {/* EndOfFourthRow */}
                   <div className="flex flex-row gap-2 items-center justify-center pl-1.5 self-stretch w-auto">
                   
+                  {/* {SeatIcons[available]}
                   {SeatIcons[available]}
                   {SeatIcons[available]}
                   {SeatIcons[available]}
                   {SeatIcons[available]}
                   {SeatIcons[available]}
-                  {SeatIcons[available]}
-                  {SeatIcons[available]}
+                  {SeatIcons[available]} */}
 
                   </div>
                   {/* EndOfFifthRow */}
 
                   <div className="flex flex-row gap-2 items-center justify-center self-stretch w-auto">
+                  {/* {SeatIcons[available]}
                   {SeatIcons[available]}
                   {SeatIcons[available]}
                   {SeatIcons[available]}
                   {SeatIcons[available]}
                   {SeatIcons[available]}
                   {SeatIcons[available]}
-                  {SeatIcons[available]}
-                  {SeatIcons[available]}
+                  {SeatIcons[available]} */}
 
                   </div>
                   {/* EndOfSixthRow */}

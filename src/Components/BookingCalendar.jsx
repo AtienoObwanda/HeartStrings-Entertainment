@@ -47,7 +47,7 @@ const BookingCalendar = () => {
     };
   
     return (
-      <List className="sm:flex-col flex-row gap-2 grid grid-cols-4 w-[36%] md:w-full" orientation="horizontal">
+      <List className="sm:flex-col flex-row gap-3 grid grid-cols-4 w-[36%] md:w-full" orientation="horizontal">
         {generateCalendar()}
       </List>
     );

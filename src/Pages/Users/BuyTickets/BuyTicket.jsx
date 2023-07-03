@@ -29,8 +29,9 @@ const BuyingTicket = () => {
          <BookingCalendar/>
          {/* Seat Selection */}
          <SeatSelection/>
+
           {/* Ticket Details Checkout: */}
-          <TicketDetails/>
+          {/* <TicketDetails/> */}
         </div>
 
         <Footer
