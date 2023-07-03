@@ -60,11 +60,11 @@ const AdminPasswordResetComplete = React.lazy(() => import("Pages/Admin/Auth/Ami
 
 // const AdminUserManagement = React.lazy(() => import("pages/AdminUserManagement"));
 // const AdminTicketManagement = React.lazy(() => import("pages/AdminTicketManagement"));
-// const AdminAddStream = React.lazy(() => import("pages/AdminAddStream"));
-// const AdminAllStreams = React.lazy(() => import("pages/AdminAllStreams"));
-// const AdminAddPlay = React.lazy(() => import("pages/AdminAddPlay"));
-// const AdminAllPlays = React.lazy(() => import("pages/AdminAllPlays"));
-// const AdminDashboard = React.lazy(() => import("pages/AdminDashboard"));
+const AdminAddStream = React.lazy(() => import("Pages/Admin/Content/AdminAddStream"));
+const AdminAllStreams = React.lazy(() => import("Pages/Admin/Content/AdminAllStreams"));
+const AdminAddPlay = React.lazy(() => import("Pages/Admin/Content/AdminAddPlay"));
+const AdminAllPlays = React.lazy(() => import("Pages/Admin/Content/AdminAllPlays"));
+const AdminDashboard = React.lazy(() => import("Pages/Admin/Dashboard/AdminDashboard"));
 // const RentingPlayPaymentConfirmation = React.lazy(() => import("pages/RentingPlayPaymentConfirmation"));
 
 const ProjectRoutes = () => {
@@ -139,15 +139,14 @@ const ProjectRoutes = () => {
           <Route path="/admin-password-reset" element={<AdminPasswordReset />} />
           <Route path="/admin-password-reset-complete" element={<AdminPasswordResetComplete />} />
           {/* <Route path='admin-signup-successful' element={<AdminSignUpSuccessful/>} /> */}
-          {/* 
+          
           <Route path="/admin-dashboard" element={<AdminDashboard />} />
           <Route path="/admin-allplays" element={<AdminAllPlays />} />
-          <Route path="/admin-addplay" element={<AdminAddPlay />} />
+          <Route path="/admin-add-play" element={<AdminAddPlay />} />
           <Route path="/all-streams" element={<AdminAllStreams />} />
           <Route path="/add-stream" element={<AdminAddStream />} />
-          <Route path="/ticket-management" element={<AdminTicketManagement />} />
-          <Route path="/user-management" element={<AdminUserManagement />}
-          /> */}
+          {/* <Route path="/ticket-management" element={<AdminTicketManagement />} /> */}
+          {/* <Route path="/user-management" element={<AdminUserManagement />} /> */} 
           
         </Routes>
       </Router>
