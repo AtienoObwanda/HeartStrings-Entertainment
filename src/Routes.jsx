@@ -52,6 +52,7 @@ const RentingPlayPayment = React.lazy(() => import("Pages/Users/Payments/Renting
 
 // Admin Pages
 const AdminSignUp = React.lazy(() => import("Pages/Admin/Auth/AdminSignUp"));
+// const AdminSignUpSuccessful = React.lazy() => import ("Pages/Admin/Auth/AdminSignUpSuccessful")
 const AdminLogin = React.lazy(() => import("Pages/Admin/Auth/AdminLogin"));
 const AdminForgotPassword = React.lazy(() => import("Pages/Admin/Auth/AdminForgotPassword"));
 const AdminPasswordReset = React.lazy(() => import("Pages/Admin/Auth/AdminPasswordReset"));
@@ -137,6 +138,7 @@ const ProjectRoutes = () => {
           <Route path="/admin-forgot-password" element={<AdminForgotPassword />}/>
           <Route path="/admin-password-reset" element={<AdminPasswordReset />} />
           <Route path="/admin-password-reset-complete" element={<AdminPasswordResetComplete />} />
+          {/* <Route path='admin-signup-successful' element={<AdminSignUpSuccessful/>} /> */}
           {/* 
           <Route path="/admin-dashboard" element={<AdminDashboard />} />
           <Route path="/admin-allplays" element={<AdminAllPlays />} />
