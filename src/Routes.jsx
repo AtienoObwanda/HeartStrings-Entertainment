@@ -143,7 +143,7 @@ const ProjectRoutes = () => {
           <Route path="/admin-dashboard" element={<AdminDashboard />} />
           <Route path="/admin-allplays" element={<AdminAllPlays />} />
           <Route path="/admin-add-play" element={<AdminAddPlay />} />
-          <Route path="/all-streams" element={<AdminAllStreams />} />
+          <Route path="/admin-allstreams" element={<AdminAllStreams />} />
           <Route path="/add-stream" element={<AdminAddStream />} />
           {/* <Route path="/ticket-management" element={<AdminTicketManagement />} /> */}
           {/* <Route path="/user-management" element={<AdminUserManagement />} /> */}           
