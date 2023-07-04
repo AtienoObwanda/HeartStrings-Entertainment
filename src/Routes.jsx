@@ -58,8 +58,8 @@ const AdminForgotPassword = React.lazy(() => import("Pages/Admin/Auth/AdminForgo
 const AdminPasswordReset = React.lazy(() => import("Pages/Admin/Auth/AdminPasswordReset"));
 const AdminPasswordResetComplete = React.lazy(() => import("Pages/Admin/Auth/AminPasswordResetComplete"));
 
-// const AdminUserManagement = React.lazy(() => import("pages/AdminUserManagement"));
-// const AdminTicketManagement = React.lazy(() => import("pages/AdminTicketManagement"));
+const AdminUserManagement = React.lazy(() => import("Pages/Admin/UserManagement/AdminUserManagement"));
+const AdminTicketManagement = React.lazy(() => import("Pages/Admin/TicketManagement/AdminTicketManagement"));
 const AdminAddStream = React.lazy(() => import("Pages/Admin/Content/AdminAddStream"));
 const AdminAllStreams = React.lazy(() => import("Pages/Admin/Content/AdminAllStreams"));
 const AdminAddPlay = React.lazy(() => import("Pages/Admin/Content/AdminAddPlay"));
@@ -145,8 +145,8 @@ const ProjectRoutes = () => {
           <Route path="/admin-add-play" element={<AdminAddPlay />} />
           <Route path="/admin-allstreams" element={<AdminAllStreams />} />
           <Route path="/add-stream" element={<AdminAddStream />} />
-          {/* <Route path="/ticket-management" element={<AdminTicketManagement />} /> */}
-          {/* <Route path="/user-management" element={<AdminUserManagement />} /> */}           
+          <Route path="/ticket-management" element={<AdminTicketManagement />} />
+          <Route path="/user-management" element={<AdminUserManagement />} />           
         </Routes>
       </Router>
     </React.Suspense>
