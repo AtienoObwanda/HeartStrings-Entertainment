@@ -52,7 +52,7 @@ const AdminLogin = () => {
             <div className="flex flex-col gap-12 items-center justify-center self-stretch w-auto sm:w-full">
             <form onSubmit={handleSubmit}>
                 <div className="flex flex-col gap-8 items-start justify-start self-stretch w-auto sm:w-full">
-                <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto sm:w-full">
+                  <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto sm:w-full">
 
                       <Text
                         className="font-normal not-italic text-left text-white_A700 w-auto"
@@ -71,7 +71,7 @@ const AdminLogin = () => {
                         variant="FillGray800"
                       ></Input>
                     </div>
-                <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto sm:w-full">
+                    <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto sm:w-full">
                       <Text
                         className="font-normal not-italic text-left text-white_A700 w-auto"
                         variant="body4"
@@ -98,7 +98,11 @@ const AdminLogin = () => {
                     >
                       Login
                     </Button>
+
+                  
+
                   </div>
+                  
 
                   </form>
             </div>
@@ -108,7 +112,7 @@ const AdminLogin = () => {
 
 
             <div
-              className="common-pointer flex flex-col gap-4 items-center justify-start self-stretch w-auto sm:w-full"
+              className="common-pointer flex flex-col gap-4 items-center justify-start self-stretch w-430 sm:w-full"
               onClick={() => navigate("/forgot-password")}
             >
               <a
