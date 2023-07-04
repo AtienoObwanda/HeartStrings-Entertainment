@@ -146,8 +146,7 @@ const ProjectRoutes = () => {
           <Route path="/all-streams" element={<AdminAllStreams />} />
           <Route path="/add-stream" element={<AdminAddStream />} />
           {/* <Route path="/ticket-management" element={<AdminTicketManagement />} /> */}
-          {/* <Route path="/user-management" element={<AdminUserManagement />} /> */} 
-          
+          {/* <Route path="/user-management" element={<AdminUserManagement />} /> */}           
         </Routes>
       </Router>
     </React.Suspense>
