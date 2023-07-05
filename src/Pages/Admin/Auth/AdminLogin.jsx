@@ -41,17 +41,17 @@ const AdminLogin = () => {
   return (
     <>
       <div className="bg-black_900 flex flex-col font-roboto items-center justify-start mx-auto pb-[242px] w-full">
-        <SignupColumnlogotwo className="flex flex-col items-center justify-start p-8 sm:px-5 w-full" />
+        <SignupColumnlogotwo className="flex flex-col items-center justify-start p-8 sm:px-5 w-full sm:p-4" />
         <a
           className="font-bold mt-[29px] text-2xl md:text-[22px] text-left text-white_A700 sm:text-xl w-auto"
         >
           <Text className="">Admin Login</Text>
         </a>
-        <div className="flex flex-col gap-12 items-start justify-start mt-[49px] md:px-5 self-stretch w-auto sm:w-full">
+        <div className="flex flex-col gap-12 items-start justify-start mt-[49px] md:px-5 self-stretch w-auto sm:w-full sm:pt-2">
           <div className="flex flex-col gap-4 items-start justify-start self-stretch w-auto sm:w-full">
             <div className="flex flex-col gap-12 items-center justify-center self-stretch w-auto sm:w-full">
             <form onSubmit={handleSubmit}>
-                <div className="flex flex-col gap-8 items-start justify-start self-stretch w-auto sm:w-full">
+                <div className="flex flex-col gap-8 items-start justify-start self-stretch w-auto sm:w-[320px]">
                   <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto sm:w-full">
 
                       <Text
@@ -61,8 +61,8 @@ const AdminLogin = () => {
                         Email address
                       </Text>
                       <Input
-                        wrapClassName="flex h-12 w-full"
-                        className="p-0 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
+                        wrapClassName="flex h-12 sm:w-full"
+                        className="p-0 pl-4 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
                         value={email} onChange={(e) => setEmail(e.target.value)}
                         type="email"
                         name="email"
@@ -80,7 +80,7 @@ const AdminLogin = () => {
                       </Text>
                       <Input
                         wrapClassName="flex h-12 w-full"
-                        className="p-0 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
+                        className="p-0 pl-4  w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
                         value={password}onChange={(e) => setPassword(e.target.value)}
                         type="password"
                         name="password"
@@ -113,7 +113,7 @@ const AdminLogin = () => {
 
             <div
               className="common-pointer flex flex-col gap-4 items-center justify-start self-stretch w-430 sm:w-full"
-              onClick={() => navigate("/forgot-password")}
+              onClick={() => navigate("/admin-forgot-password")}
             >
               <a
                 href="javascript:"
@@ -124,8 +124,6 @@ const AdminLogin = () => {
               <Line className="bg-gray_900_63 mt-5 h-px w-full" />
             </div>
           </div>
-
-
 
           <div className="flex flex-col gap-4 items-center justify-start self-stretch w-auto sm:w-full">
 
