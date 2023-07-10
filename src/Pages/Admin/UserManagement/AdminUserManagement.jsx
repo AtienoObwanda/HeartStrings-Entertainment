@@ -18,6 +18,10 @@ const AdminUserManagement = () => {
     <>
       <div className="bg-black_900_01 flex flex-col font-roboto items-center justify-start mx-auto w-full">
         <div className="flex md:flex-col flex-row md:gap-5 items-start justify-evenly w-full">
+          
+          
+          
+          
           {/* Large screen */}
           <aside className="md:hidden flex justify-start md:px-5 w-[247px]">
           {/* <aside className="flex flex-col md:hidden justify-start md:px-5 w-[247px]"> */}
@@ -90,6 +94,7 @@ const AdminUserManagement = () => {
                     Tickets
                   </Text>
                 </div>
+                
                 <div
                   className="common-pointer flex flex-row gap-2 items-center justify-center self-stretch w-auto"
                   onClick={() => navigate("/adminusermanagement")}
@@ -224,6 +229,7 @@ const AdminUserManagement = () => {
                 </div>
             </li>
             <li className="py-3 cursor-pointer text-16">
+              
             <div
                   className="common-pointer flex flex-row gap-2 items-center justify-center self-stretch w-auto"
                   onClick={() => navigate("/adminusermanagement")}
