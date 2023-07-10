@@ -1,117 +1,268 @@
-import React from 'react'
+import React, { useState } from "react";
 
 import { useNavigate } from "react-router-dom";
 
 import { Button, Img, Line, List, Text } from "UI_Components";
+import close from "../../../assets/close.svg";
+import  menu from "../../../assets/menu.svg";
 
 const AdminAllStreams = () => {
 
   const navigate = useNavigate();
+  const [active, setActive] = useState("Home");
+  const [toggle, setToggle] = useState(false);
 
   return (
     <>
       <div className="bg-black_900_01 flex sm:flex-col md:flex-col flex-row font-roboto sm:gap-5 md:gap-5 items-center mx-auto w-full">
-        <aside className="bg-black_900 flex flex-col md:hidden justify-start md:px-5 w-[247px]">
-          <Img
-            src="images/img_dummylogo02.svg"
-            className="common-pointer h-14 ml-6 md:ml-[0] mr-[87px] mt-12 w-auto"
-            alt="dummylogoTwo"
-            onClick={() => navigate("/")}
-          />
-          <div
-            className="common-pointer flex flex-row gap-2 items-center justify-center ml-6 md:ml-[0] mr-4 mt-16 pl-6 md:pr-10 pr-[73px] sm:px-5 py-2.5 self-stretch w-auto"
-            onClick={() => navigate("/admindashboard")}
-          >
-            <Img
-              src="images/img_iconsaxboldactivity_gray_300.svg"
-              className="h-6 w-6"
-              alt="iconsaxboldacti"
-            />
-            <Text
-              className="font-normal not-italic text-gray_300 text-left w-auto"
-              variant="body4"
-            >
-              Dashboard
-            </Text>
-          </div>
-          <div
-            className="common-pointer flex flex-row gap-2 items-center justify-start mt-4 mx-auto pl-6 md:pr-10 pr-[73px] sm:px-5 py-2.5 w-[199px]"
-            onClick={() => navigate("/adminallplays")}
-          >
-            <Img
-              src="images/img_iconsaxboldelement2.svg"
-              className="h-6 w-6"
-              alt="iconsaxboldelem"
-            />
-            <Text
-              className="font-normal not-italic text-gray_300 text-left w-auto"
-              variant="body4"
-            >
-              Plays
-            </Text>
-          </div>
-          <div className="bg-gray_800 flex flex-row gap-2 items-center justify-center mt-4 mx-auto pl-6 md:pr-10 pr-[83px] sm:px-5 py-2.5 rounded-lg self-stretch w-auto">
-            <Img
-              src="images/img_iconsaxboldvideoplay_white_a700.svg"
-              className="h-6 w-6"
-              alt="iconsaxboldvide"
-            />
-            <Text
-              className="font-normal not-italic text-left text-white_A700 w-auto"
-              variant="body4"
-            >
-              Streams
-            </Text>
-          </div>
-          <div className="flex flex-col gap-9 items-start justify-start md:ml-[0] ml-[50px] mr-[34px] mt-9 self-stretch w-auto">
-            <div
-              className="common-pointer flex flex-row gap-2 items-center justify-center self-stretch w-auto"
-              onClick={() => navigate("/adminticketmanagement")}
-            >
+        {/* Large screen */}
+        <aside className="md:hidden flex justify-start md:px-5 w-[247px]">
+          {/* <aside className="flex flex-col md:hidden justify-start md:px-5 w-[247px]"> */}
+            <div className="flex flex-col justify-start mb-[420px] mt-12 mx-auto w-[81%]">
               <Img
-                src="images/img_iconsaxboldreceipt1_gray_300.svg"
-                className="h-6 w-6"
-                alt="iconsaxboldrece"
+                src="images/img_dummylogo02.svg"
+                className="common-pointer h-14 w-auto"
+                alt="dummylogoTwo"
+                onClick={() => navigate("/")}
               />
-              <Text
-                className="font-normal not-italic text-gray_300 text-left w-auto"
-                variant="body4"
+              <div className="bg-gray_800 flex flex-row gap-2 items-center justify-center mt-16 pl-6 md:pr-10 pr-[73px] sm:px-5 py-2.5 rounded-lg self-stretch w-auto">
+                <Img
+                  src="images/img_iconsaxboldactivity.svg"
+                  className="h-6 w-6"
+                  alt="iconsaxboldacti"
+                />
+                <Text
+                  className="font-normal not-italic text-left text-white_A700 w-auto"
+                  variant="body4"
+                >
+                  Dashboard
+                </Text>
+              </div>
+              <div
+                className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-9 self-stretch w-auto"
+                onClick={() => navigate("/adminallplays")}
               >
-                Tickets
-              </Text>
+                <Img
+                  src="images/img_iconsaxboldelement2.svg"
+                  className="h-6 w-6"
+                  alt="iconsaxboldelem"
+                />
+                <Text
+                  className="font-normal not-italic text-gray_300 text-left w-auto"
+                  variant="body4"
+                >
+                  Plays
+                </Text>
+              </div>
+              <div
+                className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-9 self-stretch w-auto"
+                onClick={() => navigate("/adminallstreams")}
+              >
+                <Img
+                  src="images/img_iconsaxboldvideoplay.svg"
+                  className="h-6 w-6"
+                  alt="iconsaxboldvide"
+                />
+                <Text
+                  className="font-normal not-italic text-gray_300 text-left w-auto"
+                  variant="body4"
+                >
+                  Streams
+                </Text>
+              </div>
+              <div className="flex flex-col gap-9 items-start justify-start md:ml-[0] ml-[26px] mt-9 self-stretch w-auto">
+                <div
+                  className="common-pointer flex flex-row gap-2 items-center justify-center self-stretch w-auto"
+                  onClick={() => navigate("/adminticketmanagement")}
+                >
+                  <Img
+                    src="images/img_iconsaxboldreceipt1_gray_300.svg"
+                    className="h-6 w-6"
+                    alt="iconsaxboldrece"
+                  />
+                  <Text
+                    className="font-normal not-italic text-gray_300 text-left w-auto"
+                    variant="body4"
+                  >
+                    Tickets
+                  </Text>
+                </div>
+                <div
+                  className="common-pointer flex flex-row gap-2 items-center justify-center self-stretch w-auto"
+                  onClick={() => navigate("/adminusermanagement")}
+                >
+                  <Img
+                    src="images/img_iconsaxboldprofile2user.svg"
+                    className="h-6 w-6"
+                    alt="iconsaxboldprof"
+                  />
+                  <Text
+                    className="font-normal not-italic text-gray_300 text-left w-auto"
+                    variant="body4"
+                  >
+                    User management
+                  </Text>
+                </div>
+              </div>
+              <Line className="bg-gray_800 h-px mt-16 w-full" />
+              <div className="flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-[63px] self-stretch w-auto">
+                <Img
+                  src="images/img_iconsaxboldlogout.svg"
+                  className="h-6 w-6"
+                  alt="iconsaxboldlogo"
+                />
+                <a
+                  href="javascript:"
+                  className="font-normal not-italic text-base text-gray_300 text-left w-auto"
+                >
+                  <Text className="">Logout</Text>
+                </a>
+              </div>
             </div>
+          </aside>
+
+
+            {/* Display Medium Screens  */}
+            <aside className="hidden md:flex justify-start md:px-5 w-[247px]">
+
+<div className="flex flex-col justify-start mb-[476px] mt-12 mx-auto w-[81%]">
+
+    <div style={{ display: "flex", justifyContent: "flex-start" }}>
+      <img
+        src={toggle ? close : menu}
+        alt="menu"
+        className="w-[28px] h-[28px] object-contain pt-3"
+        onClick={() => setToggle((prev) => !prev)}
+      />
+      <Img
+        src="images/img_dummylogo02.svg"
+        className="md:ml-[580px] sm:ml-[200px] common-pointer h-14 w-auto"
+        alt="dummylogoTwo"
+        onClick={() => navigate("/")}
+      />
+    </div>
+    <div className={`${toggle ? 'flex' : 'hidden'}
+      p-6 bg-black_900_01 absolute top-20 left-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar`}
+      >
+      <ul className="list-none justify-start items-center flex-1">
+
+        
+          <li className="py-3 cursor-pointer text-16">
+            
+          <div className="bg-gray_800 flex flex-row gap-2 items-center justify-center mt-16 pl-6 md:pr-10 pr-[73px] sm:px-5 py-2.5 rounded-lg self-stretch w-auto">
+                <Img
+                  src="images/img_iconsaxboldactivity.svg"
+                  className="h-6 w-6"
+                  alt="iconsaxboldacti"
+                />
+                <Text
+                  className="font-normal not-italic text-left text-white_A700 w-auto"
+                  variant="body4"
+                >
+                  Dashboard
+                </Text>
+              </div>
+          </li>
+
+          <li className="py-3 cursor-pointer text-16"> 
+          <div className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-6 self-stretch w-auto"
+                onClick={() => navigate("/adminallplays")}
+              >
+                <Img
+                  src="images/img_iconsaxboldelement2.svg"
+                  className="h-6 w-6"
+                  alt="iconsaxboldelem"
+                />
+                <Text
+                  className="font-normal not-italic text-gray_300 text-left w-auto"
+                  variant="body4"
+                >
+                  Plays
+                </Text>
+              </div>
+          </li>
+
+          <li className="py-3 cursor-pointer text-16">
+          <div className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-0 self-stretch w-auto"
+                onClick={() => navigate("/admin-all-streams")}
+              >
+                <Img
+                  src="images/img_iconsaxboldvideoplay.svg"
+                  className="h-6 w-6"
+                  alt="iconsaxboldvide"
+                />
+                <Text
+                  className="font-normal not-italic text-gray_300 text-left w-auto"
+                  variant="body4"
+                >
+                  Streams
+                </Text>
+              </div>
+          </li>
+
+        
+
+          <li className="py-3 cursor-pointer text-16">
+              <div
+                  className="common-pointer flex flex-row gap-2 items-center justify-center self-stretch w-auto"
+                  onClick={() => navigate("/adminticketmanagement")}
+                >
+                  <Img
+                    src="images/img_iconsaxboldreceipt1_gray_300.svg"
+                    className="h-6 w-6"
+                    alt="iconsaxboldrece"
+                  />
+                  <Text
+                    className="font-normal not-italic text-gray_300 text-left w-auto"
+                    variant="body4"
+                  >
+                    Tickets
+                  </Text>
+                </div>
+            </li>
+            <li className="py-3 cursor-pointer text-16">
             <div
-              className="common-pointer flex flex-row gap-2 items-center justify-center self-stretch w-auto"
-              onClick={() => navigate("/adminusermanagement")}
-            >
+                  className="common-pointer flex flex-row gap-2 items-center justify-center self-stretch w-auto"
+                  onClick={() => navigate("/adminusermanagement")}
+                >
+                  <Img
+                    src="images/img_iconsaxboldprofile2user.svg"
+                    className="h-6 w-6"
+                    alt="iconsaxboldprof"
+                  />
+                  <Text
+                    className="font-normal not-italic text-gray_300 text-left w-auto"
+                    variant="body4"
+                  >
+                    User management
+                  </Text>
+                </div>
+            </li>
+
+          <Line className="bg-gray_800 h-px mt-[60px] w-full" />
+
+          <li className="py-3 cursor-pointer text-16">                     
+            <div className="flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-8 self-stretch w-auto">
               <Img
-                src="images/img_iconsaxboldprofile2user.svg"
+                src="images/img_iconsaxboldlogout.svg"
                 className="h-6 w-6"
-                alt="iconsaxboldprof"
+                alt="iconsaxboldlogo"
               />
-              <Text
-                className="font-normal not-italic text-gray_300 text-left w-auto"
-                variant="body4"
+              <a
+                href="javascript:"
+                className="font-normal not-italic text-base text-gray_300 text-left w-auto"
               >
-                User management
-              </Text>
+                <Text className="">Logout</Text>
+              </a>
             </div>
-          </div>
-          <Line className="bg-gray_800 h-px mt-16 mx-auto w-[81%]" />
-          <div className="flex flex-row gap-2 items-center justify-center mb-[420px] md:ml-[0] ml-[50px] mr-[115px] mt-[63px] self-stretch w-auto">
-            <Img
-              src="images/img_iconsaxboldlogout.svg"
-              className="h-6 w-6"
-              alt="iconsaxboldlogo"
-            />
-            <a
-              href="javascript:"
-              className="font-normal not-italic text-base text-gray_300 text-left w-auto"
-            >
-              <Text className="">Logout</Text>
-            </a>
-          </div>
-        </aside>
+          </li>
+        </ul>
+</div>
+</div>
+
+</aside>
+
+
         <div className="flex-1 h-[1024px] md:h-[1198px] sm:h-[1776px] md:px-5 relative w-full">
           <div className="absolute bottom-[0] flex flex-col gap-6 inset-x-[0] items-center justify-center mx-auto p-[46px] md:px-10 sm:px-5 w-full">
             <div className="flex flex-row md:gap-10 gap-[788px] items-center justify-between mt-0.5 self-stretch w-auto md:w-full">

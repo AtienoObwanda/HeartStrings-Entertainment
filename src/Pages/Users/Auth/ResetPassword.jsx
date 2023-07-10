@@ -44,7 +44,7 @@ const ResetPassword = () => {
                     </Text>
                     <Input
                       wrapClassName="flex h-12 w-full"
-                      className="p-0 w-full"
+                      className="p-0 pl-4 w-full"
                       name="rectangleNine"
                       placeholder=""
                       shape="RoundedBorder4"
@@ -60,7 +60,7 @@ const ResetPassword = () => {
                     </Text>
                     <Input
                       wrapClassName="flex h-12 w-full"
-                      className="p-0 w-full"
+                      className="p-0 pl-4 w-full"
                       name="rectangleNine_One"
                       placeholder=""
                       shape="RoundedBorder4"

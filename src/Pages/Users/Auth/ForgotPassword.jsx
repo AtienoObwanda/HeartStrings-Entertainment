@@ -44,7 +44,7 @@ const ForgotPassword = () => {
                     </Text>
                     <Input
                       wrapClassName="flex h-12 w-full"
-                      className="p-0 w-full"
+                      className="p-0 pl-4 w-full"
                       // value={email} onChange={(e) => setEmail(e.target.value)}
                       type="email"
                       name="email"

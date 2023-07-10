@@ -65,7 +65,7 @@ const SignUp = () => {
                   </Text>
                   <Input
                     wrapClassName="flex h-12 w-full"
-                    className="p-0 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
+                    className="p-0 pl-4 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
                     value={email} onChange={(e) => setEmail(e.target.value)}
                     type="text"
                     name="name"
@@ -85,7 +85,7 @@ const SignUp = () => {
                       </Text>
                       <Input
                         wrapClassName="flex h-12 w-full"
-                        className="p-0 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
+                        className="p-0 pl-4 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
                         value={email} onChange={(e) => setEmail(e.target.value)}
                         type="email"
                         name="email"
@@ -105,7 +105,7 @@ const SignUp = () => {
                         </Text>
                         <Input
                           wrapClassName="flex h-12 w-full"
-                          className="p-0 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
+                          className="p-0 pl-4 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
                           value={email} onChange={(e) => setEmail(e.target.value)}
                           type="number"
                           name="phone"
@@ -123,7 +123,7 @@ const SignUp = () => {
                       </Text>
                       <Input
                         wrapClassName="flex h-12 w-full"
-                        className="p-0 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
+                        className="p-0 pl-4 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
                         value={password}onChange={(e) => setPassword(e.target.value)}
                         type="password"
                         name="password"
@@ -142,7 +142,7 @@ const SignUp = () => {
                       </Text>
                       <Input
                         wrapClassName="flex h-12 w-full"
-                        className="p-0 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
+                        className="p-0 pl-4 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
                         value={password}onChange={(e) => setPassword(e.target.value)}
                         type="password"
                         name="password"

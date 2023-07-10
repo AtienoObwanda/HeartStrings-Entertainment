@@ -1,5 +1,4 @@
-import React from 'react'
-
+import React, { useState } from "react";
 import { CircularProgressbar } from "react-circular-progressbar";
 import { useNavigate } from "react-router-dom";
 
@@ -7,16 +6,21 @@ import { Button, Img, Input, Line, List, Text } from "UI_Components";
 
 import "react-circular-progressbar/dist/styles.css";
 
+import close from "../../../assets/close.svg";
+import  menu from "../../../assets/menu.svg";
+
 const AdminDashboard = () => {
-
-
   const navigate = useNavigate();
+  const [active, setActive] = useState("Home");
+  const [toggle, setToggle] = useState(false);
 
   return (
     <>
       <div className="bg-black_900_01 flex flex-col font-roboto items-center justify-start mx-auto w-full">
         <div className="flex md:flex-col flex-row md:gap-5 items-start justify-evenly w-full">
-          <aside className="flex flex-col md:hidden justify-start md:px-5 w-[247px]">
+         {/* Large screen */}
+         <aside className="md:hidden flex justify-start md:px-5 w-[247px]">
+          {/* <aside className="flex flex-col md:hidden justify-start md:px-5 w-[247px]"> */}
             <div className="flex flex-col justify-start mb-[420px] mt-12 mx-auto w-[81%]">
               <Img
                 src="images/img_dummylogo02.svg"
@@ -34,7 +38,7 @@ const AdminDashboard = () => {
                   className="font-normal not-italic text-left text-white_A700 w-auto"
                   variant="body4"
                 >
-                  Dahboard
+                  Dashboard
                 </Text>
               </div>
               <div
@@ -119,6 +123,161 @@ const AdminDashboard = () => {
               </div>
             </div>
           </aside>
+
+
+            {/* Display Medium Screens  */}
+            <aside className="hidden md:flex justify-start md:px-5 w-[247px]">
+
+<div className="flex flex-col justify-start mb-[476px] mt-12 mx-auto w-[81%]">
+
+    <div style={{ display: "flex", justifyContent: "flex-start" }}>
+      <img
+        src={toggle ? close : menu}
+        alt="menu"
+        className="w-[28px] h-[28px] object-contain pt-3"
+        onClick={() => setToggle((prev) => !prev)}
+      />
+      <Img
+        src="images/img_dummylogo02.svg"
+        className="md:ml-[580px] sm:ml-[200px] common-pointer h-14 w-auto"
+        alt="dummylogoTwo"
+        onClick={() => navigate("/")}
+      />
+    </div>
+    <div className={`${toggle ? 'flex' : 'hidden'}
+      p-6 bg-black_900_01 absolute top-20 left-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar`}
+      >
+      <ul className="list-none justify-start items-center flex-1">
+
+        
+          <li className="py-3 cursor-pointer text-16">
+            
+          <div className="bg-gray_800 flex flex-row gap-2 items-center justify-center mt-16 pl-6 md:pr-10 pr-[73px] sm:px-5 py-2.5 rounded-lg self-stretch w-auto">
+                <Img
+                  src="images/img_iconsaxboldactivity.svg"
+                  className="h-6 w-6"
+                  alt="iconsaxboldacti"
+                />
+                <Text
+                  className="font-normal not-italic text-left text-white_A700 w-auto"
+                  variant="body4"
+                >
+                  Dashboard
+                </Text>
+              </div>
+          </li>
+
+          <li className="py-3 cursor-pointer text-16"> 
+          <div className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-6 self-stretch w-auto"
+                onClick={() => navigate("/adminallplays")}
+              >
+                <Img
+                  src="images/img_iconsaxboldelement2.svg"
+                  className="h-6 w-6"
+                  alt="iconsaxboldelem"
+                />
+                <Text
+                  className="font-normal not-italic text-gray_300 text-left w-auto"
+                  variant="body4"
+                >
+                  Plays
+                </Text>
+              </div>
+          </li>
+
+          <li className="py-3 cursor-pointer text-16">
+          <div className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-0 self-stretch w-auto"
+                onClick={() => navigate("/admin-all-streams")}
+              >
+                <Img
+                  src="images/img_iconsaxboldvideoplay.svg"
+                  className="h-6 w-6"
+                  alt="iconsaxboldvide"
+                />
+                <Text
+                  className="font-normal not-italic text-gray_300 text-left w-auto"
+                  variant="body4"
+                >
+                  Streams
+                </Text>
+              </div>
+          </li>
+
+        
+
+          <li className="py-3 cursor-pointer text-16">
+              <div
+                  className="common-pointer flex flex-row gap-2 items-center justify-center self-stretch w-auto"
+                  onClick={() => navigate("/adminticketmanagement")}
+                >
+                  <Img
+                    src="images/img_iconsaxboldreceipt1_gray_300.svg"
+                    className="h-6 w-6"
+                    alt="iconsaxboldrece"
+                  />
+                  <Text
+                    className="font-normal not-italic text-gray_300 text-left w-auto"
+                    variant="body4"
+                  >
+                    Tickets
+                  </Text>
+                </div>
+            </li>
+            <li className="py-3 cursor-pointer text-16">
+            <div
+                  className="common-pointer flex flex-row gap-2 items-center justify-center self-stretch w-auto"
+                  onClick={() => navigate("/adminusermanagement")}
+                >
+                  <Img
+                    src="images/img_iconsaxboldprofile2user.svg"
+                    className="h-6 w-6"
+                    alt="iconsaxboldprof"
+                  />
+                  <Text
+                    className="font-normal not-italic text-gray_300 text-left w-auto"
+                    variant="body4"
+                  >
+                    User management
+                  </Text>
+                </div>
+            </li>
+
+          <Line className="bg-gray_800 h-px mt-[60px] w-full" />
+
+          <li className="py-3 cursor-pointer text-16">                     
+            <div className="flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-8 self-stretch w-auto">
+              <Img
+                src="images/img_iconsaxboldlogout.svg"
+                className="h-6 w-6"
+                alt="iconsaxboldlogo"
+              />
+              <a
+                href="javascript:"
+                className="font-normal not-italic text-base text-gray_300 text-left w-auto"
+              >
+                <Text className="">Logout</Text>
+              </a>
+            </div>
+          </li>
+        </ul>
+</div>
+</div>
+
+</aside>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+          
           <div className="flex flex-1 flex-col items-center justify-start md:px-5 w-full">
             <div className="flex md:flex-col flex-row md:gap-10 items-center justify-between p-7 sm:px-5 w-full">
               <div className="flex sm:flex-1 sm:flex-col flex-row gap-6 items-center justify-center ml-5 md:ml-[0] self-stretch w-auto sm:w-full">

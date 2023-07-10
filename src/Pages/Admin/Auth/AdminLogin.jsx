@@ -60,13 +60,14 @@ const AdminLogin = () => {
                       >
                         Email address
                       </Text>
+                      
                       <Input
-                        wrapClassName="flex h-12 sm:w-full"
-                        className="p-0 pl-4 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
+                        wrapClassName="flex h-12 w-full"
+                        className="p-0 pl-4  w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
                         value={email} onChange={(e) => setEmail(e.target.value)}
                         type="email"
                         name="email"
-                        placeholder="your-email@gmail.com"
+                        placeholder="Your-email@gmail.com"
                         shape="RoundedBorder4"
                         variant="FillGray800"
                       ></Input>
