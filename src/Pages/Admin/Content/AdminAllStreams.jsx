@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import { useNavigate } from "react-router-dom";
 
 import { Button, Img, Line, List, Text } from "UI_Components";
@@ -15,6 +14,8 @@ const AdminAllStreams = () => {
   return (
     <>
       <div className="bg-black_900_01 flex sm:flex-col md:flex-col flex-row font-roboto sm:gap-5 md:gap-5 items-center mx-auto w-full">
+      <div className="flex md:flex-col flex-row md:gap-5 items-start justify-evenly w-full">
+
         {/* Large screen */}
         <aside className="md:hidden flex justify-start md:px-5 w-[247px]">
           {/* <aside className="flex flex-col md:hidden justify-start md:px-5 w-[247px]"> */}
@@ -25,8 +26,11 @@ const AdminAllStreams = () => {
                 alt="dummylogoTwo"
                 onClick={() => navigate("/")}
               />
-              <div className="bg-gray_800 flex flex-row gap-2 items-center justify-center mt-16 pl-6 md:pr-10 pr-[73px] sm:px-5 py-2.5 rounded-lg self-stretch w-auto">
-                <Img
+              <div
+                className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-9 self-stretch w-auto"
+                onClick={() => navigate("/admin-dashboard")}
+              > 
+              <Img
                   src="images/img_iconsaxboldactivity.svg"
                   className="h-6 w-6"
                   alt="iconsaxboldacti"
@@ -40,7 +44,7 @@ const AdminAllStreams = () => {
               </div>
               <div
                 className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-9 self-stretch w-auto"
-                onClick={() => navigate("/adminallplays")}
+                onClick={() => navigate("/admin-allplays")}
               >
                 <Img
                   src="images/img_iconsaxboldelement2.svg"
@@ -54,10 +58,11 @@ const AdminAllStreams = () => {
                   Plays
                 </Text>
               </div>
-              <div
-                className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-9 self-stretch w-auto"
-                onClick={() => navigate("/adminallstreams")}
-              >
+              
+              <div className="bg-gray_800 flex flex-row gap-2 items-center justify-center mt-6 pl-6 md:pr-10 pr-[73px] sm:px-5 py-2.5 rounded-lg self-stretch w-auto"
+              onClick={() => navigate("/admin-allstreams")}
+                >
+
                 <Img
                   src="images/img_iconsaxboldvideoplay.svg"
                   className="h-6 w-6"
@@ -73,7 +78,7 @@ const AdminAllStreams = () => {
               <div className="flex flex-col gap-9 items-start justify-start md:ml-[0] ml-[26px] mt-9 self-stretch w-auto">
                 <div
                   className="common-pointer flex flex-row gap-2 items-center justify-center self-stretch w-auto"
-                  onClick={() => navigate("/adminticketmanagement")}
+                  onClick={() => navigate("/ticket-management")}
                 >
                   <Img
                     src="images/img_iconsaxboldreceipt1_gray_300.svg"
@@ -89,7 +94,7 @@ const AdminAllStreams = () => {
                 </div>
                 <div
                   className="common-pointer flex flex-row gap-2 items-center justify-center self-stretch w-auto"
-                  onClick={() => navigate("/adminusermanagement")}
+                  onClick={() => navigate("/user-management")}
                 >
                   <Img
                     src="images/img_iconsaxboldprofile2user.svg"
@@ -123,7 +128,7 @@ const AdminAllStreams = () => {
 
 
             {/* Display Medium Screens  */}
-            <aside className="hidden md:flex justify-start md:px-5 w-[247px]">
+<aside className="hidden md:flex justify-start md:px-5 w-[247px]">
 
 <div className="flex flex-col justify-start mb-[476px] mt-12 mx-auto w-[81%]">
 
@@ -148,8 +153,9 @@ const AdminAllStreams = () => {
 
         
           <li className="py-3 cursor-pointer text-16">
-            
-          <div className="bg-gray_800 flex flex-row gap-2 items-center justify-center mt-16 pl-6 md:pr-10 pr-[73px] sm:px-5 py-2.5 rounded-lg self-stretch w-auto">
+          <div className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-0 self-stretch w-auto"
+                onClick={() => navigate("/admin-dashboard")}
+              >
                 <Img
                   src="images/img_iconsaxboldactivity.svg"
                   className="h-6 w-6"
@@ -166,7 +172,7 @@ const AdminAllStreams = () => {
 
           <li className="py-3 cursor-pointer text-16"> 
           <div className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-6 self-stretch w-auto"
-                onClick={() => navigate("/adminallplays")}
+                onClick={() => navigate("/admin-allplays")}
               >
                 <Img
                   src="images/img_iconsaxboldelement2.svg"
@@ -183,8 +189,8 @@ const AdminAllStreams = () => {
           </li>
 
           <li className="py-3 cursor-pointer text-16">
-          <div className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-0 self-stretch w-auto"
-                onClick={() => navigate("/admin-all-streams")}
+          <div className="bg-gray_800 flex flex-row gap-2 items-center justify-center mt-16 pl-6 md:pr-10 pr-[73px] sm:px-5 py-2.5 rounded-lg self-stretch w-auto"
+                onClick={() => navigate("/admin-allstreams")}
               >
                 <Img
                   src="images/img_iconsaxboldvideoplay.svg"
@@ -200,12 +206,10 @@ const AdminAllStreams = () => {
               </div>
           </li>
 
-        
-
           <li className="py-3 cursor-pointer text-16">
               <div
                   className="common-pointer flex flex-row gap-2 items-center justify-center self-stretch w-auto"
-                  onClick={() => navigate("/adminticketmanagement")}
+                  onClick={() => navigate("/ticket-management")}
                 >
                   <Img
                     src="images/img_iconsaxboldreceipt1_gray_300.svg"
@@ -223,7 +227,7 @@ const AdminAllStreams = () => {
             <li className="py-3 cursor-pointer text-16">
             <div
                   className="common-pointer flex flex-row gap-2 items-center justify-center self-stretch w-auto"
-                  onClick={() => navigate("/adminusermanagement")}
+                  onClick={() => navigate("/user-management")}
                 >
                   <Img
                     src="images/img_iconsaxboldprofile2user.svg"
@@ -261,6 +265,9 @@ const AdminAllStreams = () => {
 </div>
 
 </aside>
+
+
+
 
 
         <div className="flex-1 h-[1024px] md:h-[1198px] sm:h-[1776px] md:px-5 relative w-full">
@@ -519,6 +526,7 @@ const AdminAllStreams = () => {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </>
   );

@@ -25,7 +25,11 @@ const AdminAddStream = () => {
                 alt="dummylogoTwo"
                 onClick={() => navigate("/")}
               />
-              <div className="bg-gray_800 flex flex-row gap-2 items-center justify-center mt-16 pl-6 md:pr-10 pr-[73px] sm:px-5 py-2.5 rounded-lg self-stretch w-auto">
+<div
+                className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-9 self-stretch w-auto"
+                onClick={() => navigate("/admin-dashnoard")}
+              >
+                
                 <Img
                   src="images/img_iconsaxboldactivity.svg"
                   className="h-6 w-6"
@@ -40,7 +44,7 @@ const AdminAddStream = () => {
               </div>
               <div
                 className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-9 self-stretch w-auto"
-                onClick={() => navigate("/adminallplays")}
+                onClick={() => navigate("/admin-allplays")}
               >
                 <Img
                   src="images/img_iconsaxboldelement2.svg"
@@ -54,9 +58,9 @@ const AdminAddStream = () => {
                   Plays
                 </Text>
               </div>
-              <div
-                className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-9 self-stretch w-auto"
-                onClick={() => navigate("/adminallstreams")}
+
+              <div className="bg-gray_800 flex flex-row gap-2 items-center justify-center mt-6 pl-6 md:pr-10 pr-[73px] sm:px-5 py-2.5 rounded-lg self-stretch w-auto"
+                onClick={() => navigate("/admin-allstreams")}
               >
                 <Img
                   src="images/img_iconsaxboldvideoplay.svg"
@@ -70,10 +74,11 @@ const AdminAddStream = () => {
                   Streams
                 </Text>
               </div>
+
               <div className="flex flex-col gap-9 items-start justify-start md:ml-[0] ml-[26px] mt-9 self-stretch w-auto">
                 <div
                   className="common-pointer flex flex-row gap-2 items-center justify-center self-stretch w-auto"
-                  onClick={() => navigate("/adminticketmanagement")}
+                  onClick={() => navigate("/ticket-management")}
                 >
                   <Img
                     src="images/img_iconsaxboldreceipt1_gray_300.svg"
@@ -89,7 +94,7 @@ const AdminAddStream = () => {
                 </div>
                 <div
                   className="common-pointer flex flex-row gap-2 items-center justify-center self-stretch w-auto"
-                  onClick={() => navigate("/adminusermanagement")}
+                  onClick={() => navigate("/user-management")}
                 >
                   <Img
                     src="images/img_iconsaxboldprofile2user.svg"
@@ -149,8 +154,9 @@ const AdminAddStream = () => {
         
           <li className="py-3 cursor-pointer text-16">
             
-          <div className="bg-gray_800 flex flex-row gap-2 items-center justify-center mt-16 pl-6 md:pr-10 pr-[73px] sm:px-5 py-2.5 rounded-lg self-stretch w-auto">
-                <Img
+          <div className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-0 self-stretch w-auto"
+                onClick={() => navigate("/admin-dashboard")}
+              >                <Img
                   src="images/img_iconsaxboldactivity.svg"
                   className="h-6 w-6"
                   alt="iconsaxboldacti"
@@ -166,7 +172,7 @@ const AdminAddStream = () => {
 
           <li className="py-3 cursor-pointer text-16"> 
           <div className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-6 self-stretch w-auto"
-                onClick={() => navigate("/adminallplays")}
+                onClick={() => navigate("/admin-allplays")}
               >
                 <Img
                   src="images/img_iconsaxboldelement2.svg"
@@ -183,8 +189,8 @@ const AdminAddStream = () => {
           </li>
 
           <li className="py-3 cursor-pointer text-16">
-          <div className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-0 self-stretch w-auto"
-                onClick={() => navigate("/admin-all-streams")}
+          <div className="bg-gray_800 flex flex-row gap-2 items-center justify-center mt-6 pl-6 md:pr-10 pr-[73px] sm:px-5 py-2.5 rounded-lg self-stretch w-auto"
+                onClick={() => navigate("/admin-allstreams")}
               >
                 <Img
                   src="images/img_iconsaxboldvideoplay.svg"
@@ -205,7 +211,7 @@ const AdminAddStream = () => {
           <li className="py-3 cursor-pointer text-16">
               <div
                   className="common-pointer flex flex-row gap-2 items-center justify-center self-stretch w-auto"
-                  onClick={() => navigate("/adminticketmanagement")}
+                  onClick={() => navigate("/ticket-management")}
                 >
                   <Img
                     src="images/img_iconsaxboldreceipt1_gray_300.svg"
@@ -223,7 +229,7 @@ const AdminAddStream = () => {
             <li className="py-3 cursor-pointer text-16">
             <div
                   className="common-pointer flex flex-row gap-2 items-center justify-center self-stretch w-auto"
-                  onClick={() => navigate("/adminusermanagement")}
+                  onClick={() => navigate("/user-management")}
                 >
                   <Img
                     src="images/img_iconsaxboldprofile2user.svg"
