@@ -1,17 +1,19 @@
-import React, { useState } from "react";
-import { CircularProgressbar } from "react-circular-progressbar";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { Button, Img, Input, Line, List, Text } from "UI_Components";
+import { Button, Img, Input, List, Line,Text } from "UI_Components";
 
-import "react-circular-progressbar/dist/styles.css";
 
 import close from "../../../assets/close.svg";
 import  menu from "../../../assets/menu.svg";
+import LineGraph from "Components/Admin/LineGraph";
+import PieChart from "Components/Admin/PieChart";
+
+
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
-  const [active, setActive] = useState("Home");
+  const [active, setActive] = useState('Home');
   const [toggle, setToggle] = useState(false);
 
   return (
@@ -109,7 +111,7 @@ const AdminDashboard = () => {
                   </Text>
                 </div>
               </div>
-              <Line className="bg-gray_800 h-px mt-16 w-full" />
+              {/* <Line className="bg-gray_800 h-px mt-16 w-full" /> */}
               <div className="flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-[63px] self-stretch w-auto">
                 <Img
                   src="images/img_iconsaxboldlogout.svg"
@@ -246,7 +248,7 @@ const AdminDashboard = () => {
                 </div>
             </li>
 
-          <Line className="bg-gray_800 h-px mt-[60px] w-full" />
+          {/* <Line className="bg-gray_800 h-px mt-[60px] w-full" /> */}
 
           <li className="py-3 cursor-pointer text-16">                     
             <div className="flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-8 self-stretch w-auto">
@@ -270,21 +272,37 @@ const AdminDashboard = () => {
 </aside>
 
         
-
-
-
-
-
-
-
-
-
-
-
-          
-          <div className="flex flex-1 flex-col items-center justify-start md:px-5 w-full">
+{/* Navbar Area/Header */}
+          <div className="flex flex-1 flex-col items-center justify-start md:px-5 w-full sm:mt-[-30em]">
             <div className="flex md:flex-col flex-row md:gap-10 items-center justify-between p-7 sm:px-5 w-full">
-              <div className="flex sm:flex-1 sm:flex-col flex-row gap-6 items-center justify-center ml-5 md:ml-[0] self-stretch w-auto sm:w-full">
+              {/* 
+                <div className="flex sm:flex-1 sm:flex-col flex-row gap-6 items-center justify-center ml-5 md:ml-[0] self-stretch w-auto sm:w-full">
+              */}
+              {/* Small and tablet only */}
+              <div className="hidden md:flex flex-row gap-[21px] items-center justify-start mr-5 self-stretch w-auto">
+                <Img
+                  src="images/img_ellipse1.png"
+                  className="h-[61px] md:h-auto rounded-[50%] w-[61px]"
+                  alt="ellipseOne"
+                />
+                <div className="flex flex-col gap-2.5 items-start justify-center self-stretch w-auto">
+                  <Text
+                    className="font-bold text-left text-white_A700 w-auto"
+                    variant="body4"
+                  >
+                    Cameron Williamson
+                  </Text>
+                  <Text
+                    className="not-italic text-gray_300 text-left w-auto"
+                    variant="body5"
+                  >
+                    System administrator
+                  </Text>
+                </div>
+              </div>
+              {/* End */}
+
+              <div className="flex sm:flex-1 flex-row gap-6 items-center justify-center ml-5 md:ml-[0] self-stretch w-auto sm:w-full">
                 <Text
                   className="text-left text-white_A700 w-auto"
                   as="h2"
@@ -315,8 +333,9 @@ const AdminDashboard = () => {
                   size="sm"
                   variant="FillGray800"
                 ></Input>
+
               </div>
-              <div className="flex flex-row gap-[21px] items-center justify-start mr-5 self-stretch w-auto">
+              <div className="md:hidden flex flex-row gap-[21px] items-center justify-start mr-5 self-stretch w-auto">
                 <Img
                   src="images/img_ellipse1.png"
                   className="h-[61px] md:h-auto rounded-[50%] w-[61px]"
@@ -465,333 +484,19 @@ const AdminDashboard = () => {
                     </div>
                   </div>
                 </List>
+{/* End of Navbar area/Header */}
+
                 <div className="flex md:flex-col flex-row font-mulish gap-6 items-center justify-between mt-6 w-full">
-                  <div className="bg-black_900 flex md:flex-1 flex-col items-center justify-start p-[17px] rounded-lg w-[61%] md:w-full">
-                    <div className="flex flex-col items-start justify-start my-[5px] w-[99%] md:w-full">
-                      <div className="flex flex-row sm:gap-10 gap-[300px] items-center justify-start w-[620px] md:w-full">
-                        <Text
-                          className="font-semibold text-left text-white_A700 w-auto"
-                          as="h6"
-                          variant="h6"
-                        >
-                          Sales
-                        </Text>
-                        <div className="flex flex-row font-roboto gap-6 items-center justify-start self-stretch w-auto">
-                          <div className="flex flex-row gap-[21px] items-center justify-center self-stretch w-auto">
-                            <div className="bg-red_900 h-2.5 rounded-[50%] w-2.5"></div>
-                            <Text
-                              className="font-normal not-italic text-left text-white_A700 w-auto"
-                              variant="body4"
-                            >
-                              Ticket sales
-                            </Text>
-                          </div>
-                          <div className="flex flex-row gap-[21px] items-center justify-center self-stretch w-auto">
-                            <div className="bg-light_blue_500 h-2.5 rounded-[50%] w-2.5"></div>
-                            <Text
-                              className="font-normal not-italic text-left text-white_A700 w-auto"
-                              variant="body4"
-                            >
-                              Stream sales
-                            </Text>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="flex md:flex-col flex-row font-roboto gap-4 items-center justify-between mt-6 w-full">
-                        <div className="flex flex-col gap-6 items-start justify-center w-[37px]">
-                          <Text
-                            className="font-normal not-italic text-gray_300 text-left w-auto"
-                            variant="body4"
-                          >
-                            100k
-                          </Text>
-                          <Text
-                            className="font-normal not-italic text-gray_300 text-left w-auto"
-                            variant="body4"
-                          >
-                            80k
-                          </Text>
-                          <Text
-                            className="font-normal not-italic text-gray_300 text-left w-auto"
-                            variant="body4"
-                          >
-                            60k
-                          </Text>
-                          <Text
-                            className="font-normal not-italic text-gray_300 text-left w-auto"
-                            variant="body4"
-                          >
-                            40k
-                          </Text>
-                          <Text
-                            className="font-normal not-italic text-gray_300 text-left w-auto"
-                            variant="body4"
-                          >
-                            20k
-                          </Text>
-                          <Text
-                            className="font-normal not-italic text-gray_300 text-left w-auto"
-                            variant="body4"
-                          >
-                            0k
-                          </Text>
-                        </div>
-                        <div className="flex md:flex-1 flex-col gap-3 items-center justify-start w-[92%] md:w-full">
-                          <Img
-                            src="images/img_vector175.svg"
-                            className="h-px w-auto"
-                            alt="vector175"
-                          />
-                          <div className="md:h-52 sm:h-60 h-[247px] relative w-full">
-                            <div className="absolute bottom-[0] h-[230px] inset-x-[0] mx-auto w-full">
-                              <div className="bg-light_blue_500 h-6 mb-[-2.5px] ml-auto mr-[177px] rounded-[12px] w-[23px] z-[1]"></div>
-                              <div className="h-52 sm:h-60 mt-auto mx-auto w-full">
-                                <div className="absolute flex flex-col inset-x-[0] items-center justify-start mx-auto top-[0] w-full">
-                                  <div className="flex flex-col gap-[51px] items-center justify-start w-full">
-                                    <Img
-                                      src="images/img_vector175.svg"
-                                      className="h-px w-auto"
-                                      alt="vector176"
-                                    />
-                                    <Img
-                                      src="images/img_vector175.svg"
-                                      className="h-px w-auto"
-                                      alt="vector177"
-                                    />
-                                  </div>
-                                </div>
-                                <div
-                                  className="absolute bg-cover bg-no-repeat flex flex-col h-full inset-[0] items-center justify-center m-auto pt-[18px] w-full"
-                                  style={{
-                                    backgroundImage:
-                                      "url('images/img_group21.png')",
-                                  }}
-                                >
-                                  <div
-                                    className="bg-cover bg-no-repeat flex sm:flex-col flex-row sm:gap-5 h-[190px] items-start justify-center pt-[68px] md:px-10 sm:px-5 px-[68px] w-full"
-                                    style={{
-                                      backgroundImage:
-                                        "url('images/img_group22.png')",
-                                    }}
-                                  >
-                                    <div className="sm:h-24 md:h-[100px] h-[118px] sm:ml-[0] ml-[41px] sm:mt-0 mt-1 relative w-[6%] sm:w-full">
-                                      <Line className="absolute bg-red_900 bottom-[0] h-24 inset-x-[0] mx-auto w-px" />
-                                      <div className="absolute bg-red_900 border border-red_900 border-solid h-6 inset-x-[0] mx-auto rounded-[12px] top-[0] w-[23px]"></div>
-                                    </div>
-                                    <div className="h-[38px] ml-0.5 sm:ml-[0] mr-[247px] relative rotate-[-90deg] w-[28%] sm:w-full">
-                                      <div className="h-[38px] m-auto w-full">
-                                        <div className="absolute h-[38px] inset-[0] justify-center m-auto rotate-[-90deg] shadow-bs1 w-full"></div>
-                                        <Img
-                                          src="images/img_offer.svg"
-                                          className="absolute h-3.5 inset-y-[0] left-[0] my-auto rotate-[-45deg] rounded-[50%] w-3.5"
-                                          alt="offer"
-                                        />
-                                      </div>
-                                      <Button
-                                        className="absolute cursor-pointer font-normal h-full inset-y-[0] min-w-[112px] my-auto not-italic right-[0] text-base text-center text-white_A700 w-auto"
-                                        shape="RoundedBorder4"
-                                        size="sm"
-                                        variant="FillRed900"
-                                      >
-                                        KES 38,000
-                                      </Button>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div className="absolute h-[38px] right-[9%] rotate-[-90deg] top-[0] w-[21%]">
-                              <div className="h-[38px] m-auto w-full">
-                                <div className="absolute h-[38px] inset-[0] justify-center m-auto rotate-[-90deg] shadow-bs1 w-full"></div>
-                                <Img
-                                  src="images/img_offer_light_blue_500.svg"
-                                  className="absolute h-3.5 inset-y-[0] left-[0] my-auto rotate-[-45deg] rounded-[50%] w-3.5"
-                                  alt="offer_One"
-                                />
-                              </div>
-                              <Button
-                                className="absolute cursor-pointer font-normal h-full inset-y-[0] min-w-[112px] my-auto not-italic right-[0] text-base text-center text-white_A700 w-auto"
-                                shape="RoundedBorder4"
-                                size="sm"
-                                variant="FillLightblue500"
-                              >
-                                KES 80,000
-                              </Button>
-                            </div>
-                            <Line className="absolute bg-light_blue_500 bottom-[0] h-52 right-[33%] w-px" />
-                          </div>
-                        </div>
-                      </div>
-                      <div className="flex sm:flex-col flex-row font-mulish sm:gap-10 gap-16 items-center justify-center ml-auto mt-3 w-[589px] sm:w-full">
-                        <Text
-                          className="font-normal not-italic text-black_900_02 text-left w-auto"
-                          variant="body4"
-                        >
-                          Sun
-                        </Text>
-                        <Text
-                          className="font-normal not-italic text-black_900_02 text-left w-auto"
-                          variant="body4"
-                        >
-                          Mon
-                        </Text>
-                        <Text
-                          className="font-normal not-italic text-black_900_02 text-left w-auto"
-                          variant="body4"
-                        >
-                          Tue
-                        </Text>
-                        <Text
-                          className="font-normal not-italic text-black_900_02 text-left w-auto"
-                          variant="body4"
-                        >
-                          Wed
-                        </Text>
-                        <Text
-                          className="font-normal not-italic text-black_900_02 text-left w-auto"
-                          variant="body4"
-                        >
-                          Thur
-                        </Text>
-                        <Text
-                          className="font-normal not-italic text-black_900_02 text-left w-auto"
-                          variant="body4"
-                        >
-                          Fri
-                        </Text>
-                        <Text
-                          className="font-normal not-italic text-black_900_02 text-left w-auto"
-                          variant="body4"
-                        >
-                          Sat
-                        </Text>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="bg-black_900 flex md:flex-1 flex-col font-roboto gap-4 items-start justify-start p-4 rounded w-[37%] md:w-full">
-                    <div className="flex flex-col gap-4 items-start justify-center ml-2 md:ml-[0] self-stretch w-auto">
-                      <Text
-                        className="font-bold text-left text-white_A700 w-auto"
-                        as="h6"
-                        variant="h6"
-                      >
-                        Order/Ticket status
-                      </Text>
-                      <div className="flex flex-row gap-12 items-center justify-center self-stretch w-auto">
-                        <div className="h-[180px] relative w-[180px]">
-                          <div className="!w-[180px] h-[180px] m-auto overflow-visible">
-                            <CircularProgressbar
-                              className="!w-[180px] h-[180px] m-auto overflow-visible"
-                              value={42}
-                              strokeWidth={16}
-                              styles={{
-                                trail: { strokeWidth: 17, stroke: "#00acee" },
-                                path: {
-                                  strokeLinecap: "square",
-                                  height: "100%",
-                                  transformOrigin: "center",
-                                  transform: "rotate(45deg)",
-                                  stroke: "#c71a1a",
-                                },
-                              }}
-                            ></CircularProgressbar>
-                          </div>
-                          <div className="!w-[180px] absolute h-[180px] inset-[0] justify-center m-auto overflow-visible">
-                            <CircularProgressbar
-                              className="!w-[180px] absolute h-[180px] inset-[0] justify-center m-auto overflow-visible"
-                              value={24}
-                              counterClockwise
-                              strokeWidth={17}
-                              styles={{
-                                trail: { strokeWidth: 16, stroke: "#c71a1a" },
-                                path: {
-                                  strokeLinecap: "square",
-                                  height: "100%",
-                                  transformOrigin: "center",
-                                  transform: "rotate(45deg)",
-                                  stroke: "#0b0c0f",
-                                },
-                              }}
-                            ></CircularProgressbar>
-                          </div>
-                        </div>
-                        <div className="flex flex-col gap-6 items-start justify-center self-stretch w-auto">
-                          <div className="flex flex-row gap-[21px] items-center justify-center self-stretch w-auto">
-                            <div className="bg-red_900 h-2.5 rounded-[50%] w-2.5"></div>
-                            <Text
-                              className="font-normal not-italic text-left text-white_A700 w-auto"
-                              variant="body4"
-                            >
-                              Sold
-                            </Text>
-                          </div>
-                          <div className="flex flex-row gap-[21px] items-center justify-center self-stretch w-auto">
-                            <div className="bg-light_blue_500 h-2.5 rounded-[50%] w-2.5"></div>
-                            <Text
-                              className="font-normal not-italic text-left text-white_A700 w-auto"
-                              variant="body4"
-                            >
-                              Reserved
-                            </Text>
-                          </div>
-                          <div className="flex flex-row gap-[21px] items-center justify-center self-stretch w-auto">
-                            <div className="bg-black_900_01 h-2.5 rounded-[50%] w-2.5"></div>
-                            <Text
-                              className="font-normal not-italic text-left text-white_A700 w-auto"
-                              variant="body4"
-                            >
-                              Available
-                            </Text>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="bg-black_900_01 flex flex-col gap-4 items-start justify-center ml-2 md:ml-[0] pl-4 sm:pr-5 pr-8 py-2 rounded-lg self-stretch w-auto">
-                      <Text
-                        className="font-normal not-italic text-left text-white_A700 w-auto"
-                        as="h5"
-                        variant="h5"
-                      >
-                        Comparison
-                      </Text>
-                      <div className="flex flex-col gap-3 items-start justify-center self-stretch w-auto">
-                        <div className="flex flex-row gap-[39px] items-center justify-start self-stretch w-auto">
-                          <Text
-                            className="not-italic text-gray_300 text-left w-auto"
-                            variant="body5"
-                          >
-                            Last Week
-                          </Text>
-                          <Text
-                            className="font-bold text-left text-white_A700 w-auto"
-                            variant="body4"
-                          >
-                            150 tickets sold
-                          </Text>
-                        </div>
-                        <div className="flex flex-row gap-10 items-center justify-start self-stretch w-auto">
-                          <Text
-                            className="not-italic text-gray_300 text-left w-auto"
-                            variant="body5"
-                          >
-                            This Week
-                          </Text>
-                          <Text
-                            className="font-bold text-left text-white_A700 w-auto"
-                            variant="body4"
-                          >
-                            800 tickets sold
-                          </Text>
-                          <Text
-                            className="not-italic text-left text-light_blue_500 w-auto"
-                            variant="body5"
-                          >
-                            +4.5%
-                          </Text>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+
+
+
+
+{/*Start of Bar Graph */}
+  <LineGraph/>
+{/* End Of Bar Graph Section*/}
+{/* Start Of PieChart */}
+<PieChart/>
+{/* EndOfPieChart */}
                 </div>
                 <div className="font-roboto h-[372px] md:h-[394px] sm:h-[912px] mt-[23px] relative w-full">
                   <div className="absolute bg-black_900 flex flex-col h-full inset-[0] items-start justify-center m-auto py-[17px] rounded w-full">
@@ -944,7 +649,7 @@ const AdminDashboard = () => {
                             variant="body4"
                           ></Text>
                         </div>
-                        <Line className="bg-gray_800 h-px w-full" />
+                        {/* <Line className="bg-gray_800 h-px w-full" /> */}
                       </div>
                       <div className="flex flex-col gap-4 items-center justify-start my-0 self-stretch w-auto md:w-full">
                         <div className="flex md:flex-col flex-row md:gap-5 items-start justify-start w-[96%] md:w-full">
@@ -977,7 +682,7 @@ const AdminDashboard = () => {
                             variant="body4"
                           ></Text>
                         </div>
-                        <Line className="bg-gray_800 h-px w-full" />
+                        {/* <Line className="bg-gray_800 h-px w-full" /> */}
                       </div>
                       <div className="flex flex-col gap-4 items-center justify-start my-0 self-stretch w-auto md:w-full">
                         <div className="flex md:flex-col flex-row md:gap-5 items-start justify-start w-[96%] md:w-full">
@@ -1010,11 +715,13 @@ const AdminDashboard = () => {
                             variant="body4"
                           ></Text>
                         </div>
-                        <Line className="bg-gray_800 h-px w-full" />
+                        {/* <Line className="bg-gray_800 h-px w-full" /> */}
                       </div>
                     </List>
                   </div>
                 </div>
+              
+              
               </div>
             </div>
           </div>

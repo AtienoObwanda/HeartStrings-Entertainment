@@ -129,7 +129,7 @@ const AdminTicketManagement = () => {
 
 
             {/* Display Medium Screens  */}
-            <aside className="hidden md:flex justify-start md:px-5 w-[247px]">
+<aside className="hidden md:flex justify-start md:px-5 w-[247px]">
 
 <div className="flex flex-col justify-start mb-[476px] mt-12 mx-auto w-[81%]">
 
