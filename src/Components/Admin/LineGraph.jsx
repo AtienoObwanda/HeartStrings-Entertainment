@@ -35,7 +35,7 @@ ChartJS.register(
 
   export const options = {
     responsive: true,
-    tension: 0.3,
+    tension: 0.01,
     scales: {
       y: {
         grid: {
@@ -132,7 +132,17 @@ ChartJS.register(
             return label;
           }
         }
-      }
+      },
+      legend: {
+        position: 'top',
+        labels: {
+          usePointStyle: true,
+          // pointStyleWidth:10,
+          // pointStyleHeight:8,
+          padding:30,
+        },
+      },
+
     },
   };
   
