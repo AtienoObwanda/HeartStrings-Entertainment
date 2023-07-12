@@ -66,7 +66,7 @@ const PieChart = () => {
                             
                           </div>
                         </div>
-                        <div className="flex flex-col gap-6 items-start justify-center self-stretch w-auto">
+                        <div className="sm:hidden flex flex-col gap-6 items-start justify-center self-stretch w-auto">
                           <div className="flex flex-row gap-[21px] items-center justify-center self-stretch w-auto">
                             <div className="bg-red_900 h-2.5 rounded-[50%] w-2.5"></div>
                             <TextTitle

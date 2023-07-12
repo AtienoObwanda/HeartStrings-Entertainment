@@ -9,6 +9,7 @@ import  menu from "../../../assets/menu.svg";
 import LineGraph from "Components/Admin/LineGraph";
 import PieChart from "Components/Admin/PieChart";
 import ListData from "Components/Admin/ListData";
+import DashboardTable from "Components/Admin/DashboardTable";
 
 
 
@@ -274,7 +275,7 @@ const AdminDashboard = () => {
 
         
 {/* Navbar Area/Header */}
-          <div className="flex flex-1 flex-col items-center justify-start md:px-5 w-full sm:mt-[-30em]">
+          <div className="flex flex-1 flex-col items-center justify-start md:px-5 w-full md:mt-[-30em] sm:mt-[-30em]">
             <div className="flex md:flex-col flex-row md:gap-10 items-center justify-between p-7 sm:px-5 w-full">
               {/* 
                 <div className="flex sm:flex-1 sm:flex-col flex-row gap-6 items-center justify-center ml-5 md:ml-[0] self-stretch w-auto sm:w-full">
@@ -360,16 +361,11 @@ const AdminDashboard = () => {
             </div>
             <div className="flex flex-col items-center justify-start p-[47px] md:px-10 sm:px-5 w-full">
               <div className="flex flex-col items-center justify-start mb-[74px] w-full">
-                
                 {/* ListData */}
                 <ListData/>
 {/* End of Navbar area/Header */}
 
                 <div className="flex md:flex-col flex-row font-mulish gap-6 items-center justify-between mt-6 w-full">
-
-
-
-
 {/*Start of Bar Graph */}
   <LineGraph/>
 {/* End Of Bar Graph Section*/}
@@ -377,227 +373,31 @@ const AdminDashboard = () => {
 <PieChart/>
 {/* EndOfPieChart */}
                 </div>
-                <div className="font-roboto h-[372px] md:h-[394px] sm:h-[912px] mt-[23px] relative w-full">
+                <div className="font-roboto h-[372px] md:h-[394px] sm:h-[112px] mt-[23px] relative w-full">
                   <div className="absolute bg-black_900 flex flex-col h-full inset-[0] items-start justify-center m-auto py-[17px] rounded w-full">
                     <Text
-                      className="font-bold ml-6 md:ml-[0] mt-[5px] text-left text-white_A700 w-auto"
+                      className="sm:hidden font-bold ml-6 md:ml-[0] mt-[5px] text-left text-white_A700 w-auto"
                       as="h6"
                       variant="h6"
                     >
                       Recent activities
                     </Text>
-                    <div className="bg-gray_800 flex flex-row md:gap-10 items-start justify-between mt-6 p-2.5 w-full">
-                      <Text
-                        className="font-normal ml-[13px] not-italic text-left text-white_A700 w-auto"
-                        variant="body4"
-                      >
-                        Activity ID
-                      </Text>
-                      <Text
-                        className="font-normal mt-0.5 not-italic text-left text-white_A700 w-auto"
-                        variant="body4"
-                      >
-                        Event type
-                      </Text>
-                      <Text
-                        className="font-normal not-italic text-left text-white_A700 w-auto"
-                        variant="body4"
-                      >
-                        User ID
-                      </Text>
-                      <Text
-                        className="font-normal mt-0.5 not-italic text-left text-white_A700 w-auto"
-                        variant="body4"
-                      >
-                        User type
-                      </Text>
-                      <Text
-                        className="font-normal mr-3 not-italic text-left text-white_A700 w-auto"
-                        variant="body4"
-                      >
-                        Date and time
-                      </Text>
-                    </div>
-                    <div className="flex sm:flex-col flex-row md:gap-10 gap-[480px] items-center justify-between ml-6 md:ml-[0] mt-[204px] self-stretch w-auto md:w-full">
-                      <div className="flex flex-row gap-6 items-center justify-center self-stretch w-auto">
-                        <Text
-                          className="font-normal not-italic text-left text-white_A700 w-auto"
-                          variant="body4"
-                        >
-                          Results per page
-                        </Text>
-                        <div className="bg-red_900 flex flex-row gap-6 items-center justify-center px-2.5 py-[5px] rounded self-stretch w-auto">
-                          <Text
-                            className="font-normal not-italic text-left text-white_A700 w-auto"
-                            variant="body4"
-                          >
-                            3
-                          </Text>
-                          <Img
-                            src="images/img_iconsax_bold_arrowdown2.svg"
-                            className="h-6 w-6"
-                            alt="iconsaxboldarro"
-                          />
-                        </div>
-                      </div>
-                      <div className="flex flex-row gap-4 items-center justify-center self-stretch w-auto">
-                        <Img
-                          src="images/img_iconsaxboldarrowleft2.svg"
-                          className="h-6 w-6"
-                          alt="iconsaxboldarro_One"
-                        />
-                        <Text
-                          className="font-normal not-italic text-left text-white_A700 w-auto"
-                          variant="body4"
-                        >
-                          Previous
-                        </Text>
-                        <Text
-                          className="font-normal not-italic text-gray_800 text-left w-auto"
-                          variant="body4"
-                        >
-                          |
-                        </Text>
-                        <Button
-                          className="cursor-pointer font-normal min-w-[29px] not-italic text-base text-center text-white_A700 w-auto"
-                          shape="RoundedBorder4"
-                          size="sm"
-                          variant="FillRed900"
-                        >
-                          3
-                        </Button>
-                        <Text
-                          className="font-normal not-italic text-left text-white_A700 w-auto"
-                          variant="body4"
-                        >
-                          out of 3
-                        </Text>
-                        <Text
-                          className="font-normal not-italic text-gray_800 text-left w-auto"
-                          variant="body4"
-                        >
-                          |
-                        </Text>
-                        <Text
-                          className="font-normal not-italic text-left text-white_A700 w-auto"
-                          variant="body4"
-                        >
-                          Next
-                        </Text>
-                        <Img
-                          src="images/img_iconsaxboldarrowright2.svg"
-                          className="h-6 w-6"
-                          alt="iconsaxboldarro_Two"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="absolute bottom-[19%] flex flex-col inset-x-[0] items-center justify-start mx-auto self-stretch w-auto">
-                    <List
-                      className="flex-col gap-4 grid items-start self-stretch w-auto md:w-full"
-                      orientation="vertical"
+                    <Text
+                      className="hidden md:hidden lg:hidden sm:block text-sm font-bold ml-6 md:ml-[0] mt-[5px] text-center text-white_A700 w-auto"
+                      as="h6"
+                      variant="h6"
                     >
-                      <div className="flex flex-col gap-4 items-center justify-start my-0 self-stretch w-auto md:w-full">
-                        <div className="flex md:flex-col flex-row md:gap-5 items-start justify-start w-[96%] md:w-full">
-                          <Text
-                            className="font-normal not-italic text-left text-white_A700 w-auto"
-                            variant="body4"
-                          >
-                            100
-                          </Text>
-                          <Text
-                            className="font-normal md:ml-[0] ml-[216px] not-italic text-left text-white_A700 w-auto"
-                            variant="body4"
-                          >
-                            LOG_IN
-                          </Text>
-                          <Text
-                            className="font-normal ml-48 md:ml-[0] not-italic text-left text-white_A700 w-auto"
-                            variant="body4"
-                          >
-                            HS 41723
-                          </Text>
-                          <Text
-                            className="font-normal md:ml-[0] ml-[153px] not-italic text-left text-white_A700 w-auto"
-                            variant="body4"
-                          >
-                            Viewer
-                          </Text>
-                          <Text
-                            className="font-normal md:ml-[0] ml-[133px] not-italic text-left text-white_A700 w-auto"
-                            variant="body4"
-                          ></Text>
-                        </div>
-                        {/* <Line className="bg-gray_800 h-px w-full" /> */}
-                      </div>
-                      <div className="flex flex-col gap-4 items-center justify-start my-0 self-stretch w-auto md:w-full">
-                        <div className="flex md:flex-col flex-row md:gap-5 items-start justify-start w-[96%] md:w-full">
-                          <Text
-                            className="font-normal not-italic text-left text-white_A700 w-auto"
-                            variant="body4"
-                          >
-                            101
-                          </Text>
-                          <Text
-                            className="font-normal md:ml-[0] ml-[218px] not-italic text-left text-white_A700 w-auto"
-                            variant="body4"
-                          >
-                            LOG_OUT
-                          </Text>
-                          <Text
-                            className="font-normal ml-44 md:ml-[0] not-italic text-left text-white_A700 w-auto"
-                            variant="body4"
-                          >
-                            HS 51823
-                          </Text>
-                          <Text
-                            className="font-normal md:ml-[0] ml-[153px] not-italic text-left text-white_A700 w-auto"
-                            variant="body4"
-                          >
-                            Admin
-                          </Text>
-                          <Text
-                            className="font-normal md:ml-[0] ml-[135px] not-italic text-left text-white_A700 w-auto"
-                            variant="body4"
-                          ></Text>
-                        </div>
-                        {/* <Line className="bg-gray_800 h-px w-full" /> */}
-                      </div>
-                      <div className="flex flex-col gap-4 items-center justify-start my-0 self-stretch w-auto md:w-full">
-                        <div className="flex md:flex-col flex-row md:gap-5 items-start justify-start w-[96%] md:w-full">
-                          <Text
-                            className="font-normal not-italic text-left text-white_A700 w-auto"
-                            variant="body4"
-                          >
-                            102
-                          </Text>
-                          <Text
-                            className="font-normal md:ml-[0] ml-[216px] not-italic text-left text-white_A700 w-auto"
-                            variant="body4"
-                          >
-                            UPDATE
-                          </Text>
-                          <Text
-                            className="font-normal md:ml-[0] ml-[186px] not-italic text-left text-white_A700 w-auto"
-                            variant="body4"
-                          >
-                            HS 41529
-                          </Text>
-                          <Text
-                            className="font-normal md:ml-[0] ml-[153px] not-italic text-left text-white_A700 w-auto"
-                            variant="body4"
-                          >
-                            Viewer
-                          </Text>
-                          <Text
-                            className="font-normal md:ml-[0] ml-[133px] not-italic text-left text-white_A700 w-auto"
-                            variant="body4"
-                          ></Text>
-                        </div>
-                        {/* <Line className="bg-gray_800 h-px w-full" /> */}
-                      </div>
-                    </List>
+                      Use your Desktop or Tablet to see Recent Activities
+                    </Text>
+
+
+                    {/* Table */}
+                    <DashboardTable/>
+
+                   
                   </div>
+                  
+                  
                 </div>
               
               

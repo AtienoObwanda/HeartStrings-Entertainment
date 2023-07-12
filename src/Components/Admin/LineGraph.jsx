@@ -181,8 +181,16 @@ ChartJS.register(
 const LineGraph = () => {
   return (
 <>
-<div className="bg-black_900 flex md:flex-1 flex-col items-center justify-start p-[17px] rounded-lg w-[61%] md:w-full">
-                    <div className="flex flex-col items-start justify-start my-[5px] w-[99%] md:w-full">
+                    
+<div className=" bg-black_900 flex md:flex-1 flex-col items-center justify-start p-[17px] rounded-lg w-[61%] md:w-full">
+                  <Text
+                      className="hidden md:hidden lg:hidden sm:block text-sm font-bold ml-6 md:ml-[0] mt-[5px] text-center text-white_A700 w-auto"
+                      as="h6"
+                      variant="h6"
+                    >
+                      Use your Desktop or Tablet to see Sales Chart
+                    </Text>
+                    <div className="sm:hidden  flex flex-col items-start justify-start my-[5px] w-[99%] md:w-full">
                       <div className="flex flex-row sm:gap-10 gap-[300px] items-center justify-start w-[620px] md:w-full">
                         <Text
                           className="font-semibold text-left text-white_A700 w-auto"
