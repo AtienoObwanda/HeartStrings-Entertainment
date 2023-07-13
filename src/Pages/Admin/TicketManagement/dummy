@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {TiExport} from 'react-icons/ti';
-
 
 import { Button, Img, Input, Line, List, Text } from "UI_Components";
 import UserManagement from "Components/Admin/UserManagement";
@@ -365,20 +363,21 @@ const AdminUserManagement = () => {
 
             <div className="md:h-[1305px] sm:h-[600px] h-[850px] relative w-[92%] md:w-full">
                 <div className="font-roboto h-full md:h-[394px] sm:h-[112px] mt-[23px] relative w-full">
-                  <div className="absolute bg-black_900 flex flex-col h-full inset-[0] items-start justify-start m-auto py-[17px] rounded w-full">
+                  <div className="absolute bg-black_900 flex flex-col h-full inset-[0] items-start justify-center m-auto py-[17px] rounded w-full">
                     
                   <div className="sm:hidden flex flex-row md:gap-10 items-center justify-between w-[96%] md:w-full mb-4">
                     <Text
-                      className="font-bold text-left text-white_A700 w-auto ml-4"
+                      className="font-bold text-left text-white_A700 w-auto"
                       as="h6"
                       variant="h6"
                     >
                       Users
                     </Text>
                     <div className="bg-red_900 flex flex-row gap-2 items-center justify-center sm:pl-5 pl-6 pr-3 py-2.5 rounded-lg self-stretch w-auto">
-                      <TiExport
-                        className="h-6 w-6 text-white_A700"
-                        alt="Export"
+                      <Img
+                        src="images/img_iconsaxbolddocumentupload.svg"
+                        className="h-6 w-6"
+                        alt="iconsaxbolddocu"
                       />
                       <Text
                         className="font-normal not-italic text-left text-white_A700 w-auto"

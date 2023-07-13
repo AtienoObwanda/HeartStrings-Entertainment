@@ -359,6 +359,7 @@ const AdminDashboard = () => {
                 </div>
               </div>
             </div>
+            
             <div className="flex flex-col items-center justify-start p-[47px] md:px-10 sm:px-5 w-full">
               <div className="flex flex-col items-center justify-start mb-[74px] w-full">
                 {/* ListData */}
@@ -373,10 +374,12 @@ const AdminDashboard = () => {
 <PieChart/>
 {/* EndOfPieChart */}
                 </div>
-                <div className="font-roboto h-[372px] md:h-[394px] sm:h-[112px] mt-[23px] relative w-full">
-                  <div className="absolute bg-black_900 flex flex-col h-full inset-[0] items-start justify-center m-auto py-[17px] rounded w-full">
+                <div className="md:h-[1305px] sm:h-[600px] h-[850px] relative w-[92%] md:w-full">
+
+                <div className="font-roboto h-full md:h-[394px] sm:h-[112px] mt-[23px] relative w-full">
+                  <div className="absolute bg-black_900 flex flex-col h-full inset-[0] items-start justify-start m-auto py-[17px] rounded w-full">
                     <Text
-                      className="sm:hidden font-bold ml-6 md:ml-[0] mt-[5px] text-left text-white_A700 w-auto"
+                      className="sm:hidden font-bold ml-6 md:ml-[0] mt-[5px] text-left text-white_A700 w-auto mb-4"
                       as="h6"
                       variant="h6"
                     >
@@ -399,7 +402,8 @@ const AdminDashboard = () => {
                   
                   
                 </div>
-              
+                </div>
+
               
               </div>
             </div>

@@ -51,9 +51,9 @@ const DashboardTable = () => {
                 <th scope="col" class="px-6 py-3">
                     Event Type
                 </th>
-                <th scope="col" class="px-6 py-3">
+                {/* <th scope="col" class="px-6 py-3">
                     Category
-                </th>
+                </th> */}
                 <th scope="col" class="px-6 py-3">
                     User ID
                 </th>
