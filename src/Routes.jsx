@@ -49,6 +49,7 @@ const CreditCardPayment = React.lazy(() => import("Pages/Users/Payments/CreditCa
 const PayNow = React.lazy(() => import("Pages/Users/Payments/PayNow"));
 const RentingPlayPayment = React.lazy(() => import("Pages/Users/Payments/RentingPlayPayment"));
 
+const Calendar=React.lazy(() => import("Pages/Users/BuyTickets/Calendar"))
 
 // Admin Pages
 const AdminSignUp = React.lazy(() => import("Pages/Admin/Auth/AdminSignUp"));
@@ -73,6 +74,8 @@ const ProjectRoutes = () => {
       <Router>
         <Routes>
           {/* General Routes */}
+
+          <Route path='/cal' element={<Calendar/>}/>
           <Route path="/" element={<HomePage />} />
           <Route path="*" element={<NotFound />} />
           <Route path="/about-us" element={<AboutUs />} />
@@ -115,7 +118,7 @@ const ProjectRoutes = () => {
           {/* Tickets */}
           {/* ***************************************8 */}
           <Route path="/buying-tickets" element={<BuyingTickets />} />
-          <Route path="/buying-ticket" element={<BuyingTicket />} />
+          <Route path="/buying-ticket" element={<BuyingTicket />} /> {/*Actual ticket details page */}
           {/* ***************************************8 */}
 
           {/* Payments */}
