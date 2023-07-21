@@ -36,7 +36,7 @@ const TheatrePlays = () => {
               {/* IMg */}
               <div className="mb-[40px] flex sm:flex-1 flex-col h-[560px] sm:h-auto items-center justify-start w-[560px] sm:w-full">
                   <Img
-                    src="images/img_rectangle4.png"
+                    src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927562/HeartStrings/Heartstrings_Ent_KE_deny_zk8lqw.png"
                     className="h-[560px] md:h-auto md:ml-[20px] object-cover rounded-lg w-[560px] sm:w-full"
                     alt="Heartstrings entertainment Play poster"
                   />
@@ -64,7 +64,7 @@ const TheatrePlays = () => {
                       <div className="flex flex-col gap-2 items-start justify-center self-stretch w-auto">
                         <div className="flex flex-row gap-2 items-start justify-start self-stretch w-auto">
                           <Img
-                            src="images/img_materialsymbol.svg"
+                            src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927662/HeartStrings/SVG/img_materialsymbol_rcrxkq.svg"
                             className="h-6 w-6"
                             alt="materialsymbol_One"
                           />
@@ -86,7 +86,7 @@ const TheatrePlays = () => {
 
                         <div className="flex flex-row gap-2 items-start justify-start self-stretch w-auto">
                           <Img
-                            src="images/img_materialsymbolslocationon.svg"
+                            src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927662/HeartStrings/SVG/img_materialsymbolslocationon_vleymq.svg"
                             className="h-6 w-6"
                             alt="materialsymbols"
                           />
@@ -105,8 +105,13 @@ const TheatrePlays = () => {
                     </div>
                     <ColumnPrice
                     className="bg-black_900 border-2 border-red_900 border-solid flex flex-col gap-2.5 items-center justify-center px-5 py-2.5 rounded-lg self-stretch w-auto sm:w-full"
-                    price="We’ve got a special offer for you: BOGOF show @ 3pm on Sat 1st . KES 1,000"
+                    price="Price 1: KES 1000
+                    <br/>
+                    Price 2: KES 1500
+                    <br/>
+                    Price 3: KES 2000"
                   />
+                  
                     <Button
                       className="md:hidden  mt-4 mb-4 cursor-pointer font-bold min-w-[149px] text-center text-white_A700 text-xl w-auto"
                       shape="RoundedBorder8"

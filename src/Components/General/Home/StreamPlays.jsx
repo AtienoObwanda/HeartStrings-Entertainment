@@ -38,7 +38,8 @@ const StreamPlays = () => {
               </div>
               <StreamCards
                 className="bg-black_900_01 flex flex-col gap-4 items-center justify-start p-4 rounded-lg w-full"
-                rectangleeight="images/img_rectangle8_191x332.png"
+                rectangleeight="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927558/HeartStrings/Heartstrings_Ent_KE_2_kb2kdv.png"
+                // rectangleeight="images/img_rectangle8_191x332.png"
               />
               <StreamCards
                 className="bg-black_900_01 flex flex-col gap-4 items-center justify-start p-4 rounded-lg w-full"

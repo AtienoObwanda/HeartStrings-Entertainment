@@ -9,7 +9,7 @@ const HeroSection = () => {
     <div className="h-[820px] md:px-5 relative w-full">
   <div style={{ maxHeight: '760px', height: '100%', overflow: 'hidden' }}>
     <Img
-      src="images/img_c2p60a0o1.png"
+      src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689932071/HeartStrings/SVG/HeartStringHeroPoster.webp"
       className="h-full m-auto object-cover w-full"
       alt="c2p60a0oOne"
     />
