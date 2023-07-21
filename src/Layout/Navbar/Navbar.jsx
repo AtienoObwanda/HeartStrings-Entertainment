@@ -14,8 +14,8 @@ const Navbar = (props) => {
     <header className={props.className}>
     <nav className="mt-2 w-full flex justify-between items-center navbar">
     <img  
-      src="images/img_dummylogo02.svg"
-      className="h-14 md:ml-[0] ml-[150px] my-2 w-auto"
+      src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689933646/HeartStrings/logo/HeartStringsLogo.png"
+      className="h-40 md:ml-[0] ml-[150px] my-2 w-auto"
       alt="Heart Strings Entertainment logo" 
       />
         {/* Display on Large Screens  */}

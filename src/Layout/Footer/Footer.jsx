@@ -56,8 +56,8 @@ const Footer = (props) => {
               </div>
 
               <Img
-                src="images/img_dummylogo02.svg"
-                className="justify-center h-14 w-[135px]"
+                src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689933646/HeartStrings/logo/HeartStringsLogo.png"
+                className="justify-center h-40 w-[135px]"
                 alt="Heartstring Entertainment Footer logo"
               />
             
