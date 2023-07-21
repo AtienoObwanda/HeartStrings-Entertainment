@@ -4,6 +4,13 @@ import ColumnPrice from "UI_Components/ColumnPrice/ColumnPrice";
 
 
 const TheatrePlays = () => {
+  const prices = [
+    "THUR: BOGOF",
+    "FRI : 20% OFF",
+    "Students : 10% OFF",
+    // Add more items here if needed
+  ];
+
   return (
     <>
       {/* Plays At The Theatre Section */}
@@ -95,7 +102,9 @@ const TheatrePlays = () => {
                             <Text
                               className="font-normal not-italic text-gray_300 text-left w-auto"
                               variant="body4"
-                            >Kenya Cinema</Text>
+                            >Kenya Cinema</Text>  <a href="/map" className="text-white_A700 underline">
+                            View Map
+                          </a>
                           </div>
 
                         </div>
@@ -104,12 +113,8 @@ const TheatrePlays = () => {
                       </div>
                     </div>
                     <ColumnPrice
-                    className="bg-black_900 border-2 border-red_900 border-solid flex flex-col gap-2.5 items-center justify-center px-5 py-2.5 rounded-lg self-stretch w-auto sm:w-full"
-                    price="Price 1: KES 1000
-                    <br/>
-                    Price 2: KES 1500
-                    <br/>
-                    Price 3: KES 2000"
+                    className="bg-black_900 border-2 border-red_900 border-solid flex flex-col gap-2.5 items-left justify-left px-5 py-2.5 rounded-lg self-stretch w-auto sm:w-full"
+                    items={prices}
                   />
                   
                     <Button

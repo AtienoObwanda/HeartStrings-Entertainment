@@ -86,6 +86,7 @@ const ProjectRoutes = () => {
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
 
           {/* Content Routes */}
+          <Route path="/all-plays" element={<AllStreams />} />
           <Route path="/play-details" element={<PlayDetails />} />
           <Route path="/stream-details" element={<StreamDetails />} />
           <Route path="/all-streams" element={<AllStreams />} />
@@ -156,3 +157,7 @@ const ProjectRoutes = () => {
   );
 };
 export default ProjectRoutes;
+
+
+
+// onClick={() => navigate("/all-streams")}

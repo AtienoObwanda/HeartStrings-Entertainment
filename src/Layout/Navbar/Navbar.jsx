@@ -16,16 +16,17 @@ const Navbar = (props) => {
     <img  
       src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689933646/HeartStrings/logo/HeartStringsLogo.png"
       className="h-40 md:ml-[0] ml-[150px] my-2 w-auto"
-      alt="Heart Strings Entertainment logo" 
+      alt="Heart Strings Entertainment logo"
+      onClick={() => navigate("/")} 
       />
         {/* Display on Large Screens  */}
         <div className="md:hidden flex gap-8 items-center justify-center mr-[100px] ml-[411px] mr-[150px] mt-4 my-4 self-stretch w-auto">
             <Button
                         className="common-pointer cursor-pointer flex items-center justify-center min-w-[150px] w-auto"
-                        onClick={() => navigate("/buyingtickets")}
+                        onClick={() => navigate("/all-plays")}
                         rightIcon={
                         <Img
-                            src="images/img_materialsymbolsarrowoutward.svg"
+                            src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927662/HeartStrings/SVG/img_materialsymbolsarrowoutward_dxpbee.svg"
                             className="mb-px ml-4"
                             alt="material-symbols:arrow-outward"
                         />
@@ -41,10 +42,10 @@ const Navbar = (props) => {
 
             <Button
                     className="common-pointer cursor-pointer flex items-center justify-center min-w-[198px] w-auto"
-                    onClick={() => navigate("/allstreams")}
+                    onClick={() => navigate("/all-streams")}
                     rightIcon={
                         <Img
-                        src="images/img_materialsymbolsarrowoutward_black_900.svg"
+                        src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927662/HeartStrings/SVG/img_materialsymbolsarrowoutward_black_900_dk3qnb.svg"
                         className="mb-px ml-4"
                         alt="material-symbols:arrow-outward"
                         />
@@ -54,22 +55,24 @@ const Navbar = (props) => {
                     variant="OutlineWhiteA700"
                     >
                     <div className="font-bold font-roboto text-black_900 text-left text-xl">
-                        {props?.streamPlays}
+                        {props?.onlinePlays}
                     </div>
             </Button>
 
-        <div className="flex flex-row gap-2 items-center justify-center self-stretch w-auto">
-                    <Img src="images/img_user.svg" className="h-6 w-6" alt="user" />
+        <div className="flex flex-row gap-2 items-center justify-center self-stretch w-auto"
+                            onClick={() => navigate("/login")}
+                            >
+                    {/* <Img src="images/img_user.svg" className="h-6 w-6" alt="user" /> */}
                     <Text
                     className="font-bold font-roboto text-left text-white_A700 w-auto"
                     as="h6"
                     variant="h6"
                     >
-                    {props?.account}
+                    {props?.signIn}
                     </Text>
                     <Img
-                    src="images/img_materialsymbolsarrowoutward.svg"
-                    className="h-6 w-6"
+                            src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927662/HeartStrings/SVG/img_materialsymbolsarrowoutward_dxpbee.svg"
+                            className="h-6 w-6"
                     alt="Heartstrings Entertainment user account"
                     />
         </div>
@@ -87,11 +90,11 @@ const Navbar = (props) => {
                     <li className="py-3 cursor-pointer text-16">
                     <Button
                         className="common-pointer cursor-pointer flex items-center justify-center min-w-[150px] w-auto"
-                        onClick={() => navigate("/buyingtickets")}
+                        onClick={() => navigate("/all-plays")}
                         rightIcon={
                         <Img
-                            src="images/img_materialsymbolsarrowoutward.svg"
-                            className="mb-px ml-4"
+                        src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927662/HeartStrings/SVG/img_materialsymbolsarrowoutward_dxpbee.svg"
+                        className="mb-px ml-4"
                             alt="material-symbols:arrow-outward"
                         />
                         }
@@ -109,10 +112,10 @@ const Navbar = (props) => {
                     <li className="py-3 text-white font-poppins font-normal cursor-pointer text-16">
                     <Button
                     className="common-pointer cursor-pointer flex items-center justify-center min-w-[198px] w-auto"
-                    onClick={() => navigate("/allstreams")}
+                    onClick={() => navigate("/all-streams")}
                     rightIcon={
                         <Img
-                        src="images/img_materialsymbolsarrowoutward_black_900.svg"
+                        src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927662/HeartStrings/SVG/img_materialsymbolsarrowoutward_black_900_dk3qnb.svg"
                         className="mb-px ml-4"
                         alt="material-symbols:arrow-outward"
                         />
@@ -122,29 +125,33 @@ const Navbar = (props) => {
                     variant="OutlineWhiteA700"
                     >
                     <div className="font-bold font-roboto text-black_900 text-left text-xl">
-                        {props?.streamPlays}
+                        {props?.onlinePlays}
                     </div>
                     </Button>
                     </li>
 
 
                     <li className="py-3 text-white font-poppins font-normal cursor-pointer text-16">
-                    <div className="flex flex-row gap-3 items-center justify-center self-stretch w-auto">
-                        <Img src="images/img_user.svg" className="h-6 w-6" alt="user" />
+                    <a href="/login">
+
+                    <div className="flex flex-row gap-3 items-center justify-center self-stretch w-auto"
+                        onClick={() => navigate("/login")}
+                        >
                         <Text
                         className="font-bold font-roboto text-left text-white_A700 w-auto"
                         as="h6"
                         variant="h6"
                         >
-                        {props?.account}
+                        {props?.signIn}
                         </Text>
                         <Img
-                        src="images/img_materialsymbolsarrowoutward.svg"
+                        src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927662/HeartStrings/SVG/img_materialsymbolsarrowoutward_dxpbee.svg"
                         className="h-6 w-6"
                         alt="materialsymbol"
                         />
+                        
           </div>
-                
+                </a>
                     </li>
                     </ul>
 
@@ -181,8 +188,8 @@ const Navbar = (props) => {
 
 Navbar.defaultProps = {
   buyTicketS: "Buy ticket (s)",
-  streamPlays: "Stream plays",
-  account: "Account",
+  onlinePlays: "Online Plays",
+  signIn: "Sign In",
 };
 
 export default Navbar;
