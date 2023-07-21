@@ -1,0 +1,378 @@
+import React from "react";
+
+import { Menu, MenuItem } from "react-pro-sidebar";
+
+import { Button, Img, Input, Line, Text } from "../../components";
+import Sidebar1 from "../../components/Sidebar1";
+
+const StreamsPage = () => {
+  const sideBarMenu = [
+    {
+      icon: <Img className="h-6 w-6" src="images/img_iconsaxboldelement2.svg" alt="iconsaxboldelem" />,
+      label: "Live shows",
+    },
+    {
+      icon: <Img className="h-6 w-6" src="images/img_iconsaxboldvideoplay.svg" alt="iconsaxboldvide" />,
+      label: "Online plays",
+    },
+    {
+      icon: <Img className="h-6 w-6" src="images/img_iconsaxboldreceipt1.svg" alt="iconsaxboldrece" />,
+      label: "Tickets",
+    },
+    {
+      icon: <Img className="h-6 w-6" src="images/img_iconsaxboldprofile2user.svg" alt="iconsaxboldprof" />,
+      label: "User management",
+    },
+  ];
+
+  return (
+    <>
+      <div className="bg-black-900_01 flex flex-col font-roboto items-center justify-start mx-auto w-full">
+        <div className="flex md:flex-col flex-row md:gap-5 items-start justify-evenly w-full">
+          <Sidebar1 className="!sticky !w-[247px] flex h-screen md:hidden justify-start overflow-auto md:px-5 top-[0]" />
+          <div className="flex flex-1 flex-col items-center justify-start md:px-5 w-full">
+            <div className="flex sm:flex-col flex-row md:gap-10 items-center justify-between p-7 sm:px-5 w-full">
+              <div className="flex flex-col items-center justify-center ml-5 sm:ml-[0] w-auto">
+                <Text className="font-bold text-4xl sm:text-[32px] md:text-[34px] text-gray-300 w-auto">
+                  Online plays
+                </Text>
+              </div>
+              <div className="flex flex-row gap-[21px] items-center justify-start mr-5 w-auto">
+                <Img
+                  className="h-[61px] md:h-auto rounded-[50%] w-[61px]"
+                  src="images/img_ellipse1.png"
+                  alt="ellipseOne"
+                />
+                <div className="flex flex-col gap-2 items-start justify-center w-auto">
+                  <Text className="font-bold text-base text-white-A700 w-auto">Cameron Williamson</Text>
+                  <Text className="text-gray-300 text-sm w-auto">System administrator</Text>
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-col items-center justify-start p-8 sm:px-5 w-full">
+              <div className="flex flex-col items-start justify-start mb-8 w-[98%] md:w-full">
+                <div className="flex flex-row gap-4 items-center justify-center w-auto">
+                  <Img className="h-6 w-6" src="images/img_ictwotonearrowrightalt.svg" alt="ictwotonearrowr" />
+                  <Text className="text-base text-white-A700 w-auto">Go back to all online plays</Text>
+                </div>
+                <div className="flex md:flex-col flex-row gap-[25px] items-center justify-between mt-11 w-full">
+                  <div className="bg-black-900 flex sm:flex-1 flex-col gap-6 items-start justify-start mb-[19px] p-12 md:px-10 sm:px-5 rounded-lg w-[537px] sm:w-full">
+                    <div className="flex flex-col gap-2 items-start justify-start w-auto sm:w-full">
+                      <Text className="text-base text-white-A700 w-auto">Play title</Text>
+                      <Text className="bg-gray-800 border border-solid border-white-A700 justify-center pl-3 sm:pr-5 pr-[35px] py-3.5 rounded text-base text-white-A700 w-auto">
+                        |
+                      </Text>
+                    </div>
+                    <div className="flex flex-col gap-4 items-start justify-start w-auto sm:w-full">
+                      <div className="flex flex-col gap-2 items-start justify-start w-auto sm:w-full">
+                        <Text className="text-base text-white-A700 w-auto">Synopsis</Text>
+                        <div className="bg-gray-800 h-[200px] rounded w-full"></div>
+                      </div>
+                      <Text className="text-gray-300 text-sm w-auto">
+                        Do not exceed 100 characters when entering the play’s synopsis
+                      </Text>
+                    </div>
+                  </div>
+                  <div className="bg-black-900 flex sm:flex-1 flex-col gap-6 items-center justify-center p-12 md:px-10 sm:px-5 rounded-lg w-auto sm:w-full">
+                    <div className="flex flex-col gap-4 items-start justify-center w-[443px] sm:w-full">
+                      <Text className="text-base text-white-A700 w-auto">Play</Text>
+                      <div className="border border-dashed border-gray-800 flex flex-col gap-2.5 h-[150px] md:h-auto items-center justify-center p-2.5 rounded w-[443px] sm:w-full">
+                        <Img className="h-6 w-6" src="images/img_iconparkoutli.svg" alt="iconparkoutli" />
+                        <Text className="text-base text-center text-white-A700 w-full">
+                          <span className="text-white-A700 font-roboto font-normal">Drop a video here or </span>
+                          <span className="text-white-A700 font-roboto font-bold">click to browse.</span>
+                        </Text>
+                      </div>
+                    </div>
+                    <div className="flex flex-col items-start justify-center w-[443px] sm:w-full">
+                      <div className="flex flex-col gap-4 items-start justify-center w-[443px] sm:w-full">
+                        <Text className="text-base text-white-A700 w-auto">Trailer</Text>
+                        <div className="border border-dashed border-gray-800 flex flex-col gap-2.5 h-[150px] md:h-auto items-center justify-center p-2.5 rounded w-[443px] sm:w-full">
+                          <Img className="h-6 w-6" src="images/img_iconparkoutli.svg" alt="iconparkoutli_One" />
+                          <Text className="text-base text-center text-white-A700 w-full">
+                            <span className="text-white-A700 font-roboto font-normal">Drop a video here or </span>
+                            <span className="text-white-A700 font-roboto font-bold">click to browse.</span>
+                          </Text>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="bg-black-900 flex flex-col items-start justify-start mt-[5px] md:px-10 px-12 sm:px-5 py-6 rounded-lg w-[537px] sm:w-full">
+                  <div className="flex flex-col gap-4 items-start justify-start w-auto sm:w-full">
+                    <div className="flex flex-col gap-2 items-start justify-start w-[348px]">
+                      <Text className="text-white-A700 text-xl w-auto">Play availability status and price</Text>
+                      <div className="flex flex-col items-center justify-start w-full">
+                        <div className="flex flex-row gap-6 items-center justify-center w-auto">
+                          <div className="flex flex-col gap-2 items-start justify-start w-auto">
+                            <Text className="text-base text-white-A700 w-auto">Number of days</Text>
+                            <Input
+                              name="groupThree"
+                              placeholder="Days"
+                              className="p-0 placeholder:text-gray-300_87 sm:pr-5 text-base text-gray-300_87 text-left w-full"
+                              wrapClassName="bg-gray-800 pb-[11px] pl-3 pr-[35px] pt-[17px] rounded w-full"
+                            ></Input>
+                          </div>
+                          <div className="flex flex-col gap-2 items-start justify-start w-auto">
+                            <Text className="text-base text-white-A700 w-auto">Price</Text>
+                            <Input
+                              name="price_One"
+                              placeholder="KES"
+                              className="p-0 placeholder:text-gray-300_87 sm:pr-5 text-base text-gray-300_87 text-left w-full"
+                              wrapClassName="bg-gray-800 pl-3 pr-[35px] py-3.5 rounded w-full"
+                            ></Input>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex flex-col items-center justify-start w-full">
+                        <div className="flex flex-row gap-6 items-center justify-center w-auto">
+                          <div className="flex flex-col gap-2 items-start justify-start w-auto">
+                            <Text className="text-base text-white-A700 w-auto">Number of days</Text>
+                            <Input
+                              name="groupFive"
+                              placeholder="7"
+                              className="p-0 placeholder:text-gray-300 sm:pr-5 text-base text-gray-300 text-left w-full"
+                              wrapClassName="bg-gray-800 pl-3 pr-[35px] py-3.5 rounded w-full"
+                            ></Input>
+                          </div>
+                          <div className="flex flex-col gap-2 items-start justify-start w-auto">
+                            <Text className="text-base text-white-A700 w-auto">Price</Text>
+                            <Input
+                              name="price_Three"
+                              placeholder="KES"
+                              className="p-0 placeholder:text-gray-300_87 sm:pr-5 text-base text-gray-300_87 text-left w-full"
+                              wrapClassName="bg-gray-800 pl-3 pr-[35px] py-3.5 rounded w-full"
+                            ></Input>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex flex-col items-center justify-start w-full">
+                        <div className="flex flex-row gap-6 items-center justify-center w-auto">
+                          <div className="flex flex-col gap-2 items-start justify-start w-auto">
+                            <Text className="text-base text-white-A700 w-auto">Number of days</Text>
+                            <Input
+                              name="groupSeven"
+                              placeholder="14"
+                              className="p-0 placeholder:text-gray-300 sm:pr-5 text-base text-gray-300 text-left w-full"
+                              wrapClassName="bg-gray-800 pl-3 pr-[35px] py-3.5 rounded w-full"
+                            ></Input>
+                          </div>
+                          <div className="flex flex-col gap-2 items-start justify-start w-auto">
+                            <Text className="text-base text-white-A700 w-auto">Price</Text>
+                            <Input
+                              name="price_Five"
+                              placeholder="KES"
+                              className="p-0 placeholder:text-gray-300_87 sm:pr-5 text-base text-gray-300_87 text-left w-full"
+                              wrapClassName="bg-gray-800 pl-3 pr-[35px] py-3.5 rounded w-full"
+                            ></Input>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="flex sm:flex-col flex-row gap-2 items-start justify-start w-auto sm:w-full">
+                      <Img className="h-6 w-6" src="images/img_iconsaxboldinformation.svg" alt="iconsaxboldinfo" />
+                      <Text className="leading-[175.00%] max-w-[402px] md:max-w-full text-gray-300 text-sm">
+                        Once purchased, the stream will be available for that number of days to the customer.
+                      </Text>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex flex-col gap-6 items-end justify-start mt-6 w-auto md:w-full">
+                  <div className="bg-black-900 flex flex-col gap-8 items-start justify-start max-w-[1097px] sm:px-5 px-6 py-12 rounded-lg w-full">
+                    <Text className="font-bold text-2xl md:text-[22px] text-white-A700 sm:text-xl w-auto">
+                      Add cast
+                    </Text>
+                    <Text className="text-base text-gray-300 w-auto">Cast picture</Text>
+                    <div className="gap-2 grid sm:grid-cols-1 md:grid-cols-3 grid-cols-5 items-start justify-start w-auto md:w-full">
+                      <div className="flex flex-col gap-8 items-start justify-start w-full">
+                        <div className="flex flex-col h-[200px] items-center justify-start w-[200px]">
+                          <Img
+                            className="h-[200px] md:h-auto object-cover rounded-bl-lg rounded-br-lg w-[200px]"
+                            src="images/img_rectangle4_200x200.png"
+                            alt="rectangleFour"
+                          />
+                        </div>
+                        <div className="flex flex-col gap-4 items-center justify-start w-auto">
+                          <div className="flex flex-col gap-2 items-start justify-start w-auto">
+                            <Text className="text-base text-white-A700 w-auto">Real name</Text>
+                            <Input
+                              name="groupNine"
+                              placeholder="Gloria Osoro"
+                              className="p-0 placeholder:text-gray-300 sm:pr-5 text-base text-gray-300 text-left w-full"
+                              wrapClassName="bg-gray-800 pl-3 pr-[35px] py-3.5 rounded w-full"
+                            ></Input>
+                          </div>
+                          <div className="flex flex-col gap-2 items-start justify-start w-auto">
+                            <Text className="text-base text-white-A700 w-auto">Cast name</Text>
+                            <Input
+                              name="groupTen"
+                              placeholder="Anne Gitau"
+                              className="p-0 placeholder:text-gray-300 sm:pr-5 text-base text-gray-300 text-left w-full"
+                              wrapClassName="bg-gray-800 pl-3 pr-[35px] py-3.5 rounded w-full"
+                            ></Input>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex flex-col gap-8 items-start justify-start w-full">
+                        <div className="flex flex-col items-start justify-start w-[200px]">
+                          <div className="border border-dashed border-gray-800 flex flex-col gap-2.5 h-[200px] md:h-auto items-center justify-center p-2.5 rounded w-[200px]">
+                            <Img className="h-6 w-6" src="images/img_iconparkoutli.svg" alt="iconparkoutli_Two" />
+                            <Text className="leading-[175.00%] max-w-[180px] md:max-w-full text-base text-center text-white-A700">
+                              <span className="text-white-A700 font-roboto font-normal">Drop image (s) here or </span>
+                              <span className="text-white-A700 font-roboto font-bold">click to browse.</span>
+                            </Text>
+                          </div>
+                        </div>
+                        <div className="flex flex-col gap-4 items-center justify-start w-auto">
+                          <div className="flex flex-col gap-2 items-start justify-start w-auto">
+                            <Text className="text-base text-white-A700 w-auto">Real name</Text>
+                            <Input
+                              name="rectangleNine_One"
+                              placeholder=""
+                              className="p-0 w-full"
+                              wrapClassName="bg-gray-800 flex h-12 rounded w-full"
+                            ></Input>
+                          </div>
+                          <div className="flex flex-col gap-2 items-start justify-start w-auto">
+                            <Text className="text-base text-white-A700 w-auto">Cast name</Text>
+                            <Input
+                              name="rectangleNine_Two"
+                              placeholder=""
+                              className="p-0 w-full"
+                              wrapClassName="bg-gray-800 flex h-12 rounded w-full"
+                            ></Input>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex flex-col gap-8 items-start justify-start w-full">
+                        <div className="flex flex-col items-start justify-start w-[200px]">
+                          <div className="border border-dashed border-gray-800 flex flex-col gap-2.5 h-[200px] md:h-auto items-center justify-center p-2.5 rounded w-[200px]">
+                            <Img className="h-6 w-6" src="images/img_iconparkoutli.svg" alt="iconparkoutli_Three" />
+                            <Text className="leading-[175.00%] max-w-[180px] md:max-w-full text-base text-center text-white-A700">
+                              <span className="text-white-A700 font-roboto font-normal">Drop image (s) here or </span>
+                              <span className="text-white-A700 font-roboto font-bold">click to browse.</span>
+                            </Text>
+                          </div>
+                        </div>
+                        <div className="flex flex-col gap-4 items-center justify-start w-auto">
+                          <div className="flex flex-col gap-2 items-start justify-start w-auto">
+                            <Text className="text-base text-white-A700 w-auto">Real name</Text>
+                            <Input
+                              name="rectangleNine_Three"
+                              placeholder=""
+                              className="p-0 w-full"
+                              wrapClassName="bg-gray-800 flex h-12 rounded w-full"
+                            ></Input>
+                          </div>
+                          <div className="flex flex-col gap-2 items-start justify-start w-auto">
+                            <Text className="text-base text-white-A700 w-auto">Cast name</Text>
+                            <Input
+                              name="rectangleNine_Four"
+                              placeholder=""
+                              className="p-0 w-full"
+                              wrapClassName="bg-gray-800 flex h-12 rounded w-full"
+                            ></Input>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex flex-col gap-8 items-start justify-start w-full">
+                        <div className="flex flex-col items-start justify-start w-[200px]">
+                          <div className="border border-dashed border-gray-800 flex flex-col gap-2.5 h-[200px] md:h-auto items-center justify-center p-2.5 rounded w-[200px]">
+                            <Img className="h-6 w-6" src="images/img_iconparkoutli.svg" alt="iconparkoutli_Four" />
+                            <Text className="leading-[175.00%] max-w-[180px] md:max-w-full text-base text-center text-white-A700">
+                              <span className="text-white-A700 font-roboto font-normal">Drop image (s) here or </span>
+                              <span className="text-white-A700 font-roboto font-bold">click to browse.</span>
+                            </Text>
+                          </div>
+                        </div>
+                        <div className="flex flex-col gap-4 items-center justify-start w-auto">
+                          <div className="flex flex-col gap-2 items-start justify-start w-auto">
+                            <Text className="text-base text-white-A700 w-auto">Real name</Text>
+                            <Input
+                              name="rectangleNine_Five"
+                              placeholder=""
+                              className="p-0 w-full"
+                              wrapClassName="bg-gray-800 flex h-12 rounded w-full"
+                            ></Input>
+                          </div>
+                          <div className="flex flex-col gap-2 items-start justify-start w-auto">
+                            <Text className="text-base text-white-A700 w-auto">Cast name</Text>
+                            <Input
+                              name="rectangleNine_Six"
+                              placeholder=""
+                              className="p-0 w-full"
+                              wrapClassName="bg-gray-800 flex h-12 rounded w-full"
+                            ></Input>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex flex-col gap-8 items-start justify-start w-full">
+                        <div className="flex flex-col items-start justify-start w-[200px]">
+                          <div className="border border-dashed border-gray-800 flex flex-col gap-2.5 h-[200px] md:h-auto items-center justify-center p-2.5 rounded w-[200px]">
+                            <Img className="h-6 w-6" src="images/img_iconparkoutli.svg" alt="iconparkoutli_Five" />
+                            <Text className="leading-[175.00%] max-w-[180px] md:max-w-full text-base text-center text-white-A700">
+                              <span className="text-white-A700 font-roboto font-normal">Drop image (s) here or </span>
+                              <span className="text-white-A700 font-roboto font-bold">click to browse.</span>
+                            </Text>
+                          </div>
+                        </div>
+                        <div className="flex flex-col gap-4 items-center justify-start w-auto">
+                          <div className="flex flex-col gap-2 items-start justify-start w-auto">
+                            <Text className="text-base text-white-A700 w-auto">Real name</Text>
+                            <Input
+                              name="rectangleNine_Seven"
+                              placeholder=""
+                              className="p-0 w-full"
+                              wrapClassName="bg-gray-800 flex h-12 rounded w-full"
+                            ></Input>
+                          </div>
+                          <div className="flex flex-col gap-2 items-start justify-start w-auto">
+                            <Text className="text-base text-white-A700 w-auto">Cast name</Text>
+                            <Input
+                              name="rectangleNine_Eight"
+                              placeholder=""
+                              className="p-0 w-full"
+                              wrapClassName="bg-gray-800 flex h-12 rounded w-full"
+                            ></Input>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex sm:flex-col flex-row gap-[25px] items-start justify-start w-auto sm:w-full">
+                    <Button
+                      className="border border-solid border-white-A700 cursor-pointer flex items-center justify-center min-w-[192px] px-[19px] py-[15px] rounded-lg"
+                      leftIcon={
+                        <Img
+                          className="h-6 mt-px mr-4"
+                          src="images/img_iconsax_bold_save2.svg"
+                          alt="Iconsax/Bold/save2"
+                        />
+                      }
+                    >
+                      <div className="font-bold text-left text-white-A700 text-xl">Save stream</div>
+                    </Button>
+                    <Button
+                      className="bg-red-900 cursor-pointer flex items-center justify-center min-w-[219px] px-5 py-3.5 rounded-lg"
+                      leftIcon={
+                        <Img
+                          className="h-6 mb-px mr-4"
+                          src="images/img_iconsax_bold_addcircle.svg"
+                          alt="Iconsax/Bold/addcircle"
+                        />
+                      }
+                    >
+                      <div className="font-bold text-left text-white-A700 text-xl">Add online play</div>
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default StreamsPage;

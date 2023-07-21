@@ -305,11 +305,12 @@ const AdminAddPlay = () => {
                   </div>
                 </div>
               </div>
+          
               <div className="flex flex-col items-center justify-end p-2.5 w-full">
                 <div className="flex flex-col items-start justify-start mt-[38px] w-[94%] md:w-full">
                   <div
                     className="common-pointer flex flex-row gap-4 items-center justify-center self-stretch w-auto"
-                    onClick={() => navigate("/adminallplays")}
+                    onClick={() => navigate("/admin-allplays")}
                   >
                     <Img
                       src="images/img_ictwotonearrowrightalt.svg"
@@ -325,6 +326,8 @@ const AdminAddPlay = () => {
                   </div>
                   <div className="flex md:flex-col flex-row gap-6 items-start justify-between mt-6 w-full">
                     <div className="bg-black_900 flex sm:flex-1 flex-col gap-8 items-center justify-center sm:px-5 px-6 py-12 rounded-lg w-[536px] sm:w-full">
+                      
+                      {/* Content Form */}
                       <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto sm:w-full">
                         <Text
                           className="font-normal not-italic text-left text-white_A700 w-auto"
@@ -332,12 +335,12 @@ const AdminAddPlay = () => {
                         >
                           Play title
                         </Text>
-                        <Text
+                        <Input
                           className="bg-gray_800 border border-solid border-white_A700 font-normal h-12 not-italic pl-3 sm:pr-5 pr-[35px] py-3.5 rounded text-gray_300 text-left w-[443px]"
                           variant="body4"
                         >
                           |
-                        </Text>
+                        </Input>
                       </div>
                       <div className="flex flex-col gap-4 items-start justify-start self-stretch w-auto sm:w-full">
                         <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto sm:w-full">
@@ -347,7 +350,7 @@ const AdminAddPlay = () => {
                           >
                             Synopsis
                           </Text>
-                          <div className="bg-gray_800 h-[200px] rounded w-full"></div>
+                          <textarea className="bg-gray_800 h-[200px] rounded w-full"></textarea>
                         </div>
                         <Text
                           className="not-italic text-gray_300 text-left w-auto"
@@ -357,6 +360,8 @@ const AdminAddPlay = () => {
                           synopsis
                         </Text>
                       </div>
+
+
                       <List
                         className="flex-col gap-8 grid items-start w-[443px] md:w-full"
                         orientation="vertical"
