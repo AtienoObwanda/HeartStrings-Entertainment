@@ -309,7 +309,7 @@ const AdminAddPlay = () => {
               <div className="flex flex-col items-center justify-end p-2.5 w-full">
                 <div className="flex flex-col items-start justify-start mt-[38px] w-[94%] md:w-full">
                   <div
-                    className="common-pointer flex flex-row gap-4 items-center justify-center self-stretch w-auto"
+                    className="common-pointer flex flex-row gap-4 items-left justify-left self-stretch w-auto"
                     onClick={() => navigate("/admin-allplays")}
                   >
                     <Img
@@ -360,39 +360,7 @@ const AdminAddPlay = () => {
                           synopsis
                         </Text>
                       </div>
-
-
-                      <List
-                        className="flex-col gap-8 grid items-start w-[443px] md:w-full"
-                        orientation="vertical"
-                      >
-                        <div className="flex flex-col gap-4 items-start justify-center my-0 w-[443px] sm:w-full">
-                          <Text
-                            className="font-normal not-italic text-left text-white_A700 w-auto"
-                            variant="body4"
-                          >
-                            Play poster
-                          </Text>
-                          <PlaysAddPlayColumniconparkoutli
-                            className="border border-dashed border-gray_800 flex flex-col gap-2.5 h-[150px] md:h-auto items-center justify-center p-2.5 rounded w-[443px] sm:w-full"
-                            dropanimagehereOne="Drop an image here or click to browse."
-                          />
-                        </div>
-                        <div className="flex flex-col gap-6 items-start justify-center my-0 w-[443px] sm:w-full">
-                          <Text
-                            className="font-normal not-italic text-left text-white_A700 w-auto"
-                            variant="body4"
-                          >
-                            Infotrailer
-                          </Text>
-                          <PlaysAddPlayColumniconparkoutli
-                            className="border border-dashed border-gray_800 flex flex-col gap-2.5 h-[150px] md:h-auto items-center justify-center p-2.5 rounded w-[443px] sm:w-full"
-                            dropanimagehereOne="Drop a video here or click to browse."
-                          />
-                        </div>
-                      </List>
-                    </div>
-                    <div className="bg-black_900 flex sm:flex-1 flex-col items-start justify-start mb-[51px] md:px-10 px-12 sm:px-5 py-6 rounded-lg w-[535px] sm:w-full">
+                       
                       <div className="flex flex-col gap-8 items-start justify-start self-stretch w-auto sm:w-full">
                         <div className="flex flex-col gap-6 items-start justify-start self-stretch w-auto sm:w-full">
                           <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto">
@@ -839,6 +807,45 @@ const AdminAddPlay = () => {
                           </div>
                         </div>
                       </div>
+
+
+
+
+                    </div>
+                    <div className="bg-black_900 flex sm:flex-1 flex-col items-start justify-start mb-[51px] md:px-10 px-12 sm:px-5 py-6 rounded-lg w-[535px] sm:w-full">
+                     
+
+                    <List
+                        className="flex-col gap-8 grid items-start w-[443px] md:w-full"
+                        orientation="vertical"
+                      >
+                        <div className="flex flex-col gap-4 items-start justify-center my-0 w-[443px] sm:w-full">
+                          <Text
+                            className="font-normal not-italic text-left text-white_A700 w-auto"
+                            variant="body4"
+                          >
+                            Play poster
+                          </Text>
+                          <PlaysAddPlayColumniconparkoutli
+                            className="border border-dashed border-gray_800 flex flex-col gap-2.5 h-[150px] md:h-auto items-center justify-center p-2.5 rounded w-[443px] sm:w-full"
+                            dropanimagehereOne="Drop an image here or click to browse."
+                          />
+                        </div>
+                        <div className="flex flex-col gap-6 items-start justify-center my-0 w-[443px] sm:w-full">
+                          <Text
+                            className="font-normal not-italic text-left text-white_A700 w-auto"
+                            variant="body4"
+                          >
+                            Infotrailer
+                          </Text>
+                          <PlaysAddPlayColumniconparkoutli
+                            className="border border-dashed border-gray_800 flex flex-col gap-2.5 h-[150px] md:h-auto items-center justify-center p-2.5 rounded w-[443px] sm:w-full"
+                            dropanimagehereOne="Drop a video here or click to browse."
+                          />
+                        </div>
+                      </List>
+
+
                     </div>
                   </div>
                   <div className="bg-black_900 flex flex-col gap-6 items-start justify-center mt-6 p-6 sm:px-5 rounded-lg w-[536px] sm:w-full">
