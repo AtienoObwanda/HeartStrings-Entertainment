@@ -1,15 +1,12 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import { Img, Text } from "UI_Components";
-import debounce from "lodash.debounce";
 
 const PlayAddPlayVideo = (props) => {
   const fileInputRef = useRef(null);
   const [selectedFileName, setSelectedFileName] = useState("");
-  const [dragging, setDragging] = useState(false);
 
   const handleDrop = (event) => {
     event.preventDefault();
-    setDragging(false);
     const file = event.dataTransfer.files[0];
     handleFileSelection(file);
   };
@@ -17,20 +14,6 @@ const PlayAddPlayVideo = (props) => {
   const handleDragOver = (event) => {
     event.preventDefault();
   };
-
-  const handleDragEnter = (event) => {
-    event.preventDefault();
-    setDragging(true);
-  };
-
-  const handleDragLeave = (event) => {
-    event.preventDefault();
-    setDragging(false);
-  };
-
-  const debouncedHandleClick = debounce(() => {
-    fileInputRef.current.click();
-  }, 100);
 
   const handleFileInputChange = (event) => {
     const file = event.target.files[0];
@@ -46,27 +29,16 @@ const PlayAddPlayVideo = (props) => {
   };
 
   const handleClick = () => {
-    debouncedHandleClick();
+    // Trigger the click event of the hidden file input when the component is clicked.
+    fileInputRef.current.click();
   };
-
-  // Reset selectedFileName after a short delay to prevent re-opening the file browser
-  useEffect(() => {
-    if (selectedFileName) {
-      const timer = setTimeout(() => {
-        setSelectedFileName("");
-      }, 100);
-      return () => clearTimeout(timer);
-    }
-  }, [selectedFileName]);
 
   return (
     <>
       <label
         className={props.className}
         onDrop={handleDrop}
-        onDragOver={handleDragOver}
-        onDragEnter={handleDragEnter}
-        onDragLeave={handleDragLeave}
+        onDragOver={handleDragOver} // Add the dragover event listener
         onClick={handleClick}
       >
         <Img
@@ -81,7 +53,7 @@ const PlayAddPlayVideo = (props) => {
           {selectedFileName ? selectedFileName : props?.dropanvideohereOne}
         </Text>
         <input
-          key={selectedFileName}
+          key={selectedFileName} // Add key prop here
           ref={fileInputRef}
           type="file"
           accept="video/*"

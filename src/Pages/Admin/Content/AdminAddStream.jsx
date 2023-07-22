@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-import { Button, Img, Input, Line, Text } from "UI_Components";
+import { Button, Img, Input, Line, List, Switch, Text } from "UI_Components";
+import PlaysAddPlayAddshift from "UI_Components/PlaysAddPlay";
 import PlaysAddPlayColumniconparkoutli from "UI_Components/PlaysAddPlayColumnIcon";
+import PlayAddPlayVideo from "UI_Components/PlayAddPlayVideo"
+
+
 import close from "../../../assets/close.svg";
 import  menu from "../../../assets/menu.svg";
 
@@ -10,29 +13,28 @@ const AdminAddStream = () => {
   const navigate = useNavigate();
   const [active, setActive] = useState("Home");
   const [toggle, setToggle] = useState(false);
-  return (
-    <>
-      <div className="bg-black_900_01 flex flex-col font-roboto items-center justify-start mx-auto w-full">
-        <div className="flex md:flex-col flex-row md:gap-5 items-start justify-evenly w-full">
-         
-           {/* Large screen */}
+    
+    return (
+      <>
+        <div className="bg-black_900_01 flex flex-col font-roboto items-center justify-start mx-auto pb-[109px] w-full">
+          <div className="flex md:flex-col flex-row md:gap-5 items-start justify-evenly w-full">
+             {/* Large screen */}
          <aside className="md:hidden flex justify-start md:px-5 w-[247px]">
           {/* <aside className="flex flex-col md:hidden justify-start md:px-5 w-[247px]"> */}
-            <div className="flex flex-col justify-start mb-[420px] mt-12 mx-auto w-[81%]">
+            <div className="flex flex-col justify-start mb-[420px] mt-12 mx-auto  w-[81%]">
               <Img
-                src="images/img_dummylogo02.svg"
-                className="common-pointer h-14 w-auto"
-                alt="dummylogoTwo"
+                src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689933646/HeartStrings/logo/HeartStringsLogo.png"
+                className="common-pointer h-[40%] w-[40%]"
+                alt="Heart Strings Entertainment Logo"
                 onClick={() => navigate("/")}
               />
-<div
-                className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-9 self-stretch w-auto"
-                onClick={() => navigate("/admin-dashnoard")}
-              >
-                
-                <Img
-                  src="images/img_iconsaxboldactivity.svg"
-                  className="h-6 w-6"
+              
+          <div
+                className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[16px] mt-9 self-stretch w-auto hover:border border-white rounded-md p-2"
+                onClick={() => navigate("/admin-dashboard")}
+              >                <Img
+                  src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927654/HeartStrings/SVG/img_iconsaxboldactivity_vlojze.svg"
+                  className="h-10 w-10"
                   alt="iconsaxboldacti"
                 />
                 <Text
@@ -42,93 +44,105 @@ const AdminAddStream = () => {
                   Dashboard
                 </Text>
               </div>
-              <div
-                className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-9 self-stretch w-auto"
-                onClick={() => navigate("/admin-allplays")}
-              >
+
+              <div className="bg-gray_800 common-pointer flex flex-row gap-2 items-center justify-center  mt-6 pl-6 md:pr-10 pr-[6px] sm:px-5 py-2.5 rounded-lg self-stretch w-auto"
+
+              onClick={() => navigate("/admin-allplays")}>
                 <Img
-                  src="images/img_iconsaxboldelement2.svg"
-                  className="h-6 w-6"
-                  alt="iconsaxboldelem"
+                  src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927657/HeartStrings/SVG/img_iconsaxboldelement2_white_a700_f8nhvw.svg"
+                  className="h-10 w-10"
+                  alt="Play Icon"
                 />
                 <Text
                   className="font-normal not-italic text-gray_300 text-left w-auto"
                   variant="body4"
                 >
-                  Plays
+                  Live Shows
                 </Text>
               </div>
 
-              <div className="bg-gray_800 flex flex-row gap-2 items-center justify-center mt-6 pl-6 md:pr-10 pr-[73px] sm:px-5 py-2.5 rounded-lg self-stretch w-auto"
+              <div
+                className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[16px] mt-9 self-stretch w-auto hover:border border-white rounded-md p-2"
                 onClick={() => navigate("/admin-allstreams")}
               >
                 <Img
-                  src="images/img_iconsaxboldvideoplay.svg"
-                  className="h-6 w-6"
-                  alt="iconsaxboldvide"
+                  src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927661/HeartStrings/SVG/img_iconsaxboldvideoplay_white_a700_z0bppl.svg"
+                  className="h-10 w-10"
+                  alt="Streams Icon"
                 />
                 <Text
                   className="font-normal not-italic text-gray_300 text-left w-auto"
                   variant="body4"
                 >
-                  Streams
+                  Online Plays
                 </Text>
               </div>
 
-              <div className="flex flex-col gap-9 items-start justify-start md:ml-[0] ml-[26px] mt-9 self-stretch w-auto">
-                <div
-                  className="common-pointer flex flex-row gap-2 items-center justify-center self-stretch w-auto"
-                  onClick={() => navigate("/ticket-management")}
-                >
-                  <Img
-                    src="images/img_iconsaxboldreceipt1_gray_300.svg"
-                    className="h-6 w-6"
-                    alt="iconsaxboldrece"
-                  />
-                  <Text
-                    className="font-normal not-italic text-gray_300 text-left w-auto"
-                    variant="body4"
-                  >
-                    Tickets
-                  </Text>
-                </div>
-                <div
-                  className="common-pointer flex flex-row gap-2 items-center justify-center self-stretch w-auto"
-                  onClick={() => navigate("/user-management")}
-                >
-                  <Img
-                    src="images/img_iconsaxboldprofile2user.svg"
-                    className="h-6 w-6"
-                    alt="iconsaxboldprof"
-                  />
-                  <Text
-                    className="font-normal not-italic text-gray_300 text-left w-auto"
-                    variant="body4"
-                  >
-                    User management
-                  </Text>
-                </div>
-              </div>
-              <Line className="bg-gray_800 h-px mt-16 w-full" />
-              <div className="flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-[63px] self-stretch w-auto">
+
+              <div
+                className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[16px] mt-9 self-stretch w-auto hover:border border-white rounded-md p-2"
+                onClick={() => navigate("/admin-allstreams")}
+              >
                 <Img
-                  src="images/img_iconsaxboldlogout.svg"
-                  className="h-6 w-6"
-                  alt="iconsaxboldlogo"
+                    src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927659/HeartStrings/SVG/img_iconsaxboldreceipt1_gray_300_gdkye8.svg"
+                    className="h-10 w-10"
+                  alt="Streams Icon"
                 />
-                <a
-                  href="javascript:"
-                  className="font-normal not-italic text-base text-gray_300 text-left w-auto"
+                <Text
+                  className="font-normal not-italic text-gray_300 text-left w-auto"
+                  variant="body4"
                 >
-                  <Text className="">Logout</Text>
-                </a>
+                 Ticket Management
+                </Text>
               </div>
+
+              <div
+                  className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[16px] mt-9 self-stretch w-auto hover:border border-white rounded-md p-2"
+                onClick={() => navigate("/admin-allstreams")}
+              >
+                <Img
+                    src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927659/HeartStrings/SVG/img_iconsaxboldprofile2user_white_a700_qdp6it.svg"
+                    className="h-10 w-10"
+                  alt="Streams Icon"
+                />
+                <Text
+                  className="font-normal not-italic text-gray_300 text-left w-auto"
+                  variant="body4"
+                >
+                  User Management
+                </Text>
+              </div>
+
+              <Line className="bg-gray_800 h-px mt-16 w-full" />
+
+
+                <div className="flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-8 self-stretch w-auto group">
+                      <div className="h-10 w-10 transition-colors duration-300 ease-in-out group-hover:bg-icon-hover group-hover:rotate-12">
+                          <Img
+                              src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927657/HeartStrings/SVG/img_iconsaxboldlogout_cmxo47.svg"
+                              className="h-full w-full hover:fill-red-500 svg"
+                              alt="iconsaxboldlogo"
+                                  />
+
+                         
+                            </div>
+                              <a
+                                  href="#:"
+                                  className="font-normal not-italic text-base text-gray-300 text-left w-auto"
+                              >
+                                  <Text className="">Logout</Text>
+                              </a>
+                      </div>
+
+
+
+
             </div>
           </aside>
 
 
             {/* Display Medium Screens  */}
-            <aside className="hidden md:flex justify-start md:px-5 w-[247px]">
+<aside className="hidden md:flex justify-start md:px-5 w-[247px]">
 
 <div className="flex flex-col justify-start mb-[476px] mt-12 mx-auto w-[81%]">
 
@@ -154,12 +168,13 @@ const AdminAddStream = () => {
         
           <li className="py-3 cursor-pointer text-16">
             
-          <div className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-0 self-stretch w-auto"
+          <div className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-2 self-stretch w-auto"
                 onClick={() => navigate("/admin-dashboard")}
-              >                <Img
-                  src="images/img_iconsaxboldactivity.svg"
-                  className="h-6 w-6"
-                  alt="iconsaxboldacti"
+              >
+                <Img
+                  src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927654/HeartStrings/SVG/img_iconsaxboldactivity_vlojze.svg"
+                  className="h-10 w-10"
+                  alt="Admin Dashboard Icon"
                 />
                 <Text
                   className="font-normal not-italic text-left text-white_A700 w-auto"
@@ -170,32 +185,34 @@ const AdminAddStream = () => {
               </div>
           </li>
 
-          <li className="py-3 cursor-pointer text-16"> 
-          <div className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-6 self-stretch w-auto"
-                onClick={() => navigate("/admin-allplays")}
-              >
+          <li className="py-3 cursor-pointer text-16">
+          <div className="bg-gray_800 flex flex-row gap-2 items-center justify-center mt-6 pl-6 md:pr-10 pr-[73px] sm:px-5 py-2.5 rounded-lg self-stretch w-auto"
+          onClick={() => navigate("/admin-allplays")}
+          > 
+        
                 <Img
-                  src="images/img_iconsaxboldelement2.svg"
-                  className="h-6 w-6"
-                  alt="iconsaxboldelem"
+                  src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927657/HeartStrings/SVG/img_iconsaxboldelement2_white_a700_f8nhvw.svg"
+                  className="h-10 w-10"
+                  alt="Plays Icon"
                 />
+
                 <Text
                   className="font-normal not-italic text-gray_300 text-left w-auto"
                   variant="body4"
                 >
-                  Plays
+                  Live Shows
                 </Text>
               </div>
           </li>
 
           <li className="py-3 cursor-pointer text-16">
-          <div className="bg-gray_800 flex flex-row gap-2 items-center justify-center mt-6 pl-6 md:pr-10 pr-[73px] sm:px-5 py-2.5 rounded-lg self-stretch w-auto"
+          <div className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-0 self-stretch w-auto"
                 onClick={() => navigate("/admin-allstreams")}
               >
                 <Img
-                  src="images/img_iconsaxboldvideoplay.svg"
-                  className="h-6 w-6"
-                  alt="iconsaxboldvide"
+                  src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927661/HeartStrings/SVG/img_iconsaxboldvideoplay_white_a700_z0bppl.svg"
+                  className="h-10 w-10"
+                  alt="Stream Icon"
                 />
                 <Text
                   className="font-normal not-italic text-gray_300 text-left w-auto"
@@ -206,7 +223,6 @@ const AdminAddStream = () => {
               </div>
           </li>
 
-        
 
           <li className="py-3 cursor-pointer text-16">
               <div
@@ -214,8 +230,8 @@ const AdminAddStream = () => {
                   onClick={() => navigate("/ticket-management")}
                 >
                   <Img
-                    src="images/img_iconsaxboldreceipt1_gray_300.svg"
-                    className="h-6 w-6"
+                    src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927659/HeartStrings/SVG/img_iconsaxboldreceipt1_gray_300_gdkye8.svg"
+                    className="h-10 w-10"
                     alt="iconsaxboldrece"
                   />
                   <Text
@@ -226,15 +242,17 @@ const AdminAddStream = () => {
                   </Text>
                 </div>
             </li>
+
+
             <li className="py-3 cursor-pointer text-16">
             <div
                   className="common-pointer flex flex-row gap-2 items-center justify-center self-stretch w-auto"
                   onClick={() => navigate("/user-management")}
                 >
                   <Img
-                    src="images/img_iconsaxboldprofile2user.svg"
-                    className="h-6 w-6"
-                    alt="iconsaxboldprof"
+                    src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927659/HeartStrings/SVG/img_iconsaxboldprofile2user_white_a700_qdp6it.svg"
+                    className="h-10 w-10"
+                    alt="User Management Icon"
                   />
                   <Text
                     className="font-normal not-italic text-gray_300 text-left w-auto"
@@ -248,19 +266,28 @@ const AdminAddStream = () => {
           <Line className="bg-gray_800 h-px mt-[60px] w-full" />
 
           <li className="py-3 cursor-pointer text-16">                     
-            <div className="flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-8 self-stretch w-auto">
-              <Img
-                src="images/img_iconsaxboldlogout.svg"
-                className="h-6 w-6"
-                alt="iconsaxboldlogo"
-              />
-              <a
-                href="javascript:"
-                className="font-normal not-italic text-base text-gray_300 text-left w-auto"
-              >
-                <Text className="">Logout</Text>
-              </a>
-            </div>
+           
+           
+          <div className="flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-8 self-stretch w-auto group">
+                      <div className="h-10 w-10 transition-colors duration-300 ease-in-out group-hover:bg-icon-hover group-hover:rotate-12">
+                          <Img
+                              src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927657/HeartStrings/SVG/img_iconsaxboldlogout_cmxo47.svg"
+                              className="h-full w-full hover:fill-red-500 svg"
+                              alt="iconsaxboldlogo"
+                                  />
+
+                         
+                            </div>
+                              <a
+                                  href="#:"
+                                  className="font-normal not-italic text-base text-gray-300 text-left w-auto"
+                              >
+                                  <Text className="">Logout</Text>
+                              </a>
+                      </div>
+
+            
+
           </li>
         </ul>
 </div>
@@ -268,152 +295,175 @@ const AdminAddStream = () => {
 
 </aside>
 
-
-
-
-
-
-
-
-          <div className="flex flex-1 flex-col items-center justify-start md:px-5 w-full">
-            <div className="flex sm:flex-col flex-row md:gap-10 items-center justify-between p-7 sm:px-5 w-full">
-              <div className="flex flex-col items-center justify-center ml-5 sm:ml-[0] self-stretch w-auto">
-                <Text
-                  className="text-left text-white_A700 w-auto"
-                  as="h2"
-                  variant="h2"
-                >
-                  Add Stream
-                </Text>
-              </div>
-              <div className="flex flex-row gap-[21px] items-center justify-start mr-5 self-stretch w-auto">
-                <Img
-                  src="images/img_ellipse1.png"
-                  className="h-[61px] md:h-auto rounded-[50%] w-[61px]"
-                  alt="ellipseOne"
-                />
-                <div className="flex flex-col gap-2 items-start justify-center self-stretch w-auto">
+            <div className="flex md:flex-1 flex-col items-center justify-start md:px-5 w-[83%] md:w-full">
+              <div className="flex sm:flex-col flex-row md:gap-10 items-center justify-between p-6 sm:px-5 w-full">
+                <div className="flex flex-col items-center justify-center ml-6 sm:ml-[0] sm:mt-0 mt-[9px] self-stretch w-auto">
                   <Text
-                    className="font-bold text-left text-white_A700 w-auto"
-                    variant="body4"
+                    className="text-left text-white_A700 w-auto"
+                    as="h2"
+                    variant="h2"
                   >
-                    Cameron Williamson
-                  </Text>
-                  <Text
-                    className="not-italic text-gray_300 text-left w-auto"
-                    variant="body5"
-                  >
-                    System administrator
+                    Online Plays
                   </Text>
                 </div>
-              </div>
-            </div>
-            <div className="flex flex-col items-center justify-start p-8 sm:px-5 w-full">
-              <div className="flex flex-col items-start justify-start mb-8 w-[98%] md:w-full">
-                <div className="flex flex-row gap-4 items-center justify-center self-stretch w-auto">
+                <div className="flex flex-row gap-[21px] items-center justify-start mr-6 self-stretch w-auto">
                   <Img
-                    src="images/img_ictwotonearrowrightalt.svg"
-                    className="h-6 w-6"
-                    alt="ictwotonearrowr"
+                    src="images/img_ellipse1.png"
+                    className="h-[61px] md:h-auto rounded-[50%] w-[61px]"
+                    alt="ellipseOne"
                   />
-                  <Text
-                    className="font-normal not-italic text-left text-white_A700 w-auto"
-                    variant="body4"
-                  >
-                    Go back to all streams
-                  </Text>
+                  <div className="flex flex-col gap-2 items-start justify-center self-stretch w-auto">
+                    <Text
+                      className="font-bold text-left text-white_A700 w-auto"
+                      variant="body4"
+                    >
+                      Cameron Williamson
+                    </Text>
+                    <Text
+                      className="not-italic text-gray_300 text-left w-auto"
+                      variant="body5"
+                    >
+                      System administrator
+                    </Text>
+                  </div>
                 </div>
-                <div className="flex md:flex-col flex-row gap-[25px] items-center justify-between mt-11 w-full">
-                  <div className="bg-black_900 flex sm:flex-1 flex-col gap-6 items-start justify-start mb-[19px] p-12 md:px-10 sm:px-5 rounded-lg w-[537px] sm:w-full">
-                    <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto sm:w-full">
-                      <Text
-                        className="font-normal not-italic text-left text-white_A700 w-auto"
-                        variant="body4"
-                      >
-                        Stream title
-                      </Text>
-                      <Text
-                        className="bg-gray_800 border border-solid border-white_A700 font-normal h-12 not-italic pl-3 sm:pr-5 pr-[35px] py-3.5 rounded text-left text-white_A700 w-[443px]"
-                        variant="body4"
-                      >
-                        |
-                      </Text>
-                    </div>
-                    <div className="flex flex-col gap-4 items-start justify-start self-stretch w-auto sm:w-full">
+              </div>
+          
+              <div className="flex flex-col items-center justify-end p-2.5 w-full">
+                <div className="flex flex-col items-start justify-start mt-[38px] w-[94%] md:w-full">
+                  <div
+                    className="common-pointer flex flex-row gap-4 items-left justify-left self-stretch w-auto"
+                    onClick={() => navigate("/admin-allplays")}
+                  >
+                    <Img
+                      src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927647/HeartStrings/SVG/img_arrowleft_rjkqfd.svg"
+                      className="h-6 w-6"
+                      alt="ictwotonearrowr"
+                    />
+                    <Text
+                      className="font-bold text-left text-white_A700 w-auto"
+                      variant="body4"
+                    >
+                      Go back to all online plays
+                    </Text>
+                  </div>
+
+
+                  <div className="flex md:flex-col flex-row gap-4 items-start justify-between mt-6 w-full">
+
+
+
+
+
+
+
+
+                    <div className="bg-black_900 w-[725px] flex sm:flex-1 flex-col gap-6 items-center justify-center mb-8 sm:px-5 px-6 py-12 rounded-lg md:w-[535px] sm:w-full">
+                      {/* Content Form */}
                       <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto sm:w-full">
                         <Text
                           className="font-normal not-italic text-left text-white_A700 w-auto"
                           variant="body4"
                         >
-                          Synopsis
+                          Play title
                         </Text>
-                        <div className="bg-gray_800 h-[200px] rounded w-full"></div>
+                        <textarea className="bg-gray_800 text-gray_300 rounded w-full"></textarea>
+
                       </div>
-                      <Text
-                        className="not-italic text-gray_300 text-left w-auto"
-                        variant="body5"
-                      >
-                        Do not exceed 100 characters when entering the play’s
-                        synopsis
-                      </Text>
-                    </div>
-                  </div>
-                  <div className="bg-black_900 flex sm:flex-1 flex-col gap-6 items-center justify-center p-12 md:px-10 sm:px-5 rounded-lg self-stretch w-auto sm:w-full">
-                    <div className="flex flex-col gap-4 items-start justify-center w-[443px] sm:w-full">
-                      <Text
-                        className="font-normal not-italic text-left text-white_A700 w-auto"
-                        variant="body4"
-                      >
-                        Stream
-                      </Text>
-                      <PlaysAddPlayColumniconparkoutli
-                        className="border border-dashed border-gray_800 flex flex-col gap-2.5 h-[150px] md:h-auto items-center justify-center p-2.5 rounded w-[443px] sm:w-full"
-                        dropanimagehereOne="Drop a video here or click to browse."
-                      />
-                    </div>
-                    <div className="flex flex-col items-start justify-center w-[443px] sm:w-full">
-                      <div className="flex flex-col gap-4 items-start justify-center w-[443px] sm:w-full">
+                        
+                      <div className="flex flex-col gap-4 items-start justify-start self-stretch w-auto sm:w-full">
+                        <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto sm:w-full">
+                          <Text
+                            className="font-normal not-italic text-left text-white_A700 w-auto"
+                            variant="body4"
+                          >
+                            Synopsis
+                          </Text>
+                          <textarea className="bg-gray_800 h-[200px] text-gray_300 rounded w-full"></textarea>
+                        </div>
                         <Text
-                          className="font-normal not-italic text-left text-white_A700 w-auto"
-                          variant="body4"
+                          className="not-italic text-gray_300 text-left w-auto"
+                          variant="body5"
                         >
-                          Trailer
+                          Do not exceed 100 characters when entering the play’s
+                          synopsis
                         </Text>
-                        <PlaysAddPlayColumniconparkoutli
-                          className="border border-dashed border-gray_800 flex flex-col gap-2.5 h-[150px] md:h-auto items-center justify-center p-2.5 rounded w-[443px] sm:w-full"
-                          dropanimagehereOne="Drop a video here or click to browse."
-                        />
                       </div>
+                       
+                    </div>
+                    
+                    <div className="bg-black_900 w-[725px] flex sm:flex-1 flex-col items-start justify-start mb-[51px] md:px-10 px-12 sm:px-5 py-6 rounded-lg md:w-[535px] sm:w-full">
+                    <List
+                        className="flex-col gap-8 grid items-start w-[443px] md:w-full"
+                        orientation="vertical"
+                      >
+                        <div className="flex flex-col gap-4 items-start justify-center my-0 w-[443px] sm:w-full">
+                          <Text
+                            className="font-normal not-italic text-left text-white_A700 w-auto"
+                            variant="body4"
+                          >
+                            Play poster
+                          </Text>
+                          <PlayAddPlayVideo
+                            className="border border-dashed border-gray_800 flex flex-col gap-2.5 h-[150px] md:h-auto items-center justify-center p-2.5 rounded w-[600px] sm:w-full"
+                            dropanvideohereOne="Drop a video here or click to browse."
+                          />
+                        </div>
+                        <div className="flex flex-col gap-6 items-start justify-center my-0 w-[443px] sm:w-full">
+                          <Text
+                            className="font-normal not-italic text-left text-white_A700 w-auto"
+                            variant="body4"
+                          >
+                            Infotrailer
+                          </Text>
+                          <PlayAddPlayVideo
+                            className="border border-dashed border-gray_800 flex flex-col gap-2.5 h-[150px] md:h-auto items-center justify-center p-2.5 rounded w-[600px] sm:w-full"
+                            dropanvideohereOne="Drop a video here or click to browse."
+                          />
+                        </div>
+                      </List>
                     </div>
                   </div>
-                </div>
-                <div className="bg-black_900 flex flex-col items-start justify-start mt-[5px] md:px-10 px-12 sm:px-5 py-6 rounded-lg w-[537px] sm:w-full">
-                  <div className="flex flex-col gap-4 items-start justify-start self-stretch w-auto sm:w-full">
-                    <div className="flex flex-col gap-2 items-start justify-start w-[348px]">
-                      <Text
-                        className="font-normal not-italic text-left text-white_A700 w-auto"
-                        as="h6"
-                        variant="h6"
-                      >
-                        Streaming availability status and price
-                      </Text>
-                      <div className="flex flex-col items-center justify-start w-full">
-                        <div className="flex flex-row gap-6 items-center justify-center self-stretch w-auto">
+
+
+
+                  {/* Time */}
+                  <div className="bg-black_900 flex flex-col gap-8 items-start justify-start max-w-[725px] mt-7 sm:px-5 px-6 py-12 rounded-lg w-full">
+                  <div className="flex flex-col gap-8 items-start justify-start self-stretch w-auto sm:w-full">
+                        <div className="flex flex-col gap-6 items-start justify-start self-stretch w-auto sm:w-full">
                           <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto">
+                            <Text
+                              className="font-normal not-italic text-left text-white_A700 w-auto"
+                              as="h5"
+                              variant="h5"
+                            >
+                              Play Availability Status and Price
+                            </Text>
+
+                          </div>
+
+                          {/* 3 Days */}
+                           
+                          <div className="flex flex-row gap-4 items-center justify-start self-stretch w-full">
+                          <div className="flex flex-col gap-2 items-start justify-start self-stretch w-full">
                             <Text
                               className="font-normal not-italic text-left text-white_A700 w-auto"
                               variant="body4"
                             >
-                              Number of days
+                              Number Of Days
                             </Text>
-                            <Text
-                              className="bg-gray_800 font-normal h-12 not-italic pb-[11px] pl-3 sm:pr-5 pr-[35px] pt-[17px] rounded text-gray_300_87 text-left w-[114px]"
-                              variant="body4"
-                            >
-                              Days
-                            </Text>
+                            <Input
+                              wrapClassName="w-full"
+                              className="font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
+                              name="groupFourteen"
+                              placeholder="3"
+                              shape="RoundedBorder4"
+                              size="md"
+                              variant="FillGray800"
+                            ></Input>
+
                           </div>
-                          <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto">
+                          <div className="flex flex-col gap-2 items-start justify-start self-stretch w-full">
                             <Text
                               className="font-normal not-italic text-left text-white_A700 w-auto"
                               variant="body4"
@@ -422,33 +472,39 @@ const AdminAddStream = () => {
                             </Text>
                             <Input
                               wrapClassName="w-full"
-                              className="font-normal not-italic p-0 placeholder:text-gray_300_87 text-base text-gray_300_87 text-left w-full"
-                              name="price_One"
-                              placeholder="KES"
+                              className="font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
+                              name="groupFourteen"
+                              placeholder="KES XXXX"
                               shape="RoundedBorder4"
                               size="md"
                               variant="FillGray800"
                             ></Input>
                           </div>
                         </div>
-                      </div>
-                      <div className="flex flex-col items-center justify-start w-full">
-                        <div className="flex flex-row gap-6 items-center justify-center self-stretch w-auto">
-                          <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto">
+
+
+                          {/* 7 Days */}
+                                                     
+                          <div className="flex flex-row gap-4 items-center justify-start self-stretch w-full">
+                          <div className="flex flex-col gap-2 items-start justify-start self-stretch w-full">
                             <Text
                               className="font-normal not-italic text-left text-white_A700 w-auto"
                               variant="body4"
                             >
-                              Number of days
+                              Number Of Days
                             </Text>
-                            <Text
-                              className="bg-gray_800 font-normal h-12 not-italic pl-3 sm:pr-5 pr-[35px] py-3.5 rounded text-gray_300 text-left w-[114px]"
-                              variant="body4"
-                            >
-                              7
-                            </Text>
+                            <Input
+                              wrapClassName="w-full"
+                              className="font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
+                              name="groupFourteen"
+                              placeholder="7"
+                              shape="RoundedBorder4"
+                              size="md"
+                              variant="FillGray800"
+                            ></Input>
+
                           </div>
-                          <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto">
+                          <div className="flex flex-col gap-2 items-start justify-start self-stretch w-full">
                             <Text
                               className="font-normal not-italic text-left text-white_A700 w-auto"
                               variant="body4"
@@ -457,33 +513,39 @@ const AdminAddStream = () => {
                             </Text>
                             <Input
                               wrapClassName="w-full"
-                              className="font-normal not-italic p-0 placeholder:text-gray_300_87 text-base text-gray_300_87 text-left w-full"
-                              name="price_Three"
-                              placeholder="KES"
+                              className="font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
+                              name="groupFourteen"
+                              placeholder="KES XXXX"
                               shape="RoundedBorder4"
                               size="md"
                               variant="FillGray800"
                             ></Input>
                           </div>
                         </div>
-                      </div>
-                      <div className="flex flex-col items-center justify-start w-full">
-                        <div className="flex flex-row gap-6 items-center justify-center self-stretch w-auto">
-                          <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto">
+
+
+                          {/* 14 Days */}
+                                                     
+                          <div className="flex flex-row gap-4 items-center justify-start self-stretch w-full">
+                          <div className="flex flex-col gap-2 items-start justify-start self-stretch w-full">
                             <Text
                               className="font-normal not-italic text-left text-white_A700 w-auto"
                               variant="body4"
                             >
-                              Number of days
+                              Number Of Days
                             </Text>
-                            <Text
-                              className="bg-gray_800 font-normal h-12 not-italic pl-3 sm:pr-5 pr-[35px] py-3.5 rounded text-gray_300 text-left w-[114px]"
-                              variant="body4"
-                            >
-                              14
-                            </Text>
+                            <Input
+                              wrapClassName="w-full"
+                              className="font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
+                              name="groupFourteen"
+                              placeholder="14"
+                              shape="RoundedBorder4"
+                              size="md"
+                              variant="FillGray800"
+                            ></Input>
+
                           </div>
-                          <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto">
+                          <div className="flex flex-col gap-2 items-start justify-start self-stretch w-full">
                             <Text
                               className="font-normal not-italic text-left text-white_A700 w-auto"
                               variant="body4"
@@ -492,35 +554,44 @@ const AdminAddStream = () => {
                             </Text>
                             <Input
                               wrapClassName="w-full"
-                              className="font-normal not-italic p-0 placeholder:text-gray_300_87 text-base text-gray_300_87 text-left w-full"
-                              name="price_Five"
-                              placeholder="KES"
+                              className="font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
+                              name="groupFourteen"
+                              placeholder="KES XXXX"
                               shape="RoundedBorder4"
                               size="md"
                               variant="FillGray800"
                             ></Input>
                           </div>
                         </div>
+                  
+                        
+                        </div>
+
+                        
+                       {/* Offer Tag */}
+                          <div className="flex sm:flex-col flex-row gap-2 items-start justify-start w-auto sm:w-full">
+                          <Img
+                            className="h-6 w-6"
+                              src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1690006490/qq6v5rnin6clkdm7r9n_qmylz6.svg"
+                            alt="iconsaxboldinfo"
+                          />
+                          <Text
+                            className="leading-[175.00%] max-w-[402px] md:max-w-full text-gray-300 text-sm"
+                            size="txtRobotoRomanRegular14Gray300"
+                          >
+                            Once purchased, the stream will be available for that
+                            number of days to the customer.
+                          </Text>
+                        </div>
+
                       </div>
+
+
+
                     </div>
-                    <div className="flex sm:flex-col flex-row gap-2 items-start justify-start self-stretch w-auto sm:w-full">
-                      <Img
-                        src="images/img_iconsaxboldinformation.svg"
-                        className="h-6 w-6"
-                        alt="iconsaxboldinfo"
-                      />
-                      <Text
-                        className="leading-[175.00%] max-w-[402px] md:max-w-full not-italic text-gray_300 text-left"
-                        variant="body5"
-                      >
-                        Once purchased, the stream will be available for that
-                        number of days to the customer.
-                      </Text>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex flex-col gap-6 items-end justify-start mt-6 self-stretch w-auto md:w-full">
-                  <div className="bg-black_900 flex flex-col gap-8 items-start justify-start max-w-[1097px] sm:px-5 px-6 py-12 rounded-lg w-full">
+                 
+                  {/* Cast */}
+                  <div className="bg-black_900 flex flex-col gap-8 items-start justify-start max-w-[1450px] mt-7 sm:px-5 px-6 py-12 rounded-lg w-full">
                     <Text
                       className="font-bold text-left text-white_A700 w-auto"
                       as="h5"
@@ -538,7 +609,7 @@ const AdminAddStream = () => {
                       <div className="flex flex-col gap-8 items-start justify-start self-stretch w-full">
                         <div className="flex flex-col h-[200px] items-center justify-start w-[200px]">
                           <Img
-                            src="images/img_rectangle4_200x200.png"
+                            src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927679/HeartStrings/SVG/img_rectangle4_200x200_j1rxou.png"
                             className="h-[200px] md:h-auto object-cover rounded-lg w-[200px]"
                             alt="rectangleFour"
                           />
@@ -554,12 +625,13 @@ const AdminAddStream = () => {
                             <Input
                               wrapClassName="w-full"
                               className="font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
-                              name="groupNine"
-                              placeholder="Gloria Osoro"
+                              name="groupFourteen"
+                              placeholder="Anne Gitau"
                               shape="RoundedBorder4"
                               size="md"
                               variant="FillGray800"
                             ></Input>
+
                           </div>
                           <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto">
                             <Text
@@ -571,7 +643,7 @@ const AdminAddStream = () => {
                             <Input
                               wrapClassName="w-full"
                               className="font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
-                              name="groupTen"
+                              name="groupFourteen"
                               placeholder="Anne Gitau"
                               shape="RoundedBorder4"
                               size="md"
@@ -596,11 +668,12 @@ const AdminAddStream = () => {
                               Real name
                             </Text>
                             <Input
-                              wrapClassName="flex h-12 w-full"
-                              className="p-0 w-full"
-                              name="rectangleNine_One"
-                              placeholder=""
+                              wrapClassName="w-full"
+                              className="font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
+                              name="groupFourteen"
+                              placeholder="Anne Gitau"
                               shape="RoundedBorder4"
+                              size="md"
                               variant="FillGray800"
                             ></Input>
                           </div>
@@ -612,11 +685,12 @@ const AdminAddStream = () => {
                               Cast name
                             </Text>
                             <Input
-                              wrapClassName="flex h-12 w-full"
-                              className="p-0 w-full"
-                              name="rectangleNine_Two"
-                              placeholder=""
+                              wrapClassName="w-full"
+                              className="font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
+                              name="groupFourteen"
+                              placeholder="Anne Gitau"
                               shape="RoundedBorder4"
+                              size="md"
                               variant="FillGray800"
                             ></Input>
                           </div>
@@ -638,11 +712,12 @@ const AdminAddStream = () => {
                               Real name
                             </Text>
                             <Input
-                              wrapClassName="flex h-12 w-full"
-                              className="p-0 w-full"
-                              name="rectangleNine_Three"
-                              placeholder=""
+                              wrapClassName="w-full"
+                              className="font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
+                              name="groupFourteen"
+                              placeholder="Anne Gitau"
                               shape="RoundedBorder4"
+                              size="md"
                               variant="FillGray800"
                             ></Input>
                           </div>
@@ -654,11 +729,12 @@ const AdminAddStream = () => {
                               Cast name
                             </Text>
                             <Input
-                              wrapClassName="flex h-12 w-full"
-                              className="p-0 w-full"
-                              name="rectangleNine_Four"
-                              placeholder=""
+                              wrapClassName="w-full"
+                              className="font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
+                              name="groupFourteen"
+                              placeholder="Anne Gitau"
                               shape="RoundedBorder4"
+                              size="md"
                               variant="FillGray800"
                             ></Input>
                           </div>
@@ -680,11 +756,12 @@ const AdminAddStream = () => {
                               Real name
                             </Text>
                             <Input
-                              wrapClassName="flex h-12 w-full"
-                              className="p-0 w-full"
-                              name="rectangleNine_Five"
-                              placeholder=""
+                              wrapClassName="w-full"
+                              className="font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
+                              name="groupFourteen"
+                              placeholder="Anne Gitau"
                               shape="RoundedBorder4"
+                              size="md"
                               variant="FillGray800"
                             ></Input>
                           </div>
@@ -696,11 +773,12 @@ const AdminAddStream = () => {
                               Cast name
                             </Text>
                             <Input
-                              wrapClassName="flex h-12 w-full"
-                              className="p-0 w-full"
-                              name="rectangleNine_Six"
-                              placeholder=""
+                              wrapClassName="w-full"
+                              className="font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
+                              name="groupFourteen"
+                              placeholder="Anne Gitau"
                               shape="RoundedBorder4"
+                              size="md"
                               variant="FillGray800"
                             ></Input>
                           </div>
@@ -722,11 +800,12 @@ const AdminAddStream = () => {
                               Real name
                             </Text>
                             <Input
-                              wrapClassName="flex h-12 w-full"
-                              className="p-0 w-full"
-                              name="rectangleNine_Seven"
-                              placeholder=""
+                              wrapClassName="w-full"
+                              className="font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
+                              name="groupFourteen"
+                              placeholder="Anne Gitau"
                               shape="RoundedBorder4"
+                              size="md"
                               variant="FillGray800"
                             ></Input>
                           </div>
@@ -738,11 +817,12 @@ const AdminAddStream = () => {
                               Cast name
                             </Text>
                             <Input
-                              wrapClassName="flex h-12 w-full"
-                              className="p-0 w-full"
-                              name="rectangleNine_Eight"
-                              placeholder=""
+                              wrapClassName="w-full"
+                              className="font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
+                              name="groupFourteen"
+                              placeholder="Anne Gitau"
                               shape="RoundedBorder4"
+                              size="md"
                               variant="FillGray800"
                             ></Input>
                           </div>
@@ -750,14 +830,16 @@ const AdminAddStream = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="flex sm:flex-col flex-row gap-[25px] items-start justify-start ml-auto self-stretch w-auto sm:w-full">
+
+                  {/* Save Play */}
+                  <div className="flex flex-row gap-[25px] items-start justify-start ml-auto mt-6 self-stretch w-auto">
                     <Button
-                      className="cursor-pointer flex items-center justify-center min-w-[192px] w-auto"
+                      className="cursor-pointer flex items-center justify-center min-w-[166px] w-auto"
                       leftIcon={
                         <Img
-                          src="images/img_iconsax_bold_save2.svg"
-                          className="mt-px mr-4"
-                          alt="Iconsax/Bold/save2"
+                          src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927654/HeartStrings/SVG/img_iconsax_bold_save2_bgaabn.svg"
+                          className="mb-px mr-3"
+                          alt="Save"
                         />
                       }
                       shape="RoundedBorder8"
@@ -765,16 +847,16 @@ const AdminAddStream = () => {
                       variant="OutlineWhiteA700_1"
                     >
                       <div className="font-bold text-left text-white_A700 text-xl">
-                        Save stream
+                        Save Stream
                       </div>
                     </Button>
                     <Button
-                      className="cursor-pointer flex items-center justify-center min-w-[184px] w-auto"
+                      className="cursor-pointer flex items-center justify-center min-w-[164px] w-auto"
                       leftIcon={
                         <Img
-                          src="images/img_iconsax_bold_addcircle.svg"
-                          className="mt-px mr-4"
-                          alt="Iconsax/Bold/addcircle"
+                          src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1690007593/circle_gsm6z1.svg"
+                          className="mb-px mr-3"
+                          alt="Save Icon"
                         />
                       }
                       shape="RoundedBorder8"
@@ -782,18 +864,43 @@ const AdminAddStream = () => {
                       variant="FillRed900"
                     >
                       <div className="font-bold text-left text-white_A700 text-xl">
-                        Add stream
+                        Add Online Play
                       </div>
                     </Button>
                   </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </>
-  );
-};
+      </>
+    );
+  };
+  
 
 export default AdminAddStream

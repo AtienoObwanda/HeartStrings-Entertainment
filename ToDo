@@ -6,3 +6,8 @@ Next page is:
 >Tickets Table >> Add click/hover effect as well as Ticket Edit Functionality //Same concept as the table on the admin dashboard
 
 >User management Table >> Add the View and Delete user functionality //Same concept as the table on the admin dashboard
+
+
+
+FIXES:
+Prevent upload video/image from displaying twice

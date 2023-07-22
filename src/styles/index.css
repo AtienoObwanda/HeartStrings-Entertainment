@@ -170,3 +170,11 @@ ul li a{
 .common-column-list li{
   width: 100%;
 }
+
+/* Apply the background image on hover */
+
+
+/* Define the rotate effect on hover */
+.group-hover\:rotate-12:hover {
+  transform: rotate(12deg);
+}

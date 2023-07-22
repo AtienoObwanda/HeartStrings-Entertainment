@@ -21,23 +21,22 @@ const AdminTicketManagement = () => {
         <div className="bg-black_900_01 flex flex-col font-roboto items-center justify-start mx-auto w-full">
           <div className="flex md:flex-col flex-row md:gap-5 items-start justify-evenly w-full">
              {/* Large screen */}
-         <aside className="md:hidden flex justify-start md:px-5 w-[247px]">
+             <aside className="md:hidden flex justify-start md:px-5 w-[247px]">
           {/* <aside className="flex flex-col md:hidden justify-start md:px-5 w-[247px]"> */}
-            <div className="flex flex-col justify-start mb-[420px] mt-12 mx-auto w-[81%]">
+            <div className="flex flex-col justify-start mb-[420px] mt-12 mx-auto  w-[81%]">
               <Img
-                src="images/img_dummylogo02.svg"
-                className="common-pointer h-14 w-auto"
-                alt="dummylogoTwo"
+                src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689933646/HeartStrings/logo/HeartStringsLogo.png"
+                className="common-pointer h-[40%] w-[40%]"
+                alt="Heart Strings Entertainment Logo"
                 onClick={() => navigate("/")}
               />
-              <div
-              className="common-pointer flex flex-row gap-2 items-center justify-center mt-16 self-stretch w-auto"
-                  onClick={() => navigate("/admin-dashboard")}
-                > 
-              {/* <div className="bg-gray_800 flex flex-row gap-2 items-center justify-center mt-16 pl-6 md:pr-10 pr-[73px] sm:px-5 py-2.5 rounded-lg self-stretch w-auto"> */}
-                <Img
-                  src="images/img_iconsaxboldactivity.svg"
-                  className="h-6 w-6"
+              
+          <div
+                className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[16px] mt-9 self-stretch w-auto hover:border border-white rounded-md p-2"
+                onClick={() => navigate("/admin-dashboard")}
+              >                <Img
+                  src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927654/HeartStrings/SVG/img_iconsaxboldactivity_vlojze.svg"
+                  className="h-10 w-10"
                   alt="iconsaxboldacti"
                 />
                 <Text
@@ -47,30 +46,175 @@ const AdminTicketManagement = () => {
                   Dashboard
                 </Text>
               </div>
-              <div
-                className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-9 self-stretch w-auto"
-                onClick={() => navigate("/admin-allplays")}
-              >
+
+              <div className="bg-gray_800 common-pointer flex flex-row gap-2 items-center justify-center  mt-6 pl-6 md:pr-10 pr-[6px] sm:px-5 py-2.5 rounded-lg self-stretch w-auto"
+
+              onClick={() => navigate("/admin-allplays")}>
                 <Img
-                  src="images/img_iconsaxboldelement2.svg"
-                  className="h-6 w-6"
-                  alt="iconsaxboldelem"
+                  src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927657/HeartStrings/SVG/img_iconsaxboldelement2_white_a700_f8nhvw.svg"
+                  className="h-10 w-10"
+                  alt="Play Icon"
                 />
                 <Text
                   className="font-normal not-italic text-gray_300 text-left w-auto"
                   variant="body4"
                 >
-                  Plays
+                  Live Shows
                 </Text>
               </div>
+
               <div
-                className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-9 self-stretch w-auto"
+                className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[16px] mt-9 self-stretch w-auto hover:border border-white rounded-md p-2"
                 onClick={() => navigate("/admin-allstreams")}
               >
                 <Img
-                  src="images/img_iconsaxboldvideoplay.svg"
-                  className="h-6 w-6"
-                  alt="iconsaxboldvide"
+                  src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927661/HeartStrings/SVG/img_iconsaxboldvideoplay_white_a700_z0bppl.svg"
+                  className="h-10 w-10"
+                  alt="Streams Icon"
+                />
+                <Text
+                  className="font-normal not-italic text-gray_300 text-left w-auto"
+                  variant="body4"
+                >
+                  Online Plays
+                </Text>
+              </div>
+
+
+              <div
+                className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[16px] mt-9 self-stretch w-auto hover:border border-white rounded-md p-2"
+                onClick={() => navigate("/admin-allstreams")}
+              >
+                <Img
+                    src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927659/HeartStrings/SVG/img_iconsaxboldreceipt1_gray_300_gdkye8.svg"
+                    className="h-10 w-10"
+                  alt="Streams Icon"
+                />
+                <Text
+                  className="font-normal not-italic text-gray_300 text-left w-auto"
+                  variant="body4"
+                >
+                 Ticket Management
+                </Text>
+              </div>
+
+              <div
+                  className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[16px] mt-9 self-stretch w-auto hover:border border-white rounded-md p-2"
+                onClick={() => navigate("/admin-allstreams")}
+              >
+                <Img
+                    src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927659/HeartStrings/SVG/img_iconsaxboldprofile2user_white_a700_qdp6it.svg"
+                    className="h-10 w-10"
+                  alt="Streams Icon"
+                />
+                <Text
+                  className="font-normal not-italic text-gray_300 text-left w-auto"
+                  variant="body4"
+                >
+                  User Management
+                </Text>
+              </div>
+
+              <Line className="bg-gray_800 h-px mt-16 w-full" />
+
+
+                <div className="flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-8 self-stretch w-auto group">
+                      <div className="h-10 w-10 transition-colors duration-300 ease-in-out group-hover:bg-icon-hover group-hover:rotate-12">
+                          <Img
+                              src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927657/HeartStrings/SVG/img_iconsaxboldlogout_cmxo47.svg"
+                              className="h-full w-full hover:fill-red-500 svg"
+                              alt="iconsaxboldlogo"
+                                  />
+
+                         
+                            </div>
+                              <a
+                                  href="#:"
+                                  className="font-normal not-italic text-base text-gray-300 text-left w-auto"
+                              >
+                                  <Text className="">Logout</Text>
+                              </a>
+                      </div>
+
+
+
+
+            </div>
+          </aside>
+
+
+            {/* Display Medium Screens  */}
+<aside className="hidden md:flex justify-start md:px-5 w-[247px]">
+
+<div className="flex flex-col justify-start mb-[476px] mt-12 mx-auto w-[81%]">
+
+    <div style={{ display: "flex", justifyContent: "flex-start" }}>
+      <img
+        src={toggle ? close : menu}
+        alt="menu"
+        className="w-[28px] h-[28px] object-contain pt-3"
+        onClick={() => setToggle((prev) => !prev)}
+      />
+      <Img
+        src="images/img_dummylogo02.svg"
+        className="md:ml-[580px] sm:ml-[200px] common-pointer h-14 w-auto"
+        alt="dummylogoTwo"
+        onClick={() => navigate("/")}
+      />
+    </div>
+    <div className={`${toggle ? 'flex' : 'hidden'}
+      p-6 bg-black_900_01 absolute top-20 left-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar`}
+      >
+      <ul className="list-none justify-start items-center flex-1">
+
+        
+          <li className="py-3 cursor-pointer text-16">
+            
+          <div className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-2 self-stretch w-auto"
+                onClick={() => navigate("/admin-dashboard")}
+              >
+                <Img
+                  src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927654/HeartStrings/SVG/img_iconsaxboldactivity_vlojze.svg"
+                  className="h-10 w-10"
+                  alt="Admin Dashboard Icon"
+                />
+                <Text
+                  className="font-normal not-italic text-left text-white_A700 w-auto"
+                  variant="body4"
+                >
+                  Dashboard
+                </Text>
+              </div>
+          </li>
+
+          <li className="py-3 cursor-pointer text-16">
+          <div className="bg-gray_800 flex flex-row gap-2 items-center justify-center mt-6 pl-6 md:pr-10 pr-[73px] sm:px-5 py-2.5 rounded-lg self-stretch w-auto"
+          onClick={() => navigate("/admin-allplays")}
+          > 
+        
+                <Img
+                  src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927657/HeartStrings/SVG/img_iconsaxboldelement2_white_a700_f8nhvw.svg"
+                  className="h-10 w-10"
+                  alt="Plays Icon"
+                />
+
+                <Text
+                  className="font-normal not-italic text-gray_300 text-left w-auto"
+                  variant="body4"
+                >
+                  Live Shows
+                </Text>
+              </div>
+          </li>
+
+          <li className="py-3 cursor-pointer text-16">
+          <div className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-0 self-stretch w-auto"
+                onClick={() => navigate("/admin-allstreams")}
+              >
+                <Img
+                  src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927661/HeartStrings/SVG/img_iconsaxboldvideoplay_white_a700_z0bppl.svg"
+                  className="h-10 w-10"
+                  alt="Stream Icon"
                 />
                 <Text
                   className="font-normal not-italic text-gray_300 text-left w-auto"
@@ -79,13 +223,17 @@ const AdminTicketManagement = () => {
                   Streams
                 </Text>
               </div>
-              <div className="flex flex-col gap-9 items-start justify-start md:ml-[0] ml-[26px] mt-9 self-stretch w-auto">
-              <div className="bg-gray_800 flex flex-row gap-2 items-center justify-center mt-2 pl-6 md:pr-10 pr-[73px] sm:px-5 py-2.5 rounded-lg self-stretch w-auto"
+          </li>
+
+
+          <li className="py-3 cursor-pointer text-16">
+              <div
+                  className="common-pointer flex flex-row gap-2 items-center justify-center self-stretch w-auto"
                   onClick={() => navigate("/ticket-management")}
                 >
                   <Img
-                    src="images/img_iconsaxboldreceipt1_gray_300.svg"
-                    className="h-6 w-6"
+                    src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927659/HeartStrings/SVG/img_iconsaxboldreceipt1_gray_300_gdkye8.svg"
+                    className="h-10 w-10"
                     alt="iconsaxboldrece"
                   />
                   <Text
@@ -95,15 +243,18 @@ const AdminTicketManagement = () => {
                     Tickets
                   </Text>
                 </div>
+            </li>
 
-                <div
+
+            <li className="py-3 cursor-pointer text-16">
+            <div
                   className="common-pointer flex flex-row gap-2 items-center justify-center self-stretch w-auto"
                   onClick={() => navigate("/user-management")}
                 >
                   <Img
-                    src="images/img_iconsaxboldprofile2user.svg"
-                    className="h-6 w-6"
-                    alt="iconsaxboldprof"
+                    src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927659/HeartStrings/SVG/img_iconsaxboldprofile2user_white_a700_qdp6it.svg"
+                    className="h-10 w-10"
+                    alt="User Management Icon"
                   />
                   <Text
                     className="font-normal not-italic text-gray_300 text-left w-auto"
@@ -112,164 +263,39 @@ const AdminTicketManagement = () => {
                     User management
                   </Text>
                 </div>
-              </div>
-              <Line className="bg-gray_800 h-px mt-16 w-full" />
-              <div className="flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-[63px] self-stretch w-auto">
-                <Img
-                  src="images/img_iconsaxboldlogout.svg"
-                  className="h-6 w-6"
-                  alt="iconsaxboldlogo"
-                />
-                <a
-                  href="javascript:"
-                  className="font-normal not-italic text-base text-gray_300 text-left w-auto"
-                >
-                  <Text className="">Logout</Text>
-                </a>
-              </div>
-            </div>
-          </aside>
-            {/* Display Medium Screens  */}
-          <aside className="hidden md:flex justify-start md:px-5 w-[247px]">
+            </li>
 
-      <div className="flex flex-col justify-start mb-[476px] mt-12 mx-auto w-[81%]">
+          <Line className="bg-gray_800 h-px mt-[60px] w-full" />
 
-          <div style={{ display: "flex", justifyContent: "flex-start" }}>
-            <img
-              src={toggle ? close : menu}
-              alt="menu"
-              className="w-[28px] h-[28px] object-contain pt-3"
-              onClick={() => setToggle((prev) => !prev)}
-            />
-            <Img
-              src="images/img_dummylogo02.svg"
-              className="md:ml-[580px] sm:ml-[200px] common-pointer h-14 w-auto"
-              alt="dummylogoTwo"
-              onClick={() => navigate("/")}
-            />
-          </div>
-          <div className={`${toggle ? 'flex' : 'hidden'}
-            p-6 bg-black_900_01 absolute top-20 left-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar`}
-            >
-            <ul className="list-none justify-start items-center flex-1">
+          <li className="py-3 cursor-pointer text-16">                     
+           
+           
+          <div className="flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-8 self-stretch w-auto group">
+                      <div className="h-10 w-10 transition-colors duration-300 ease-in-out group-hover:bg-icon-hover group-hover:rotate-12">
+                          <Img
+                              src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927657/HeartStrings/SVG/img_iconsaxboldlogout_cmxo47.svg"
+                              className="h-full w-full hover:fill-red-500 svg"
+                              alt="iconsaxboldlogo"
+                                  />
 
-              
-                <li className="py-3 cursor-pointer text-16">
-                  
-                <div
-                        className="common-pointer flex flex-row gap-2 items-center justify-center self-stretch w-auto"              onClick={() => navigate("/admin-dashboard")}
-                    >
-                      <Img
-                        src="images/img_iconsaxboldactivity.svg"
-                        className="h-6 w-6"
-                        alt="iconsaxboldacti"
-                      />
-                      <Text
-                        className="font-normal not-italic text-left text-white_A700 w-auto"
-                        variant="body4"
-                      >
-                        Dashboard
-                      </Text>
-                    </div>
-                </li>
-
-                <li className="py-3 cursor-pointer text-16"> 
-                <div className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-6 self-stretch w-auto"
-                      onClick={() => navigate("/admin-allplays")}
-                    >
-                      <Img
-                        src="images/img_iconsaxboldelement2.svg"
-                        className="h-6 w-6"
-                        alt="iconsaxboldelem"
-                      />
-                      <Text
-                        className="font-normal not-italic text-gray_300 text-left w-auto"
-                        variant="body4"
-                      >
-                        Plays
-                      </Text>
-                    </div>
-                </li>
-
-                <li className="py-3 cursor-pointer text-16">
-                <div className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-0 self-stretch w-auto"
-                      onClick={() => navigate("/admin-allstreams")}
-                    >
-                      <Img
-                        src="images/img_iconsaxboldvideoplay.svg"
-                        className="h-6 w-6"
-                        alt="iconsaxboldvide"
-                      />
-                      <Text
-                        className="font-normal not-italic text-gray_300 text-left w-auto"
-                        variant="body4"
-                      >
-                        Streams
-                      </Text>
-                    </div>
-                </li>
-
-              
-
-                <li className="py-3 cursor-pointer text-16">
-                    
-                <div className="bg-gray_800 flex flex-row gap-2 items-center justify-center mt-4 pl-6 md:pr-10 pr-[73px] sm:px-5 py-2.5 rounded-lg self-stretch w-auto"
-                        onClick={() => navigate("/ticket-management")}
-                      >
-                        <Img
-                          src="images/img_iconsaxboldreceipt1_gray_300.svg"
-                          className="h-6 w-6"
-                          alt="iconsaxboldrece"
-                        />
-                        <Text
-                          className="font-normal not-italic text-gray_300 text-left w-auto"
-                          variant="body4"
-                        >
-                          Tickets
-                        </Text>
+                         
+                            </div>
+                              <a
+                                  href="#:"
+                                  className="font-normal not-italic text-base text-gray-300 text-left w-auto"
+                              >
+                                  <Text className="">Logout</Text>
+                              </a>
                       </div>
-                  </li>
-                  <li className="py-3 cursor-pointer text-16">
-                  <div
-                        className="common-pointer flex flex-row gap-2 items-center justify-center self-stretch w-auto"
-                        onClick={() => navigate("/user-management")}
-                      >
-                        <Img
-                          src="images/img_iconsaxboldprofile2user.svg"
-                          className="h-6 w-6"
-                          alt="iconsaxboldprof"
-                        />
-                        <Text
-                          className="font-normal not-italic text-gray_300 text-left w-auto"
-                          variant="body4"
-                        >
-                          User management
-                        </Text>
-                      </div>
-                  </li>
 
-                <Line className="bg-gray_800 h-px mt-[60px] w-full" />
+            
 
-                <li className="py-3 cursor-pointer text-16">                     
-                  <div className="flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-8 self-stretch w-auto">
-                    <Img
-                      src="images/img_iconsaxboldlogout.svg"
-                      className="h-6 w-6"
-                      alt="iconsaxboldlogo"
-                    />
-                    <a
-                      href="javascript:"
-                      className="font-normal not-italic text-base text-gray_300 text-left w-auto"
-                    >
-                      <Text className="">Logout</Text>
-                    </a>
-                  </div>
-                </li>
-              </ul>
-      </div>
-      </div>
+          </li>
+        </ul>
+</div>
+</div>
 
-          </aside>
+</aside>
 
           <div className="flex flex-1 flex-col items-center justify-start md:px-5 w-full md:mt-[-30em] sm:mt-[-30em]">
             <div className="flex md:flex-col flex-row md:gap-10 items-center justify-between p-7 sm:px-5 w-full">
