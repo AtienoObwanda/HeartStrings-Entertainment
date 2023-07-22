@@ -5,6 +5,8 @@ import React, { useState } from "react";
   import { Button, Img, Input, Line, List, Switch, Text } from "UI_Components";
   import PlaysAddPlayAddshift from "UI_Components/PlaysAddPlay";
   import PlaysAddPlayColumniconparkoutli from "UI_Components/PlaysAddPlayColumnIcon";
+  import PlayAddPlayVideo from "UI_Components/PlayAddPlayVideo"
+
 
   import close from "../../../assets/close.svg";
 import  menu from "../../../assets/menu.svg";
@@ -29,7 +31,7 @@ const AdminAddPlay = () => {
                 alt="dummylogoTwo"
                 onClick={() => navigate("/")}
               />
-<div
+          <div
                 className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-9 self-stretch w-auto"
                 onClick={() => navigate("/admin-dashboard")}
               >                <Img
@@ -381,9 +383,9 @@ const AdminAddPlay = () => {
                           >
                             Play poster
                           </Text>
-                          <PlaysAddPlayColumniconparkoutli
+                          <PlayAddPlayVideo
                             className="border border-dashed border-gray_800 flex flex-col gap-2.5 h-[150px] md:h-auto items-center justify-center p-2.5 rounded w-[600px] sm:w-full"
-                            dropanimagehereOne="Drop an image here or click to browse."
+                            dropanvideohereOne="Drop a video here or click to browse."
                           />
                         </div>
                         <div className="flex flex-col gap-6 items-start justify-center my-0 w-[443px] sm:w-full">
@@ -393,9 +395,9 @@ const AdminAddPlay = () => {
                           >
                             Infotrailer
                           </Text>
-                          <PlaysAddPlayColumniconparkoutli
+                          <PlayAddPlayVideo
                             className="border border-dashed border-gray_800 flex flex-col gap-2.5 h-[150px] md:h-auto items-center justify-center p-2.5 rounded w-[600px] sm:w-full"
-                            dropanimagehereOne="Drop a video here or click to browse."
+                            dropanvideohereOne="Drop a video here or click to browse."
                           />
                         </div>
                       </List>
