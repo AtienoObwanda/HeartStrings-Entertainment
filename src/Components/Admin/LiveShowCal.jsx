@@ -156,7 +156,26 @@ export default function LiveShowCal() {
                           onClick={() => handleDateSelection(day)}
                           disabled={selectedDays.includes(day)}
                           className={classNames(
-                            // ... (classNames for styling remain the same)
+                            isEqual(day, selectedDays) && 'text-white',
+                            !isEqual(day, selectedDays) &&
+                              isToday(day) &&
+                              'text-gray-500',
+                            !isEqual(day, selectedDays) &&
+                              !isToday(day) &&
+                              isSameMonth(day, firstDayCurrentMonth) &&
+                              'text-gray-300',
+                            !isEqual(day, selectedDays) &&
+                              !isToday(day) &&
+                              !isSameMonth(day, firstDayCurrentMonth) &&
+                              'text-gray-900',
+                            isEqual(day, selectedDays) && isToday(day) && 'bg-light_blue_500',
+                            isEqual(day, selectedDays) &&
+                              !isToday(day) &&
+                              'bg-gray-900',
+                            !isEqual(day, selectedDays) && 'hover:bg-gray-900',
+                            (isEqual(day, selectedDays) || isToday(day)) &&
+                              'font-semibold',
+                            'mx-auto flex h-8 w-8 items-center justify-center rounded-full'
                           )}
                         >
                           <time dateTime={format(day, 'yyyy-MM-dd')}>{format(day, 'd')}</time>
@@ -172,7 +191,7 @@ export default function LiveShowCal() {
 
                     <ul>
             {selectedDays.map((selectedDay, index) => (
-              <li className="text-base text-center" size="txtRobotoRomanRegular16"
+              <li className="text-base text-center mb-6" size="txtRobotoRomanRegular16"
                key={selectedDay.toString()}>
 
                <div className="flex flex-row gap-2 items-center justify-start w-auto mb-4 text-white_A700 w-auto">
@@ -251,13 +270,13 @@ export default function LiveShowCal() {
         );
       }
       
-      let colStartClasses = [
-        '',
-        'col-start-2',
-        'col-start-3',
-        'col-start-4',
-        'col-start-5',
-        'col-start-6',
-        'col-start-7',
-      ];
+let colStartClasses = [
+  '',
+  'col-start-2',
+  'col-start-3',
+  'col-start-4',
+  'col-start-5',
+  'col-start-6',
+  'col-start-7',
+]
       

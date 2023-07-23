@@ -13,10 +13,6 @@ import  menu from "../../../assets/menu.svg";
 import DatePickerCal from "Components/Admin/DatePickerCal";
 import LiveShowCal from "Components/Admin/LiveShowCal";
 
-
-
-
-  
 const AdminAddPlay = () => {
   
   const navigate = useNavigate();
