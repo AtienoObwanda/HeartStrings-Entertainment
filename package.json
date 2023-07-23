@@ -5,6 +5,7 @@
   "dependencies": {
     "@dhiwise/react-switch": "^1.0.2",
     "@headlessui/react": "^1.7.15",
+    "@heroicons/react": "^1.0.6",
     "@tailwindcss/forms": "^0.4.0",
     "@tanstack/react-table": "^8.5.30",
     "@testing-library/jest-dom": "^5.15.1",
@@ -13,6 +14,7 @@
     "aos": "^2.3.4",
     "chart.js": "^4.3.0",
     "chartjs-plugin-datalabels": "^2.2.0",
+    "date-fns": "^2.30.0",
     "dotenv": "^16.0.1",
     "faker": "^5.5.3",
     "moment": "^2.29.4",

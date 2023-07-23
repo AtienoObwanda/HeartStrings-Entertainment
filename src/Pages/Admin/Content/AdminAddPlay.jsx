@@ -10,6 +10,8 @@ import React, { useState } from "react";
 
   import close from "../../../assets/close.svg";
 import  menu from "../../../assets/menu.svg";
+import DatePickerCal from "Components/Admin/DatePickerCal";
+import LiveShowCal from "Components/Admin/LiveShowCal";
 
 
 
@@ -459,72 +461,7 @@ const AdminAddPlay = () => {
                               Select show time
                             </Text>
                             {/* Calendar: */}
-
-
-
-
-
-                            {/* Time */}
-                            <div className="flex flex-col gap-6 items-start justify-start w-auto">
-                              <div className="flex flex-row gap-2 items-center justify-start w-auto">
-                                <Img
-                                  className="h-6 w-6"
-                                  src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927647/HeartStrings/SVG/img_calendar_dzho0s.svg"
-                                  alt="calendar"
-                                />
-                                <Text
-                                  className="text-base text-center text-white_A700 w-auto"
-                                  size="txtRobotoRomanRegular16"
-                                >
-                                  Wed, 21 April 2022
-                                </Text>
-                              </div>
-                              <div className="flex flex-row gap-3.5 items-center justify-center w-auto">
-                                <Button
-                                  className="bg-black-900_01 cursor-pointer flex h-[35px] items-center justify-center px-2.5 py-[9px] rounded"
-                                  rightIcon={
-                                    <Img
-                                      className="h-4 ml-2 my-px"
-                                      src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927647/HeartStrings/SVG/img_arrowdown_eqt07q.svg"
-                                      alt="arrow_down"
-                                    />
-                                  }
-                                >
-                                  <div className="text-left text-sm text-white_A700">
-                                    3:00 PM
-                                  </div>
-                                </Button>
-                                <Button
-                                  className="bg-black-900_01 cursor-pointer flex items-center justify-center min-w-[104px] px-2.5 py-[9px] rounded"
-                                  rightIcon={
-                                    <Img
-                                      className="h-4 ml-4 my-px"
-                                      src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927647/HeartStrings/SVG/img_arrowdown_eqt07q.svg"
-                                      alt="arrow_down"
-                                    />
-                                  }
-                                >
-                                  <div className="text-left text-sm text-white_A700">
-                                    6:30 PM
-                                  </div>
-                                </Button>
-                                <div className="flex flex-row gap-1 items-center justify-center w-auto">
-                                  <Img
-                                    className="h-6 w-6"
-                                    src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927656/HeartStrings/SVG/img_iconsaxboldclock_suvvop.svg"
-                                    alt="iconsaxboldcloc"
-                                  />
-                                  <div className="flex flex-col items-start justify-start pr-[3px] pt-[3px]">
-                                    <Text
-                                      className="text-sm text-white_A700 underline"
-                                      size="txtRobotoRomanRegular14WhiteA700"
-                                    >
-                                      Add time
-                                    </Text>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
+                            <LiveShowCal/>
 
 
                     </div>
@@ -891,7 +828,7 @@ const AdminAddPlay = () => {
                       variant="OutlineWhiteA700_1"
                     >
                       <div className="font-bold text-left text-white_A700 text-xl">
-                        Save Stream
+                        Save Live Show
                       </div>
                     </Button>
                     <Button
@@ -908,7 +845,7 @@ const AdminAddPlay = () => {
                       variant="FillRed900"
                     >
                       <div className="font-bold text-left text-white_A700 text-xl">
-                        Add Online Play
+                        Post Live Show
                       </div>
                     </Button>
                   </div>
