@@ -15,21 +15,6 @@ import LiveShowCal from "Components/Admin/LiveShowCal";
 
 
 
-const selectOptionsList = [
-  { label: "Option1", value: "option1" },
-  { label: "Option2", value: "option2" },
-  { label: "Option3", value: "option3" },
-];
-const selectOptionsList1 = [
-  { label: "Option1", value: "option1" },
-  { label: "Option2", value: "option2" },
-  { label: "Option3", value: "option3" },
-];
-const optionsList = [
-  { label: "Option1", value: "option1" },
-  { label: "Option2", value: "option2" },
-  { label: "Option3", value: "option3" },
-];
 
   
 const AdminAddPlay = () => {
@@ -428,23 +413,52 @@ const AdminAddPlay = () => {
                             >
                                 Play poster
                             </Text>
-                            <PlaysAddPlayColumniconparkoutli
-                                className="border border-dashed border-gray_800 flex flex-col gap-2.5 h-[150px] md:h-auto items-center justify-center p-2.5 rounded w-full sm:w-full"
-                                dropanvideohereOne="Drop a video here or click to browse."
-                            />
+                            {/* Drag and Drop */}
+                            <div class="flex items-center justify-center w-full">
+                              <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 border border-gray_800 border-dashed rounded-lg cursor-pointer bg-black_900 hover:bg-black_900_01">
+                                <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                                <Img
+                                  src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927652/HeartStrings/SVG/img_iconparkoutli_dznpma.svg"
+                                  className="h-6 w-6 mb-4"
+                                  alt="iconparkoutli"
+                                />
+                                  <p class="mb-2 text-sm text-white_A700 font-semibold">Drop an image here or click to upload</p>
+                                  <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or WEBP (MAX. 800x400px)</p>
+                                </div>
+                                <input id="dropzone-file" type="file" accept="image/*" class="hidden" />
+                              </label>
+                              <div id="image-preview" class="hidden mt-4">
+                                <img id="preview-image" class="w-64 h-32" src="#" alt="Preview" />
+                              </div>
+                            </div>
+
                         </div>
 
-                        <div className="flex flex-col gap-6 items-start justify-center my-0 w-full sm:w-full">
+                        <div className="flex flex-col gap-6 items-start mt-4 justify-center my-0 w-full sm:w-full">
                             <Text
                                 className="font-normal not-italic text-left text-white_A700 w-auto"
                                 variant="body4"
                             >
                                 Infotrailer
                             </Text>
-                            <PlaysAddPlayColumniconparkoutli
-                                className="border border-dashed border-gray_800 flex flex-col gap-2.5 h-[150px] md:h-auto items-center justify-center p-2.5 rounded w-full sm:w-full"
-                                dropanvideohereOne="Drop a video here or click to browse."
-                            />
+                             {/* Drag and Drop */}
+                             <div class="flex items-center justify-center w-full">
+                              <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 border border-gray_800 border-dashed rounded-lg cursor-pointer bg-black_900 hover:bg-black_900_01">
+                                <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                                <Img
+                                  src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927652/HeartStrings/SVG/img_iconparkoutli_dznpma.svg"
+                                  className="h-6 w-6 mb-4"
+                                  alt="iconparkoutli"
+                                />
+                                  <p class="mb-2 text-sm text-white_A700 font-semibold">Drop an image here or click to upload</p>
+                                  <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or WEBP (MAX. 800x400px)</p>
+                                </div>
+                                <input id="dropzone-file" type="file" accept="image/*" class="hidden" />
+                              </label>
+                              <div id="image-preview" class="hidden mt-4">
+                                <img id="preview-image" class="w-64 h-32" src="#" alt="Preview" />
+                              </div>
+                            </div>
                         </div>
                     </div>
 
@@ -635,10 +649,82 @@ const AdminAddPlay = () => {
                       </div>
                       <div className="flex flex-col gap-8 items-start justify-start self-stretch w-full">
                         <div className="flex flex-col items-start justify-start w-[200px]">
-                          <PlaysAddPlayColumniconparkoutli
-                            className="border border-dashed border-gray_800 flex flex-col gap-2.5 h-[200px] md:h-auto items-center justify-center p-2.5 rounded w-[200px] sm:w-full"
-                            dropanimagehereOne="Drop image (s) here or click to browse."
-                          />
+                           {/* Drag and Drop */}
+                           <div class="flex items-center justify-center w-full">
+                              <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 border border-gray_800 border-dashed rounded-lg cursor-pointer bg-black_900 hover:bg-black_900_01">
+                                <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                                <Img
+                                  src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927652/HeartStrings/SVG/img_iconparkoutli_dznpma.svg"
+                                  className="h-6 w-6 mb-4"
+                                  alt="iconparkoutli"
+                                />
+                                  <p class="mb-2 text-sm text-white_A700 font-semibold">Drop an image here or click to browse</p>
+                                  <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or WEBP (MAX. 800x400px)</p>
+                                </div>
+                                <input id="dropzone-file" type="file" accept="image/*" class="hidden" />
+                              </label>
+                              <div id="image-preview" class="hidden mt-4">
+                                <img id="preview-image" class="w-64 h-32" src="#" alt="Preview" />
+                              </div>
+                            </div>
+                        </div>
+
+                        <div className="flex flex-col gap-4 items-center justify-start self-stretch w-auto">
+                          <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto">
+                            <Text
+                              className="font-normal not-italic text-left text-white_A700 w-auto"
+                              variant="body4"
+                            >
+                              Real name
+                            </Text>
+                            <Input
+                              wrapClassName="w-full"
+                              className="font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
+                              name="groupFourteen"
+                              placeholder="Anne Gitau"
+                              shape="RoundedBorder4"
+                              size="md"
+                              variant="FillGray800"
+                            ></Input>
+                          </div>
+                          <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto">
+                            <Text
+                              className="font-normal not-italic text-left text-white_A700 w-auto"
+                              variant="body4"
+                            >
+                              Cast name
+                            </Text>
+                            <Input
+                              wrapClassName="w-full"
+                              className="font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
+                              name="groupFourteen"
+                              placeholder="Anne Gitau"
+                              shape="RoundedBorder4"
+                              size="md"
+                              variant="FillGray800"
+                            ></Input>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex flex-col gap-8 items-start justify-start self-stretch w-full">
+                        <div className="flex flex-col items-start justify-start w-[200px]">
+                          <div class="flex items-center justify-center w-full">
+                              <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 border border-gray_800 border-dashed rounded-lg cursor-pointer bg-black_900 hover:bg-black_900_01">
+                                <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                                <Img
+                                  src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927652/HeartStrings/SVG/img_iconparkoutli_dznpma.svg"
+                                  className="h-6 w-6 mb-4"
+                                  alt="iconparkoutli"
+                                />
+                                  <p class="mb-2 text-sm text-white_A700 font-semibold">Drop an image here or click to browse</p>
+                                  <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or WEBP (MAX. 800x400px)</p>
+                                </div>
+                                <input id="dropzone-file" type="file" accept="image/*" class="hidden" />
+                              </label>
+                              <div id="image-preview" class="hidden mt-4">
+                                <img id="preview-image" class="w-64 h-32" src="#" alt="Preview" />
+                              </div>
+                            </div>
                         </div>
                         <div className="flex flex-col gap-4 items-center justify-start self-stretch w-auto">
                           <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto">
@@ -679,10 +765,23 @@ const AdminAddPlay = () => {
                       </div>
                       <div className="flex flex-col gap-8 items-start justify-start self-stretch w-full">
                         <div className="flex flex-col items-start justify-start w-[200px]">
-                          <PlaysAddPlayColumniconparkoutli
-                            className="border border-dashed border-gray_800 flex flex-col gap-2.5 h-[200px] md:h-auto items-center justify-center p-2.5 rounded w-[200px] sm:w-full"
-                            dropanimagehereOne="Drop image (s) here or click to browse."
-                          />
+                        <div class="flex items-center justify-center w-full">
+                              <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 border border-gray_800 border-dashed rounded-lg cursor-pointer bg-black_900 hover:bg-black_900_01">
+                                <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                                <Img
+                                  src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927652/HeartStrings/SVG/img_iconparkoutli_dznpma.svg"
+                                  className="h-6 w-6 mb-4"
+                                  alt="iconparkoutli"
+                                />
+                                  <p class="mb-2 text-sm text-white_A700 font-semibold">Drop an image here or click to browse</p>
+                                  <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or WEBP (MAX. 800x400px)</p>
+                                </div>
+                                <input id="dropzone-file" type="file" accept="image/*" class="hidden" />
+                              </label>
+                              <div id="image-preview" class="hidden mt-4">
+                                <img id="preview-image" class="w-64 h-32" src="#" alt="Preview" />
+                              </div>
+                            </div>
                         </div>
                         <div className="flex flex-col gap-4 items-center justify-start self-stretch w-auto">
                           <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto">
@@ -723,54 +822,23 @@ const AdminAddPlay = () => {
                       </div>
                       <div className="flex flex-col gap-8 items-start justify-start self-stretch w-full">
                         <div className="flex flex-col items-start justify-start w-[200px]">
-                          <PlaysAddPlayColumniconparkoutli
-                            className="border border-dashed border-gray_800 flex flex-col gap-2.5 h-[200px] md:h-auto items-center justify-center p-2.5 rounded w-[200px] sm:w-full"
-                            dropanimagehereOne="Drop image (s) here or click to browse."
-                          />
-                        </div>
-                        <div className="flex flex-col gap-4 items-center justify-start self-stretch w-auto">
-                          <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto">
-                            <Text
-                              className="font-normal not-italic text-left text-white_A700 w-auto"
-                              variant="body4"
-                            >
-                              Real name
-                            </Text>
-                            <Input
-                              wrapClassName="w-full"
-                              className="font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
-                              name="groupFourteen"
-                              placeholder="Anne Gitau"
-                              shape="RoundedBorder4"
-                              size="md"
-                              variant="FillGray800"
-                            ></Input>
-                          </div>
-                          <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto">
-                            <Text
-                              className="font-normal not-italic text-left text-white_A700 w-auto"
-                              variant="body4"
-                            >
-                              Cast name
-                            </Text>
-                            <Input
-                              wrapClassName="w-full"
-                              className="font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
-                              name="groupFourteen"
-                              placeholder="Anne Gitau"
-                              shape="RoundedBorder4"
-                              size="md"
-                              variant="FillGray800"
-                            ></Input>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="flex flex-col gap-8 items-start justify-start self-stretch w-full">
-                        <div className="flex flex-col items-start justify-start w-[200px]">
-                          <PlaysAddPlayColumniconparkoutli
-                            className="border border-dashed border-gray_800 flex flex-col gap-2.5 h-[200px] md:h-auto items-center justify-center p-2.5 rounded w-[200px] sm:w-full"
-                            dropanimagehereOne="Drop image (s) here or click to browse."
-                          />
+                        <div class="flex items-center justify-center w-full">
+                              <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 border border-gray_800 border-dashed rounded-lg cursor-pointer bg-black_900 hover:bg-black_900_01">
+                                <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                                <Img
+                                  src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927652/HeartStrings/SVG/img_iconparkoutli_dznpma.svg"
+                                  className="h-6 w-6 mb-4"
+                                  alt="iconparkoutli"
+                                />
+                                  <p class="mb-2 text-sm text-white_A700 font-semibold">Drop an image here or click to browse</p>
+                                  <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or WEBP (MAX. 800x400px)</p>
+                                </div>
+                                <input id="dropzone-file" type="file" accept="image/*" class="hidden" />
+                              </label>
+                              <div id="image-preview" class="hidden mt-4">
+                                <img id="preview-image" class="w-64 h-32" src="#" alt="Preview" />
+                              </div>
+                            </div>
                         </div>
                         <div className="flex flex-col gap-4 items-center justify-start self-stretch w-auto">
                           <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto">
