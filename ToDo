@@ -12,3 +12,6 @@ Next page is:
 FIXES:
 Prevent upload video/image from displaying twice
 Drag and drop image/video field types
+
+
+Confirm Logo alignment on small screen

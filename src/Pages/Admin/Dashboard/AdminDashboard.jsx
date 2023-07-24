@@ -85,7 +85,7 @@ const AdminDashboard = () => {
 
               <div
                 className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[16px] mt-9 self-stretch w-auto hover:border border-white rounded-md p-2"
-                onClick={() => navigate("/admin-allstreams")}
+                onClick={() => navigate("/ticket-management")}
               >
                 <Img
                     src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927659/HeartStrings/SVG/img_iconsaxboldreceipt1_gray_300_gdkye8.svg"
@@ -102,7 +102,7 @@ const AdminDashboard = () => {
 
               <div
                   className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[16px] mt-9 self-stretch w-auto hover:border border-white rounded-md p-2"
-                onClick={() => navigate("/admin-allstreams")}
+                onClick={() => navigate("/user-management")}
               >
                 <Img
                     src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927659/HeartStrings/SVG/img_iconsaxboldprofile2user_white_a700_qdp6it.svg"
@@ -148,7 +148,7 @@ const AdminDashboard = () => {
             {/* Display Medium Screens  */}
 <aside className="hidden md:flex justify-start md:px-5 w-[247px]">
 
-<div className="flex flex-col justify-start mb-[476px] mt-12 mx-auto w-[81%]">
+<div className="flex flex-col justify-start mb-[476px] mt-12 mx-auto w-[81%] ">
 
     <div style={{ display: "flex", justifyContent: "flex-start" }}>
       <img
@@ -159,7 +159,7 @@ const AdminDashboard = () => {
       />
       <Img
       src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689933646/HeartStrings/logo/HeartStringsLogo.png"
-      className="common-pointer h-[40%] w-[50%]"
+      className="common-pointer h-[60%] w-[80%] ml-[20em]"
       alt="Heart Strings Entertainment Logo"
       onClick={() => navigate("/")}
     />
@@ -222,7 +222,7 @@ const AdminDashboard = () => {
                   className="font-normal not-italic text-gray_300 text-left w-auto"
                   variant="body4"
                 >
-                  Streams
+                  Online Plays
                 </Text>
               </div>
           </li>
@@ -306,7 +306,7 @@ const AdminDashboard = () => {
                 <div className="flex sm:flex-1 sm:flex-col flex-row gap-6 items-center justify-center ml-5 md:ml-[0] self-stretch w-auto sm:w-full">
               */}
               {/* Small and tablet only */}
-              <div className="hidden md:flex flex-row gap-[21px] items-center justify-start mr-5 self-stretch w-auto">
+              <div className="hidden md:flex flex-row gap-[21px] items-center justify-start mr-5 self-stretch w-auto mt-[-16em]">
                 <Img
                   src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927649/HeartStrings/SVG/img_ellipse1_jfdd8k.png"
                   className="h-[61px] md:h-auto rounded-[50%] w-[61px]"
