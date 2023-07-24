@@ -51,7 +51,8 @@ const AdminUserManagement = () => {
                 </Text>
               </div>
 
-              <div className="bg-gray_800 common-pointer flex flex-row gap-2 items-center justify-center  mt-6 pl-6 md:pr-10 pr-[6px] sm:px-5 py-2.5 rounded-lg self-stretch w-auto"
+              <div 
+                  className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[16px] mt-9 self-stretch w-auto hover:border border-white rounded-md p-2"
 
               onClick={() => navigate("/admin-allplays")}>
                 <Img
@@ -103,7 +104,8 @@ const AdminUserManagement = () => {
               </div>
 
               <div
-                  className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[16px] mt-9 self-stretch w-auto hover:border border-white rounded-md p-2"
+                  className="common-pointer bg-gray_800 common-pointer flex flex-row gap-2 items-center justify-center  mt-6 pl-6 md:pr-10 pr-[6px] sm:px-5 py-2.5 rounded-lg self-stretch w-auto"
+
                 onClick={() => navigate("/user-management")}
               >
                 <Img
@@ -192,9 +194,11 @@ const AdminUserManagement = () => {
                     </li>
 
                     <li className="py-3 cursor-pointer text-16">
-                    <div className="bg-gray_800 flex flex-row gap-2 items-center justify-center mt-6 pl-6 md:pr-10 pr-[73px] sm:px-5 py-2.5 rounded-lg self-stretch w-auto"
-                    onClick={() => navigate("/admin-allplays")}
-                    > 
+                    <div 
+                        className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[16px] mt-9 self-stretch w-auto hover:border border-white rounded-md p-2"
+
+                        onClick={() => navigate("/admin-allplays")}
+                                            > 
                   
                           <Img
                             src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927657/HeartStrings/SVG/img_iconsaxboldelement2_white_a700_f8nhvw.svg"
@@ -252,7 +256,8 @@ const AdminUserManagement = () => {
 
                       <li className="py-3 cursor-pointer text-16">
                       <div
-                            className="common-pointer flex flex-row gap-2 items-center justify-center self-stretch w-auto"
+                            className="bg-gray_800 common-pointer flex flex-row gap-2 items-center justify-center  mt-6 pl-6 md:pr-10 pr-[6px] sm:px-5 py-2.5 rounded-lg self-stretch w-auto"
+
                             onClick={() => navigate("/user-management")}
                           >
                             <Img
