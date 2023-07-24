@@ -115,7 +115,7 @@ const UserManagement = () => {
                                 {data.length}
                               </Text>
                               <Img
-                                src="images/img_iconsax_bold_arrowdown2.svg"
+                                src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927653/HeartStrings/SVG/img_iconsax_bold_arrowdown2_bxl9th.svg"
                                 className="h-6 w-6"
                                 alt="iconsaxboldarro"
                               />
@@ -124,7 +124,7 @@ const UserManagement = () => {
                     <td class="px-6 py-3">
                     <div className="flex flex-row gap-4 items-center justify-center self-stretch w-auto">
                             <Img
-                              src="images/img_iconsaxboldarrowleft2.svg"
+                              src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927656/HeartStrings/SVG/img_iconsaxboldarrowleft2_zjxjcd.svg"
                               className="h-6 w-6"
                               alt="iconsaxboldarro_One"
                             />
@@ -178,7 +178,7 @@ const UserManagement = () => {
                               Next
                             </Text>
                             <Img
-                              src="images/img_iconsaxboldarrowright2.svg"
+                              src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927656/HeartStrings/SVG/img_iconsaxboldarrowright2_hauua0.svg"
                               className="h-6 w-6"
                               alt="iconsaxboldarro_Two"
                             />

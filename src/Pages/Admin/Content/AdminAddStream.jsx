@@ -22,12 +22,12 @@ const AdminAddStream = () => {
          <aside className="md:hidden flex justify-start md:px-5 w-[247px]">
           {/* <aside className="flex flex-col md:hidden justify-start md:px-5 w-[247px]"> */}
             <div className="flex flex-col justify-start mb-[420px] mt-12 mx-auto  w-[81%]">
-              <Img
-                src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689933646/HeartStrings/logo/HeartStringsLogo.png"
-                className="common-pointer h-[40%] w-[40%]"
-                alt="Heart Strings Entertainment Logo"
-                onClick={() => navigate("/")}
-              />
+            <Img
+              src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689933646/HeartStrings/logo/HeartStringsLogo.png"
+              className="common-pointer h-[40%] w-[50%]"
+              alt="Heart Strings Entertainment Logo"
+              onClick={() => navigate("/")}
+            />
               
           <div
                 className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[16px] mt-9 self-stretch w-auto hover:border border-white rounded-md p-2"
@@ -154,11 +154,11 @@ const AdminAddStream = () => {
         onClick={() => setToggle((prev) => !prev)}
       />
       <Img
-        src="images/img_dummylogo02.svg"
-        className="md:ml-[580px] sm:ml-[200px] common-pointer h-14 w-auto"
-        alt="dummylogoTwo"
-        onClick={() => navigate("/")}
-      />
+      src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689933646/HeartStrings/logo/HeartStringsLogo.png"
+      className="common-pointer h-[40%] w-[50%]"
+      alt="Heart Strings Entertainment Logo"
+      onClick={() => navigate("/")}
+    />
     </div>
     <div className={`${toggle ? 'flex' : 'hidden'}
       p-6 bg-black_900_01 absolute top-20 left-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar`}
@@ -308,7 +308,7 @@ const AdminAddStream = () => {
                 </div>
                 <div className="flex flex-row gap-[21px] items-center justify-start mr-6 self-stretch w-auto">
                   <Img
-                    src="images/img_ellipse1.png"
+                    src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927649/HeartStrings/SVG/img_ellipse1_jfdd8k.png"
                     className="h-[61px] md:h-auto rounded-[50%] w-[61px]"
                     alt="ellipseOne"
                   />

@@ -152,11 +152,11 @@ const AdminAllStreams = () => {
         onClick={() => setToggle((prev) => !prev)}
       />
       <Img
-        src="images/img_dummylogo02.svg"
-        className="md:ml-[580px] sm:ml-[200px] common-pointer h-14 w-auto"
-        alt="dummylogoTwo"
-        onClick={() => navigate("/")}
-      />
+      src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689933646/HeartStrings/logo/HeartStringsLogo.png"
+      className="common-pointer h-[40%] w-[50%]"
+      alt="Heart Strings Entertainment Logo"
+      onClick={() => navigate("/")}
+    />
     </div>
     <div className={`${toggle ? 'flex' : 'hidden'}
       p-6 bg-black_900_01 absolute top-20 left-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar`}
@@ -316,7 +316,7 @@ const AdminAllStreams = () => {
                 onClick={() => navigate("/adminaddstream")}
                 leftIcon={
                   <Img
-                    src="images/img_iconsax_bold_addcircle.svg"
+                    src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927652/HeartStrings/SVG/img_iconsax_bold_addcircle_a598f7.svg"
                     className="mt-px"
                     alt="Iconsax/Bold/addcircle"
                   />
@@ -333,20 +333,12 @@ const AdminAllStreams = () => {
             <div className="md:h-[1025px] sm:h-[1603px] h-[275px] mb-[472px] relative w-full">
               <div className="flex flex-row h-full items-center justify-between ml-[104px] mt-[59px] w-[56%]">
                 <Img
-                  src="images/img_materialsymbolsplaycircle_black_900.svg"
+                  src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927663/HeartStrings/SVG/img_materialsymbolsplaycircle_black_900_e8p0ow.svg"
                   className="h-12 w-12"
                   alt="materialsymbols"
                 />
-                <Img
-                  src="images/img_materialsymbolsplaycircle_white_a700.svg"
-                  className="h-12 w-12"
-                  alt="materialsymbols_One"
-                />
-                <Img
-                  src="images/img_materialsymbolsplaycircle_white_a700.svg"
-                  className="h-12 w-12"
-                  alt="materialsymbols_Two"
-                />
+                
+                
               </div>
               <List
                 className="absolute sm:flex-col flex-row gap-[25px] grid sm:grid-cols-1 md:grid-cols-2 grid-cols-4 inset-[0] justify-start m-auto self-stretch w-auto"
@@ -355,7 +347,7 @@ const AdminAllStreams = () => {
                 <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto">
                   <div className="h-[200px] relative w-full">
                     <Img
-                      src="images/img_rectangle8_570x1140.png"
+                      src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927767/HeartStrings/SVG/img_rectangle8_570x1140_ot5kmw.png"
                       className="h-[200px] m-auto object-cover rounded-lg w-full"
                       alt="rectangleFour"
                     />
@@ -366,7 +358,7 @@ const AdminAllStreams = () => {
                       variant="icbFillGray800"
                     >
                       <Img
-                        src="images/img_camera.svg"
+                        src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927647/HeartStrings/SVG/img_camera_n3rcqz.svg"
                         className="h-6"
                         alt="camera"
                       />
@@ -384,7 +376,7 @@ const AdminAllStreams = () => {
                     </div>
                     <div className="flex flex-row gap-2 items-center justify-center self-stretch w-auto">
                       <Img
-                        src="images/img_mdiclocktimenine.svg"
+                        src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927664/HeartStrings/SVG/img_mdiclocktimenine_wcpsyc.svg"
                         className="h-6 w-6"
                         alt="mdiclocktimenin"
                       />
@@ -402,12 +394,12 @@ const AdminAllStreams = () => {
                 <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto">
                   <div className="h-[200px] relative w-full">
                     <Img
-                      src="images/img_rectangle8_300x557.png"
+                      src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927731/HeartStrings/SVG/img_rectangle8_300x557_xlnnpm.png"
                       className="h-[200px] m-auto object-cover rounded-lg w-full"
                       alt="rectangleFour"
                     />
                     <Img
-                      src="images/img_materialsymbolsplaycircle_white_a700.svg"
+                      src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927664/HeartStrings/SVG/img_materialsymbolsplaycircle_white_a700_ousntd.svg"
                       className="absolute h-12 inset-[0] justify-center m-auto w-12"
                       alt="materialsymbols"
                     />
@@ -424,7 +416,7 @@ const AdminAllStreams = () => {
                     </div>
                     <div className="flex flex-row gap-2 items-center justify-center self-stretch w-auto">
                       <Img
-                        src="images/img_mdiclocktimenine.svg"
+                        src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927664/HeartStrings/SVG/img_mdiclocktimenine_wcpsyc.svg"
                         className="h-6 w-6"
                         alt="mdiclocktimenin"
                       />
@@ -442,12 +434,12 @@ const AdminAllStreams = () => {
                 <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto">
                   <div className="h-[200px] relative w-full">
                     <Img
-                      src="images/img_rectangle8_1.png"
+                      src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927725/HeartStrings/SVG/img_rectangle8_1_cblvcv.png"
                       className="h-[200px] m-auto object-cover rounded-lg w-full"
                       alt="rectangleFour"
                     />
                     <Img
-                      src="images/img_materialsymbolsplaycircle_white_a700.svg"
+                      src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927664/HeartStrings/SVG/img_materialsymbolsplaycircle_white_a700_ousntd.svg"
                       className="absolute h-12 inset-[0] justify-center m-auto w-12"
                       alt="materialsymbols"
                     />
@@ -464,7 +456,7 @@ const AdminAllStreams = () => {
                     </div>
                     <div className="flex flex-row gap-2 items-center justify-center self-stretch w-auto">
                       <Img
-                        src="images/img_mdiclocktimenine.svg"
+                        src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927664/HeartStrings/SVG/img_mdiclocktimenine_wcpsyc.svg"
                         className="h-6 w-6"
                         alt="mdiclocktimenin"
                       />
@@ -482,12 +474,12 @@ const AdminAllStreams = () => {
                 <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto">
                   <div className="h-[200px] relative w-full">
                     <Img
-                      src="images/img_rectangle8_191x332.png"
+                      src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927736/HeartStrings/SVG/img_rectangle8_191x332_ykeufx.png"
                       className="h-[200px] m-auto object-cover rounded-lg w-full"
                       alt="rectangleFour"
                     />
                     <Img
-                      src="images/img_materialsymbolsplaycircle_white_a700.svg"
+                      src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927664/HeartStrings/SVG/img_materialsymbolsplaycircle_white_a700_ousntd.svg"
                       className="absolute h-12 inset-x-[0] mx-auto top-[30%] w-12"
                       alt="materialsymbols"
                     />
@@ -504,7 +496,7 @@ const AdminAllStreams = () => {
                     </div>
                     <div className="flex flex-row gap-2 items-center justify-center self-stretch w-auto">
                       <Img
-                        src="images/img_mdiclocktimenine.svg"
+                        src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927664/HeartStrings/SVG/img_mdiclocktimenine_wcpsyc.svg"
                         className="h-6 w-6"
                         alt="mdiclocktimenin"
                       />
@@ -532,7 +524,7 @@ const AdminAllStreams = () => {
             </Text>
             <div className="flex flex-row gap-[21px] items-center justify-start mr-[19px] self-stretch w-auto">
               <Img
-                src="images/img_ellipse1.png"
+                src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927649/HeartStrings/SVG/img_ellipse1_jfdd8k.png"
                 className="h-[61px] md:h-auto rounded-[50%] w-[61px]"
                 alt="ellipseOne"
               />

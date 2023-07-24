@@ -1,13 +1,14 @@
 Next page is:
-> Plays >>Add Plays functionality
+> Plays >>Add Plays functionality || Edit Play || Delete Play
 
->Streams >>Add Streams functionality
+>Streams >>Add Streams functionality || Edit Stream || Delete Stream
 
->Tickets Table >> Add click/hover effect as well as Ticket Edit Functionality //Same concept as the table on the admin dashboard
+>Tickets Table >> View Ticket || Edit Ticket || Delete Ticket || Buy Ticket For Client 
 
->User management Table >> Add the View and Delete user functionality //Same concept as the table on the admin dashboard
+>User management Table >> View User || Delete User
 
 
 
 FIXES:
 Prevent upload video/image from displaying twice
+Drag and drop image/video field types

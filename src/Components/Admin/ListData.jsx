@@ -18,7 +18,7 @@ const ListData = () => {
                         variant="icbFillRed900"
                       >
                         <Img
-                          src="images/img_iconsaxboldelement2_white_a700.svg"
+                          src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927657/HeartStrings/SVG/img_iconsaxboldelement2_white_a700_f8nhvw.svg"
                           className="h-6"
                           alt="iconsaxboldelem"
                         />
@@ -48,7 +48,7 @@ const ListData = () => {
                         variant="icbFillRed900"
                       >
                         <Img
-                          src="images/img_iconsaxboldvideoplay.svg"
+                          src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927661/HeartStrings/SVG/img_iconsaxboldvideoplay_white_a700_z0bppl.svg"
                           className="h-6"
                           alt="iconsaxboldvide"
                         />
@@ -78,7 +78,7 @@ const ListData = () => {
                         variant="icbFillRed900"
                       >
                         <Img
-                          src="images/img_iconsaxboldprofile2user.svg"
+                          src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927659/HeartStrings/SVG/img_iconsaxboldprofile2user_white_a700_qdp6it.svg"
                           className="h-6"
                           alt="iconsaxboldprof"
                         />
@@ -108,7 +108,7 @@ const ListData = () => {
                         variant="icbFillRed900"
                       >
                         <Img
-                          src="images/img_iconsaxboldreceipt1_gray_300.svg"
+                          src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927659/HeartStrings/SVG/img_iconsaxboldreceipt1_gray_300_gdkye8.svg"
                           className="h-6"
                           alt="iconsaxboldrece"
                         />

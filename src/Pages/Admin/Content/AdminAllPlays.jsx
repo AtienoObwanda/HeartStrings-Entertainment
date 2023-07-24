@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import { useNavigate } from "react-router-dom";
+import {FaEdit} from "react-icons/fa"
 
 import { Button, CheckBox, Img, Line, List, Text } from "UI_Components";
 import close from "../../../assets/close.svg";
@@ -150,11 +151,11 @@ const AdminAllPlays = () => {
         onClick={() => setToggle((prev) => !prev)}
       />
       <Img
-        src="images/img_dummylogo02.svg"
-        className="md:ml-[580px] sm:ml-[200px] common-pointer h-14 w-auto"
-        alt="dummylogoTwo"
-        onClick={() => navigate("/")}
-      />
+      src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689933646/HeartStrings/logo/HeartStringsLogo.png"
+      className="common-pointer h-[40%] w-[50%]"
+      alt="Heart Strings Entertainment Logo"
+      onClick={() => navigate("/")}
+    />
     </div>
     <div className={`${toggle ? 'flex' : 'hidden'}
       p-6 bg-black_900_01 absolute top-20 left-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar`}
@@ -315,7 +316,7 @@ const AdminAllPlays = () => {
                   onClick={() => navigate("/adminaddplay")}
                   leftIcon={
                     <Img
-                      src="images/img_iconsax_bold_addcircle.svg"
+                      src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927652/HeartStrings/SVG/img_iconsax_bold_addcircle_a598f7.svg"
                       className="mb-px mr-4"
                       alt="Iconsax/Bold/addcircle"
                     />
@@ -337,13 +338,12 @@ const AdminAllPlays = () => {
                   <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto">
                     <div className="h-[299px] relative w-full">
                       <Img
-                        src="images/img_rectangle4_200x256.png"
+                        src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927559/HeartStrings/Heartstrings_Ent_KE_Hand_On_Face_jdoyth.png"
                         className="h-[299px] m-auto object-cover rounded-lg w-full"
                         alt="rectangleFour"
                       />
-                      <Img
-                        src="images/img_frame40161.svg"
-                        className="absolute h-[104px] right-[6%] top-[5%] w-11"
+                      <FaEdit
+                        className="absolute top-[0%] w-8 h-8 right-[2%] text-white"
                         alt="frame40161"
                       />
                     </div>
@@ -360,10 +360,11 @@ const AdminAllPlays = () => {
                   <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto">
                     <div className="flex flex-col items-center justify-start w-full">
                       <Img
-                        src="images/img_rectangle8_300x557.png"
+                        src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927560/HeartStrings/Heartstrings_Ent_KE_two_cpqykr.png"
                         className="h-[299px] md:h-auto object-cover rounded-lg w-full"
                         alt="rectangleFour_One"
                       />
+
                     </div>
                     <div className="flex flex-col items-center justify-start self-stretch w-auto">
                       <Text
@@ -378,7 +379,7 @@ const AdminAllPlays = () => {
                   <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto">
                     <div className="flex flex-col items-center justify-start w-full">
                       <Img
-                        src="images/img_rectangle8_1.png"
+                        src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927558/HeartStrings/Heartstrings_Ent_KE_2_kb2kdv.png"
                         className="h-[299px] md:h-auto object-cover rounded-lg w-full"
                         alt="rectangleFour_Two"
                       />
@@ -396,7 +397,7 @@ const AdminAllPlays = () => {
                   <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto">
                     <div className="flex flex-col items-center justify-start w-full">
                       <Img
-                        src="images/img_rectangle8_191x332.png"
+                        src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927565/HeartStrings/Heartstrings_Ent_KE_Hug_mdvnsq.png"
                         className="h-[299px] md:h-auto object-cover rounded-lg w-full"
                         alt="rectangleFour_Three"
                       />
@@ -427,7 +428,7 @@ const AdminAllPlays = () => {
                     <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto">
                       <div className="h-[299px] relative w-full">
                         <Img
-                          src="images/img_rectangle4_200x256.png"
+                          src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927565/HeartStrings/Heartstrings_Ent_KE_Hug_mdvnsq.png"
                           className="h-[299px] m-auto object-cover rounded-lg w-full"
                           alt="rectangleFour"
                         />
@@ -438,7 +439,7 @@ const AdminAllPlays = () => {
                           variant="icbFillGray800"
                         >
                           <Img
-                            src="images/img_file.svg"
+                            src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927649/HeartStrings/SVG/img_file_yomrpr.svg"
                             className=""
                             alt="file"
                           />
@@ -457,7 +458,7 @@ const AdminAllPlays = () => {
                     <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto">
                       <div className="flex flex-col items-center justify-start w-full">
                         <Img
-                          src="images/img_rectangle8_300x557.png"
+                          src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927560/HeartStrings/Heartstrings_Ent_KE_two_cpqykr.png"
                           className="h-[299px] md:h-auto object-cover rounded-lg w-full"
                           alt="rectangleFour_One"
                         />
@@ -475,7 +476,7 @@ const AdminAllPlays = () => {
                     <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto">
                       <div className="flex flex-col items-center justify-start w-full">
                         <Img
-                          src="images/img_rectangle8.png"
+                          src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927559/HeartStrings/Heartstrings_Ent_KE_Hand_On_Face_jdoyth.png"
                           className="h-[299px] md:h-auto object-cover rounded-lg w-full"
                           alt="rectangleFour_Two"
                         />
@@ -493,7 +494,7 @@ const AdminAllPlays = () => {
                     <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto">
                       <div className="flex flex-col items-center justify-start w-full">
                         <Img
-                          src="images/img_rectangle8_191x332.png"
+                          src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927558/HeartStrings/Heartstrings_Ent_KE_2_kb2kdv.png"
                           className="h-[299px] md:h-auto object-cover rounded-lg w-full"
                           alt="rectangleFour_Three"
                         />
@@ -524,7 +525,7 @@ const AdminAllPlays = () => {
               </div>
               <div className="flex flex-row gap-[21px] items-center justify-start mr-6 self-stretch w-auto">
                 <Img
-                  src="images/img_ellipse1.png"
+                  src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927649/HeartStrings/SVG/img_ellipse1_jfdd8k.png"
                   className="h-[61px] md:h-auto rounded-[50%] w-[61px]"
                   alt="ellipseOne"
                 />

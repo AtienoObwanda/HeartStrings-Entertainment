@@ -158,11 +158,11 @@ const AdminDashboard = () => {
         onClick={() => setToggle((prev) => !prev)}
       />
       <Img
-        src="images/img_dummylogo02.svg"
-        className="md:ml-[580px] sm:ml-[200px] common-pointer h-14 w-auto"
-        alt="dummylogoTwo"
-        onClick={() => navigate("/")}
-      />
+      src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689933646/HeartStrings/logo/HeartStringsLogo.png"
+      className="common-pointer h-[40%] w-[50%]"
+      alt="Heart Strings Entertainment Logo"
+      onClick={() => navigate("/")}
+    />
     </div>
     <div className={`${toggle ? 'flex' : 'hidden'}
       p-6 bg-black_900_01 absolute top-20 left-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar`}
@@ -308,7 +308,7 @@ const AdminDashboard = () => {
               {/* Small and tablet only */}
               <div className="hidden md:flex flex-row gap-[21px] items-center justify-start mr-5 self-stretch w-auto">
                 <Img
-                  src="images/img_ellipse1.png"
+                  src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927649/HeartStrings/SVG/img_ellipse1_jfdd8k.png"
                   className="h-[61px] md:h-auto rounded-[50%] w-[61px]"
                   alt="ellipseOne"
                 />
@@ -344,14 +344,14 @@ const AdminDashboard = () => {
                   placeholder="Last 7 days"
                   prefix={
                     <Img
-                      src="images/img_iconsax_bold_calendar.svg"
+                      src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927653/HeartStrings/SVG/img_iconsax_bold_calendar_vdwpso.svg"
                       className="my-auto"
                       alt="Iconsax/Bold/calendar"
                     />
                   }
                   suffix={
                     <Img
-                      src="images/img_iconsax_bold_arrowdown2.svg"
+                      src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927653/HeartStrings/SVG/img_iconsax_bold_arrowdown2_bxl9th.svg"
                       className="my-auto"
                       alt="Iconsax/Bold/arrowdown2"
                     />
@@ -364,7 +364,7 @@ const AdminDashboard = () => {
               </div>
               <div className="md:hidden flex flex-row gap-[21px] items-center justify-start mr-5 self-stretch w-auto">
                 <Img
-                  src="images/img_ellipse1.png"
+                  src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927649/HeartStrings/SVG/img_ellipse1_jfdd8k.png"
                   className="h-[61px] md:h-auto rounded-[50%] w-[61px]"
                   alt="ellipseOne"
                 />

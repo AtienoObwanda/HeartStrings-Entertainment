@@ -318,7 +318,7 @@ const AdminAddPlay = () => {
                 </div>
                 <div className="flex flex-row gap-[21px] items-center justify-start mr-6 self-stretch w-auto">
                   <Img
-                    src="images/img_ellipse1.png"
+                    src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927649/HeartStrings/SVG/img_ellipse1_jfdd8k.png"
                     className="h-[61px] md:h-auto rounded-[50%] w-[61px]"
                     alt="ellipseOne"
                   />
