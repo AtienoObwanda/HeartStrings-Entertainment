@@ -31,16 +31,10 @@ ADD BOREDER ON HOVER:  className="common-pointer flex flex-row gap-2 items-cente
 
 <!-- LIST -->
 
- <List
-                        className="flex-col gap-8 grid items-start w-[443px] md:w-full"
-                        orientation="vertical"
-                      >
-                        
-                        
-
-
-                        
-                      </List>
+ <List className="flex-col gap-8 grid items-start w-[443px] md:w-full"
+      orientation="vertical"
+    >
+    </List>
 
 
 
@@ -49,7 +43,6 @@ ADD BOREDER ON HOVER:  className="common-pointer flex flex-row gap-2 items-cente
 ASIDE
 
 
-<div className=
 "bg-gray_800 common-pointer flex flex-row gap-2 items-center justify-center  mt-6 pl-6 md:pr-10 pr-[6px] sm:px-5 py-2.5 rounded-lg self-stretch w-auto"
 
 
