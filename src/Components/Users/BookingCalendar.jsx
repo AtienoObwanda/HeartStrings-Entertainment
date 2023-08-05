@@ -86,7 +86,7 @@ const BookingCalendar = () => {
                     
                     {/* Scroll Left */}
         <img
-          src="images/img_group40097.svg"
+          src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927651/HeartStrings/SVG/img_group40097_almxnl.svg"
           className="h-[60px] w-[54px]  mt-[3em] "
           alt="Scroll Left"
           ref={prevEl}
@@ -144,11 +144,10 @@ const BookingCalendar = () => {
               key={day.toString()}
               className={`bg-${backgroundColor}-500 bg-cover bg-no-repeat flex flex-col h-[118px] w-[54px] items-center justify-start p-[4em] sm:px-5`}
               style={{
-                backgroundImage: isCurrentDate ? "url('images/img_group39896.svg')" : ""
+                backgroundImage: isCurrentDate ? "url('https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927650/HeartStrings/SVG/img_group39896_ze66d9.svg')" : "url('https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927650/HeartStrings/SVG/img_group39896_ze66d9.svg')"
               }}
               language={day.format("ddd") + " "}
               p1st={getDayOfMonthString(day.format("D"))}
-              // month={currentMonthName}
             />
           );
         })}
@@ -161,7 +160,7 @@ const BookingCalendar = () => {
 
         {/* Scroll Right */}
         <img
-          src="images/img_group40096.svg"
+          src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927653/HeartStrings/SVG/img_group40096_uzttsv.svg"
           className="h-[60px] w-[54px]  mt-[3em] "
           alt="Scroll Right"
           ref={nextEl}

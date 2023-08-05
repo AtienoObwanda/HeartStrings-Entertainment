@@ -20,16 +20,19 @@ const MyStreamLibrary = () => {
           {/* <aside className="flex flex-col md:hidden justify-start md:px-5 w-[247px]"> */}
           <aside className="md:hidden flex bg-black_900 justify-start md:px-5 w-[247px]">
             <div className="flex flex-col justify-start mb-[476px] mt-12 mx-auto w-[81%]">
-              <Img
-                src="images/img_dummylogo02.svg"
-                className="common-pointer h-14 w-auto"
-                alt="dummylogoTwo"
-                onClick={() => navigate("/")}
-              />
-              <div className="flex flex-row gap-2 items-center justify-center mt-16 pl-6 md:pr-10 pr-[58px] sm:px-5 py-2.5 rounded-lg self-stretch w-auto">
+            <Img
+              src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689933646/HeartStrings/logo/HeartStringsLogo.png"
+              className="common-pointer h-[25%] w-[35%]"
+              alt="Heart Strings Entertainment Logo"
+              onClick={() => navigate("/")}
+            />
+              <div 
+              className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[16px] mt-9 self-stretch w-auto hover:border border-white rounded-md p-2"
+              onClick={() => navigate("/edit-my-account")}
+              >
                 {/* <div className="flex flex-row gap-2 items-center justify-center ml-6 md:ml-[0] mr-[9px] mt-16 pl-6 md:pr-10 pr-[73px] sm:px-5 py-2.5 self-stretch w-auto"> */}
                 <Img
-                  src="images/img_iconsaxbolduser.svg"
+                  src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927660/HeartStrings/SVG/img_iconsaxbolduser_cixk7a.svg"
                   className="h-6 w-6"
                   alt="iconsaxbolduser"
                 />
@@ -43,7 +46,7 @@ const MyStreamLibrary = () => {
 
               <div className="bg-gray_800 flex flex-row gap-2 items-center justify-start md:ml-[0] mt-3 mx-6 pl-6 md:pr-10 pr-[55px] sm:px-5 py-2.5 rounded-lg w-[199px]">
                 <Img
-                  src="images/img_iconsaxboldelement2_white_a700.svg"
+                  src=" https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927657/HeartStrings/SVG/img_iconsaxboldelement2_white_a700_f8nhvw.svg"
                   className="h-6 w-6"
                   alt="iconsaxboldelem"
                 />
@@ -55,11 +58,11 @@ const MyStreamLibrary = () => {
                 </Text>
               </div>
               <div
-                className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-8 self-stretch w-auto"
-                onClick={() => navigate("/mytickets")}
+                className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[16px] mt-9 self-stretch w-auto hover:border border-white rounded-md p-2"
+                onClick={() => navigate("/my-tickets")}
               >
                 <Img
-                  src="images/img_iconsaxboldreceipt1_gray_300.svg"
+                  src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927659/HeartStrings/SVG/img_iconsaxboldreceipt1_gray_300_gdkye8.svg"
                   className="h-6 w-6"
                   alt="iconsaxboldrece"
                 />
@@ -71,9 +74,10 @@ const MyStreamLibrary = () => {
                 </Text>
               </div>
               <Line className="bg-gray_800 h-px mt-[60px] w-full" />
-              <div className="flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-[63px] self-stretch w-auto">
+              <div className="flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-[63px] self-stretch w-auto hover:border border-white rounded-md p-2"
+              onClick={() => navigate("/contact-us")}>
                 <Img
-                  src="images/img_iconsaxboldmessagequestion_gray_300.svg"
+                  src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927659/HeartStrings/SVG/img_iconsaxboldmessagequestion_gray_300_nml9u7.svg"
                   className="h-6 w-6"
                   alt="iconsaxboldmess"
                 />
@@ -84,14 +88,14 @@ const MyStreamLibrary = () => {
                   Help
                 </Text>
               </div>
-              <div className="flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-8 self-stretch w-auto">
-                <Img
-                  src="images/img_iconsaxboldlogout.svg"
-                  className="h-6 w-6"
-                  alt="iconsaxboldlogo"
-                />
+              <div className="flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-8 self-stretch w-auto transition-colors duration-300 ease-in-out group-hover:bg-icon-hover group-hover:rotate-12">
+              <Img
+                src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927657/HeartStrings/SVG/img_iconsaxboldlogout_cmxo47.svg"
+                className="h-6 w-6"
+                alt="iconsaxboldlogo"
+              />
                 <a
-                  href="javascript:"
+                  href="#:"
                   className="font-normal not-italic text-base text-gray_300 text-left w-auto"
                 >
                   <Text className="">Logout</Text>
@@ -111,10 +115,10 @@ const MyStreamLibrary = () => {
                   onClick={() => setToggle((prev) => !prev)}
                 />
                 <Img
-                  src="images/img_dummylogo02.svg"
-                  className="md:ml-[580px] sm:ml-[200px] common-pointer h-14 w-auto"
-                  alt="dummylogoTwo"
-                  onClick={() => navigate("/")}
+                src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689933646/HeartStrings/logo/HeartStringsLogo.png"
+                className="common-pointer h-18 w-[35%]"
+                alt="Heart Strings Entertainment Logo"
+                onClick={() => navigate("/")}
                 />
               </div>
               <div
@@ -123,9 +127,11 @@ const MyStreamLibrary = () => {
               >
                 <ul className="list-none justify-start items-center flex-1">
                   <li className="py-3 cursor-pointer text-16">
-                    <div className="bg-gray_800 flex flex-row gap-2 items-center justify-center mt-16 pl-6 md:pr-10 pr-[58px] sm:px-5 py-2.5 rounded-lg self-stretch w-auto">
-                      <Img
-                        src="images/img_iconsaxbolduser.svg"
+                  <div 
+              className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[16px] mt-9 self-stretch w-auto hover:border border-white rounded-md p-2"
+              onClick={() => navigate("/edit-my-account")}
+              >                      <Img
+                        src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927660/HeartStrings/SVG/img_iconsaxbolduser_cixk7a.svg"
                         className="h-6 w-6"
                         alt="iconsaxbolduser"
                       />
@@ -141,7 +147,7 @@ const MyStreamLibrary = () => {
                   <li className="py-3 cursor-pointer text-16">
                     <div className="bg-gray_800 flex flex-row gap-2 items-center justify-start md:ml-[0] mt-3 mx-6 pl-6 md:pr-10 pr-[55px] sm:px-5 py-2.5 rounded-lg w-[199px]">
                       <Img
-                        src="images/img_iconsaxboldelement2_white_a700.svg"
+                        src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927657/HeartStrings/SVG/img_iconsaxboldelement2_white_a700_f8nhvw.svg"
                         className="h-6 w-6"
                         alt="iconsaxboldelem"
                       />
@@ -160,7 +166,7 @@ const MyStreamLibrary = () => {
                       onClick={() => navigate("/mytickets")}
                     >
                       <Img
-                        src="images/img_iconsaxboldreceipt1_gray_300.svg"
+                        src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927659/HeartStrings/SVG/img_iconsaxboldreceipt1_gray_300_gdkye8.svg"
                         className="h-6 w-6"
                         alt="iconsaxboldrece"
                       />
@@ -178,7 +184,7 @@ const MyStreamLibrary = () => {
                   <li className="py-3 cursor-pointer text-16">
                     <div className="flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-8 self-stretch w-auto">
                       <Img
-                        src="images/img_iconsaxboldmessagequestion_gray_300.svg"
+                        src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927659/HeartStrings/SVG/img_iconsaxboldmessagequestion_gray_300_nml9u7.svg"
                         className="h-6 w-6"
                         alt="iconsaxboldmess"
                       />
@@ -194,7 +200,7 @@ const MyStreamLibrary = () => {
                   <li className="py-3 cursor-pointer text-16">
                     <div className="flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-8 self-stretch w-auto">
                       <Img
-                        src="images/img_iconsaxboldlogout.svg"
+                        src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927657/HeartStrings/SVG/img_iconsaxboldlogout_cmxo47.svg"
                         className="h-6 w-6"
                         alt="iconsaxboldlogo"
                       />
@@ -228,7 +234,7 @@ const MyStreamLibrary = () => {
 
               <div className="flex flex-row gap-[21px] items-center justify-start mr-5 self-stretch w-auto">
                 <Img
-                  src="images/img_share.svg"
+                  src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927739/HeartStrings/SVG/img_share_obssio.svg"
                   className="h-6 w-6"
                   alt="share"
                 />
@@ -279,13 +285,13 @@ const MyStreamLibrary = () => {
                       <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto">
                         <div className="h-[200px] relative w-full">
                           <Img
-                            src="images/img_rectangle4_200x256.png"
+                            src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927701/HeartStrings/SVG/img_rectangle4_200x256_ofmpv1.png"
                             className="common-pointer h-[200px] m-auto object-cover rounded-lg w-full"
                             alt="rectangleFour"
                             onClick={() => navigate("/mystreamlibrary")}
                           />
                           <Img
-                            src="images/img_materialsymbolsplaycircle_white_a700.svg"
+                            src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927664/HeartStrings/SVG/img_materialsymbolsplaycircle_white_a700_ousntd.svg"
                             className="absolute h-12 inset-[0] justify-center m-auto w-12"
                             alt="materialsymbols"
                           />
@@ -303,7 +309,7 @@ const MyStreamLibrary = () => {
                           <div className="flex flex-row gap-4 items-center justify-center self-stretch w-auto">
                             <div className="flex flex-row gap-2 items-center justify-center self-stretch w-auto">
                               <Img
-                                src="images/img_mdiclocktimenine.svg"
+                                src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927664/HeartStrings/SVG/img_mdiclocktimenine_wcpsyc.svg"
                                 className="h-6 w-6"
                                 alt="mdiclocktimenin"
                               />
@@ -319,7 +325,7 @@ const MyStreamLibrary = () => {
                             <div className="flex flex-col items-start justify-start self-stretch w-auto">
                               <div className="flex flex-row gap-2 items-center justify-center self-stretch w-auto">
                                 <Img
-                                  src="images/img_iconsaxboldtimer.svg"
+                                  src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927660/HeartStrings/SVG/img_iconsaxboldtimer_lugksa.svg"
                                   className="h-6 w-6"
                                   alt="iconsaxboldtime"
                                 />
@@ -337,12 +343,12 @@ const MyStreamLibrary = () => {
                       <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto">
                         <div className="h-[200px] relative w-full">
                           <Img
-                            src="images/img_rectangle8_300x557.png"
+                            src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927731/HeartStrings/SVG/img_rectangle8_300x557_xlnnpm.png"
                             className="h-[200px] m-auto object-cover rounded-lg w-full"
                             alt="rectangleFour"
                           />
                           <Img
-                            src="images/img_materialsymbolsplaycircle_white_a700.svg"
+                            src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927664/HeartStrings/SVG/img_materialsymbolsplaycircle_white_a700_ousntd.svg"
                             className="absolute h-12 inset-[0] justify-center m-auto w-12"
                             alt="materialsymbols"
                           />
@@ -360,7 +366,7 @@ const MyStreamLibrary = () => {
                           <div className="flex flex-row gap-4 items-center justify-center self-stretch w-auto">
                             <div className="flex flex-row gap-2 items-center justify-center self-stretch w-auto">
                               <Img
-                                src="images/img_mdiclocktimenine.svg"
+                                src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927664/HeartStrings/SVG/img_mdiclocktimenine_wcpsyc.svg"
                                 className="h-6 w-6"
                                 alt="mdiclocktimenin"
                               />
@@ -376,7 +382,7 @@ const MyStreamLibrary = () => {
                             <div className="flex flex-col items-start justify-start self-stretch w-auto">
                               <div className="flex flex-row gap-2 items-center justify-center self-stretch w-auto">
                                 <Img
-                                  src="images/img_iconsaxboldtimer.svg"
+                                  src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927660/HeartStrings/SVG/img_iconsaxboldtimer_lugksa.svg"
                                   className="h-6 w-6"
                                   alt="iconsaxboldtime"
                                 />
@@ -394,12 +400,12 @@ const MyStreamLibrary = () => {
                       <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto">
                         <div className="h-[200px] relative w-full">
                           <Img
-                            src="images/img_rectangle8_1.png"
+                            src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927725/HeartStrings/SVG/img_rectangle8_1_cblvcv.png"
                             className="h-[200px] m-auto object-cover rounded-lg w-full"
                             alt="rectangleFour"
                           />
                           <Img
-                            src="images/img_materialsymbolsplaycircle_white_a700.svg"
+                            src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927664/HeartStrings/SVG/img_materialsymbolsplaycircle_white_a700_ousntd.svg"
                             className="absolute h-12 inset-[0] justify-center m-auto w-12"
                             alt="materialsymbols"
                           />
@@ -417,7 +423,7 @@ const MyStreamLibrary = () => {
                           <div className="flex flex-row gap-4 items-center justify-center self-stretch w-auto">
                             <div className="flex flex-row gap-2 items-center justify-center self-stretch w-auto">
                               <Img
-                                src="images/img_mdiclocktimenine.svg"
+                                src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927664/HeartStrings/SVG/img_mdiclocktimenine_wcpsyc.svg"
                                 className="h-6 w-6"
                                 alt="mdiclocktimenin"
                               />
@@ -433,7 +439,7 @@ const MyStreamLibrary = () => {
                             <div className="flex flex-col items-start justify-start self-stretch w-auto">
                               <div className="flex flex-row gap-2 items-center justify-center self-stretch w-auto">
                                 <Img
-                                  src="images/img_iconsaxboldtimer.svg"
+                                  src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927660/HeartStrings/SVG/img_iconsaxboldtimer_lugksa.svg"
                                   className="h-6 w-6"
                                   alt="iconsaxboldtime"
                                 />
@@ -451,12 +457,12 @@ const MyStreamLibrary = () => {
                       <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto">
                         <div className="h-[200px] relative w-full">
                           <Img
-                            src="images/img_rectangle8_191x332.png"
+                            src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927736/HeartStrings/SVG/img_rectangle8_191x332_ykeufx.png"
                             className="h-[200px] m-auto object-cover rounded-lg w-full"
                             alt="rectangleFour"
                           />
                           <Img
-                            src="images/img_materialsymbolsplaycircle_white_a700.svg"
+                            src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927664/HeartStrings/SVG/img_materialsymbolsplaycircle_white_a700_ousntd.svg"
                             className="absolute h-12 inset-[0] justify-center m-auto w-12"
                             alt="materialsymbols"
                           />
@@ -474,7 +480,7 @@ const MyStreamLibrary = () => {
                           <div className="flex flex-row gap-4 items-center justify-center self-stretch w-auto">
                             <div className="flex flex-row gap-2 items-center justify-center self-stretch w-auto">
                               <Img
-                                src="images/img_mdiclocktimenine.svg"
+                                src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927664/HeartStrings/SVG/img_mdiclocktimenine_wcpsyc.svg"
                                 className="h-6 w-6"
                                 alt="mdiclocktimenin"
                               />
@@ -490,7 +496,7 @@ const MyStreamLibrary = () => {
                             <div className="flex flex-col items-start justify-start self-stretch w-auto">
                               <div className="flex flex-row gap-2 items-center justify-center self-stretch w-auto">
                                 <Img
-                                  src="images/img_iconsaxboldtimer.svg"
+                                  src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927660/HeartStrings/SVG/img_iconsaxboldtimer_lugksa.svg"
                                   className="h-6 w-6"
                                   alt="iconsaxboldtime"
                                 />
@@ -509,7 +515,7 @@ const MyStreamLibrary = () => {
                   </div>
 
                   {/* Watched */}
-                  <div className="flex flex-col gap-4 items-start justify-center mb-[108px] ml-8 md:ml-[0] mt-12 self-stretch w-auto">
+<div className="flex flex-col gap-4 items-start justify-center mb-[108px] ml-8 md:ml-[0] mt-12 self-stretch w-auto">
     <Text
       className="font-bold text-left text-white_A700 w-auto"
       as="h5"
@@ -517,67 +523,87 @@ const MyStreamLibrary = () => {
     >
       Watched
     </Text>
-    <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto">
-      <div className="h-[600px] relative w-full">
-        <Img
-          src="images/img_rectangle4_4.png"
-          className="absolute h-[550px] inset-[0] justify-center m-auto object-cover rounded-lg w-full"
-          alt="rectangleFour"
-        />
-        <Img
-          src="images/img_materialsymbolsplaycircle_black_900.svg"
-          className="absolute h-12 inset-[0] justify-center m-auto w-12"
-          alt="materialsymbols"
-        />
-        <div className="absolute flex flex-col gap-[35px] h-max inset-[0] items-center justify-start m-auto self-stretch w-auto">
-          <Button
-            className="cursor-pointer font-bold text-center text-white_A700 text-xl w-[154px]"
-            shape="RoundedBorder8"
-            size="lg"
-            variant="FillRed900"
-          >
-            Rent again
-          </Button>
-          <Button
-            className="cursor-pointer font-bold min-w-[155px] text-black_900 text-center text-xl w-auto"
-            shape="RoundedBorder8"
-            size="lg"
-            variant="OutlineWhiteA700"
-          >
-            Watch trailer
-          </Button>
-        </div>
-        
-      </div>
-      <div className="flex flex-col gap-1 items-start justify-start self-stretch w-auto">
-        <div className="flex flex-col items-center justify-start self-stretch w-auto">
-          <Text
-            className="font-normal not-italic text-left text-white_A700 w-auto"
-            as="h5"
-            variant="h5"
-          >
-            Bridegroom for sale
-          </Text>
-        </div>
-        <div className="flex flex-col items-center justify-center self-stretch w-auto">
-          <div className="flex flex-row gap-2 items-center justify-center self-stretch w-auto">
-            <Img
-              src="images/img_mdiclocktimenine.svg"
-              className="h-6 w-6"
-              alt="mdiclocktimenin"
-            />
-            <div className="flex flex-col items-start justify-start self-stretch w-auto">
-              <Text
-                className="font-normal not-italic text-left text-white_A700 w-auto"
-                variant="body4"
-              >
-                1hr 20mins
-              </Text>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <List
+                      className="sm:flex-col flex-row gap-6 grid sm:grid-cols-1 md:grid-cols-2 grid-cols-4 justify-start self-stretch w-auto md:w-full"
+                      orientation="horizontal"
+                    >
+                      <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto">
+                        <div className="h-[200px] relative w-full">
+                          <Img
+                            src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927701/HeartStrings/SVG/img_rectangle4_200x256_ofmpv1.png"
+                            className="common-pointer h-[200px] m-auto object-cover rounded-lg w-full"
+                            alt="rectangleFour"
+                            //onClick={() => navigate("/mystreamlibrary")}
+                          />
+                          {/* <Img
+                            src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927664/HeartStrings/SVG/img_materialsymbolsplaycircle_white_a700_ousntd.svg"
+                            className="absolute h-12 inset-[0] justify-center m-auto w-12"
+                            alt="materialsymbols"
+                          /> */}
+                           <div className="absolute flex flex-col gap-[5px] h-max inset-[0] items-center justify-start m-auto self-stretch w-auto">
+                            <Button
+                              className="cursor-pointer font-bold text-center text-white_A700 text-xl w-[100px]"
+                              shape="RoundedBorder8"
+                              size="sm"
+                              variant="FillRed900"
+                            >
+                              Rent again
+                            </Button>
+                            <Button
+                              className="cursor-pointer font-bold min-w-[100px] text-black_900 text-center text-xl w-auto"
+                              shape="RoundedBorder8"
+                              size="sm"
+                              variant="OutlineWhiteA700"
+                            >
+                              Watch trailer
+                            </Button>
+                          </div>
+                        </div>
+                        <div className="flex flex-col gap-1 items-start justify-start self-stretch w-auto">
+                          <div className="flex flex-col items-center justify-start self-stretch w-auto">
+                            <Text
+                              className="font-normal not-italic text-left text-white_A700 w-auto"
+                              as="h5"
+                              variant="h5"
+                            >
+                              Bridegroom for sale
+                            </Text>
+                          </div>
+                          <div className="flex flex-row gap-4 items-center justify-center self-stretch w-auto">
+                            <div className="flex flex-row gap-2 items-center justify-center self-stretch w-auto">
+                              <Img
+                                src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927664/HeartStrings/SVG/img_mdiclocktimenine_wcpsyc.svg"
+                                className="h-6 w-6"
+                                alt="mdiclocktimenin"
+                              />
+                              <div className="flex flex-col items-start justify-start self-stretch w-auto">
+                                <Text
+                                  className="font-normal not-italic text-left text-white_A700 w-auto"
+                                  variant="body4"
+                                >
+                                  1hr 20mins
+                                </Text>
+                              </div>
+                            </div>
+                            <div className="flex flex-col items-start justify-start self-stretch w-auto">
+                              <div className="flex flex-row gap-2 items-center justify-center self-stretch w-auto">
+                                <Img
+                                  src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927660/HeartStrings/SVG/img_iconsaxboldtimer_lugksa.svg"
+                                  className="h-6 w-6"
+                                  alt="iconsaxboldtime"
+                                />
+                                <Text
+                                  className="font-normal not-italic text-left text-white_A700 w-auto"
+                                  variant="body4"
+                                >
+                                  0 days to go
+                                </Text>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      </List>
   </div>
 
 

@@ -106,7 +106,7 @@ const ProjectRoutes = () => {
           <Route path="/edit-my-account" element={<MyAccount />} />
 
           {/* User Content */}
-          <Route path="/my-stream-library" element={<MyStreamLibrary />} />
+          {/* <Route path="/my-stream-library" element={<MyStreamLibrary />} /> */}
           <Route path="/my-streams" element={<MyStreamLibrary />} />
           {/* <Route path="/my-streams" element={<MyStreams />} /> */}
           <Route path="/my-tickets" element={<MyTickets />} />

@@ -19,15 +19,15 @@ const MyAccount = (props) => {
             <aside className="md:hidden flex bg-black_900 justify-start md:px-5 w-[247px]">
 
               <div className="flex flex-col justify-start mb-[476px] mt-12 mx-auto w-[81%]">
-                <Img
-                  src="images/img_dummylogo02.svg"
-                  className="common-pointer h-14 w-auto"
-                  alt="dummylogoTwo"
+              <Img
+                  src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689933646/HeartStrings/logo/HeartStringsLogo.png"
+                  className="common-pointer h-[25%] w-[35%]"
+                  alt="Heart Strings Entertainment Logo"
                   onClick={() => navigate("/")}
                 />
                 <div className="bg-gray_800 flex flex-row gap-2 items-center justify-center mt-16 pl-6 md:pr-10 pr-[58px] sm:px-5 py-2.5 rounded-lg self-stretch w-auto">
                   <Img
-                    src="images/img_iconsaxbolduser.svg"
+                    src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927660/HeartStrings/SVG/img_iconsaxbolduser_cixk7a.svg"
                     className="h-6 w-6"
                     alt="iconsaxbolduser"
                   />
@@ -39,11 +39,11 @@ const MyAccount = (props) => {
                   </Text>
                 </div>
                 <div
-                  className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-8 self-stretch w-auto"
-                  onClick={() => navigate("/mystreams")}
+                  className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[16px] mt-9 self-stretch w-auto hover:border border-white rounded-md p-2"
+                  onClick={() => navigate("/my-streams")}
                 >
                   <Img
-                    src="images/img_iconsaxboldelement2.svg"
+                    src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927657/HeartStrings/SVG/img_iconsaxboldelement2_white_a700_f8nhvw.svg"
                     className="h-6 w-6"
                     alt="iconsaxboldelem"
                   />
@@ -55,11 +55,11 @@ const MyAccount = (props) => {
                   </Text>
                 </div>
                 <div
-                  className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-8 self-stretch w-auto"
-                  onClick={() => navigate("/mytickets")}
+                  className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[16px] mt-9 self-stretch w-auto hover:border border-white rounded-md p-2"
+                  onClick={() => navigate("/my-tickets")}
                 >
                   <Img
-                    src="images/img_iconsaxboldreceipt1_gray_300.svg"
+                    src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927659/HeartStrings/SVG/img_iconsaxboldreceipt1_gray_300_gdkye8.svg"
                     className="h-6 w-6"
                     alt="iconsaxboldrece"
                   />
@@ -71,9 +71,10 @@ const MyAccount = (props) => {
                   </Text>
                 </div>
                 <Line className="bg-gray_800 h-px mt-[60px] w-full" />
-                <div className="flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-[63px] self-stretch w-auto">
+                <div className="flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-[63px] self-stretch w-auto hover:border border-white rounded-md p-2"
+                onClick={() => navigate("/contact-us")}>
                   <Img
-                    src="images/img_iconsaxboldmessagequestion_gray_300.svg"
+                    src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927659/HeartStrings/SVG/img_iconsaxboldmessagequestion_gray_300_nml9u7.svg"
                     className="h-6 w-6"
                     alt="iconsaxboldmess"
                   />
@@ -84,14 +85,14 @@ const MyAccount = (props) => {
                     Help
                   </Text>
                 </div>
-                <div className="flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-8 self-stretch w-auto">
+                <div className="flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-8 self-stretch w-auto transition-colors duration-300 ease-in-out group-hover:bg-icon-hover group-hover:rotate-12">
                   <Img
-                    src="images/img_iconsaxboldlogout.svg"
+                    src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927657/HeartStrings/SVG/img_iconsaxboldlogout_cmxo47.svg"
                     className="h-6 w-6"
                     alt="iconsaxboldlogo"
                   />
                   <a
-                    href="javascript:"
+                    href="#"
                     className="font-normal not-italic text-base text-gray_300 text-left w-auto"
                   >
                     <Text className="">Logout</Text>
@@ -113,11 +114,11 @@ const MyAccount = (props) => {
                           onClick={() => setToggle((prev) => !prev)}
                         />
                         <Img
-                          src="images/img_dummylogo02.svg"
-                          className="md:ml-[580px] sm:ml-[200px] common-pointer h-14 w-auto"
-                          alt="dummylogoTwo"
+                          src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689933646/HeartStrings/logo/HeartStringsLogo.png"
+                          className="common-pointer h-18 w-[35%]"
+                          alt="Heart Strings Entertainment Logo"
                           onClick={() => navigate("/")}
-                        />
+                          />
                       </div>
                       <div className={`${toggle ? 'flex' : 'hidden'}
                         p-6 bg-black_900 absolute top-20 left-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar`}
@@ -127,7 +128,7 @@ const MyAccount = (props) => {
                               
                               <div className="bg-gray_800 flex flex-row gap-2 items-center justify-center mt-16 pl-6 md:pr-10 pr-[58px] sm:px-5 py-2.5 rounded-lg self-stretch w-auto">
                                 <Img
-                                  src="images/img_iconsaxbolduser.svg"
+                                  src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927660/HeartStrings/SVG/img_iconsaxbolduser_cixk7a.svg"
                                   className="h-6 w-6"
                                   alt="iconsaxbolduser"
                                 />
@@ -143,10 +144,10 @@ const MyAccount = (props) => {
                             <li className="py-3 cursor-pointer text-16"> 
                                 <div
                                     className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-8 self-stretch w-auto"
-                                    onClick={() => navigate("/mystreams")}
+                                    onClick={() => navigate("/my-streams")}
                                   >
                                     <Img
-                                      src="images/img_iconsaxboldelement2.svg"
+                                      src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927657/HeartStrings/SVG/img_iconsaxboldelement2_white_a700_f8nhvw.svg"
                                       className="h-6 w-6"
                                       alt="iconsaxboldelem"
                                     />
@@ -162,12 +163,12 @@ const MyAccount = (props) => {
                             <li className="py-3 cursor-pointer text-16">
                               <div
                                   className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-8 self-stretch w-auto"
-                                    onClick={() => navigate("/mytickets")}
+                                    onClick={() => navigate("/my-tickets")}
                                   >
                                     <Img
-                                      src="images/img_iconsaxboldreceipt1_gray_300.svg"
+                                      src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927659/HeartStrings/SVG/img_iconsaxboldreceipt1_gray_300_gdkye8.svg"
                                       className="h-6 w-6"
-                                      alt="iconsaxboldrece"
+                                      alt="My Tickets"
                                     />
                                     <Text
                                       className="font-normal not-italic text-gray_300 text-left w-auto"
@@ -184,9 +185,9 @@ const MyAccount = (props) => {
                             <li className="py-3 cursor-pointer text-16"> 
                                   <div className="flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-[63px] self-stretch w-auto">
                                     <Img
-                                      src="images/img_iconsaxboldmessagequestion_gray_300.svg"
+                                      src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927659/HeartStrings/SVG/img_iconsaxboldmessagequestion_gray_300_nml9u7.svg"
                                       className="h-6 w-6"
-                                      alt="iconsaxboldmess"
+                                      alt="Help"
                                     />
                                     <Text
                                       className="font-normal not-italic text-gray_300 text-left w-auto"
@@ -200,9 +201,9 @@ const MyAccount = (props) => {
                             <li className="py-3 cursor-pointer text-16">                     
                               <div className="flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-8 self-stretch w-auto">
                                 <Img
-                                  src="images/img_iconsaxboldlogout.svg"
+                                  src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927657/HeartStrings/SVG/img_iconsaxboldlogout_cmxo47.svg"
                                   className="h-6 w-6"
-                                  alt="iconsaxboldlogo"
+                                  alt="Log Out"
                                 />
                                 <a
                                   href="javascript:"
@@ -236,7 +237,7 @@ const MyAccount = (props) => {
 
                 <div className="flex flex-row gap-[21px] items-center justify-start mr-5 self-stretch w-auto">
                   <Img
-                    src="images/img_share.svg"
+                    src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927739/HeartStrings/SVG/img_share_obssio.svg"
                     className="h-6 w-6"
                     alt="share"
                   />
@@ -298,7 +299,7 @@ const MyAccount = (props) => {
                     {/* End of top Section */}
 
                   {/* Edit Details section */}
-                  <div className="flex flex-col gap-12 items-start justify-start self-stretch w-auto sm:w-full">
+                  <div className="flex flex-col gap-12 items-start justify-start self-stretch w-1/2 sm:w-full">
                     
                     
                     {/* Edit Account Details */}

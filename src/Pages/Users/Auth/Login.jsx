@@ -40,7 +40,7 @@ const Login = () => {
       <div className="bg-black_900 flex flex-col font-roboto items-center justify-start mx-auto pb-[242px] w-full">
         <SignupColumnlogotwo className="flex flex-col items-center justify-start p-8 sm:px-5 w-full" />
         <a
-          className="font-bold mt-[29px] text-2xl md:text-[22px] text-left text-white_A700 sm:text-xl w-auto"
+          className="font-bold mt-[15px] text-2xl md:text-[22px] text-left text-white_A700 sm:text-xl w-auto"
         >
           <Text className="">Login</Text>
         </a>

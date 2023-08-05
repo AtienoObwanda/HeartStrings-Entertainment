@@ -9,7 +9,7 @@ import SignupColumnlogotwo from "UI_Components/SignupColumn";
 const ResetComplete = () => {
   return (
     <>
-    <div className="bg-black_900 flex flex-col font-roboto sm:gap-10 md:gap-10 gap-24 items-center justify-start mx-auto pb-[850px] w-full md:pr-4 md:pl-4 md:pt-10 sm:pr-8 sm:pl-8">
+    <div className="bg-black_900 flex flex-col font-roboto sm:gap-10 md:gap-10 gap-6 items-center justify-start mx-auto pb-[850px] w-full md:pr-4 md:pl-4 md:pt-10 sm:pr-8 sm:pl-8">
       <SignupColumnlogotwo className="flex flex-col items-center justify-start p-8 sm:px-5 w-full" />
       
       {/* <div className="bg-black_900_01 border border-gray_300 border-solid flex flex-col items-center justify-center px-40 md:px-5 py-12 rounded-lg self-stretch w-auto md:w-full"> */}
