@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 const Hero = () => {
   return (
     <>
+    
+
     <div className="flex flex-col gap-6 items-center justify-center self-stretch w-auto md:w-full">
             <Text
               className="font-normal not-italic text-gray_300 text-left w-auto"
@@ -19,8 +21,7 @@ const Hero = () => {
               as="h1"
               variant="h1"
             >
-              Multi award winners and the most popular authority in Kenyan
-              theater and live stagecomedy in Kenya!{" "}
+              We are a vibrant collective of talented Kenyan artists who have made their mark on the entertainment scene since 2013.{" "}
             </Text>
           </div>
 
@@ -30,18 +31,15 @@ const Hero = () => {
             variant="h6"
           >
             <>
-              Aliqua id fugiat nostrud irure ex duis ea quis id quis ad et. Sunt
-              qui esse pariatur duis deserunt mollit dolore cillum minim tempor
-              enim. Elit aute irure tempor cupidatat incididunt sint deserunt ut
-              voluptate aute id deserunt nisi.Nulla Lorem mollit cupidatat
-              irure. Laborum magna nulla duis ullamco cillum dolor. Voluptate
-              exercitation inAliqua id fugiat nostrud irure ex duis ea quis id
-              quis ad et. <br />
-              Sunt qui esse pariatur duis deserunt mollit dolore cillum minim
-              tempor enim. Elit aute irure tempor cupidatat incididunt sint
-              deserunt ut voluptate aute id deserunt nisi.Nulla Lorem mollit
-              cupidatat irure. Laborum magna nulla duis ullamco cillum dolor.
-              Voluptate exercitation in
+            We're not your average theatre group – we're a powerhouse of creativity and effective communication.
+            With numerous awards and accolades to our name, we strive to use the power of theater to provide 
+            top-notch entertainment that serves as a catalyst for societal change and impact. We achieve this 
+            through innovative theatre productions that not only entertain but also educate and engage our audience. 
+            <br />
+            We also support the growth and professional development of theatre artists, empowering them to use their craft to promote social development.
+            At Heartstrings Entertainment, we live by our slogan: "The Powerhouse of Quality Entertainment."
+            Join us in our live, immersive and digital experiences as we continue to push the boundaries of theatre and 
+            create impactful experiences that inspire and entertain.
             </>
           </Text>
     </>

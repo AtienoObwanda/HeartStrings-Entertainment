@@ -1,8 +1,11 @@
 import React from "react";
+import { Link } from 'react-router-dom'
 
 import { Text } from "UI_Components";
 import Footer from "Layout/Footer/Footer";
 import StreamCards from "UI_Components/StreamCards/index";
+import {Streams} from '../../Data/Streams'
+
 // import WhitenIcon from "Components/WhiteIcon";
 import Navbar from "Layout/Navbar/Navbar";
 
@@ -18,9 +21,6 @@ const AllStreams = () => {
         account="Account"
       />
 
-
-
-
       {/* Streams */}
       <div className="flex flex-col gap-6 items-start justify-start max-w-[1140px] mt-24 mx-auto md:px-5 self-stretch w-full">
         <Text
@@ -28,59 +28,27 @@ const AllStreams = () => {
           as="h2"
           variant="h2"
         >
-          Streamss
+          Online Plays
         </Text>
         <div className="flex flex-col items-center justify-center self-stretch w-auto md:w-full">
           <div className="md:gap-5 gap-6 grid sm:grid-cols-1 md:grid-cols-2 grid-cols-3 justify-center min-h-[auto] w-full">
-            <div className="h-[559px] relative w-full">
               
+            {Streams.map((Stream, index) => (
+            <Link to={`/streams/${Stream.title}`}>
               <StreamCards
-                className="absolute bg-black_900_01 flex flex-col h-full inset-[0] items-center justify-center m-auto p-4 rounded-lg w-full"
-                rectangleeight="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927711/HeartStrings/SVG/img_rectangle8_cb92hq.png"
-                bridegroomforsaOne="Bridegroom for sale."
-                description="The synopsis goes here and here and here, once it starts overflowing it goes here ,the synopsis goes here and here and here, once it starts overflowing it goes here.."
-                rentPlay="Rent play"
-              />
+              key={index}
+              className="bg-black_900_01 flex flex-col gap-4 items-center justify-start p-4 rounded-lg w-full hover:border border-white rounded-md p-2"
+              playPoster={Stream.titleImage}
+              playTitle={Stream.title}
+              playDescription={Stream.synopsis.substring(0, 110) + '...'} // Trim synopsis to 50 words
+              userbuttonlabel="Rent play" // You can customize this if needed
+              usertime={Stream.duration}
+            />
+            </Link>
+            
+          ))}
+           
             </div>
-            <StreamCards
-              className="bg-black_900_01 flex flex-1 flex-col items-center justify-start p-4 rounded-lg w-full"
-              rectangleeight="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927767/HeartStrings/SVG/img_rectangle8_570x1140_ot5kmw.png"
-              bridegroomforsaOne="Bridegroom for sale."
-              description="The synopsis goes here and here and here, once it starts overflowing it goes here ,the synopsis goes here and here and here, once it starts overflowing it goes here.."
-              rentPlay="Rent play"
-            />
-            <StreamCards
-              className="bg-black_900_01 flex flex-1 flex-col items-center justify-start p-4 rounded-lg w-full"
-              rectangleeight="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927725/HeartStrings/SVG/img_rectangle8_1_cblvcv.png"
-              bridegroomforsaOne="Bridegroom for sale."
-              description="The synopsis goes here and here and here, once it starts overflowing it goes here ,the synopsis goes here and here and here, once it starts overflowing it goes here.."
-              rentPlay="Rent play"
-            />
-            <div className="h-[559px] relative w-full">
-             
-              <StreamCards
-                className="absolute bg-black_900_01 flex flex-col h-full inset-[0] items-center justify-center m-auto p-4 rounded-lg w-full"
-                rectangleeight="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927731/HeartStrings/SVG/img_rectangle8_300x557_xlnnpm.png"
-                bridegroomforsaOne="Bridegroom for sale."
-                description="The synopsis goes here and here and here, once it starts overflowing it goes here ,the synopsis goes here and here and here, once it starts overflowing it goes here.."
-                rentPlay="Rent play"
-              />
-            </div>
-            <StreamCards
-              className="bg-black_900_01 flex flex-1 flex-col items-center justify-start p-4 rounded-lg w-full"
-              rectangleeight="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927736/HeartStrings/SVG/img_rectangle8_191x332_ykeufx.png"
-              bridegroomforsaOne="Bridegroom for sale."
-              description="The synopsis goes here and here and here, once it starts overflowing it goes here ,the synopsis goes here and here and here, once it starts overflowing it goes here.."
-              rentPlay="Rent play"
-            />
-            <StreamCards
-              className="bg-black_900_01 flex flex-1 flex-col items-center justify-start p-4 rounded-lg w-full"
-              rectangleeight="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927725/HeartStrings/SVG/img_rectangle8_1_cblvcv.png"
-              bridegroomforsaOne="Bridegroom for sale."
-              description="The synopsis goes here and here and here, once it starts overflowing it goes here ,the synopsis goes here and here and here, once it starts overflowing it goes here.."
-              rentPlay="Rent play"
-            />
-          </div>
         </div>
       </div>
 

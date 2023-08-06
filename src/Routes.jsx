@@ -88,7 +88,7 @@ const ProjectRoutes = () => {
           {/* Content Routes */}
           <Route path="/all-plays" element={<AllStreams />} />
           <Route path="/play-details" element={<PlayDetails />} />
-          <Route path="/stream-details" element={<StreamDetails />} />
+          <Route path="/streams/:id" element={<StreamDetails />} />
           <Route path="/all-streams" element={<AllStreams />} />
 
           {/* UserRoutes */}

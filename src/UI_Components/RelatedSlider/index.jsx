@@ -2,7 +2,7 @@ import React from "react";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 
-const Slider = React.forwardRef(
+const RelatedSlider = React.forwardRef(
   (
     {
       className,
@@ -52,11 +52,11 @@ const Slider = React.forwardRef(
           responsive={{
             0: { items: 1 },
             568: { items: 2 },
-            1024: { items: 4 },
+            1024: { items: 3 },
           }}
         />
       </div>
     );
   }
 );
-export { Slider };
+export { RelatedSlider };

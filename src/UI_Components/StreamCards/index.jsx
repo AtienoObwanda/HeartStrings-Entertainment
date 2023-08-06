@@ -42,15 +42,14 @@ const StreamCards = (props) => {
                           shape="RoundedBorder8"
                           size="lg"
                           variant="FillGray900"
-            // className="bg-gray-900 cursor-pointer font-bold font-roboto min-w-[116px] py-[15px] rounded-lg text-center text-white-A700 text-xl"
             >
               {props?.userbuttonlabel}
             </Button>
             <div className="flex flex-row gap-2 items-center justify-center w-auto">
               <Img
                 className="h-6 w-6"
-                src="images/img_mdiclocktimenine.svg"
-                alt="mdiclocktimenin"
+                src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927664/HeartStrings/SVG/img_mdiclocktimenine_wcpsyc.svg"
+                alt="clock icon"
               />
               <div className="flex flex-col items-start justify-start w-auto text-white">
                 <Text
