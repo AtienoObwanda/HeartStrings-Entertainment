@@ -15,7 +15,7 @@ const StreamCards = (props) => {
               alt="rectangleEight"
             />
             <Img
-              src="images/img_vector.svg"
+              src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927751/HeartStrings/SVG/img_vector_lu51mj.svg"
               className="absolute bottom-[31%] h-10 inset-x-[0] mx-auto w-10"
               alt="vector"
             />

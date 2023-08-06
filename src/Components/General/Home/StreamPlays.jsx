@@ -15,15 +15,19 @@ const StreamPlays = () => {
           <div className="flex flex-col gap-1 items-center justify-center self-stretch w-auto sm:w-full">
             <Text
               className="text-center text-white_A700 w-auto"
-              as="h1"
-              variant="h1"
+              as="h2"
+              variant="h2"
+              style={{ fontSize: '35px', lineHeight: '42px' }}
+
             >
               Stream plays
             </Text>
             <Text
               className="font-normal not-italic text-gray_300 text-left w-auto"
-              as="h5"
-              variant="h5"
+              as="h6"
+              variant="h6"
+              style={{ fontSize: '18px', lineHeight: '42px' }}
+
             >
               The world of theatre from the comfort of your home.
             </Text>

@@ -19,18 +19,20 @@ const TheatrePlays = () => {
           <div className="flex flex-col gap-1 items-center justify-center self-stretch w-auto md:w-full">
           <Text
             className="text-left text-white_A700 w-auto font-roboto"
-            as="h1"
-            variant="h1"
-            style={{ fontSize: '45px', lineHeight: '80px' }}
+            as="h2"
+            variant="h2"
+            style={{ fontSize: '35px', lineHeight: '42px' }}
+
+            
             >
             Plays at the theatre
             </Text>
 
             <Text
               className="font-normal not-italic text-gray_300 text-left w-auto"
-              as="h5"
-              variant="h5"
-              style={{ fontSize: '24px', lineHeight: '42px' }}
+              as="h6"
+              variant="h6"
+              style={{ fontSize: '18px', lineHeight: '42px' }}
 
             >
               Our lineup is better than before!

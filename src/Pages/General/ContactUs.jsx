@@ -88,11 +88,11 @@ const ContactUs = () => {
                     
                     <Input
                       wrapClassName="flex h-12 w-full"
-                      className="p-0 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
+                      className="p-0 pl-4 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
+                      value={name} onChange={(e) => setEmail(e.target.value)}
                       name="name"
                       type="text"
-                      value="name"
-                      placeholder=""
+                      placeholder="Name"
                       shape="RoundedBorder4"
                       variant="FillGray800"
                     />
@@ -103,11 +103,11 @@ const ContactUs = () => {
                     </Text>
                     <Input
                       wrapClassName="flex h-12 w-full"
-                      className="p-0 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
+                      className="p-0 pl-4 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
+                      value={email} onChange={(e) => setEmail(e.target.value)}
                       name="email"
                       type="email"
-                      value={email}
-                      placeholder=""
+                      placeholder="Email"
                       shape="RoundedBorder4"
                       variant="FillGray800"
                     />
@@ -118,10 +118,10 @@ const ContactUs = () => {
                     </Text>
                     <Input
                       wrapClassName="flex flex-col justify-center h-48 w-full p-0 rounded"
-                      className="bg-gray_800 border-2 border-transparent focus:border-white_A700 rounded-md font-normal h-full not-italic pl-3 sm:pr-5 py-3.5 rounded text-left text-white_A700"
+                      className="bg-gray_800 border-2 border-transparent focus:border-white_A700 rounded-md font-normal h-full not-italic pl-4 sm:pr-5 py-3.5 rounded text-left text-white_A700"
+                      value={message} onChange={(e) => setEmail(e.target.value)}
                       name="message"
                       type="text"
-                      value="message"
                       placeholder="Enter your message here"
                       shape="RoundedBorder4"
                       variant="FillGray800"
