@@ -27,6 +27,10 @@ const HeroSection = () => {
 </div>
 
 <div className="bg-gray_900 h-[13px] w-full mt-[3px]"></div>
+
+
+
+
     </>
   )
 }
