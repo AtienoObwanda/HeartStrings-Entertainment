@@ -7,6 +7,7 @@ const HeroSection = () => {
   return (
     <>
     <div className="h-[720px] md:px-5 relative w-full">
+      
   <div style={{ maxHeight: '760px', height: '100%', overflow: 'hidden' }}>
     <Img
       src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689932071/HeartStrings/SVG/HeartStringHeroPoster.webp"

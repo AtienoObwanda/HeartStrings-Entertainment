@@ -122,7 +122,7 @@ const ContactUs = () => {
                       value={message} onChange={(e) => setEmail(e.target.value)}
                       name="message"
                       type="text"
-                      placeholder="Enter your message here"
+                      // placeholder="Enter your message here"
                       shape="RoundedBorder4"
                       variant="FillGray800"
                     />

@@ -21,7 +21,7 @@ const PrivacyPolicy = () => {
         />
         {/* Main Page Content Section */}
 
-        <div className="flex flex-col gap-5 h-[1114px] md:h-auto items-start justify-start md:ml-[0] ml-[150px] mr-20 mt-24 pb-[10px] md:px-5 self-stretch w-auto md:w-full">
+        <div className="flex flex-col gap-5 h-[800px] md:h-auto items-start justify-start md:ml-[0] ml-[150px] mr-20 mt-24 md:px-5 self-stretch w-auto md:w-full">
           <Text
             className="text-left text-white_A700 w-auto md:m-5 sm:m-10"
             as="h2"
@@ -34,61 +34,43 @@ const PrivacyPolicy = () => {
             as="h6"
             variant="h6"
           >
+            A privacy statement for a ticketing and online streaming platform COULD include the following information:
+            <br  />
+            <br  />
             <>
-           
+              
+            <strong>Information Collection:</strong> Explain what types of personal information you collect from users, such as names, email addresses, payment details, and any additional information necessary for ticketing and streaming services.
+            <br  />  <br  />
 
-              Aliqua id fugiat nostrud irure ex duis ea quis id quis ad et. Sunt
-              qui esse pariatur duis deserunt mollit dolore cillum minim tempor
-              enim. Elit aute irure tempor cupidatat incididunt sint deserunt ut
-              voluptate aute id deserunt nisi.
-              <br  />
+            <strong>Use of Information:</strong> Clarify how you use the collected information, such as processing ticket orders, providing customer support, personalizing user experiences, and delivering streaming content.
+            <br  />  <br  />
 
-              Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis
-              ullamco cillum dolor. Voluptate exercitation incididunt aliquip
-              deserunt reprehenderit elit laborum.
-              <br />
+            <strong>Data Security:</strong> Highlight the measures you take to protect users' personal information, including encryption, secure storage, and access controls, to ensure the confidentiality and integrity of the data.
+            <br  />  <br  />
 
-              Aliqua id fugiat nostrud irure ex duis ea quis id quis ad et. Sunt
-              qui esse pariatur duis deserunt mollit dolore cillum minim tempor
-              enim. Elit aute irure tempor cupidatat incididunt sint deserunt ut
-              voluptate aute id deserunt nisi.
-              <br />
+            <strong>Third-Party Sharing:</strong> Disclose whether you share users' personal information with third parties, such as event organizers or streaming service providers, and provide details on the purpose and extent of such sharing.
+            <br  />  <br  />
 
-              Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis
-              ullamco cillum dolor. Voluptate exercitation incididunt aliquip
-              deserunt reprehenderit elit laborum.
-              <br />
-              Aliqua id fugiat nostrud irure ex duis ea quis id quis ad et. Sunt
-              qui esse pariatur duis deserunt mollit dolore cillum minim tempor
-              enim. Elit aute irure tempor cupidatat incididunt sint deserunt ut
-              voluptate aute id deserunt nisi.
-              <br />
-              Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis
-              ullamco cillum dolor. Voluptate exercitation incididunt aliquip
-              deserunt reprehenderit elit laborum.
-              <br />
-              Aliqua id fugiat nostrud irure ex duis ea quis id quis ad et. Sunt
-              qui esse pariatur duis deserunt mollit dolore cillum minim tempor
-              enim. Elit aute irure tempor cupidatat incididunt sint deserunt ut
-              voluptate aute id deserunt nisi.
-              <br />
-              Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis
-              ullamco cillum dolor. Voluptate exercitation incididunt aliquip
-              deserunt reprehenderit elit laborum.
-              <br />
-              Aliqua id fugiat nostrud irure ex duis ea quis id quis ad et. Sunt
-              qui esse pariatur duis deserunt mollit dolore cillum minim tempor
-              enim. Elit aute irure tempor cupidatat incididunt sint deserunt ut
-              voluptate aute id deserunt nisi.
-              <br />
-              Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis
-              ullamco cillum dolor. Voluptate exercitation incididunt aliquip
-              deserunt reprehenderit elit laborum.
-              <br />
-              Aliqua id fugiat nostrud irure ex duis ea quis id quis ad et. Sunt
-              qui esse pariatur duis deserunt mollit dolore cillum minim tempor
-              enim. Elit aute irure tempor cupidatat in
-            </>
+            <strong>Cookies and Tracking Technologies:</strong> Explain your use of cookies and similar tracking technologies, including their purpose and how users can manage their preferences or opt out if desired.
+            <br  />  <br  />
+
+            <strong>User Rights:</strong> Inform users about their rights regarding their personal information, such as the right to access, correct, or delete their data, as well as the process for exercising these rights.
+            <br  />  <br  />
+
+            <strong>Retention Period:</strong> Specify how long you retain users' personal information and the criteria used to determine the retention period.
+            <br  />  <br  />
+
+            <strong>Legal Basis:</strong> Identify the legal basis for processing users' personal information, such as the necessity for contract performance, compliance with legal obligations, or legitimate interests.
+            <br  />  <br  />
+
+            <strong>International Transfers:</strong> If applicable, explain whether you transfer users' personal information to countries outside their own and provide information about the safeguards you have in place to protect the data during such transfers.
+            <br  />  <br  />
+
+            <strong>Updates to the Privacy Statement:</strong> State that the privacy statement may be updated periodically and inform users about how they will be notified of any material changes.
+            <br  />  <br  />
+
+            <strong>Contact Information:</strong> Provide contact details for users to reach out with questions, concerns, or requests regarding their privacy or personal information.
+                        </>
           </Text>
         </div>
         

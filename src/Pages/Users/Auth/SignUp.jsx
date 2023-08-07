@@ -161,11 +161,27 @@ const SignUp = () => {
                     >
                       Signup
                     </Button>
+                    <Text
+                        className="pl-6 font-normal not-italic text-center text-white_A700"
+                        variant="sm"
+                      >
+                        By creating an account, you agree to our <a
+                        href="/terms-and-conditions"
+                        className="font-normal not-italic text-base text-red_900_01"
+                      >
+                        Terms of use </a> and  
+                        <a
+                        href="/privacy-policy"
+                        className="font-normal not-italic text-base text-red_900_01"
+                      > privacy policy</a>
+
+                      </Text>
+
                     <Line className="bg-gray_900_63 mt-5 h-px w-full" />
                     <div className="flex flex-col gap-4 items-center justify-start self-stretch w-auto sm:w-full">
 
                       <a
-                        href="javascript:"
+                        href="#"
                         className="font-normal not-italic text-base text-left text-white_A700 w-auto"
                       >
                         <Text className="mb-2">Already have an account?</Text>

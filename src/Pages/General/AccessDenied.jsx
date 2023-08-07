@@ -45,7 +45,7 @@ const AccessDenied = () => {
               4
             </Text>
             <Img
-              src="images/img_iconsaxboldlock1.svg"
+              src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927657/HeartStrings/SVG/img_iconsaxboldlock1_w7ewix.svg"
               className="h-56 w-56"
               alt="iconsaxboldlock"
             />
@@ -100,7 +100,7 @@ const AccessDenied = () => {
               4
             </Text>
             <Img
-              src="images/img_iconsaxboldlock1.svg"
+              src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927657/HeartStrings/SVG/img_iconsaxboldlock1_w7ewix.svg"
               className="h-10 w-10"
               alt="iconsaxboldlock"
             />

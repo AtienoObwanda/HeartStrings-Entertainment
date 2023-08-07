@@ -50,16 +50,12 @@ const NotFound = () => {
               4
             </Text>
             <Img
-              src="images/img_unsplashpd4lo70ldbi.png"
+              src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927749/HeartStrings/SVG/img_unsplashpd4lo70ldbi_foym1v.png"
               className="h-[346px]"
               alt="iconsaxboldlock"
             />
 
-             {/* <Img
-              src="images/img_unsplashpd4lo70ldbi.png"
-              className="h-[346px] sm:h-auto object-cover w-[299px] md:w-full"
-              alt="unsplashpd4loSeventy"
-            /> */}
+            
 
             <Text
               className="text-left text-white_A700 w-auto"
@@ -112,7 +108,7 @@ const NotFound = () => {
               4
             </Text>
             <Img
-              src="images/img_unsplashpd4lo70ldbi.png"
+              src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927749/HeartStrings/SVG/img_unsplashpd4lo70ldbi_foym1v.png"
               className="h-[70px] w-[70px] mt-[-15px]"
               alt="iconsaxboldlock"
             />            
