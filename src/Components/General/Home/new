@@ -1,0 +1,31 @@
+<!-- Overlay -->
+
+<div className="absolute inset-x-0 bottom-[3%] w-full flex items-center justify-center">
+    <div className="flex flex-col md:gap-10 gap-[241px] justify-center mb-[265px] w-[65%] md:w-full">
+      {/* <Button
+        className="bg-transparent cursor-pointer flex items-center justify-center min-w-[102px] md:ml-[0] ml-[766px] py-1"
+        rightIcon={
+          <Img
+            className="h-6 mb-px ml-4"
+            src="images/img_materialsymbolsarrowoutward.svg"
+            alt="material-symbols:arrow-outward"
+          />
+        }
+      >
+        <div className="font-bold text-left text-white-A700 text-xl">Sign in</div>
+      </Button> */}
+      <div className="flex flex-col gap-8 h-[253px] md:h-auto items-center justify-center w-auto md:w-full">
+        <Img
+          className="h-18 w-[20%]"
+          src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689933646/HeartStrings/logo/HeartStringsLogo.png"
+          alt="Heart Strings Entertainment Logo"
+        />
+        <Text className="font-bold text-2xl md:text-[22px] text-white_A700 sm:text-xl w-auto">
+          Join the thousands of viewers already enjoying our plays.
+        </Text>
+        <Button className="bg-white_A700 border border-solid border-white_A700 cursor-pointer font-bold py-[15px] rounded-lg text-black_900 text-center text-xl w-[594px]">
+          Sign up to buy tickets and start streaming
+        </Button>
+      </div>
+    </div>
+  </div>
