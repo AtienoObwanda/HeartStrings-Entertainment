@@ -15,7 +15,7 @@ const Footer = (props) => {
           <div className="flex md:flex-col flex-row md:gap-10 gap-[269px] items-end justify-between self-stretch w-auto md:w-full">
             <div className="flex flex-col gap-8 items-start justify-start self-stretch w-auto md:w-full">
             
-              <div className="flex md:flex-col flex-row gap-2 items-start justify-start self-stretch w-auto md:w-full">
+              <div className="flex md:flex-row flex-row gap-2 items-start justify-start self-stretch w-auto md:w-full">
               
               
                
@@ -67,7 +67,7 @@ const Footer = (props) => {
 
               <Img
                 src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689933646/HeartStrings/logo/HeartStringsLogo.png"
-                className="justify-center h-18 w-[8%]"
+                className="justify-center h-18 w-[8%] md:sm:h-20  w-[20%] mb-[-6em]"
                 alt="Heartstring Entertainment Footer logo"
               />
             

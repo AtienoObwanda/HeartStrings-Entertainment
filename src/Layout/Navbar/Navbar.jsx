@@ -15,7 +15,7 @@ const Navbar = (props) => {
     <nav className="mt-2 w-full flex justify-between items-center navbar">
     <img  
       src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689933646/HeartStrings/logo/HeartStringsLogo.png"
-      className="h-18 w-[5%] md:ml-[0] ml-[150px] my-2 w-auto"
+      className="h-18 w-[5%] md:ml-[0] ml-[150px] my-2 w-auto md:sm:h-20 w-[12%] sm:h-20 sm:w-[20%]"
       alt="Heart Strings Entertainment logo"
       onClick={() => navigate("/")} 
       />
@@ -160,25 +160,7 @@ const Navbar = (props) => {
         </div>
 
 
-{/*Display Small Screen */}
-    {/* <div className="hidden sm:flex flex-1 justify-end items-center">
 
-
-        <img src = {toggle ? close : menu} alt="menu"
-        className="w-[28px] h-[28px] object-contain"
-        onClick={() => setToggle((prev) => !prev)} />
-        <div className={`${toggle ? 'flex' : 'hidden'}
-        p-6 bg-black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar`}
-        >
-          <ul>
-            <l>
-                
-            </l>
-          </ul>
-
-        </div>
-
-      </div> */}
 
     </nav>    
         </header>

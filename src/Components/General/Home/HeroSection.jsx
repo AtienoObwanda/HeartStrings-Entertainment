@@ -31,15 +31,15 @@ const HeroSection= ({ isAuthenticated }) => {
     <div className="flex flex-col md:gap-10 gap-[241px] justify-center mb-[265px] w-[65%] md:w-full">
       <div className="flex flex-col gap-8 h-[253px] md:h-auto items-center justify-center w-auto md:w-full">
         <Img
-          className="h-18 w-[10%] mb-10"
+          className="h-18 w-[10%] mb-10 md:h-18 w-[5%] sm:h-26 w-[25%] mb-0"
           src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689933646/HeartStrings/logo/HeartStringsLogo.png"
           alt="Heart Strings Entertainment Logo"
         />
-        <Text className="font-bold text-2xl md:text-[22px] text-white_A700 sm:text-xl w-auto mt-5 mb-8">
+        <Text className="font-bold text-2xl md:text-[22px] text-white_A700 sm:text-xl w-auto mt-5 mb-8 md:pl-8 md:pr-8">
           Join the thousands of viewers already enjoying our plays.
         </Text>
         <Button 
-        className="bg-white_A700 border border-solid border-white_A700 cursor-pointer font-bold py-[15px] rounded-lg text-black_900 text-center text-xl w-[594px] mt-6"
+        className="bg-white_A700 border border-solid border-white_A700 cursor-pointer font-bold py-[15px] rounded-lg text-black_900 text-center text-xl w-[594px] mt-6 md:w-3/4"
         >
           Sign up to buy tickets and start streaming
         </Button>
