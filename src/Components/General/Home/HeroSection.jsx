@@ -26,15 +26,23 @@ const HeroSection= ({ isAuthenticated }) => {
   {/* overlay */}
    {/* Render overlay only if user is not authenticated */}
    {!isAuthenticated && (
-  <div className="h-[728px] absolute inset-x-0 bottom-[-1%] w-full flex items-center justify-center backdrop-brightness-50 bg-black/30">
+  <div className="h-[728px] absolute inset-x-0 bottom-[-1%] w-full flex items-center justify-center backdrop-brightness-50 bg-black/35">
     {/* Sign In BTN goes Here */}
     <div className="flex flex-col md:gap-10 gap-[241px] justify-center mb-[265px] w-[65%] md:w-full">
       <div className="flex flex-col gap-8 h-[253px] md:h-auto items-center justify-center w-auto md:w-full">
-        <Img
+        {/* <Img
           className="h-18 w-[10%] mb-10 md:h-18 w-[5%] sm:h-26 w-[25%] mb-0"
           src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689933646/HeartStrings/logo/HeartStringsLogo.png"
           alt="Heart Strings Entertainment Logo"
-        />
+        /> */}
+        <div className="h-[150em]">
+          <img  
+            src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689933646/HeartStrings/logo/HeartStringsLogo.png"
+            className="h-[90%] w-[8em] w-auto md:sm:h-26 w-[12%] sm:h-20 sm:w-[20%]"
+            alt="Heart Strings Entertainment logo"
+            onClick={() => navigate("/")} 
+            />
+          </div>
         <Text className="font-bold text-2xl md:text-[22px] text-white_A700 sm:text-xl w-auto mt-5 mb-8 md:pl-8 md:pr-8">
           Join the thousands of viewers already enjoying our plays.
         </Text>

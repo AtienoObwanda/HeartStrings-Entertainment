@@ -13,12 +13,14 @@ const Navbar = (props) => {
     <>
     <header className={props.className}>
     <nav className="mt-2 w-full flex justify-between items-center navbar">
+    <div className="h-60">
     <img  
       src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689933646/HeartStrings/logo/HeartStringsLogo.png"
-      className="h-18 w-[5%] md:ml-[0] ml-[150px] my-2 w-auto md:sm:h-20 w-[12%] sm:h-20 sm:w-[20%]"
+      className="h-[40%] w-[8em] md:ml-[0] ml-[150px] my-2 w-auto md:h-30 md:w-full sm:h-1/2"
       alt="Heart Strings Entertainment logo"
       onClick={() => navigate("/")} 
       />
+    </div>
         {/* Display on Large Screens  */}
         <div className="md:hidden flex gap-8 items-center justify-center mr-[100px] ml-[411px] mr-[150px] mt-4 my-4 self-stretch w-auto">
             <Button
