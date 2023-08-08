@@ -3,7 +3,7 @@ import { useState } from "react";
 import moment from "moment"; // Import the moment library
 import SelectingShowTimeColumn from "UI_Components/SelectingShowTimeColumn";
 import SelectingShowTimeColumn1 from "UI_Components/SelectingShowTimeColumn1";
-import SelectingShowTimeRowa from "UI_Components/SelectingShowTimeRow";
+import SelectingShowTimeRowa from "UI_Components/SelectingShowTimeRow/Alliance";
 import { Button, Img, List, Text } from "UI_Components";
 
 
@@ -31,7 +31,7 @@ const BookingCalendar = () => {
         key={currentDate.toString()}
         className="bg-cover bg-no-repeat flex flex-col h-[14em] items-center justify-start p-[31px] sm:px-5 w-full"
         style={{
-          backgroundImage: "url('images/img_group39896.svg')",
+          backgroundImage: "url('https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927651/HeartStrings/SVG/img_group39897_yskmrp.svg')",
         }}
         language={dayOfWeek + " "}
         p1st={dayOfMonth + "st"}

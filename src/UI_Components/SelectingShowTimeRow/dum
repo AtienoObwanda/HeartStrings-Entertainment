@@ -10,7 +10,7 @@ const SelectingShowTimeRowa = (props) => {
   const SeatIcons = {
     Selected:(
       <Img
-        src="images/img_mdiloveseat_red_900.svg"
+        src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927665/HeartStrings/SVG/img_mdiloveseat_red_900_24x24_q3fq2e.svg"
         className="h-6 w-6"
         alt="mdiloveseat_Three"
       />
@@ -18,7 +18,7 @@ const SelectingShowTimeRowa = (props) => {
   
     Available:(
       <Img
-      src="images/img_mdiloveseat.svg"
+      src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927664/HeartStrings/SVG/img_mdiloveseat_f7ateu.svg"
       className="h-6 w-6"
       alt="mdiloveseat_Five"
       />
@@ -27,7 +27,7 @@ const SelectingShowTimeRowa = (props) => {
   
     Reserved:(
     <Img
-      src="images/img_mdiloveseat_gray_800.svg"
+      src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927664/HeartStrings/SVG/img_mdiloveseat_gray_800_icconh.svg"
       className="h-6 w-6"
       alt="mdiloveseat"
       />
@@ -39,67 +39,26 @@ const SelectingShowTimeRowa = (props) => {
   return (
     <>
       <div className={props.className}>
-        <div className="flex flex-col gap-4 items-start justify-start md:mt-0 mt-72 self-stretch w-auto">
-          <Text
-            className="font-roboto not-italic text-left text-white_A700 w-auto"
-            variant="body5"
-          >
-            {props?.a}
-          </Text>
-          <Text
-            className="font-roboto not-italic text-left text-white_A700 w-auto"
-            variant="body5"
-          >
-            {props?.b}
-          </Text>
-          <Text
-            className="font-roboto not-italic text-left text-white_A700 w-auto"
-            variant="body5"
-          >
-            {props?.c}
-          </Text>
-          <Text
-            className="font-roboto not-italic text-left text-white_A700 w-auto"
-            variant="body5"
-          >
-            {props?.d}
-          </Text>
-          <Text
-            className="font-roboto not-italic text-left text-white_A700 w-auto"
-            variant="body5"
-          >
-            {props?.e}
-          </Text>
-          <Text
-            className="font-roboto not-italic text-left text-white_A700 w-auto"
-            variant="body5"
-          >
-            {props?.f}
-          </Text>
-          <Text
-            className="font-roboto not-italic text-left text-white_A700 w-auto"
-            variant="body5"
-          >
-            {props?.g}
-          </Text>
-          <Text
-            className="font-roboto not-italic text-left text-white_A700 w-auto"
-            variant="body5"
-          >
-            {props?.h}
-          </Text>
-          <Text
-            className="font-roboto not-italic text-left text-white_A700 w-auto"
-            variant="body5"
-          >
-            {props?.i}
-          </Text>
+        {/* Left Layout */}
+        <div className="flex flex-col gap-4 items-start justify-start md:mt-0 mt-72 w-auto">
+          <Text className="font-roboto text-sm text-white-A700 w-auto">{props?.a}</Text>
+          <Text className="font-roboto text-sm text-white-A700 w-auto">{props?.b}</Text>
+          <Text className="font-roboto text-sm text-white-A700 w-auto">{props?.c}</Text>
+          <Text className="font-roboto text-sm text-white-A700 w-auto">{props?.d}</Text>
+          <Text className="font-roboto text-sm text-white-A700 w-auto">{props?.e}</Text>
+          <Text className="font-roboto text-sm text-white-A700 w-auto">{props?.f}</Text>
+          <Text className="font-roboto text-sm text-white-A700 w-auto">{props?.g}</Text>
+          <Text className="font-roboto text-sm text-white-A700 w-auto">{props?.h}</Text>
+          <Text className="font-roboto text-sm text-white-A700 w-auto">{props?.i}</Text>
         </div>
         
         <div className="flex flex-col md:gap-10 gap-24 items-center justify-start self-stretch w-auto md:w-full">
+          {/* Stage Lay Out */}
           <div
-            className="bg-cover bg-no-repeat flex flex-col h-48 items-center justify-start p-[52px] md:px-10 sm:px-5 w-auto md:w-full"
-            style={{ backgroundImage: "url('images/img_group40109.png')" }}
+            className="bg-cover bg-no-repeat flex flex-col h-60 w-[800px] md:w-600 items-center justify-start p-[52px] md:px-10 sm:px-5 w-auto md:w-full"
+            style={{
+              backgroundImage: "url('https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927652/HeartStrings/SVG/img_group40109_pbzc2u.png')",
+            }}
           >
             <Text
               className="font-roboto text-left text-white_A700 w-auto"
@@ -109,6 +68,8 @@ const SelectingShowTimeRowa = (props) => {
               {props?.stage}
             </Text>
           </div>
+
+
 
           <div className="flex flex-col md:gap-10 gap-16 items-center justify-start self-stretch w-auto md:w-full">
             <div className="flex md:flex-col flex-row gap-[35px] items-start justify-center self-stretch w-auto md:w-full">
@@ -485,9 +446,9 @@ const SelectingShowTimeRowa = (props) => {
 <div className="flex flex-row gap-6 items-center justify-center self-stretch w-auto">
               <div className="flex flex-row gap-2 items-center justify-center self-stretch w-auto">
                 <Img
-                  src="images/img_mdiloveseat.svg"
+                  src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927664/HeartStrings/SVG/img_mdiloveseat_f7ateu.svg"
                   className="h-6 w-6"
-                  alt="mdiloveseat_Fourteen"
+                  alt="Ticket Booking Available seats"
                 />
                 <Text
                   className="font-normal font-roboto not-italic text-left text-white_A700 w-auto"
@@ -498,9 +459,9 @@ const SelectingShowTimeRowa = (props) => {
               </div>
               <div className="flex flex-row gap-2 items-center justify-center self-stretch w-auto">
                 <Img
-                  src="images/img_mdiloveseat_gray_800.svg"
+                  src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927664/HeartStrings/SVG/img_mdiloveseat_gray_800_icconh.svg"
                   className="h-6 w-6"
-                  alt="mdiloveseat_Fifteen"
+                  alt="Ticket Booking Reserved Seats"
                 />
                 <Text
                   className="font-normal font-roboto not-italic text-left text-white_A700 w-auto"
@@ -511,9 +472,9 @@ const SelectingShowTimeRowa = (props) => {
               </div>
               <div className="flex flex-row gap-2 items-center justify-center self-stretch w-auto">
                 <Img
-                  src="images/img_mdiloveseat_red_900.svg"
+                  src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927665/HeartStrings/SVG/img_mdiloveseat_red_900_24x24_q3fq2e.svg"
                   className="h-6 w-6"
-                  alt="mdiloveseat_Sixteen"
+                  alt="Ticket booking Selected seats"
                 />
                 <Text
                   className="font-normal font-roboto not-italic text-left text-white_A700 w-auto"
@@ -605,6 +566,20 @@ SelectingShowTimeRowa.defaultProps = {
   available: "Available",
   reserved: "Reserved",
   selected: "Selected",
+  aOne: "A",
+  bOne: "B",
+  cOne: "C",
+  dOne: "D",
+  eOne: "E",
+  fOne: "F",
+  gOne: "G",
+  hOne: "H",
+  iOne: "I",
+
+  // stage: "STAGE",
+  // available: "Available",
+  // reserved: "Reserved",
+  // selected: "Selected",
 };
   // aOne: "A",
   // bOne: "B",

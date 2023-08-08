@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createColumnHelper } from "@tanstack/react-table";
+import {FiEdit} from 'react-icons/fi'
+import {IoEyeSharp} from 'react-icons/io5'
 import { Img, Line, ReactTable, Text } from "UI_Components";
+
 // import { Button, Img, Input, Line, List, Text } from "Components";
 import close from "../../../assets/close.svg";
 import menu from "../../../assets/menu.svg";
@@ -13,7 +16,8 @@ const MyTickets = () => {
       dateandtime: "Monday 4 -17 - 2023 | 1:23 PM",
       seats: "A1, A2, A3, A4",
       location: "Alliance Francaise",
-      priceSix: "images/img_frame40131.svg",
+      // priceSix: <FiEdit/>,
+      // priceSix: <IoEyeSharp/>,
     },
     {
       play: "KSH 3,000",

@@ -1,7 +1,10 @@
 import React from 'react'
 // import { io } from "socket.io-client";
 
-import SelectingShowTimeRowa from "UI_Components/SelectingShowTimeRow";
+import Alliance from "UI_Components/SelectingShowTimeRow/Alliance";
+import KNT from 'UI_Components/SelectingShowTimeRow/KNT';
+import NairobiCinema from 'UI_Components/SelectingShowTimeRow/NairobiCinema';
+
 import { Button, Img, List, Text } from "UI_Components";
 
 
@@ -21,7 +24,7 @@ const SeatSelection = () => {
             >
               Select seat (s)
             </Text>
-            <SelectingShowTimeRowa
+            <NairobiCinema
               className="bg-black_900_01 flex flex-row items-start justify-between pb-8 sm:px-5 px-8 w-full"
               a="A"
               b="B"
