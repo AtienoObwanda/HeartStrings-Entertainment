@@ -32,6 +32,7 @@ const NairobiCinema = (props) => {
        )
   
   };
+
   return (
     <>
     <div className={props.className}>
@@ -55,8 +56,9 @@ const NairobiCinema = (props) => {
     <div className="flex flex-row">
        {/* Wing One */}
        <div className="flex flex-col md:gap-10 gap-10 items-center justify-start w-auto md:w-full">
-            <div className="flex md:flex-col flex-row mt-[9.5em] gap-[35px] items-start justify-center w-auto md:w-full">
-            <div className="flex flex-col gap-4 items-start justify-center w-auto">
+            <div className="flex md:flex-col flex-row mt-[13.6em] gap-[35px] items-start justify-center w-auto md:w-full">
+            <div className="flex flex-col gap-4 items-end justify-center w-auto">
+               {/* Row D */}
                 <div className="flex flex-row gap-2 items-center justify-center sm:pr-5 pr-8 w-auto">
                 {SeatIcons[available]}
                 {SeatIcons[available]}
@@ -65,6 +67,158 @@ const NairobiCinema = (props) => {
                 {SeatIcons[available]}
                 </div>
 
+                {/* Row E */}
+                <div className="flex flex-row gap-2 items-center justify-center sm:pr-5 pr-8 w-auto">
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                </div>
+
+                {/* Row F */}
+                <div className="flex flex-row gap-2 mt-2 items-center justify-center sm:pr-5 pr-8 w-auto">
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                </div>
+               
+
+                {/* Row G */}
+                <div className="flex flex-row gap-2 mt-2 items-center justify-center sm:pr-5 pr-8 w-auto">
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                </div>
+
+                {/* Row H */}
+                <div className="flex flex-row gap-2 mt-2 items-center justify-center sm:pr-5 pr-8 w-auto">
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                </div>
+               
+
+                {/* Row I */}
+                <div className="flex flex-row gap-2 mt-2 items-center justify-center sm:pr-5 pr-8 w-auto">
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                </div>
+                
+
+                {/* Row J */}
+                <div className="flex flex-row gap-2 mt-1 items-center justify-center sm:pr-5 pr-8 w-auto">
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                </div>
+                
+
+                {/* Row K */}
+                <div className="flex flex-row gap-2 mt-2 items-center justify-center sm:pr-5 pr-8 w-auto">
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                </div>
+
+                {/* Row L */}
+                <div className="flex flex-row gap-2 mt-1 items-center justify-center sm:pr-5 pr-8 w-auto">
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                </div>
+                
+
+                {/* Row M */}
+                <div className="flex flex-row gap-2 mt-1 items-center justify-center sm:pr-5 pr-8 w-auto">
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                </div>
+
+                {/* Row N */}
+                <div className="flex flex-row gap-2 mt-2 items-center justify-center sm:pr-5 pr-8 w-auto">
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                </div>
+                
+
+                {/* Row O */}
+                <div className="flex flex-row gap-2 mt-2 items-center justify-center sm:pr-5 pr-8 w-auto">
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                </div>
+                
+
+                {/* Row P */}
+                <div className="flex flex-row gap-2 mt-1 items-center justify-center sm:pr-5 pr-8 w-auto">
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                </div>
+                
+
                 </div>
             </div>
             </div>
@@ -72,10 +226,10 @@ const NairobiCinema = (props) => {
       
 
       {/* Divider One */}
-      <div className="flex flex-col  gap-4 items-start justify-start md:mt-0 w-auto">
-          <Text className="font-roboto text-sm text-white_A700 w-auto">{}</Text>
-          <Text className="font-roboto text-sm text-white_A700 w-auto">{}</Text>
-          <Text className="font-roboto text-sm text-white_A700 w-auto">{}</Text>
+      <div className="flex flex-col  gap-[19.5px] items-start justify-start md:mt-0 w-auto">
+          <Text className="font-roboto text-sm text-white_A700 mt-10 pt-4 w-auto">{}</Text>
+          {/* <Text className="font-roboto text-sm text-white_A700 w-auto">{}</Text>
+          <Text className="font-roboto text-sm text-white_A700 w-auto">{}</Text> */}
           <Text className="font-roboto text-sm text-white_A700 w-auto">{props?.a}</Text>
           <Text className="font-roboto text-sm text-white_A700 w-auto">{props?.b}</Text>
           <Text className="font-roboto text-sm text-white_A700 w-auto">{props?.c}</Text>
@@ -97,8 +251,28 @@ const NairobiCinema = (props) => {
 
       {/* Wing Two */}
       <div className="flex flex-col md:gap-10 gap-10 items-center justify-start w-auto md:w-full">
-            <div className="flex md:flex-col flex-row mt-[2.8em] gap-[35px] items-start justify-center w-auto md:w-full">
-            <div className="flex flex-row gap-2 items-center justify-center sm:pr-5 sm:pl-5 pl-8 pr-8 w-auto">
+            <div className="flex md:flex-col flex-row mt-[4.8em] gap-[35px] items-start justify-center w-auto md:w-full">
+            <div className="flex flex-col gap-4 items-center justify-center w-auto">
+               {/* Row A */}
+                <div className="flex flex-row gap-2 items-center justify-center sm:pl-5 pl-8 pr-8 w-auto">
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                </div>
+                {/* Row B */}
+                <div className="flex flex-row gap-2 mt-2 items-center justify-center sm:pl-5 pl-8 pr-8 w-auto">
+                {SeatIcons[available]}
                 {SeatIcons[available]}
                 {SeatIcons[available]}
                 {SeatIcons[available]}
@@ -115,14 +289,275 @@ const NairobiCinema = (props) => {
                 {SeatIcons[available]}
                 </div>
 
-            </div>
-            </div>
+                {/* Row C */}
+                <div className="flex flex-row gap-2 mt-2 items-center justify-center sm:pl-5 pl-8 pr-8 w-auto">
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                </div>
+
+                {/* Row D */}
+                <div className="flex flex-row gap-2 mt-2 items-center justify-center sm:pl-5 pl-8 pr-8 w-auto">
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                </div>
+
+                {/* Row E */}
+                <div className="flex flex-row gap-2 items-center justify-center sm:pl-5 pl-8 pr-8 w-auto">
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                </div>
+
+                {/* Row F */}
+                <div className="flex flex-row gap-2 mt-2 items-center justify-center sm:pl-5 pl-8 pr-8 w-auto">
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                </div>
+
+                {/* Row G */}
+                <div className="flex flex-row gap-2 mt-2 items-center justify-center sm:pl-5 pl-8 pr-8 w-auto">
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                </div>
+
+                {/* Row H */}
+                <div className="flex flex-row gap-2 mt-1 items-center justify-center sm:pl-5 pl-8 pr-8 w-auto">
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                </div>
+
+                {/* Row I */}
+                <div className="flex flex-row mt-2 gap-2 items-center justify-center sm:pl-5 pl-8 pr-8 w-auto">
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                </div>
+
+                {/* Row J */}
+                <div className="flex flex-row gap-2 mt-2 items-center justify-center sm:pl-5 pl-8 pr-8 w-auto">
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                </div>
+
+                {/* Row K */}
+                <div className="flex flex-row gap-2 mt-1 items-center justify-center sm:pl-5 pl-8 pr-8 w-auto">
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                </div>
+
+                {/* Row L */}
+                <div className="flex flex-row gap-2 items-center justify-center sm:pl-5 pl-8 pr-8 w-auto">
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                </div>
+
+                {/* Row M */}
+                <div className="flex flex-row gap-2 mt-2 items-center justify-center sm:pl-5 pl-8 pr-8 w-auto">
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                </div>
+
+                {/* Row N */}
+                <div className="flex flex-row gap-2 mt-2 items-center justify-center sm:pl-5 pl-8 pr-8 w-auto">
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                </div>
+
+                {/* Row O */}
+                <div className="flex flex-row gap-2 mt-2 items-center justify-center sm:pl-5 pl-8 pr-8 w-auto">
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                </div>
+
+                {/* Row P */}
+                <div className="flex flex-row gap-2 mt-2 items-center justify-center sm:pl-5 pl-8 pr-8 w-auto">
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                </div>
+
+                </div>
+                </div>
+                </div>
+
 
       {/* Divider Two */}
-      <div className="flex flex-col gap-4 items-start justify-start md:mt-0 w-auto">
-        <Text className="font-roboto text-sm text-white_A700 w-auto">{}</Text>
-          <Text className="font-roboto text-sm text-white_A700 w-auto">{}</Text>
-          <Text className="font-roboto text-sm text-white_A700 w-auto">{}</Text>
+      <div className="flex flex-col  gap-[19.5px] items-start justify-start md:mt-0 w-auto">
+          <Text className="font-roboto text-sm text-white_A700 mt-10 pt-4 w-auto">{}</Text>
+        {/* <Text className="font-roboto text-sm text-white_A700 w-auto">{}</Text>
+          <Text className="font-roboto text-sm text-white_A700 w-auto">{}</Text> */}
           <Text className="font-roboto text-sm text-white_A700 w-auto">{props?.aOne}</Text>
           <Text className="font-roboto text-sm text-white_A700 w-auto">{props?.bOne}</Text>
           <Text className="font-roboto text-sm text-white_A700 w-auto">{props?.cOne}</Text>
@@ -144,8 +579,10 @@ const NairobiCinema = (props) => {
 
       {/* Wing Three */}
       <div className="flex flex-col md:gap-10 gap-10 items-center justify-start w-auto md:w-full">
-            <div className="flex md:flex-col flex-row gap-[35px] mt-[9.5em] items-start justify-center w-auto md:w-full">
-            <div className="flex flex-row gap-2 items-center justify-center sm:pl-5 pl-8 w-auto">
+            <div className="flex md:flex-col flex-row mt-[13.6em] gap-[35px] items-start justify-center w-auto md:w-full">
+            <div className="flex flex-col gap-4 items-start justify-center w-auto">
+               {/* Row D */}
+                <div className="flex flex-row gap-2 items-center justify-center sm:pl-5 pl-8 w-auto">
                 {SeatIcons[available]}
                 {SeatIcons[available]}
                 {SeatIcons[available]}
@@ -153,6 +590,159 @@ const NairobiCinema = (props) => {
                 {SeatIcons[available]}
                 </div>
 
+                {/* Row E */}
+                <div className="flex flex-row gap-2 items-center justify-center sm:pl-5 pl-8 w-auto">
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                </div>
+
+                {/* Row F */}
+                <div className="flex flex-row gap-2 mt-2 items-center justify-center sm:pl-5 pl-8 w-auto">
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                </div>
+               
+
+                {/* Row G */}
+                <div className="flex flex-row gap-2 mt-2 items-center justify-center sm:pl-5 pl-8 w-auto">
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                </div>
+
+                {/* Row H */}
+                <div className="flex flex-row gap-2 mt-2 items-center justify-center sm:pl-5 pl-8 w-auto">
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                </div>
+               
+
+                {/* Row I */}
+                <div className="flex flex-row gap-2 mt-2 items-center justify-center sm:pl-5 pl-8 w-auto">
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                </div>
+                
+
+                {/* Row J */}
+                <div className="flex flex-row gap-2 mt-1 items-center justify-center sm:pr-l pl-8 w-auto">
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                </div>
+                
+
+                {/* Row K */}
+                <div className="flex flex-row gap-2 mt-2 items-center justify-center sm:pl-5 pl-8 w-auto">
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                </div>
+
+                {/* Row L */}
+                <div className="flex flex-row gap-2 mt-1 items-center justify-center sm:pl-5 pl-8 w-auto">
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                </div>
+                
+
+                {/* Row M */}
+                <div className="flex flex-row gap-2 mt-1 items-center justify-center sm:pl-5 pl-8 w-auto">
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                </div>
+
+                {/* Row N */}
+                <div className="flex flex-row gap-2 mt-2 items-center justify-center sm:pl-5 pl-8 w-auto">
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                </div>
+                
+
+                {/* Row O */}
+                <div className="flex flex-row gap-2 mt-2 items-center justify-center sm:pl-5 pl-8 w-auto">
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                </div>
+                
+
+                {/* Row P */}
+                <div className="flex flex-row gap-2 mt-1 items-center justify-center sm:pl-5 pl-8 w-auto">
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                {SeatIcons[available]}
+                </div>
+                
+
+                </div>
             </div>
             </div>
     </div>
