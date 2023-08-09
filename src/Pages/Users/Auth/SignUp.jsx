@@ -7,7 +7,7 @@ import { apiUrl } from '../../../../env.js';
 // console.log(apiUrl)
 
 
-import { signup } from '../../../actions/auth';
+// import { signup } from '../../../actions/auth';
 import { Button, Img, Input, Line, Text } from "UI_Components";
 import SignupColumnlogotwo from "UI_Components/SignupColumn";
 import SignupColumnsearchone from "UI_Components/SignupColumnsearchone";
@@ -42,15 +42,15 @@ const SignUp = ({  }) => {
         if (response.data.error === false) {
           setAccountCreated(true);
           navigate('/activate-account');
-          ///activate-account
         } else {
           // Handle error case if needed
         }
       } catch (error) {
-        // Handle error case if needed
+        alert('Error registering user: ' + error);
       }
     } else {
-      // Handle password mismatch case if needed
+      alert('Passwords need to match!: ');
+
     }
   };
 
