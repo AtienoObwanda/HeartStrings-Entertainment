@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 //API IMPORT
 import { apiUrl } from '../../../../env.js';
-console.log(apiUrl)
+// console.log(apiUrl)
 
 
 import { signup } from '../../../actions/auth';
