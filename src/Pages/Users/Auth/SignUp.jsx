@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import { Link,useNavigate} from 'react-router-dom';
 import { connect } from 'react-redux';
 import axios from 'axios';
+//API IMPORT
+import { apiUrl } from '../../../../env.js';
+console.log(apiUrl)
+
 
 import { signup } from '../../../actions/auth';
 import { Button, Img, Input, Line, Text } from "UI_Components";
@@ -26,7 +30,9 @@ const SignUp = ({  }) => {
 
     if (password === confirmPassword) {
       try {
-        const response = await axios.post('https://api.jaafrikaimages.org/api/register/', {
+        const response = await axios.post(`${apiUrl}/register/`, {
+          // const response = await axios.post(`${process.env.REACT_APP_API_URL}/register/`, {
+        // const response = await axios.post('https://api.jaafrikaimages.org/api/register/', {
           name,
           phone,
           email,
