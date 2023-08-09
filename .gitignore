@@ -24,7 +24,7 @@ dist-ssr
 *.sw?
 .env.local
 .env.production
-
+env.js
 
 
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
