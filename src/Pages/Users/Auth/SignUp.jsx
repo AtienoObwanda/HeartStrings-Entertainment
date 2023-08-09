@@ -1,38 +1,66 @@
-import React, {useState} from "react";
+import React, { useState } from 'react';
+import { Link,useNavigate} from 'react-router-dom';
+import { connect } from 'react-redux';
+import axios from 'axios';
 
+import { signup } from '../../../actions/auth';
 import { Button, Img, Input, Line, Text } from "UI_Components";
 import SignupColumnlogotwo from "UI_Components/SignupColumn";
 import SignupColumnsearchone from "UI_Components/SignupColumnsearchone";
-import { useNavigate } from "react-router-dom";
 
 
 
 
-const SignUp = () => {
-  // Form fields variables
+const SignUp = ({  }) => {
+  const navigate = useNavigate();
+
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [accountCreated, setAccountCreated] = useState(false);
 
-  //Function to handle Form submit
-  const handleSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
 
+    if (password === confirmPassword) {
+      try {
+        const response = await axios.post('https://api.jaafrikaimages.org/api/register/', {
+          name,
+          phone,
+          email,
+          password
+        });
 
-  // Form validation:
-      // if (email && password){
-  //Login Function:
-        console.log(email);
-        console.log(password);
-
-
-  //Clear the form fields
-    //   setEmail('');
-    //   setPassword('');
-    // } else{
-    //   alert('Please fill in all the required fields.');
-    // }
-
+        if (response.data.error === false) {
+          setAccountCreated(true);
+          navigate('/activate-account');
+          ///activate-account
+        } else {
+          // Handle error case if needed
+        }
+      } catch (error) {
+        // Handle error case if needed
+      }
+    } else {
+      // Handle password mismatch case if needed
+    }
   };
+
+  
+
+
+// if (isAuthenticated) {
+//   navigate('/my-streams');
+//   return null; // Returning null since the component has navigated away
+// }
+
+// if (accountCreated) {
+//   navigate('/login');
+//   return null; // Returning null since the component has navigated away
+// }
+
 
 
   return (
@@ -52,8 +80,11 @@ const SignUp = () => {
             
             
             
-            
-            <form onSubmit={handleSubmit}>
+            {/* {accountCreated ? (
+            <p className='bg-light_blue_500 text-white_A700 W-40 H-40'>Account Created Successfully. An activation email has been sent.</p>
+          ) : ( */}
+
+            <form onSubmit={e => onSubmit(e)}>
                 <div className="flex flex-col gap-8 items-start justify-start self-stretch w-auto sm:w-full">
                 <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto sm:w-full">
 
@@ -61,18 +92,18 @@ const SignUp = () => {
                     className="font-normal not-italic text-left text-white_A700 w-auto"
                     variant="body4"
                   >
-                    Name:
+                    Name
                   </Text>
-                  <Input
-                    wrapClassName="flex h-12 w-full"
-                    className="p-0 pl-4 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
-                    value={email} onChange={(e) => setEmail(e.target.value)}
-                    type="text"
-                    name="name"
-                    placeholder="FirstName LastName"
-                    shape="RoundedBorder4"
-                    variant="FillGray800"
-                  ></Input>
+                  
+                  <input
+                       
+                        className="bg-gray_800 h-12 p-0 pl-4 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
+                        type="text" placeholder="Full Name" 
+                        onChange={(e) => setName(e.target.value)}
+                        // shape="RoundedBorder4"
+                        // variant="FillGray800"
+                        required
+                      />
                   </div>
               
                 <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto sm:w-full">
@@ -83,16 +114,12 @@ const SignUp = () => {
                       >
                         Email address
                       </Text>
-                      <Input
-                        wrapClassName="flex h-12 w-full"
-                        className="p-0 pl-4 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
-                        value={email} onChange={(e) => setEmail(e.target.value)}
-                        type="email"
-                        name="email"
-                        placeholder="youremail@gmail.com"
-                        shape="RoundedBorder4"
-                        variant="FillGray800"
-                      ></Input>
+                      <input
+                          className="bg-gray_800 h-12 p-0 pl-4 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
+                          type="email" placeholder="Valid Email" onChange={(e) => setEmail(e.target.value)}
+                         
+                          required
+                  />                      
                     </div>
 
                     <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto sm:w-full">
@@ -103,16 +130,15 @@ const SignUp = () => {
                         >
                           Phone Number
                         </Text>
-                        <Input
-                          wrapClassName="flex h-12 w-full"
-                          className="p-0 pl-4 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
-                          value={email} onChange={(e) => setEmail(e.target.value)}
-                          type="number"
-                          name="phone"
-                          placeholder="0783976879"
-                          shape="RoundedBorder4"
-                          variant="FillGray800"
-                        ></Input>
+                        <input
+                          className="bg-gray_800 h-12 p-0 pl-4 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
+                          country={'us'}
+                          // value={this.state.phone}
+                          type="text" placeholder="0783976879" onChange={(e) => setPhone(e.target.value)}
+                          required
+                          // shape="RoundedBorder4"
+                          // variant="FillGray800"
+                        />
                         </div>
                     <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto sm:w-full">
                       <Text
@@ -121,16 +147,11 @@ const SignUp = () => {
                       >
                         Password
                       </Text>
-                      <Input
-                        wrapClassName="flex h-12 w-full"
-                        className="p-0 pl-4 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
-                        value={password}onChange={(e) => setPassword(e.target.value)}
-                        type="password"
-                        name="password"
-                        placeholder="******************"
-                        shape="RoundedBorder4"
-                        variant="FillGray800"
-                      ></Input>
+                      <input
+                        className="bg-gray_800 h-12 p-0 pl-4 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
+                        type="password" placeholder="******************" onChange={(e) => setPassword(e.target.value)}
+                        required
+                     />
                       </div>
 
                     <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto sm:w-full">
@@ -140,16 +161,13 @@ const SignUp = () => {
                       >
                         Confirm Password
                       </Text>
-                      <Input
-                        wrapClassName="flex h-12 w-full"
-                        className="p-0 pl-4 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
-                        value={password}onChange={(e) => setPassword(e.target.value)}
-                        type="password"
-                        name="password"
-                        placeholder="******************"
-                        shape="RoundedBorder4"
-                        variant="FillGray800"
-                      ></Input>
+                      <input
+                        className="bg-gray_800 h-12 p-0 pl-4 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
+                        type="password" placeholder="******************" onChange={(e) => setConfirmPassword(e.target.value)}
+                        // minLength='6'
+                        required
+                        
+                     />
                     </div>
 
                     <Button
@@ -167,17 +185,17 @@ const SignUp = () => {
                       >
                         By creating an account, you agree to our <a
                         href="/terms-and-conditions"
-                        className="font-normal not-italic text-base text-red_900_01"
+                        className="font-normal not-italic text-base text-light_blue_500"
                       >
                         Terms of use </a> and  
                         <a
                         href="/privacy-policy"
-                        className="font-normal not-italic text-base text-red_900_01"
-                      > privacy policy</a>
+                        className="font-normal not-italic text-base text-light_blue_500"
+                      > Privacy Policy</a>
 
                       </Text>
 
-                    <Line className="bg-gray_900_63 mt-5 h-px w-full" />
+                    <Line className="bg-gray_900_63 mt-2 h-px w-full" />
                     <div className="flex flex-col gap-4 items-center justify-start self-stretch w-auto sm:w-full">
 
                       <a
@@ -193,9 +211,9 @@ const SignUp = () => {
                         shape="RoundedBorder8"
                         size="lg"
                         variant="OutlineWhiteA700_1"
-                        onClick={() => navigate("/signup")}
+                        onClick={() => navigate("/login")}
                       >
-                        Sign up for a new account
+                        Login
                       </Button>
 
 
@@ -208,6 +226,8 @@ const SignUp = () => {
                   </div>
 
                   </form>
+
+          {/* )} */}
             </div>
 
           </div>

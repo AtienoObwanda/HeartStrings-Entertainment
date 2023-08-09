@@ -1,5 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Provider } from 'react-redux';
+import store from './store';
+
+// import Layout from './hocs/Layout';
 
 // General Pages
 import HomePage from "Pages/General/HomePage";
@@ -22,6 +26,7 @@ const Login = React.lazy(() => import("Pages/Users/Auth/Login"));
 const ForgotPassword = React.lazy(() => import("Pages/Users/Auth/ForgotPassword"));
 const ResetPassword = React.lazy(() => import("Pages/Users/Auth/ResetPassword"));
 const ResetComplete = React.lazy(() => import("Pages/Users/Auth/ResetComplete"));
+const SignUpEmailSent = React.lazy(() => import("Pages/Users/Auth/SignUpEmailSent"))
 
 // User Account
 const EditMyAccount = React.lazy(() => import("Pages/Users/Account/EditMyAccount"));
@@ -95,6 +100,7 @@ const ProjectRoutes = () => {
           {/* Authentication Routes */}
           <Route path="/signup" element={<Signup />} />
           <Route path="/signup-successful" element={<SignUpSuccessful />} />
+          <Route path="/activate-account" element={<SignUpEmailSent/>}/>
           <Route path="/login" element={<Login />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/reset-password" element={<ResetPassword />} />

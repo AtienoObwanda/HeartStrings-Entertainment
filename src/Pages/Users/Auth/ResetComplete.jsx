@@ -7,6 +7,7 @@ import SignupColumnlogotwo from "UI_Components/SignupColumn";
 
 
 const ResetComplete = () => {
+  const navigate = useNavigate()
   return (
     <>
     <div className="bg-black_900 flex flex-col font-roboto sm:gap-10 md:gap-10 gap-6 items-center justify-start mx-auto pb-[850px] w-full md:pr-4 md:pl-4 md:pt-10 sm:pr-8 sm:pl-8">
@@ -31,6 +32,8 @@ const ResetComplete = () => {
               shape="RoundedBorder8"
               size="lg"
               variant="FillRed900"
+              onClick={() => navigate("/login")}
+
             >
               Return to Login
             </Button>
