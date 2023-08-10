@@ -1,40 +1,42 @@
-import React, {useState } from "react";
-
-import { useNavigate } from "react-router-dom";
-
+import React, { useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import { Button, Img, Input, Line, Text } from "UI_Components";
+import { apiUrl } from '../../../../env.js'; // Import  API URL
+
 import SignupColumnlogotwo from "UI_Components/SignupColumn";
 import SignupColumnsearchone from "UI_Components/SignupColumnsearchone";
 
+
 const Login = () => {
   const navigate = useNavigate();
-  
-  // Form fields variables
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loginError, setLoginError] = useState('');
 
-  //Function to handle Form submit
-  const handleSubmit = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
+    try {
+      const response = await axios.post(`${apiUrl}/gettoken/`, {
+        email,
+        password
+      });
 
-  // Form validation:
-      // if (email && password){
-  //Login Function:
-        console.log(email);
-        console.log(password);
-
-
-  //Clear the form fields
-    //   setEmail('');
-    //   setPassword('');
-    // } else{
-    //   alert('Please fill in all the required fields.');
-    // }
-
+      // Store the access token and redirect on successful login
+      localStorage.setItem('accessToken', response.data.access);
+      navigate('/my-streams');
+    } catch (error) {
+      if (error.response && error.response.status === 401) {
+        setLoginError('Invalid email or password'); // Display error message
+      } else {
+        console.error('Error logging in:', error);
+        setLoginError('An error occurred. Please try again later.');
+      }
+    }
   };
 
-
+  
   return (
     <>
       <div className="bg-black_900 flex flex-col font-roboto items-center justify-start mx-auto pb-[242px] w-full">
@@ -51,7 +53,7 @@ const Login = () => {
             
             
             
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleLogin}>
                 <div className="flex flex-col gap-8 items-start justify-start self-stretch w-auto sm:w-full">
               
               
@@ -63,16 +65,13 @@ const Login = () => {
                       >
                         Email address
                       </Text>
-                      <Input
-                        wrapClassName="flex h-12 w-full"
-                        className="p-0 pl-4 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
-                        value={email} onChange={(e) => setEmail(e.target.value)}
+                      <input
+                        className="flex bg-gray_800 h-12 w-full p-0 pl-4 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
                         type="email"
-                        name="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                         placeholder="your-email@gmail.com"
-                        shape="RoundedBorder4"
-                        variant="FillGray800"
-                      ></Input>
+                      />
                     </div>
                 <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto sm:w-full">
                       <Text
@@ -81,16 +80,14 @@ const Login = () => {
                       >
                         Password
                       </Text>
-                      <Input
-                        wrapClassName="flex h-12 w-full"
-                        className="p-0 pl-4 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
-                        value={password}onChange={(e) => setPassword(e.target.value)}
+                      <input
+                        className="flex bg-gray_800 h-12 w-full p-0 pl-4 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
                         type="password"
-                        name="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
                         placeholder="******************"
-                        shape="RoundedBorder4"
-                        variant="FillGray800"
-                      ></Input>
+                      />
+
                     </div>
                     <Button
                       className="cursor-pointer font-bold text-center text-white_A700 text-xl w-[430px] sm:w-full mt-2"
@@ -101,6 +98,8 @@ const Login = () => {
                     >
                       Login
                     </Button>
+                    {loginError && <p>{loginError}</p>}
+
                 
 
                     <SignupColumnsearchone
