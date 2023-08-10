@@ -28,6 +28,7 @@ const ResetPassword = React.lazy(() => import("Pages/Users/Auth/ResetPassword"))
 const ResetComplete = React.lazy(() => import("Pages/Users/Auth/ResetComplete"));
 const SignUpEmailSent = React.lazy(() => import("Pages/Users/Auth/SignUpEmailSent"))
 const AccountActivation = React.lazy(() => import("Pages/Users/Auth/AccountActivation"))
+const ResetEmailSent = React.lazy(() => import("Pages/Users/Auth/ResetEmailSent"))
 
 
 // User Account
@@ -106,7 +107,8 @@ const ProjectRoutes = () => {
           <Route path="/activate/:uidb64/:token" element={<AccountActivation/>} />
           <Route path="/login" element={<Login />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path="/reset-password" element={<ResetPassword />} />
+          <Route path="/reset-password-confirm/:uidb64/:token" element={<ResetPassword />} />
+          <Route path="/reset/email-sent" element={<ResetEmailSent/>}/>
           <Route path="/reset-complete" element={<ResetComplete />} />
             
           {/* Authenticated UserRoutes */}

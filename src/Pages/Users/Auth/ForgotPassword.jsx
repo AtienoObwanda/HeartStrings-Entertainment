@@ -1,12 +1,34 @@
-import React from "react";
 
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import axios from 'axios';
 import { Button, Input, Line, Text } from "UI_Components";
 import SignupColumnlogotwo from "UI_Components/SignupColumn";
 
+import { apiUrl } from '../../../../env.js';
+
+
 const ForgotPassword = () => {
   const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [resetMessage, setResetMessage] = useState('');
+
+  const handleReset = async () => {
+    try {
+      const response = await axios.post(`${apiUrl}/reset-password/`, {
+        email
+      });
+
+      setResetMessage(response.data.message);
+
+      if (response.data.error === false) {
+        navigate('/reset/email-sent'); // 
+      }
+    } catch (error) {
+      console.error('Error resetting password:', error);
+      setResetMessage('An error occurred. Please try again later.');
+    }
+  };
 
   return (
     <>
@@ -41,24 +63,26 @@ const ForgotPassword = () => {
                     >
                       Email address
                     </Text>
-                    <Input
-                      wrapClassName="flex h-12 w-full"
-                      className="p-0 pl-4 w-full"
-                      // value={email} onChange={(e) => setEmail(e.target.value)}
+                    <input
+                      // wrapClassName="flex h-12 w-full"
+                      className="flex p-0 pl-4 w-full w-full h-12"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                       type="email"
                       name="email"
                       placeholder="your-email@gmail.com"
                       shape="RoundedBorder4"
                       variant="FillGray800"
-                    ></Input>
+                    />
                   </div>
                 </div>
                 <Button
+                  // className="cursor-pointer font-bold text-center text-white_A700 text-xl w-[430px] sm:w-full mt-2"
                   className="cursor-pointer font-bold text-center text-white_A700 text-xl w-[430px] sm:w-full mt-2"
-                  // className="cursor-pointer font-bold text-center text-white_A700 text-xl w-[430px]"
                   shape="RoundedBorder8"
                   size="lg"
                   variant="FillRed900"
+                  onClick={handleReset}
                 >
                   Send
                 </Button>

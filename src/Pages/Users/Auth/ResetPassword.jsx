@@ -1,11 +1,35 @@
-import React from 'react'
-import { useNavigate } from "react-router-dom";
-
-import { Button, Input, Line, Text } from "UI_Components";
+import React, { useState } from 'react';
+import axios from 'axios';
+import { useParams, useNavigate } from 'react-router-dom';
+import { Button, Input, Text } from 'UI_Components';
 import SignupColumnlogotwo from "UI_Components/SignupColumn";
+import { apiUrl } from '../../../../env.js';
 
 const ResetPassword = () => {
   const navigate = useNavigate();
+  const { uidb64, token } = useParams();
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [resetMessage, setResetMessage] = useState('');
+
+  const handleReset = async () => {
+    try {
+      const response = await axios.post(`${apiUrl}/reset-password-confirm/${uidb64}/${token}/`, {
+        password,
+        confirmPassword,
+      });
+
+      setResetMessage(response.data.message);
+
+      if (response.data.error === false) {
+        // Password reset successful, navigate to a success page
+        navigate('/reset-complete'); 
+      }
+    } catch (error) {
+      console.error('Error resetting password:', error);
+      setResetMessage('An error occurred. Please try again later.');
+    }
+  };
 
   return (
     <>
@@ -25,7 +49,7 @@ const ResetPassword = () => {
             className="font-normal md:text-[15px] text-left text-white_A700 sm:text-xl w-auto"
           >
             <Text 
-            className="">Enter your email address to reset password.</Text>
+            className="">Enter your new password.</Text>
           </a>
           
               {/* <Line className="bg-gray_900_63 h-px w-full" /> */}
@@ -41,14 +65,13 @@ const ResetPassword = () => {
                     >
                       New password
                     </Text>
-                    <Input
-                      wrapClassName="flex h-12 w-full"
-                      className="p-0 pl-4 w-full"
-                      name="rectangleNine"
-                      placeholder=""
-                      shape="RoundedBorder4"
-                      variant="FillGray800"
-                    ></Input>
+                    <input
+                      className="flex h-12 w-full p-0 pl-4 w-full"
+                      type="password"
+                      placeholder="New Password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
                   </div>
                   <div className="flex flex-col gap-2 items-start justify-start self-stretch w-[430px] sm:w-full mt-2 mx-auto">
                     <Text
@@ -57,14 +80,13 @@ const ResetPassword = () => {
                     >
                       Confirm password
                     </Text>
-                    <Input
-                      wrapClassName="flex h-12 w-full"
-                      className="p-0 pl-4 w-full"
-                      name="rectangleNine_One"
-                      placeholder=""
-                      shape="RoundedBorder4"
-                      variant="FillGray800"
-                    ></Input>
+                    <input
+                      className="flex h-12 w-full p-0 pl-4 w-full"
+                      type="password"
+                      placeholder="Confirm New Password"
+                      value={confirmPassword}
+                      onChange={(e) => setConfirmPassword(e.target.value)}
+                    />
                   </div>
 
                 </div>
@@ -73,7 +95,8 @@ const ResetPassword = () => {
                       shape="RoundedBorder8"
                       size="lg"
                       variant="FillRed900"
-                      type="submit"
+                      // type="submit"
+                      onClick={handleReset}
                     >
                       Reset Password
                     </Button>
