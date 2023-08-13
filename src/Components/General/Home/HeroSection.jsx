@@ -38,7 +38,7 @@ const HeroSection= ({ isAuthenticated }) => {
         <div className="h-[150em]">
           <img  
             src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689933646/HeartStrings/logo/HeartStringsLogo.png"
-            className="h-[90%] w-[8em] w-auto md:sm:h-26 w-[12%] sm:h-20 sm:w-[20%]"
+            className="h-[90%] w-[14em] w-auto md:sm:h-26 w-[12%] sm:h-20 sm:w-[20%]"
             alt="Heart Strings Entertainment logo"
             onClick={() => navigate("/")} 
             />
