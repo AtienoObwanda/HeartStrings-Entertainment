@@ -33,7 +33,8 @@ const SignUp = ({  }) => {
   
     if (password === re_password) {
       try {
-        const response = await axios.post('https://api.jaafrikaimages.org/auth/users/', {
+        const response = await axios.post(`${apiUrl}/auth/users/`, {
+        // const response = await axios.post('https://api.jaafrikaimages.org/auth/users/', {
           first_name,
           last_name,
           phone,

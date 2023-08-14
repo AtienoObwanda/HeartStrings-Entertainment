@@ -31,7 +31,7 @@ const SignUpEmailSent = () => {
               variant="h6"
             >
               <>
-              Account Created Successfully. An activation email has been sent to the registered email.
+              An activation email has been sent to the registered email. Please check your email!
               </>
             </Text>
           </div>

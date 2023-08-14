@@ -5,6 +5,8 @@ import axios from 'axios';
 
 import { Button, Input, Line, Text } from "UI_Components";
 import SignupColumnlogotwo from "UI_Components/SignupColumn";
+
+
 import { apiUrl } from '../../../../env.js';
 
 
@@ -13,6 +15,7 @@ const AccountActivation = () => {
     
     // const AccountActivation = () => {
       const params = useParams();
+      
       const navigate = useNavigate(); // Import useNavigate from 'react-router-dom'
     
       const [activationMessage, setActivationMessage] = useState('');
@@ -23,13 +26,19 @@ const AccountActivation = () => {
     
         const activateAccount = async () => {
           try {
-            // const response = await axios.get(`https://api.jaafrikaimages.org/api/activate/${uidb64}/${token}/`);
-            const response = await axios.get(`${apiUrl}/activate/${uidb64}/${token}/`);
+            const response = await axios.get(`${apiUrl}/auth/users/activation/${uidb64}/${token}/`);
+            
+            
+            // console.log(response)
             setActivationMessage(response.data.message);
             setActivationSuccess(response.data.message === 'Account activated successfully.');
+            console.log('uidb64:', uidb64);
+            console.log('token:', token);
           } catch (error) {
             console.error('Error activating account:', error);
             setActivationMessage('Error activating account. Please try again later.');
+            console.log('uidb64:', uidb64);
+            console.log('token:', token);
           }
         };
     
@@ -50,13 +59,13 @@ const AccountActivation = () => {
       </Text>
       <div className="flex flex-col items-center justify-start self-stretch w-auto sm:w-full">
         <Text
-          className="font-normal leading-[175.00%] max-w-[458px] md:max-w-full not-italic text-center text-gray_300_a2"
+          className="font-normal mt-6 leading-[175.00%] max-w-[458px] md:max-w-full not-italic text-center text-gray_300_a2"
           as="h6"
           variant="h6"
         >
           {activationSuccess
             ? 'Welcome to the Heartstrings Tribe.'
-            : 'Account Activation not successful, click the link again...'}
+            : 'Account Activation not successful...'}
         </Text>
       </div>
       
@@ -71,11 +80,11 @@ const AccountActivation = () => {
           if (activationSuccess) {
             navigate("/login");
           } else {
-            navigate("/signup");
+            navigate("/activate-account/new_request");
           }
         }}
       >
-        {activationSuccess ? 'Start Browsing' : 'Sign Up Again'}
+        {activationSuccess ? 'Start Browsing' : 'Request New Activation Link'}
       </Button>
 </div>
 
