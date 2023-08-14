@@ -15,6 +15,7 @@ const NotFound = React.lazy(() => import("Pages/General/NotFound"));
 const PrivacyPolicy = React.lazy(() => import("Pages/General/PrivacyPolicy"));
 // Content
 const AllStreams = React.lazy(() => import("Pages/Content/AllStreams"));
+const AllPlays = React.lazy(() => import("Pages/Content/AllPlays"));
 const StreamDetails = React.lazy(() => import("Pages/Content/StreamDetails"));
 const PlayDetails = React.lazy(() => import("Pages/Content/PlayDetails"));
 
@@ -94,7 +95,7 @@ const ProjectRoutes = () => {
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
 
           {/* Content Routes */}
-          <Route path="/all-plays" element={<AllStreams />} />
+          <Route path="/all-plays" element={<AllPlays />} />
           <Route path="/play-details" element={<PlayDetails />} />
           <Route path="/streams/:id" element={<StreamDetails />} />
           <Route path="/all-streams" element={<AllStreams />} />
