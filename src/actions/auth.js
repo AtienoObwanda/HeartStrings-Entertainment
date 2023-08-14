@@ -143,17 +143,19 @@ export const login = (email, password) => async dispatch => {
     }
 };
 
-export const signup = (name, email, phone, password, confirmPassword) => async dispatch => {
+export const signup = (name, email, phonenumber, password, confirmPassword) => async dispatch => {
     const config = {
         headers: {
             'Content-Type': 'application/json'
         }
     };
 
-    const body = JSON.stringify({ name, email, phone, password, confirmPassword });
+    const body = JSON.stringify({ name, email, phonenumber, password, confirmPassword });
 
     try {
-        const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/register/`, body, config);
+        // const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/register/`, body, config);
+        const res = await axios.post('https://api.jaafrikaimages.org/auth/users/', body, config);
+
 
         dispatch({
             type: SIGNUP_SUCCESS,
