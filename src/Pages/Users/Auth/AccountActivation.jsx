@@ -9,45 +9,45 @@ import SignupColumnlogotwo from "UI_Components/SignupColumn";
 
 import { apiUrl } from '../../../../env.js';
 
-
-
 const AccountActivation = () => {
+  const { uidb64, token } = useParams(); // Extract uidb64 and token from URL parameters
+
+  const navigate = useNavigate(); // Import useNavigate from 'react-router-dom'
     
-    // const AccountActivation = () => {
-      const params = useParams();
+  const [activationMessage, setActivationMessage] = useState('');
+  const [activationSuccess, setActivationSuccess] = useState(false);
+
+  useEffect(() => {
+    const activateUser = async () => {
+      try {
+        console.log('uid:', uidb64);
+        console.log('token:', token);
+        const response = await axios.post(`https://api.jaafrikaimages.org/auth/users/activation/`, {
+          uid: uidb64,
+          token: token,
+        });
       
-      const navigate = useNavigate(); // Import useNavigate from 'react-router-dom'
-    
-      const [activationMessage, setActivationMessage] = useState('');
-      const [activationSuccess, setActivationSuccess] = useState(false);
-    
-      useEffect(() => {
-        const { uidb64, token } = params;
-    
-        const activateAccount = async () => {
-          try {
-            const response = await axios.get(`${apiUrl}/auth/users/activation/${uidb64}/${token}/`);
-            
-            
-            // console.log(response)
-            setActivationMessage(response.data.message);
-            setActivationSuccess(response.data.message === 'Account activated successfully.');
-            console.log('uidb64:', uidb64);
-            console.log('token:', token);
-          } catch (error) {
-            console.error('Error activating account:', error);
-            setActivationMessage('Error activating account. Please try again later.');
-            console.log('uidb64:', uidb64);
-            console.log('token:', token);
-          }
-        };
-    
-        activateAccount();
-      }, [params]);
+        console.log('Response status:', response.status);
+        console.log('Response data:', response.data);
+      
+        if (response.status === 200 && response.data.message === 'Account activated successfully.') {
+          setActivationMessage(response.data.message);
+          setActivationSuccess(true);
+        } else {
+          console.log('Activation failed:', response.data.message);
+          setActivationMessage('Error activating account. Please try again later...');
+        }
+      } catch (error) {
+        console.error('Error activating account:', error);
+        setActivationMessage('Error activating account. Please try again later...');
+      }
+    };
 
-    return (
-    
+    activateUser();
+  }, [uidb64, token]);
 
+  return (
+   
 <div className="bg-black_900 flex flex-col font-roboto sm:gap-10 md:gap-10 gap-6 items-center justify-start mx-auto pb-[850px] w-full md:pr-4 md:pl-4 md:pt-10 sm:pr-8 sm:pl-8">
 <SignupColumnlogotwo className="flex flex-col mt-8 items-center justify-start p-8 sm:px-5 w-full" />
 <div className="h-40 md:h-0"></div>
@@ -90,7 +90,7 @@ const AccountActivation = () => {
 
 
 </div>
-  )
-}
+  );
+};
 
-export default AccountActivation
+export default AccountActivation;
