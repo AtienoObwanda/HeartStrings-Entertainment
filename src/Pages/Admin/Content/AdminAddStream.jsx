@@ -9,12 +9,91 @@ import PlayAddPlayVideo from "UI_Components/PlayAddPlayVideo"
 import close from "../../../assets/close.svg";
 import  menu from "../../../assets/menu.svg";
 
+
+import { apiUrl } from '../../../../env'
+
+const YOUR_ACCESS_TOKEN = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjkxNTkwMjg0LCJpYXQiOjE2OTE1ODYxODksImp0aSI6IjliNTMxMDU3ZGNmZTRhOWE4N2EwNTE0MjE0MjczMzc1IiwidXNlcl9pZCI6MX0.BJzwxGxuV4TNmXxc9fEv3j-zM4o1mEKSKmC3B6aBln8';
+
 const AdminAddStream = () => {
   const navigate = useNavigate();
   const [active, setActive] = useState("Home");
   const [toggle, setToggle] = useState(false);
-    
-    return (
+
+  const [availability, setAvailability] = React.useState(false);
+
+  const handleSwitchChange = (newValue) => {
+    setAvailability(newValue);
+  };
+
+  // Toggle Casts:
+  function toggleMoreCasts() {
+    const hiddenCasts = document.getElementById("hidden-casts");
+  
+    if (hiddenCasts) {
+      hiddenCasts.classList.toggle("hidden");
+    }
+  }
+  
+ 
+
+// Plays
+  const [title, setTitle] = useState('');
+  const [synopsis, setSynopsis] = useState('');
+  const [posterFile, setPosterFile] = useState(null);
+  const [infotrailerFile, setInfotrailerFile] = useState(null);
+  const [theater, setTheater] = useState('');
+  const [castList, setCastList] = useState([]);
+  const [offersList, setOffersList] = useState([]);
+  const [selectedTheatre, setSelectedTheatre] = useState('');
+  const [castMembers, setCastMembers] = useState(
+    Array.from({ length: 20 }, () => ({ real_name: '', cast_name: '' }))
+  );
+  
+
+// Handle Submit:
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  const apiUrl = 'http://127.0.0.1:8000/api/plays/';
+
+  const formData = new FormData();
+  formData.append('title', title);
+  formData.append('synopsis', synopsis);
+  formData.append('poster', posterFile);
+  formData.append('infotrailer', infotrailerFile);
+  formData.append('theater', selectedTheatre);
+  formData.append('play_cast_list', JSON.stringify(castMembers));
+  formData.append('play_offers_list', JSON.stringify(offersList));
+  
+  // ... Append other data like date
+
+  const response = await fetch(apiUrl, {
+    method: 'POST',
+    body: formData,
+  });
+
+  const responseBody = await response.json();
+  console.log(responseBody);
+};
+
+  // Cast Display(Loading):
+// const castMembersPerPage = 5;
+const castMembersPerPage = 5;
+const totalCastMembers = castMembers.length;
+const [castDisplayCount, setCastDisplayCount] = useState(castMembersPerPage);
+const showLoadMoreButton = castDisplayCount < totalCastMembers;
+  
+// handling cast image preview:
+const handleImageChange = (index, event) => {
+  const file = event.target.files[0];
+  if (file) {
+    const updatedCastMembers = [...castMembers];
+    updatedCastMembers[index].imagePreview = URL.createObjectURL(file);
+    setCastMembers(updatedCastMembers);
+  }
+};
+
+
+return (
       <>
         <div className="bg-black_900_01 flex flex-col font-roboto items-center justify-start mx-auto pb-[109px] w-full">
           <div className="flex md:flex-col flex-row md:gap-5 items-start justify-evenly w-full">
@@ -348,18 +427,15 @@ const AdminAddStream = () => {
                     </Text>
                   </div>
 
+          <div className="w-[94%] md:w-full">
+
+              <form onSubmit={handleSubmit}>
 
                   <div className="flex md:flex-col flex-row gap-4 items-start justify-between mt-6 w-full">
-
-
-
-
-
-
-
-
                     <div className="bg-black_900 w-[725px] flex sm:flex-1 flex-col gap-6 items-center justify-center mb-8 sm:px-5 px-6 py-12 rounded-lg md:w-[535px] sm:w-full">
                       {/* Content Form */}
+
+                      {/* title */}
                       <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto sm:w-full">
                         <Text
                           className="font-normal not-italic text-left text-white_A700 w-auto"
@@ -370,7 +446,8 @@ const AdminAddStream = () => {
                         <textarea className="bg-gray_800 text-gray_300 rounded w-full"></textarea>
 
                       </div>
-                        
+
+                      {/* Synopsis */}
                       <div className="flex flex-col gap-4 items-start justify-start self-stretch w-auto sm:w-full">
                         <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto sm:w-full">
                           <Text
@@ -391,12 +468,13 @@ const AdminAddStream = () => {
                       </div>
                        
                     </div>
-                    
+                    {/* Content */}
                     <div className="bg-black_900 w-[725px] flex sm:flex-1 flex-col items-start justify-start mb-[51px] md:px-10 px-12 sm:px-5 py-6 rounded-lg md:w-[535px] sm:w-full">
                     <List
                         className="flex-col gap-8 grid items-start w-[443px] md:w-full"
                         orientation="vertical"
                       >
+                        {/* Play Poster */}
                         <div className="flex flex-col gap-4 items-start justify-center my-0 w-[443px] sm:w-full">
                           <Text
                             className="font-normal not-italic text-left text-white_A700 w-auto"
@@ -409,6 +487,8 @@ const AdminAddStream = () => {
                             dropanvideohereOne="Drop a video here or click to browse."
                           />
                         </div>
+
+                        {/* Info Trailer */}
                         <div className="flex flex-col gap-6 items-start justify-center my-0 w-[443px] sm:w-full">
                           <Text
                             className="font-normal not-italic text-left text-white_A700 w-auto"
@@ -421,8 +501,24 @@ const AdminAddStream = () => {
                             dropanvideohereOne="Drop a video here or click to browse."
                           />
                         </div>
+
+                        {/* Video */}
+                        <div className="flex flex-col gap-6 items-start justify-center my-0 w-[443px] sm:w-full">
+                          <Text
+                            className="font-normal not-italic text-left text-white_A700 w-auto"
+                            variant="body4"
+                          >
+                            Play Video
+                          </Text>
+                          <PlayAddPlayVideo
+                            className="border border-dashed border-gray_800 flex flex-col gap-2.5 h-[150px] md:h-auto items-center justify-center p-2.5 rounded w-[600px] sm:w-full"
+                            dropanvideohereOne="Drop a video here or click to browse."
+                          />
+                        </div>
+
                       </List>
                     </div>
+
                   </div>
 
 
@@ -586,8 +682,6 @@ const AdminAddStream = () => {
 
                       </div>
 
-
-
                     </div>
                  
                   {/* Cast */}
@@ -606,7 +700,7 @@ const AdminAddStream = () => {
                       Cast picture
                     </Text>
                     <div className="gap-2 grid sm:grid-cols-1 md:grid-cols-3 grid-cols-5 items-start justify-start self-stretch w-auto md:w-full">
-                      <div className="flex flex-col gap-8 items-start justify-start self-stretch w-full">
+                      {/* <div className="flex flex-col gap-8 items-start justify-start self-stretch w-full">
                         <div className="flex flex-col h-[200px] items-center justify-start w-[200px]">
                           <Img
                             src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927679/HeartStrings/SVG/img_rectangle4_200x200_j1rxou.png"
@@ -651,185 +745,105 @@ const AdminAddStream = () => {
                             ></Input>
                           </div>
                         </div>
-                      </div>
-                      <div className="flex flex-col gap-8 items-start justify-start self-stretch w-full">
-                        <div className="flex flex-col items-start justify-start w-[200px]">
-                          <PlaysAddPlayColumniconparkoutli
-                            className="border border-dashed border-gray_800 flex flex-col gap-2.5 h-[200px] md:h-auto items-center justify-center p-2.5 rounded w-[200px] sm:w-full"
-                            dropanimagehereOne="Drop image (s) here or click to browse."
-                          />
-                        </div>
-                        <div className="flex flex-col gap-4 items-center justify-start self-stretch w-auto">
-                          <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto">
-                            <Text
-                              className="font-normal not-italic text-left text-white_A700 w-auto"
-                              variant="body4"
-                            >
-                              Real name
-                            </Text>
-                            <Input
-                              wrapClassName="w-full"
-                              className="font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
-                              name="groupFourteen"
-                              placeholder="Anne Gitau"
-                              shape="RoundedBorder4"
-                              size="md"
-                              variant="FillGray800"
-                            ></Input>
+                      </div> */}
+                      {/* {castMembers.map((castMember, index) => ( */}
+                      {/* {castMembers.slice(0, showAllCasts ? castMembers.length : 5).map((castMember, index) => ( */}
+                      {castMembers.slice(0, castDisplayCount).map((castMember, index) => (
+
+
+                        <div key={index} className="flex flex-col gap-8 items-start justify-start self-stretch w-full">
+                          <div className="flex flex-col items-start justify-start w-[200px]">
+                            {/* Drag and Drop */}
+                            <div className="flex items-center justify-center w-full">
+                            <label htmlFor={`dropzone-file-${index}`} className="flex flex-col items-center justify-center w-full h-64 border border-gray_800 border-dashed rounded-lg cursor-pointer bg-black_900 hover:bg-black_900_01">
+                                <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                                  {castMember.imagePreview ? (
+                                    <img src={castMember.imagePreview} className="h-24 w-24 mb-4" alt="Preview" />
+                                  ) : (
+                                    <Img
+                                      src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927652/HeartStrings/SVG/img_iconparkoutli_dznpma.svg"
+                                      className="h-6 w-6 mb-4"
+                                      alt="iconparkoutli"
+                                    />
+                                  )}
+                                  <p className="mb-2 text-sm text-white_A700 font-semibold">Drop an image here or click to browse</p>
+                                  <p className="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or WEBP (MAX. 800x400px)</p>
+                                </div>
+                                <input
+                                  id={`dropzone-file-${index}`}
+                                  type="file"
+                                  accept="image/*"
+                                  className="hidden"
+                                  onChange={(e) => handleImageChange(index, e)}
+                                />
+                              </label>
+
+                              {/* preview */}
+                              {/* <div id={`image-preview-${index}`} className="hidden mt-4">
+                                <img id={`preview-image-${index}`} className="w-64 h-32" src="#" alt="Preview" />
+                              </div> */}
+
+                            </div>
                           </div>
-                          <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto">
-                            <Text
-                              className="font-normal not-italic text-left text-white_A700 w-auto"
-                              variant="body4"
-                            >
-                              Cast name
-                            </Text>
-                            <Input
-                              wrapClassName="w-full"
-                              className="font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
-                              name="groupFourteen"
-                              placeholder="Anne Gitau"
-                              shape="RoundedBorder4"
-                              size="md"
-                              variant="FillGray800"
-                            ></Input>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="flex flex-col gap-8 items-start justify-start self-stretch w-full">
-                        <div className="flex flex-col items-start justify-start w-[200px]">
-                          <PlaysAddPlayColumniconparkoutli
-                            className="border border-dashed border-gray_800 flex flex-col gap-2.5 h-[200px] md:h-auto items-center justify-center p-2.5 rounded w-[200px] sm:w-full"
-                            dropanimagehereOne="Drop image (s) here or click to browse."
-                          />
-                        </div>
-                        <div className="flex flex-col gap-4 items-center justify-start self-stretch w-auto">
-                          <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto">
-                            <Text
-                              className="font-normal not-italic text-left text-white_A700 w-auto"
-                              variant="body4"
-                            >
-                              Real name
-                            </Text>
-                            <Input
-                              wrapClassName="w-full"
-                              className="font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
-                              name="groupFourteen"
-                              placeholder="Anne Gitau"
-                              shape="RoundedBorder4"
-                              size="md"
-                              variant="FillGray800"
-                            ></Input>
-                          </div>
-                          <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto">
-                            <Text
-                              className="font-normal not-italic text-left text-white_A700 w-auto"
-                              variant="body4"
-                            >
-                              Cast name
-                            </Text>
-                            <Input
-                              wrapClassName="w-full"
-                              className="font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
-                              name="groupFourteen"
-                              placeholder="Anne Gitau"
-                              shape="RoundedBorder4"
-                              size="md"
-                              variant="FillGray800"
-                            ></Input>
+
+                          <div className="flex flex-col gap-4 items-center justify-start self-stretch w-auto">
+                            <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto">
+                              <Text
+                                className="font-normal not-italic text-left text-white_A700 w-auto"
+                                variant="body4"
+                              >
+                                Real name
+                              </Text>
+                              <Input
+                                wrapClassName="w-full"
+                                className="font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
+                                name={`real_name_${index}`}
+                                placeholder="Anne Gitau"
+                                shape="RoundedBorder4"
+                                size="md"
+                                variant="FillGray800"
+                                value={castMember.real_name}
+                                onChange={(e) => handleCastChange(index, 'real_name', e.target.value)}
+                              />
+                            </div>
+                            <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto">
+                              <Text
+                                className="font-normal not-italic text-left text-white_A700 w-auto"
+                                variant="body4"
+                              >
+                                Cast name
+                              </Text>
+                              <Input
+                                wrapClassName="w-full"
+                                className="font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
+                                name={`cast_name_${index}`}
+                                placeholder="Anne Gitau"
+                                shape="RoundedBorder4"
+                                size="md"
+                                variant="FillGray800"
+                                value={castMember.cast_name}
+                                onChange={(e) => handleCastChange(index, 'cast_name', e.target.value)}
+                              />
+                            </div>
                           </div>
                         </div>
-                      </div>
-                      <div className="flex flex-col gap-8 items-start justify-start self-stretch w-full">
-                        <div className="flex flex-col items-start justify-start w-[200px]">
-                          <PlaysAddPlayColumniconparkoutli
-                            className="border border-dashed border-gray_800 flex flex-col gap-2.5 h-[200px] md:h-auto items-center justify-center p-2.5 rounded w-[200px] sm:w-full"
-                            dropanimagehereOne="Drop image (s) here or click to browse."
-                          />
-                        </div>
-                        <div className="flex flex-col gap-4 items-center justify-start self-stretch w-auto">
-                          <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto">
-                            <Text
-                              className="font-normal not-italic text-left text-white_A700 w-auto"
-                              variant="body4"
-                            >
-                              Real name
-                            </Text>
-                            <Input
-                              wrapClassName="w-full"
-                              className="font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
-                              name="groupFourteen"
-                              placeholder="Anne Gitau"
-                              shape="RoundedBorder4"
-                              size="md"
-                              variant="FillGray800"
-                            ></Input>
-                          </div>
-                          <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto">
-                            <Text
-                              className="font-normal not-italic text-left text-white_A700 w-auto"
-                              variant="body4"
-                            >
-                              Cast name
-                            </Text>
-                            <Input
-                              wrapClassName="w-full"
-                              className="font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
-                              name="groupFourteen"
-                              placeholder="Anne Gitau"
-                              shape="RoundedBorder4"
-                              size="md"
-                              variant="FillGray800"
-                            ></Input>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="flex flex-col gap-8 items-start justify-start self-stretch w-full">
-                        <div className="flex flex-col items-start justify-start w-[200px]">
-                          <PlaysAddPlayColumniconparkoutli
-                            className="border border-dashed border-gray_800 flex flex-col gap-2.5 h-[200px] md:h-auto items-center justify-center p-2.5 rounded w-[200px] sm:w-full"
-                            dropanimagehereOne="Drop image (s) here or click to browse."
-                          />
-                        </div>
-                        <div className="flex flex-col gap-4 items-center justify-start self-stretch w-auto">
-                          <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto">
-                            <Text
-                              className="font-normal not-italic text-left text-white_A700 w-auto"
-                              variant="body4"
-                            >
-                              Real name
-                            </Text>
-                            <Input
-                              wrapClassName="w-full"
-                              className="font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
-                              name="groupFourteen"
-                              placeholder="Anne Gitau"
-                              shape="RoundedBorder4"
-                              size="md"
-                              variant="FillGray800"
-                            ></Input>
-                          </div>
-                          <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto">
-                            <Text
-                              className="font-normal not-italic text-left text-white_A700 w-auto"
-                              variant="body4"
-                            >
-                              Cast name
-                            </Text>
-                            <Input
-                              wrapClassName="w-full"
-                              className="font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
-                              name="groupFourteen"
-                              placeholder="Anne Gitau"
-                              shape="RoundedBorder4"
-                              size="md"
-                              variant="FillGray800"
-                            ></Input>
-                          </div>
-                        </div>
-                      </div>
+                      ))}
                     </div>
-                  </div>
+                        {/* More Casts */}
+                        {/* Show "Load More" or "Show Less" button */}
+                        <button
+                          onClick={() => {
+                            if (castDisplayCount === totalCastMembers) {
+                              setCastDisplayCount(castMembersPerPage);
+                            } else {
+                              setCastDisplayCount(castDisplayCount + castMembersPerPage);
+                            }
+                          }}
+                          className="text-red_900 hover:text-red_900_01 underline cursor-pointer"
+                        >
+                          {castDisplayCount === totalCastMembers ? "Show Less" : "Load More Casts"}
+                        </button>
+                   </div>
 
                   {/* Save Play */}
                   <div className="flex flex-row gap-[25px] items-start justify-start ml-auto mt-6 self-stretch w-auto">
@@ -869,6 +883,9 @@ const AdminAddStream = () => {
                     </Button>
                   </div>
 
+              </form>
+              
+              </div>
 
 
 
