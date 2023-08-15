@@ -1,96 +1,125 @@
-import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
 import axios from 'axios';
-
-
-import { Button, Input, Line, Text } from "UI_Components";
+import { useParams, useNavigate } from 'react-router-dom';
+import { Button, Input, Text } from 'UI_Components';
 import SignupColumnlogotwo from "UI_Components/SignupColumn";
-
-
 import { apiUrl } from '../../../../env.js';
 
+const ResetPassword = () => {
+  const navigate = useNavigate();
+  const { uidb64, token } = useParams();
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [resetMessage, setResetMessage] = useState('');
 
+  const handleReset = async () => {
+    try {
+      // const response = await axios.post(`${apiUrl}/reset-password-confirm/${uidb64}/${token}/`, {
+        const response = await axios.post(`${apiUrl}/reset-password-confirm/${uidb64}/${token}/`, {
+        password,
+        confirmPassword,
+      });
 
-const AccountActivation = () => {
-    
-    // const AccountActivation = () => {
-      const params = useParams();
-      
-      const navigate = useNavigate(); // Import useNavigate from 'react-router-dom'
-    
-      const [activationMessage, setActivationMessage] = useState('');
-      const [activationSuccess, setActivationSuccess] = useState(false);
-    
-      useEffect(() => {
-        const { uidb64, token } = params;
-    
-        const activateAccount = async () => {
-          try {
-            const response = await axios.post(`${apiUrl}/auth/users/activation/${uidb64}/${token}/`);
-            
-            
-            // console.log(response)
-            setActivationMessage(response.data.message);
-            setActivationSuccess(response.data.message === 'Account activated successfully.');
-            console.log('uidb64:', uidb64);
-            console.log('token:', token);
-          } catch (error) {
-            console.error('Error activating account:', error);
-            setActivationMessage('Error activating account. Please try again later.');
-            console.log('uidb64:', uidb64);
-            console.log('token:', token);
-          }
-        };
-    
-        activateAccount();
-      }, [params]);
+      setResetMessage(response.data.message);
 
-    return (
-    
+      if (response.data.error === false) {
+        // Password reset successful, navigate to a success page
+        navigate('/reset-complete'); 
+      }
+    } catch (error) {
+      console.error('Error resetting password:', error);
+      setResetMessage('An error occurred. Please try again later.');
+    }
+  };
 
-<div className="bg-black_900 flex flex-col font-roboto sm:gap-10 md:gap-10 gap-6 items-center justify-start mx-auto pb-[850px] w-full md:pr-4 md:pl-4 md:pt-10 sm:pr-8 sm:pl-8">
-<SignupColumnlogotwo className="flex flex-col mt-8 items-center justify-start p-8 sm:px-5 w-full" />
-<div className="h-40 md:h-0"></div>
-<div className="bg-black_900_01 border border-gray_300 border-solid flex flex-col items-center justify-center px-40 md:px-5 py-12 rounded-lg self-stretch w-1/2 md:w-90% md:mt-[130px] sm:w-full  mx-auto">
+  return (
+    <>
+      <div className="bg-black_900 flex flex-col font-roboto sm:gap-10 md:gap-10 gap-6 items-center justify-start mx-auto pb-[680px] w-full">
+        <SignupColumnlogotwo className="flex flex-col items-center justify-start p-8 sm:px-5 w-full" />
+        <div className="flex flex-col gap-12 items-center justify-start md:px-5 self-stretch w-auto sm:w-full">
+          <a
+            className="font-bold text-2xl md:text-[22px] text-left text-white_A700 sm:text-xl w-auto"
+          >
+            <Text 
+            className="">Reset password</Text>
+          </a>
+          <div className="flex flex-col gap-4 items-start justify-start self-stretch w-auto sm:w-full">
+            <div className="flex flex-col gap-4 items-center justify-start self-stretch w-auto sm:w-full">
+            <a
+            href="javascript:"
+            className="font-normal md:text-[15px] text-left text-white_A700 sm:text-xl w-auto"
+          >
+            <Text 
+            className="">Enter your new password.</Text>
+          </a>
+          
+              {/* <Line className="bg-gray_900_63 h-px w-full" /> */}
+            </div>
+            <div className="flex flex-col gap-8 items-center justify-center self-stretch w-auto sm:w-full">
+              <div className="flex flex-col gap-6 items-center justify-center self-stretch w-auto sm:w-full">
+                <div className="flex flex-col gap-4 items-start justify-start self-stretch w-auto sm:w-full">
+                 
+                <div className="flex flex-col gap-2 items-start justify-start self-stretch w-[430px] sm:w-full mt-2 mx-auto">
+                    <Text
+                      className="font-normal not-italic text-left text-white_A700 w-auto"
+                      variant="body4"
+                    >
+                      New password
+                    </Text>
+                    <input
+                      className="flex h-12 w-full p-0 pl-4 w-full"
+                      type="password"
+                      placeholder="New Password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
+                  </div>
+                  <div className="flex flex-col gap-2 items-start justify-start self-stretch w-[430px] sm:w-full mt-2 mx-auto">
+                    <Text
+                      className="font-normal not-italic text-left text-white_A700 w-auto"
+                      variant="body4"
+                    >
+                      Confirm password
+                    </Text>
+                    <input
+                      className="flex h-12 w-full p-0 pl-4 w-full"
+                      type="password"
+                      placeholder="Confirm New Password"
+                      value={confirmPassword}
+                      onChange={(e) => setConfirmPassword(e.target.value)}
+                    />
+                  </div>
 
-  <div className="flex flex-col items-center justify-start self-stretch w-auto sm:w-full">
-  <Text className="text-gray_300 text-left w-auto" as="h3" variant="h3">
-        {activationSuccess ? 'Sign up successful!' : 'Sign up not successful!'}
-      </Text>
-      <div className="flex flex-col items-center justify-start self-stretch w-auto sm:w-full">
-        <Text
-          className="font-normal mt-6 leading-[175.00%] max-w-[458px] md:max-w-full not-italic text-center text-gray_300_a2"
-          as="h6"
-          variant="h6"
-        >
-          {activationSuccess
-            ? 'Welcome to the Heartstrings Tribe.'
-            : 'Account Activation not successful...'}
-        </Text>
+                </div>
+                <Button
+                      className="cursor-pointer font-bold text-center text-white_A700 text-xl w-[430px] sm:w-full mt-2"
+                      shape="RoundedBorder8"
+                      size="lg"
+                      variant="FillRed900"
+                      // type="submit"
+                      onClick={handleReset}
+                    >
+                      Reset Password
+                    </Button>
+              </div>
+              <div
+                className="common-pointer flex flex-col items-center justify-start self-stretch w-auto"
+                onClick={() => navigate("/login")}
+              >
+                <Text
+                  className="font-normal not-italic text-left text-white_A700 underline w-auto"
+                  variant="body4"
+                >
+                  Remembered my password
+                </Text>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      
-  </div>
-  <Button
-        className="cursor-pointer mt-8 font-bold min-w-[166px] text-center text-gray_300 text-xl w-auto"
-
-        shape="RoundedBorder8"
-        size="lg"
-        variant="FillRed900"
-        onClick={() => {
-          if (activationSuccess) {
-            navigate("/login");
-          } else {
-            navigate("/activate-account/new_request");
-          }
-        }}
-      >
-        {activationSuccess ? 'Start Browsing' : 'Request New Activation Link'}
-      </Button>
-</div>
+    </>
+  );
+};
 
 
-</div>
-  )
-}
-
-export default AccountActivation
+export default ResetPassword

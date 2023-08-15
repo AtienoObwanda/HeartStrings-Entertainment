@@ -14,23 +14,21 @@ const ResetPassword = () => {
 
   const handleReset = async () => {
     try {
-      const response = await axios.post(`${apiUrl}/reset-password-confirm/${uidb64}/${token}/`, {
-        password,
-        confirmPassword,
+      // const response = await axios.post(`http://127.0.0.1:8000/auth/users/reset_password_confirm/`, {
+      const response = await axios.post(`${apiUrl}/auth/users/reset_password_confirm/`, {
+      uid: uidb64,
+        token: token,
+        new_password: password,
+        re_new_password: confirmPassword,
       });
 
       setResetMessage(response.data.message);
-
-      if (response.data.error === false) {
-        // Password reset successful, navigate to a success page
-        navigate('/reset-complete'); 
-      }
     } catch (error) {
-      console.error('Error resetting password:', error);
+      console.error('Error confirming password reset:', error);
       setResetMessage('An error occurred. Please try again later.');
     }
   };
-
+ 
   return (
     <>
       <div className="bg-black_900 flex flex-col font-roboto sm:gap-10 md:gap-10 gap-6 items-center justify-start mx-auto pb-[680px] w-full">
