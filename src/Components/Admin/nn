@@ -1,0 +1,46 @@
+const [selectedDaysAndTimes, setSelectedDaysAndTimes] = useState([]);
+
+// ...
+
+function handleDateSelection(day) {
+  if (selectedDays.includes(day)) {
+    // Remove the selected day from the array if already selected
+    setSelectedDaysAndTimes(selectedDaysAndTimes.filter(item => !isSameDay(item.day, day)));
+    return;
+  }
+
+  if (selectedDaysAndTimes.length >= 10) {
+    return;
+  }
+
+  setSelectedDaysAndTimes([...selectedDaysAndTimes, { day, times: [] }]);
+  setSelectedTimes([...selectedTimes, { time1: '', time2: '' }]);
+}
+
+function handleTimeSelection(day, index, slot, event) {
+  const updatedDaysAndTimes = selectedDaysAndTimes.map(item => {
+    if (isSameDay(item.day, day)) {
+      const updatedTimes = [...item.times];
+      updatedTimes[index][slot] = event.target.value;
+      return { ...item, times: updatedTimes };
+    }
+    return item;
+  });
+
+  setSelectedDaysAndTimes(updatedDaysAndTimes);
+}
+
+// ...
+
+<ul>
+  {selectedDaysAndTimes.map((selectedDay, dayIndex) => (
+    <li key={selectedDay.day.toString()}>
+      {/* Render selectedDay.day */}
+      <div>
+        {selectedDay.times.map((selectedTime, timeIndex) => (
+          {/* Render time selection for selectedTime */}
+        ))}
+      </div>
+    </li>
+  ))}
+</ul>

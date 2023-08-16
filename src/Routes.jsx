@@ -79,6 +79,14 @@ const AdminDashboard = React.lazy(() => import("Pages/Admin/Dashboard/AdminDashb
 // const RentingPlayPaymentConfirmation = React.lazy(() => import("pages/RentingPlayPaymentConfirmation"));
 
 const ProjectRoutes = () => {
+  // const [userRole, setUserRole] = useState('');
+
+  // useEffect(() => {
+  //     const user = authenticateUser(); 
+  //     setUserRole(user.role); 
+  // }, []);
+
+
   return (
     <React.Suspense fallback={<>Loading...</>}>
       <Router>

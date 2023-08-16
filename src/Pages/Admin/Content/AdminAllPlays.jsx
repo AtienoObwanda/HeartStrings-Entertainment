@@ -313,7 +313,7 @@ const AdminAllPlays = () => {
                 </Text>
                 <Button
                   className="common-pointer cursor-pointer flex items-center justify-center min-w-[164px] w-auto"
-                  onClick={() => navigate("/adminaddplay")}
+                  onClick={() => navigate("/add-play")}
                   leftIcon={
                     <Img
                       src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927652/HeartStrings/SVG/img_iconsax_bold_addcircle_a598f7.svg"

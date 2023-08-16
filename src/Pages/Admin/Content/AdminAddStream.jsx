@@ -42,7 +42,7 @@ const AdminAddStream = () => {
   const [posterFile, setPosterFile] = useState(null);
   const [infotrailerFile, setInfotrailerFile] = useState(null);
   const [theater, setTheater] = useState('');
-  const [castList, setCastList] = useState([]);
+  // const [castList, setCastList] = useState([]);
   const [offersList, setOffersList] = useState([]);
   const [selectedTheatre, setSelectedTheatre] = useState('');
   const [castMembers, setCastMembers] = useState(
