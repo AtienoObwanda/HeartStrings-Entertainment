@@ -1,8 +1,11 @@
-import React, {useState} from "react";
+import React, { useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import queryString from 'query-string';
 
-import { useNavigate } from "react-router-dom";
-
-import { Button, Input, Line, Text } from "UI_Components";
+import { Button, Img, Input, Line, Text } from "UI_Components";
+import { apiUrl } from '../../../../env.js'; // Import  API URL
+import {googleOAuth2Key} from '../../../../env.js'
 // import SignupColumndummylogotwo from "components/SignupColumndummylogotwo";
 import SignupColumnlogotwo from "UI_Components/SignupColumn";
 import SignupColumnsearchone from "UI_Components/SignupColumnsearchone";
@@ -12,31 +15,32 @@ import SignupColumnsearchone from "UI_Components/SignupColumnsearchone";
 
 const AdminLogin = () => {
   const navigate = useNavigate();
-  
-  // Form fields variables
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loginError, setLoginError] = useState('');
 
-  //Function to handle Form submit
-  const handleSubmit = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
+    try {
+      const response = await axios.post(`${apiUrl}/api/gettoken/`, {
+        email,
+        password
+      });
 
-  // Form validation:
-      // if (email && password){
-  //Login Function:
-        console.log(email);
-        console.log(password);
-
-
-  //Clear the form fields
-    //   setEmail('');
-    //   setPassword('');
-    // } else{
-    //   alert('Please fill in all the required fields.');
-    // }
-
+      // Store the access token and redirect on successful login
+      localStorage.setItem('accessToken', response.data.access);
+      navigate('/admin-dashboard');
+    } catch (error) {
+      if (error.response && error.response.status === 401) {
+        setLoginError('Invalid email or password'); // Display error message
+      } else {
+        console.error('Error logging in:', error);
+        setLoginError('An error occurred. Please try again later.');
+      }
+    }
   };
+
 
   return (
     <>
@@ -50,9 +54,11 @@ const AdminLogin = () => {
         <div className="flex flex-col gap-12 items-start justify-start mt-[49px] md:px-5 self-stretch w-auto sm:w-full sm:pt-2">
           <div className="flex flex-col gap-4 items-start justify-start self-stretch w-auto sm:w-full">
             <div className="flex flex-col gap-12 items-center justify-center self-stretch w-auto sm:w-full">
-            <form onSubmit={handleSubmit}>
-                <div className="flex flex-col gap-8 items-start justify-start self-stretch w-auto sm:w-[320px]">
-                  <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto sm:w-full">
+            <form onSubmit={handleLogin}>
+                <div className="flex flex-col gap-8 items-start justify-start self-stretch w-auto sm:w-full">
+              
+              
+                <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto sm:w-full">
 
                       <Text
                         className="font-normal not-italic text-left text-white_A700 w-auto"
@@ -60,35 +66,29 @@ const AdminLogin = () => {
                       >
                         Email address
                       </Text>
-                      
-                      <Input
-                        wrapClassName="flex h-12 w-full"
-                        className="p-0 pl-4  w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
-                        value={email} onChange={(e) => setEmail(e.target.value)}
+                      <input
+                        className="flex bg-gray_800 h-12 w-full p-0 pl-4 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
                         type="email"
-                        name="email"
-                        placeholder="Your-email@gmail.com"
-                        shape="RoundedBorder4"
-                        variant="FillGray800"
-                      ></Input>
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="your-email@gmail.com"
+                      />
                     </div>
-                    <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto sm:w-full">
+                <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto sm:w-full">
                       <Text
                         className="font-normal not-italic text-left text-white_A700 w-auto"
                         variant="body4"
                       >
                         Password
                       </Text>
-                      <Input
-                        wrapClassName="flex h-12 w-full"
-                        className="p-0 pl-4  w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
-                        value={password}onChange={(e) => setPassword(e.target.value)}
+                      <input
+                        className="flex bg-gray_800 h-12 w-full p-0 pl-4 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
                         type="password"
-                        name="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
                         placeholder="******************"
-                        shape="RoundedBorder4"
-                        variant="FillGray800"
-                      ></Input>
+                      />
+
                     </div>
                     <Button
                       className="cursor-pointer font-bold text-center text-white_A700 text-xl w-[430px] sm:w-full mt-2"
@@ -99,11 +99,27 @@ const AdminLogin = () => {
                     >
                       Login
                     </Button>
+                    {loginError && <p>{loginError}</p>}
 
-                  
+                
 
+                    {/* <SignupColumnsearchone
+                      className="flex flex-col items-center justify-center w-[430px] sm:w-full"
+                      loginwithgoogleOne="Login with google"
+                      onClick={handleGoogleLogin}
+
+                    /> */}
+                    {/* <Button
+                        className="cursor-pointer font-bold text-center text-white_A700 text-xl w-[430px] sm:w-full mt-2"
+                        shape="RoundedBorder8"
+                        size="lg"
+                        variant="FillRed900"
+                        type="button"
+                        onClick={continueWithGoogle}
+                      >
+                        Login with Google
+                      </Button> */}
                   </div>
-                  
 
                   </form>
             </div>
