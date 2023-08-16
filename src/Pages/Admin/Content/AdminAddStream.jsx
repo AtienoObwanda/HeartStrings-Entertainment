@@ -37,61 +37,107 @@ const AdminAddStream = () => {
  
 
 // Plays
-  const [title, setTitle] = useState('');
-  const [synopsis, setSynopsis] = useState('');
-  const [posterFile, setPosterFile] = useState(null);
-  const [infotrailerFile, setInfotrailerFile] = useState(null);
-  const [theater, setTheater] = useState('');
-  // const [castList, setCastList] = useState([]);
-  const [offersList, setOffersList] = useState([]);
-  const [selectedTheatre, setSelectedTheatre] = useState('');
-  const [castMembers, setCastMembers] = useState(
-    Array.from({ length: 20 }, () => ({ real_name: '', cast_name: '' }))
-  );
-  
+// const [formData, setFormData] = useState({
+//   title: '',
+//   synopsis: '',
+//   video: '',
+//   trailer: '',
+//   video_poster: '',
+//   video_casts: Array.from({ length: 20 }, () => ({ real_name: '', cast_name: '', image: null })),
+//   video_available: [
+//     { three_days: '', three_price: '', seven_days: '', seven_price: '', fourteen_days: '', fourteen_price: '' },
+//   ],
+// });
 
-// Handle Submit:
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  const apiUrl = 'http://127.0.0.1:8000/api/plays/';
+const [title, setTitle] = useState('');
+const [synopsis, setSynopsis] = useState('');
+const [poster, setPoster] = useState(null);
+const [trailer, setTrailer] = useState(null);
+const [video, setVideo] =useState('');
+const [video_casts, setvideo_casts] = useState(
+  Array.from({ length: 20 }, () => ({ real_name: '', cast_name: '' }))
+);
+const [video_available, setvideo_available] = useState([
+  { three_days: '', three_price: '', seven_days: '', seven_price: '', fourteen_days: '', fourteen_price: '' },
+]);
 
-  const formData = new FormData();
-  formData.append('title', title);
-  formData.append('synopsis', synopsis);
-  formData.append('poster', posterFile);
-  formData.append('infotrailer', infotrailerFile);
-  formData.append('theater', selectedTheatre);
-  formData.append('play_cast_list', JSON.stringify(castMembers));
-  formData.append('play_offers_list', JSON.stringify(offersList));
-  
-  // ... Append other data like date
 
-  const response = await fetch(apiUrl, {
-    method: 'POST',
-    body: formData,
-  });
 
-  const responseBody = await response.json();
-  console.log(responseBody);
+
+const handleChange = (event) => {
+  const { name, value } = event.target;
+  setFormData((prevData) => ({
+    ...prevData,
+    [name]: value,
+  }));
 };
 
-  // Cast Display(Loading):
-// const castMembersPerPage = 5;
-const castMembersPerPage = 5;
-const totalCastMembers = castMembers.length;
-const [castDisplayCount, setCastDisplayCount] = useState(castMembersPerPage);
-const showLoadMoreButton = castDisplayCount < totalCastMembers;
-  
-// handling cast image preview:
-const handleImageChange = (index, event) => {
-  const file = event.target.files[0];
-  if (file) {
-    const updatedCastMembers = [...castMembers];
-    updatedCastMembers[index].imagePreview = URL.createObjectURL(file);
-    setCastMembers(updatedCastMembers);
+const handleCastChange = (event, index) => {
+  const { name, value } = event.target;
+  const newCasts = [...formData.video_casts];
+  newCasts[index][name] = value;
+  setFormData((prevData) => ({
+    ...prevData,
+    video_casts: newCasts,
+  }));
+};
+
+const handleImageChange = (event, index) => {
+  const { name, files } = event.target;
+  const newCasts = [...formData.video_casts];
+  newCasts[index][name] = files[0];
+  setFormData((prevData) => ({
+    ...prevData,
+    video_casts: newCasts,
+  }));
+};
+
+const handleSubmit = async (event) => {
+  event.preventDefault();
+
+  try {
+    const response = await axios.post('http://127.0.0.1:8000/api/videos/', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        Authorization: 'Bearer YOUR_ACCESS_TOKEN', // Replace with your actual token
+      },
+    });
+
+    console.log(response.data);
+    // Handle success, show a success message to the user
+  } catch (error) {
+    console.error(error);
+    // Handle error, show an error message to the user
   }
 };
 
+
+  // Cast Display(Loading):
+// const video_castsPerPage = 5;
+const video_castsPerPage = 5;
+const totalvideo_casts = video_casts.length;
+const [castDisplayCount, setCastDisplayCount] = useState(video_castsPerPage);
+const showLoadMoreButton = castDisplayCount < totalvideo_casts;
+
+// handling cast image preview:
+// const handleImageChange = (index, event) => {
+//   const file = event.target.files[0];
+//   if (file) {
+//     const updatedvideo_casts = [...video_casts];
+//     updatedvideo_casts[index].imagePreview = URL.createObjectURL(file);
+//     setvideo_casts(updatedvideo_casts);
+//   }
+// };
+
+const handleAvailabilityChange = (index, field, value) => {
+  const newVideoAvailable = [...video_available];
+  newVideoAvailable[index][field] = value;
+  setvideo_available(newVideoAvailable);
+};
+
+console.log(
+  "Data: ", title, synopsis,poster,trailer,video,video_casts,video_available
+)
 
 return (
       <>
@@ -427,7 +473,7 @@ return (
                     </Text>
                   </div>
 
-          <div className="w-[94%] md:w-full">
+          <div className="w-[96%] md:w-full">
 
               <form onSubmit={handleSubmit}>
 
@@ -437,26 +483,35 @@ return (
 
                       {/* title */}
                       <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto sm:w-full">
-                        <Text
+                      <Text
                           className="font-normal not-italic text-left text-white_A700 w-auto"
                           variant="body4"
                         >
                           Play title
                         </Text>
-                        <textarea className="bg-gray_800 text-gray_300 rounded w-full"></textarea>
+                        <textarea 
+                        className="bg-gray_800 text-gray_300 rounded w-full"
+                        type="text"
+                        // placeholder="Enter play title"
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                        />
 
                       </div>
 
                       {/* Synopsis */}
                       <div className="flex flex-col gap-4 items-start justify-start self-stretch w-auto sm:w-full">
                         <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto sm:w-full">
-                          <Text
+                        <Text
                             className="font-normal not-italic text-left text-white_A700 w-auto"
                             variant="body4"
                           >
                             Synopsis
                           </Text>
-                          <textarea className="bg-gray_800 h-[200px] text-gray_300 rounded w-full"></textarea>
+                          <textarea 
+                            className="bg-gray_800 h-[200px] text-gray_300 rounded w-full"
+                            value={synopsis}
+                            onChange={(e) => setSynopsis(e.target.value)}/>
                         </div>
                         <Text
                           className="not-italic text-gray_300 text-left w-auto"
@@ -482,10 +537,37 @@ return (
                           >
                             Play poster
                           </Text>
-                          <PlayAddPlayVideo
-                            className="border border-dashed border-gray_800 flex flex-col gap-2.5 h-[150px] md:h-auto items-center justify-center p-2.5 rounded w-[600px] sm:w-full"
-                            dropanvideohereOne="Drop a video here or click to browse."
-                          />
+                          <div className="flex items-center justify-center w-full">
+                                <label htmlFor="poster-file" className="flex flex-col items-center justify-center w-full h-64 border border-gray_800 border-dashed rounded-lg cursor-pointer bg-black_900 hover:bg-black_900_01">
+                                <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                                    <Img
+                                    src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927652/HeartStrings/SVG/img_iconparkoutli_dznpma.svg"
+                                    className="h-6 w-6 mb-4"
+                                    alt="iconparkoutli"
+                                    />
+                                    <p className="mb-2 text-sm text-white_A700 font-semibold">Drop an image here or click to upload</p>
+                                    <p className="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or WEBP (MAX. 800x400px)</p>
+                                </div>
+                                <input
+                                    id="poster-file"
+                                    type="file"
+                                    accept="image/*"
+                                    className="hidden"
+                                    onChange={(e) => setPoster(e.target.files[0])}
+                                />
+                                </label>
+                                <div id="image-preview">
+                                    {poster && (
+                                        <img
+                                        id="preview-image"
+                                        className="w-64 h-32"
+                                        src={URL.createObjectURL(poster)}
+                                        alt="Poster Preview"
+                                        />
+                                    )}
+                                </div>
+                            </div>
+
                         </div>
 
                         {/* Info Trailer */}
@@ -496,10 +578,37 @@ return (
                           >
                             Infotrailer
                           </Text>
-                          <PlayAddPlayVideo
-                            className="border border-dashed border-gray_800 flex flex-col gap-2.5 h-[150px] md:h-auto items-center justify-center p-2.5 rounded w-[600px] sm:w-full"
-                            dropanvideohereOne="Drop a video here or click to browse."
-                          />
+                          <div className="flex items-center justify-center w-full">
+                                <label htmlFor="trailer-file" className="flex flex-col items-center justify-center w-full h-64 border border-gray_800 border-dashed rounded-lg cursor-pointer bg-black_900 hover:bg-black_900_01">
+                                <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                                    <Img
+                                    src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927652/HeartStrings/SVG/img_iconparkoutli_dznpma.svg"
+                                    className="h-6 w-6 mb-4"
+                                    alt="iconparkoutli"
+                                    />
+                                    <p className="mb-2 text-sm text-white_A700 font-semibold">Drop an infotrailer here or click to upload</p>
+                                    <p className="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or WEBP (MAX. 800x400px)</p>
+                                </div>
+                                <input
+                                    id="trailer-file"
+                                    type="file"
+                                    accept="video/*"
+                                    className="hidden"
+                                    onChange={(e) => setTrailer(e.target.files[0])}
+                                />
+                                </label>
+                                <div id="image-preview">
+                                    {trailer && (
+                                        <img
+                                        id="preview-image"
+                                        className="w-64 h-32"
+                                        src={URL.createObjectURL(trailer)}
+                                        alt="Infotrailer Preview"
+                                        />
+                                    )}
+                                </div>
+                            </div>
+
                         </div>
 
                         {/* Video */}
@@ -510,10 +619,37 @@ return (
                           >
                             Play Video
                           </Text>
-                          <PlayAddPlayVideo
-                            className="border border-dashed border-gray_800 flex flex-col gap-2.5 h-[150px] md:h-auto items-center justify-center p-2.5 rounded w-[600px] sm:w-full"
-                            dropanvideohereOne="Drop a video here or click to browse."
-                          />
+                          <div className="flex items-center justify-center w-full">
+                                <label htmlFor="video-file" className="flex flex-col items-center justify-center w-full h-64 border border-gray_800 border-dashed rounded-lg cursor-pointer bg-black_900 hover:bg-black_900_01">
+                                <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                                    <Img
+                                    src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927652/HeartStrings/SVG/img_iconparkoutli_dznpma.svg"
+                                    className="h-6 w-6 mb-4"
+                                    alt="iconparkoutli"
+                                    />
+                                    <p className="mb-2 text-sm text-white_A700 font-semibold">Drop a video here or click to upload</p>
+                                    <p className="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or WEBP (MAX. 800x400px)</p>
+                                </div>
+                                <input
+                                    id="video-file"
+                                    type="file"
+                                    accept="video/*"
+                                    className="hidden"
+                                    onChange={(e) => setVideo(e.target.files[0])}
+                                />
+                                </label>
+                                <div id="image-preview">
+                                    {video && (
+                                        <img
+                                        id="preview-image"
+                                        className="w-64 h-32"
+                                        src={URL.createObjectURL(video)}
+                                        alt="Poster Preview"
+                                        />
+                                    )}
+                                </div>
+                            </div>
+
                         </div>
 
                       </List>
@@ -524,7 +660,7 @@ return (
 
 
                   {/* Time */}
-                  <div className="bg-black_900 flex flex-col gap-8 items-start justify-start max-w-[725px] mt-7 sm:px-5 px-6 py-12 rounded-lg w-full">
+                  <div className="bg-black_900 flex flex-col gap-8 items-start justify-start max-w-[450px] mt-7 sm:px-5 px-6 py-12 rounded-lg w-full">
                   <div className="flex flex-col gap-8 items-start justify-start self-stretch w-auto sm:w-full">
                         <div className="flex flex-col gap-6 items-start justify-start self-stretch w-auto sm:w-full">
                           <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto">
@@ -539,126 +675,132 @@ return (
                           </div>
 
                           {/* 3 Days */}
-                           
-                          <div className="flex flex-row gap-4 items-center justify-start self-stretch w-full">
-                          <div className="flex flex-col gap-2 items-start justify-start self-stretch w-full">
-                            <Text
-                              className="font-normal not-italic text-left text-white_A700 w-auto"
-                              variant="body4"
-                            >
-                              Number Of Days
-                            </Text>
-                            <Input
-                              wrapClassName="w-full"
-                              className="font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
-                              name="groupFourteen"
-                              placeholder="3"
-                              shape="RoundedBorder4"
-                              size="md"
-                              variant="FillGray800"
-                            ></Input>
+                           {video_available.map((availability, index) => (
+                              <div key={index} className=" gap-6 items-center justify-start w-full">
+                                {/* 3 Days */}
+                                
+                                    <div className="flex flex-row gap-4 items-center justify-start self-stretch w-full">
+                                    <div className="flex flex-col gap-2 items-start justify-start self-stretch w-full">
+                                      <Text
+                                        className="font-normal not-italic text-left text-white_A700 w-auto"
+                                        variant="body4"
+                                      >
+                                        Number Of Days
+                                      </Text>
+                                    
+                                      <input
+                                        className="bg-gray_800 h-12 p-0 pl-4 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
+                                        type="number"
+                                        // onChange={(e) => setLast_name(e.target.value)}
+                                        name={`video_available[${index}].three_days`}
+                                        placeholder="3"
+                                        value={availability.three_days}
+                                        onChange={(event) => handleAvailabilityChange(index, 'three_days', event.target.value)}
+                                      />
 
-                          </div>
-                          <div className="flex flex-col gap-2 items-start justify-start self-stretch w-full">
-                            <Text
-                              className="font-normal not-italic text-left text-white_A700 w-auto"
-                              variant="body4"
-                            >
-                              Price
-                            </Text>
-                            <Input
-                              wrapClassName="w-full"
-                              className="font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
-                              name="groupFourteen"
-                              placeholder="KES XXXX"
-                              shape="RoundedBorder4"
-                              size="md"
-                              variant="FillGray800"
-                            ></Input>
-                          </div>
-                        </div>
-
-
-                          {/* 7 Days */}
-                                                     
-                          <div className="flex flex-row gap-4 items-center justify-start self-stretch w-full">
-                          <div className="flex flex-col gap-2 items-start justify-start self-stretch w-full">
-                            <Text
-                              className="font-normal not-italic text-left text-white_A700 w-auto"
-                              variant="body4"
-                            >
-                              Number Of Days
-                            </Text>
-                            <Input
-                              wrapClassName="w-full"
-                              className="font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
-                              name="groupFourteen"
-                              placeholder="7"
-                              shape="RoundedBorder4"
-                              size="md"
-                              variant="FillGray800"
-                            ></Input>
-
-                          </div>
-                          <div className="flex flex-col gap-2 items-start justify-start self-stretch w-full">
-                            <Text
-                              className="font-normal not-italic text-left text-white_A700 w-auto"
-                              variant="body4"
-                            >
-                              Price
-                            </Text>
-                            <Input
-                              wrapClassName="w-full"
-                              className="font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
-                              name="groupFourteen"
-                              placeholder="KES XXXX"
-                              shape="RoundedBorder4"
-                              size="md"
-                              variant="FillGray800"
-                            ></Input>
-                          </div>
-                        </div>
+                                    </div>
+                                    <div className="flex flex-col gap-2 items-start justify-start self-stretch w-full">
+                                      <Text
+                                        className="font-normal not-italic text-left text-white_A700 w-auto"
+                                        variant="body4"
+                                      >
+                                        Price
+                                      </Text>
+                                      <input
+                                        className="bg-gray_800 h-12 p-0 pl-4 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
+                                        type="text"
+                                        placeholder="KES XXXX"
+                                        name={`video_available[${index}].three_price`}
+                                        value={availability.three_price}
+                                        onChange={(event) => handleAvailabilityChange(index, 'three_price', event.target.value)}
+                                      />
+                                    </div>
+                                  </div>
 
 
-                          {/* 14 Days */}
-                                                     
-                          <div className="flex flex-row gap-4 items-center justify-start self-stretch w-full">
-                          <div className="flex flex-col gap-2 items-start justify-start self-stretch w-full">
-                            <Text
-                              className="font-normal not-italic text-left text-white_A700 w-auto"
-                              variant="body4"
-                            >
-                              Number Of Days
-                            </Text>
-                            <Input
-                              wrapClassName="w-full"
-                              className="font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
-                              name="groupFourteen"
-                              placeholder="14"
-                              shape="RoundedBorder4"
-                              size="md"
-                              variant="FillGray800"
-                            ></Input>
+                                {/* 7 Days */}
+                                
+                                <div className="flex flex-row gap-4 mt-4 items-center justify-start self-stretch w-full">
+                                    <div className="flex flex-col gap-2 items-start justify-start self-stretch w-full">
+                                      <Text
+                                        className="font-normal not-italic text-left text-white_A700 w-auto"
+                                        variant="body4"
+                                      >
+                                        Number Of Days
+                                      </Text>
+                                    
+                                      <input
+                                        className="bg-gray_800 h-12 p-0 pl-4 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
+                                        type="number"
+                                        name={`video_available[${index}].seven_days`}
+                                        placeholder="7"
+                                        value={availability.seven_days}
+                                        onChange={(event) => handleAvailabilityChange(index, 'seven_days', event.target.value)}
+                                      />
 
-                          </div>
-                          <div className="flex flex-col gap-2 items-start justify-start self-stretch w-full">
-                            <Text
-                              className="font-normal not-italic text-left text-white_A700 w-auto"
-                              variant="body4"
-                            >
-                              Price
-                            </Text>
-                            <Input
-                              wrapClassName="w-full"
-                              className="font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
-                              name="groupFourteen"
-                              placeholder="KES XXXX"
-                              shape="RoundedBorder4"
-                              size="md"
-                              variant="FillGray800"
-                            ></Input>
-                          </div>
-                        </div>
+                                    </div>
+                                    <div className="flex flex-col gap-2 items-start justify-start self-stretch w-full">
+                                      <Text
+                                        className="font-normal not-italic text-left text-white_A700 w-auto"
+                                        variant="body4"
+                                      >
+                                        Price
+                                      </Text>
+                                      <input
+                                        className="bg-gray_800 h-12 p-0 pl-4 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
+                                        type="text"
+                                        placeholder="KES XXXX"
+                                        name={`video_available[${index}].seven_price`}
+                                        value={availability.seven_price}
+                                        onChange={(event) => handleAvailabilityChange(index, 'seven_price', event.target.value)}
+                                      />
+                                    </div>
+                                  </div>
+
+
+                              {/* Fourteen */}
+                              
+                              <div className="flex flex-row gap-4 mt-4 items-center justify-start self-stretch w-full">
+                                    <div className="flex flex-col gap-2 items-start justify-start self-stretch w-full">
+                                      <Text
+                                        className="font-normal not-italic text-left text-white_A700 w-auto"
+                                        variant="body4"
+                                      >
+                                        Number Of Days
+                                      </Text>
+                                    
+                                      <input
+                                        className="bg-gray_800 h-12 p-0 pl-4 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
+                                        type="number"
+                                        name={`video_available[${index}].fourteen_days`}
+                                        placeholder="14"
+                                        value={availability.fourteen_days}
+                                        onChange={(event) => handleAvailabilityChange(index, 'fourteen_days', event.target.value)}
+                                      />
+
+                                    </div>
+                                    <div className="flex flex-col gap-2 items-start justify-start self-stretch w-full">
+                                      <Text
+                                        className="font-normal not-italic text-left text-white_A700 w-auto"
+                                        variant="body4"
+                                      >
+                                        Price
+                                      </Text>
+                                      <input
+                                        className="bg-gray_800 h-12 p-0 pl-4 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
+                                        type="text"
+                                        placeholder="KES XXXX"
+                                        name={`video_available[${index}].fourteen_price`}
+                                        value={availability.fourteen_price}
+                                        onChange={(event) => handleAvailabilityChange(index, 'fourteen_price', event.target.value)}
+                                      />
+                                    </div>
+                                  </div>
+
+
+                              </div>
+                           ))}
+
                   
                         
                         </div>
@@ -700,55 +842,8 @@ return (
                       Cast picture
                     </Text>
                     <div className="gap-2 grid sm:grid-cols-1 md:grid-cols-3 grid-cols-5 items-start justify-start self-stretch w-auto md:w-full">
-                      {/* <div className="flex flex-col gap-8 items-start justify-start self-stretch w-full">
-                        <div className="flex flex-col h-[200px] items-center justify-start w-[200px]">
-                          <Img
-                            src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927679/HeartStrings/SVG/img_rectangle4_200x200_j1rxou.png"
-                            className="h-[200px] md:h-auto object-cover rounded-lg w-[200px]"
-                            alt="rectangleFour"
-                          />
-                        </div>
-                        <div className="flex flex-col gap-4 items-center justify-start self-stretch w-auto">
-                          <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto">
-                            <Text
-                              className="font-normal not-italic text-left text-white_A700 w-auto"
-                              variant="body4"
-                            >
-                              Real name
-                            </Text>
-                            <Input
-                              wrapClassName="w-full"
-                              className="font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
-                              name="groupFourteen"
-                              placeholder="Anne Gitau"
-                              shape="RoundedBorder4"
-                              size="md"
-                              variant="FillGray800"
-                            ></Input>
-
-                          </div>
-                          <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto">
-                            <Text
-                              className="font-normal not-italic text-left text-white_A700 w-auto"
-                              variant="body4"
-                            >
-                              Cast name
-                            </Text>
-                            <Input
-                              wrapClassName="w-full"
-                              className="font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
-                              name="groupFourteen"
-                              placeholder="Anne Gitau"
-                              shape="RoundedBorder4"
-                              size="md"
-                              variant="FillGray800"
-                            ></Input>
-                          </div>
-                        </div>
-                      </div> */}
-                      {/* {castMembers.map((castMember, index) => ( */}
-                      {/* {castMembers.slice(0, showAllCasts ? castMembers.length : 5).map((castMember, index) => ( */}
-                      {castMembers.slice(0, castDisplayCount).map((castMember, index) => (
+                      
+                      {video_casts.slice(0, castDisplayCount).map((castMember, index) => (
 
 
                         <div key={index} className="flex flex-col gap-8 items-start justify-start self-stretch w-full">
@@ -794,14 +889,11 @@ return (
                               >
                                 Real name
                               </Text>
-                              <Input
-                                wrapClassName="w-full"
-                                className="font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
+                              <input
+                                className="bg-gray_800 h-12 p-0 pl-4 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
                                 name={`real_name_${index}`}
                                 placeholder="Anne Gitau"
-                                shape="RoundedBorder4"
-                                size="md"
-                                variant="FillGray800"
+                                
                                 value={castMember.real_name}
                                 onChange={(e) => handleCastChange(index, 'real_name', e.target.value)}
                               />
@@ -813,9 +905,9 @@ return (
                               >
                                 Cast name
                               </Text>
-                              <Input
-                                wrapClassName="w-full"
-                                className="font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
+                              <input
+                                // wrapClassName="w-full"
+                                className="bg-gray_800 h-12 p-0 pl-4 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
                                 name={`cast_name_${index}`}
                                 placeholder="Anne Gitau"
                                 shape="RoundedBorder4"
@@ -830,18 +922,17 @@ return (
                       ))}
                     </div>
                         {/* More Casts */}
-                        {/* Show "Load More" or "Show Less" button */}
                         <button
                           onClick={() => {
-                            if (castDisplayCount === totalCastMembers) {
-                              setCastDisplayCount(castMembersPerPage);
+                            if (castDisplayCount === totalvideo_casts) {
+                              setCastDisplayCount(video_castsPerPage);
                             } else {
-                              setCastDisplayCount(castDisplayCount + castMembersPerPage);
+                              setCastDisplayCount(castDisplayCount + video_castsPerPage);
                             }
                           }}
                           className="text-red_900 hover:text-red_900_01 underline cursor-pointer"
                         >
-                          {castDisplayCount === totalCastMembers ? "Show Less" : "Load More Casts"}
+                          {castDisplayCount === totalvideo_casts ? "Show Less" : "Load More Casts"}
                         </button>
                    </div>
 
