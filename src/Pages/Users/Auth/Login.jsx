@@ -1,8 +1,20 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import queryString from 'query-string';
+
 import { Button, Img, Input, Line, Text } from "UI_Components";
 import { apiUrl } from '../../../../env.js'; // Import  API URL
+import {googleOAuth2Key} from '../../../../env.js'
+
+console.log(googleOAuth2Key)
+const redirectUri = 'http://localhost:5173'; // Redirect URI here
+
+https://api.jaafrikaimages.org/auth/o/google-oauth2/?redirect_uri=http://localhost:5173&client_id=1164711596-p5kfhp9la2n1qm49dah7otobco81s2j0.apps.googleusercontent.com
+//  POST /auth/o/google-oauth2/?redirect_uri=http://localhost:3000
+
+
+console.log(`${apiUrl}/auth/o/google-oauth2/?redirect_uri=${redirectUri}&client_id=${googleOAuth2Key}`)
 
 import SignupColumnlogotwo from "UI_Components/SignupColumn";
 import SignupColumnsearchone from "UI_Components/SignupColumnsearchone";
@@ -37,6 +49,32 @@ const Login = () => {
   };
 
   
+  
+  // const continueWithGoogle = async () => {
+  //   try {
+  //     // const redirectUri = `${process.env.REACT_APP_API_URL}/google`; // Redirect URI here
+  //     const redirectUri = 'http://localhost:5173'; // Redirect URI here
+  //     // /auth/o/google-oauth2/?redirect_uri=http://localhost:3000
+  //     const googleAuthUrl = `${apiUrl}/auth/o/google-oauth2/?redirect_uri=${redirectUri}&client_id=${googleOAuth2Key}`;
+  // // POST /auth/o/google-oauth2/?redirect_uri=http://localhost:3000
+  //     window.location.replace(googleAuthUrl);
+  //   } catch (error) {
+  //     // Handle error
+  //     console.error('Error initiating Google login:', error);
+  //   }
+  // };
+  
+  const continueWithGoogle = async () => {
+    try {
+        const redUrl='http://localhost:5173'
+        const res = await axios.post(`${apiUrl}/auth/o/google-oauth2/?redirect_uri=${redUrl}`)
+
+        window.location.replace(res.data.authorization_url);
+    } catch (err) {
+
+    }
+};
+
   return (
     <>
       <div className="bg-black_900 flex flex-col font-roboto items-center justify-start mx-auto pb-[242px] w-full">
@@ -102,10 +140,22 @@ const Login = () => {
 
                 
 
-                    <SignupColumnsearchone
+                    {/* <SignupColumnsearchone
                       className="flex flex-col items-center justify-center w-[430px] sm:w-full"
                       loginwithgoogleOne="Login with google"
-                    />
+                      onClick={handleGoogleLogin}
+
+                    /> */}
+                    <Button
+                        className="cursor-pointer font-bold text-center text-white_A700 text-xl w-[430px] sm:w-full mt-2"
+                        shape="RoundedBorder8"
+                        size="lg"
+                        variant="FillRed900"
+                        type="button"
+                        onClick={continueWithGoogle}
+                      >
+                        Login with Google
+                      </Button>
                   </div>
 
                   </form>

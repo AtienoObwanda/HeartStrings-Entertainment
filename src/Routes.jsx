@@ -24,6 +24,7 @@ const PlayDetails = React.lazy(() => import("Pages/Content/PlayDetails"));
 const Signup = React.lazy(() => import("Pages/Users/Auth/SignUp"));
 const SignUpSuccessful = React.lazy(() => import("Pages/Users/Auth/SignUpSuccessful"));
 const Login = React.lazy(() => import("Pages/Users/Auth/Login"));
+const GoogleCallback = React.lazy(() => import("Components/Users/GoogleCallback"))
 const ForgotPassword = React.lazy(() => import("Pages/Users/Auth/ForgotPassword"));
 const ResetPassword = React.lazy(() => import("Pages/Users/Auth/ResetPassword"));
 const ResetComplete = React.lazy(() => import("Pages/Users/Auth/ResetComplete"));
@@ -108,6 +109,7 @@ const ProjectRoutes = () => {
           <Route path="/activate-account/new_request" element={<NewActivation/>}/>
           <Route path="/activate/:uidb64/:token" element={<AccountActivation/>} />
           <Route path="/login" element={<Login />} />
+          <Route path="/google-callback" component={GoogleCallback} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/reset-password-confirm/:uidb64/:token" element={<ResetPassword />} />
           <Route path="/reset/email-sent" element={<ResetEmailSent/>}/>

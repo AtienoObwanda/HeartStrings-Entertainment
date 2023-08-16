@@ -19,6 +19,9 @@ import {
     LOGOUT
 } from './types';
 
+import { apiUrl } from '../../env';
+
+
 export const load_user = () => async dispatch => {
     if (localStorage.getItem('access')) {
         const config = {
@@ -30,7 +33,7 @@ export const load_user = () => async dispatch => {
         }; 
 
         try {
-            const res = await axios.get(`${process.env.REACT_APP_API_URL}/auth/users/me/`, config);
+            const res = await axios.get(`${apiUrl}/auth/users/me/`, config);
     
             dispatch({
                 type: USER_LOADED_SUCCESS,
@@ -64,7 +67,7 @@ export const googleAuthenticate = (state, code) => async dispatch => {
         const formBody = Object.keys(details).map(key => encodeURIComponent(key) + '=' + encodeURIComponent(details[key])).join('&');
 
         try {
-            const res = await axios.post(`${process.env.REACT_APP_API_URL}/auth/o/google-oauth2/?${formBody}`, config);
+            const res = await axios.post(`${apiUrl}/auth/o/google-oauth2/?${formBody}`, config);
 
             dispatch({
                 type: GOOGLE_AUTH_SUCCESS,
@@ -143,14 +146,14 @@ export const login = (email, password) => async dispatch => {
     }
 };
 
-export const signup = (name, email, phonenumber, password, confirmPassword) => async dispatch => {
+export const signup = (name, email, phonenumber, password, re_password) => async dispatch => {
     const config = {
         headers: {
             'Content-Type': 'application/json'
         }
     };
 
-    const body = JSON.stringify({ name, email, phonenumber, password, confirmPassword });
+    const body = JSON.stringify({ name, email, phonenumber, password, re_password });
 
     try {
         // const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/register/`, body, config);
