@@ -18,6 +18,16 @@ const AdminDashboard = () => {
   const [active, setActive] = useState('Home');
   const [toggle, setToggle] = useState(false);
 
+// User info:
+const [userInfo, setUserInfo] = useState({});
+
+useEffect(() => {
+  // Retrieve user information from local storage or context
+  const storedUserInfo = JSON.parse(localStorage.getItem('userInfo'));
+  setUserInfo(storedUserInfo);
+}, []);
+
+
   return (
     <>
       <div className="bg-black_900_01 flex flex-col font-roboto items-center justify-start mx-auto w-full">
@@ -308,6 +318,7 @@ const AdminDashboard = () => {
                 <div className="flex sm:flex-1 sm:flex-col flex-row gap-6 items-center justify-center ml-5 md:ml-[0] self-stretch w-auto sm:w-full">
               */}
               {/* Small and tablet only */}
+              
               <div className="hidden md:flex flex-row gap-[21px] items-center justify-start mr-5 self-stretch w-auto mt-[-16em]">
                 <Img
                   src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927649/HeartStrings/SVG/img_ellipse1_jfdd8k.png"

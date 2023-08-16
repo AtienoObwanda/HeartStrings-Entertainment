@@ -30,7 +30,22 @@ const AdminLogin = () => {
 
       // Store the access token and redirect on successful login
       localStorage.setItem('accessToken', response.data.access);
-      navigate('/admin-dashboard');
+
+      // Fetch user information
+    const userResponse = await axios.get(`${apiUrl}/api/get-user-info/`, {
+      headers: {
+        Authorization: `Bearer ${response.data.access}`
+      }
+    });
+
+    // Store user information in local storage or context
+    localStorage.setItem('userInfo', JSON.stringify(userResponse.data));
+
+    navigate('/admin-dashboard');
+
+
+
+
     } catch (error) {
       if (error.response && error.response.status === 401) {
         setLoginError('Invalid email or password'); // Display error message

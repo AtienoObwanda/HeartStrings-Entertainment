@@ -157,7 +157,6 @@ const ProjectRoutes = () => {
           <Route path="/admin-forgot-password" element={<AdminForgotPassword />}/>
           <Route path="/admin-password-reset" element={<AdminPasswordReset />} />
           <Route path="/admin-password-reset-complete" element={<AdminPasswordResetComplete />} />
-          {/* <Route path='admin-signup-successful' element={<AdminSignUpSuccessful/>} /> */}
           
           <Route path="/admin-dashboard" element={<AdminDashboard />} />
           <Route path="/admin-allplays" element={<AdminAllPlays />} />
