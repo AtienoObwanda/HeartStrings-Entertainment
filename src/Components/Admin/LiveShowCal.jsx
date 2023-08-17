@@ -27,7 +27,7 @@ function classNames(...classes) {
   }
 
 
-export default function LiveShowCal() {
+export default function LiveShowCal({ onDateSelection }) {
         // let today = startOfToday()
         // let [selectedDay, setSelectedDay] = useState(today)
         // let [currentMonth, setCurrentMonth] = useState(format(today, 'MMM-yyyy'))
@@ -79,6 +79,9 @@ export default function LiveShowCal() {
 
             setSelectedDays([...selectedDays, day]);
             setSelectedTimes([...selectedTimes, { time1: '', time2: '' }]);
+
+            onDateSelection(selectedDays, selectedTimes);
+
         }
 
         
@@ -105,9 +108,11 @@ export default function LiveShowCal() {
         // let selectedDayMeetings = meetings.filter((meeting) =>
         //   isSameDay(parseISO(meeting.startDatetime), selectedDay)
         // )
+      // console.log("Calendar Component")
+      // console.log("Date:  ",selectedDays)
+      // console.log("Time:  ", selectedTimes)
 
-
-      
+      // console.log("End Of Calendar")
       
       
         return (

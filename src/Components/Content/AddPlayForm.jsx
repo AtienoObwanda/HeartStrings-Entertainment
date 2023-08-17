@@ -48,7 +48,8 @@ const AddPlayForm = () => {
   const [castMembers, setCastMembers] = useState(
     Array.from({ length: 20 }, () => ({ real_name: '', cast_name: '' }))
   );
-  
+  const [selectedDates, setSelectedDates] = useState([]);
+  const [selectedTimes, setSelectedTimes] = useState([]);
 
 //   const handleTheatreSelection = (theatre) => {
 //     setSelectedTheatre(theatre);
@@ -79,7 +80,7 @@ const handleSubmit = async (e) => {
   console.log(responseBody);
 };
 
-  console.log('Data: ',title, synopsis, selectedTheatre, posterFile, infotrailerFile,castMembers)
+  // console.log('Data: ',title, synopsis, selectedTheatre, posterFile, infotrailerFile,castMembers)
 // Cast Display(Loading):
 // const castMembersPerPage = 5;
 const castMembersPerPage = 5;
@@ -97,6 +98,15 @@ const handleImageChange = (index, event) => {
   }
 };
 
+
+// Handle date and time select:
+const handleDateSelection = (selectedDates, selectedTimes) => {
+  setSelectedDates(selectedDates);
+  setSelectedTimes(selectedTimes);
+};
+
+
+console.log("Data:  ", title, synopsis,"Date: ",selectedDates,"Time: ",selectedTimes)
 
 
 
@@ -204,7 +214,7 @@ const handleImageChange = (index, event) => {
                                 Infotrailer
                             </Text>
                              {/* Drag and Drop */}
-                             <div class="flex items-center justify-center w-full">
+                             <div className="flex items-center justify-center w-full">
                              <label htmlFor="infotrailer-file" className="flex flex-col items-center justify-center w-full h-64 border border-gray_800 border-dashed rounded-lg cursor-pointer bg-black_900 hover:bg-black_900_01">
                                 <div className="flex flex-col items-center justify-center pt-5 pb-6">
                                     <Img
@@ -255,10 +265,7 @@ const handleImageChange = (index, event) => {
                             </Text>
                             {/* Calendar: */}
                             <LiveShowCal
-                            // selectedDays={selectedDays}
-                            // setSelectedDays={setSelectedDays}
-                            // selectedTimes={selectedTimes}
-                            // setSelectedTimes={setSelectedTimes}
+                            onDateSelection={handleDateSelection}
                             />
 
 
@@ -286,7 +293,7 @@ const handleImageChange = (index, event) => {
 
                               <div className="flex flex-row gap-4 items-center justify-center w-auto">
                                 <input type="radio" 
-                                    class="h-6 w-6 checked:bg-red-900 
+                                    className="h-6 w-6 checked:bg-red-900 
                                         text-red-900 p-3 my-4"
                                         id="theatre1"
                                         name="theatre"
@@ -308,7 +315,7 @@ const handleImageChange = (index, event) => {
 
                               <div className="flex flex-row gap-4 items-center justify-center w-auto">
                               <input type="radio" 
-                                    class="h-6 w-6 checked:bg-red-900 text-red-900 p-3 my-4" 
+                                    className="h-6 w-6 checked:bg-red-900 text-red-900 p-3 my-4" 
                                     id="theatre2"
                                     name="theatre"
                                     value="Nairobi Cinema"
@@ -328,7 +335,7 @@ const handleImageChange = (index, event) => {
 
                               <div className="flex flex-row gap-4 items-center justify-center w-auto">
                               <input type="radio" 
-                                        class="h-6 w-6 checked:bg-red-900 text-red-900 p-3 my-4" 
+                                        className="h-6 w-6 checked:bg-red-900 text-red-900 p-3 my-4" 
                                         id="theatre3"
                                         name="theatre"
                                         value="Kenya National Theatre"
