@@ -6,13 +6,14 @@ import PlaysAddPlayColumniconparkoutli from "UI_Components/PlaysAddPlayColumnIco
 import PlayAddPlayVideo from "UI_Components/PlayAddPlayVideo"
 
 
+import axios from "axios";
+
 import close from "../../../assets/close.svg";
 import  menu from "../../../assets/menu.svg";
 
 
 import { apiUrl } from '../../../../env'
 
-const YOUR_ACCESS_TOKEN = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjkxNTkwMjg0LCJpYXQiOjE2OTE1ODYxODksImp0aSI6IjliNTMxMDU3ZGNmZTRhOWE4N2EwNTE0MjE0MjczMzc1IiwidXNlcl9pZCI6MX0.BJzwxGxuV4TNmXxc9fEv3j-zM4o1mEKSKmC3B6aBln8';
 
 const AdminAddStream = () => {
   const navigate = useNavigate();
@@ -43,12 +44,14 @@ const [synopsis, setSynopsis] = useState('');
 const [poster, setPoster] = useState(null);
 const [trailer, setTrailer] = useState(null);
 const [video, setVideo] =useState('');
+
 const [castMembers, setCastMembers] = useState(
   Array.from({ length: 20 }, () => ({ real_name: "", cast_name: "" }))
 );
 const [video_available, setvideo_available] = useState([
   { three_days: '', three_price: '', seven_days: '', seven_price: '', fourteen_days: '', fourteen_price: '' },
 ]);
+
 
 
 
@@ -79,6 +82,23 @@ const handleImageChange = (index, event) => {
   }
 };
 
+
+// Video availability change:
+const handleAvailabilityChange = (index, name, value) => {
+  const updatedVideoAvailable = [...video_available];
+  updatedVideoAvailable[index][name] = value;
+  setvideo_available(updatedVideoAvailable);
+};
+
+
+// Price:
+const handlePriceChange = (index, name, value) => {
+  const updatedVideoAvailable = [...video_available];
+  updatedVideoAvailable[index][name] = value;
+  setvideo_available(updatedVideoAvailable);
+};
+
+
 const handleSubmit = async (e) => {
   console.log("Submitting........");
 
@@ -93,31 +113,31 @@ const handleSubmit = async (e) => {
   }
 
 
-  const formData = new FormData();
-  formData.append("title", title);
-  formData.append("synopsis", synopsis);
-  formData.append("poster", posterFile);
-  formData.append("infotrailer", infotrailerFile);
-  formData.append("video", videoFile);
-  formData.append("theater", selectedTheatre);
-  formData.append("is_available", isAvailableString);
-  formData.append("play_cast_list", JSON.stringify(castMembers));
+  const requestBody = {
+    title,
+    synopsis,
+    video,
+    trailer,
+    video_poster: poster,
+    video_casts: castMembers,
+    video_available,
+  };
 
  
-
- 
-  console.log('POST Request Payload:', formData); // Log the payload you're sending
+  console.log('POST Request Payload:', requestBody); // Log the payload you're sending
   console.log('Headers:', {
     Authorization: `Bearer ${accessToken}`,
     'Content-Type': 'multipart/form-data', // Make sure to set the content type if required
   });
 
 
+
+
   try {
-    const response = await axios.post(`${apiUrl}/api/videos/`, formData, {
+    const response = await axios.post(`${apiUrl}/api/videos/`, requestBody, {
       headers: {
         Authorization: `Bearer ${accessToken}`,
-        'Content-Type': 'multipart/form-data', // Make sure to set content type
+        'Content-Type': 'multipart/form-data', 
 
       },
     });
@@ -550,133 +570,118 @@ return (
                           </div>
 
                           {/* 3 Days */}
-                           {video_available.map((availability, index) => (
-                              <div key={index} className=" gap-6 items-center justify-start w-full">
-                                {/* 3 Days */}
-                                
-                                    <div className="flex flex-row gap-4 items-center justify-start self-stretch w-full">
-                                    <div className="flex flex-col gap-2 items-start justify-start self-stretch w-full">
-                                      <Text
-                                        className="font-normal not-italic text-left text-white_A700 w-auto"
-                                        variant="body4"
-                                      >
-                                        Number Of Days
-                                      </Text>
-                                    
-                                      <input
-                                        className="bg-gray_800 h-12 p-0 pl-4 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
-                                        type="number"
-                                        // onChange={(e) => setLast_name(e.target.value)}
-                                        name={`video_available[${index}].three_days`}
-                                        placeholder="3"
-                                        value={availability.three_days}
-                                        onChange={(event) => handleAvailabilityChange(index, 'three_days', event.target.value)}
-                                      />
+                          {video_available.map((availability, index) => (
+                            <div key={index} className="gap-6 items-center justify-start w-full">
+                              {/* 3 Days */}
+                              <div className="flex flex-row gap-4 items-center justify-start self-stretch w-full">
+                                <div className="flex flex-col gap-2 items-start justify-start self-stretch w-full">
+                                  <Text
+                                    className="font-normal not-italic text-left text-white_A700 w-auto"
+                                    variant="body4"
+                                  >
+                                    Number Of Days
+                                  </Text>
+                                  <input
+                                    className="bg-gray_800 h-12 p-0 pl-4 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
+                                    type="number"
+                                    name={`three_days`}
+                                    placeholder="3"
+                                    value={availability.three_days}
+                                    onChange={(event) => handleAvailabilityChange(index, 'three_days', event.target.value)}
+                                  />
+                                </div>
+                                <div className="flex flex-col gap-2 items-start justify-start self-stretch w-full">
+                                  <Text
+                                    className="font-normal not-italic text-left text-white_A700 w-auto"
+                                    variant="body4"
+                                  >
+                                    Price
+                                  </Text>
+                                  <input
+                                    className="bg-gray_800 h-12 p-0 pl-4 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
+                                    type="text"
+                                    placeholder="KES XXXX"
+                                    name={`three_price`}
+                                    value={availability.three_price}
+                                    onChange={(event) => handlePriceChange(index, 'three_price', event.target.value)}
+                                  />
+                                </div>
+                              </div>
 
-                                    </div>
-                                    <div className="flex flex-col gap-2 items-start justify-start self-stretch w-full">
-                                      <Text
-                                        className="font-normal not-italic text-left text-white_A700 w-auto"
-                                        variant="body4"
-                                      >
-                                        Price
-                                      </Text>
-                                      <input
-                                        className="bg-gray_800 h-12 p-0 pl-4 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
-                                        type="text"
-                                        placeholder="KES XXXX"
-                                        name={`video_available[${index}].three_price`}
-                                        value={availability.three_price}
-                                        onChange={(event) => handleAvailabilityChange(index, 'three_price', event.target.value)}
-                                      />
-                                    </div>
-                                  </div>
-
-
-                                {/* 7 Days */}
-                                
-                                <div className="flex flex-row gap-4 mt-4 items-center justify-start self-stretch w-full">
-                                    <div className="flex flex-col gap-2 items-start justify-start self-stretch w-full">
-                                      <Text
-                                        className="font-normal not-italic text-left text-white_A700 w-auto"
-                                        variant="body4"
-                                      >
-                                        Number Of Days
-                                      </Text>
-                                    
-                                      <input
-                                        className="bg-gray_800 h-12 p-0 pl-4 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
-                                        type="number"
-                                        name={`video_available[${index}].seven_days`}
-                                        placeholder="7"
-                                        value={availability.seven_days}
-                                        onChange={(event) => handleAvailabilityChange(index, 'seven_days', event.target.value)}
-                                      />
-
-                                    </div>
-                                    <div className="flex flex-col gap-2 items-start justify-start self-stretch w-full">
-                                      <Text
-                                        className="font-normal not-italic text-left text-white_A700 w-auto"
-                                        variant="body4"
-                                      >
-                                        Price
-                                      </Text>
-                                      <input
-                                        className="bg-gray_800 h-12 p-0 pl-4 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
-                                        type="text"
-                                        placeholder="KES XXXX"
-                                        name={`video_available[${index}].seven_price`}
-                                        value={availability.seven_price}
-                                        onChange={(event) => handleAvailabilityChange(index, 'seven_price', event.target.value)}
-                                      />
-                                    </div>
-                                  </div>
-
+                              {/* 7 Days */}
+                              <div className="flex flex-row gap-4 mt-4 items-center justify-start self-stretch w-full">
+                                <div className="flex flex-col gap-2 items-start justify-start self-stretch w-full">
+                                  <Text
+                                    className="font-normal not-italic text-left text-white_A700 w-auto"
+                                    variant="body4"
+                                  >
+                                    Number Of Days
+                                  </Text>
+                                  <input
+                                    className="bg-gray_800 h-12 p-0 pl-4 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
+                                    type="number"
+                                    name={`seven_days`}
+                                    placeholder="7"
+                                    value={availability.seven_days}
+                                    onChange={(event) => handleAvailabilityChange(index, 'seven_days', event.target.value)}
+                                  />
+                                </div>
+                                <div className="flex flex-col gap-2 items-start justify-start self-stretch w-full">
+                                  <Text
+                                    className="font-normal not-italic text-left text-white_A700 w-auto"
+                                    variant="body4"
+                                  >
+                                    Price
+                                  </Text>
+                                  <input
+                                    className="bg-gray_800 h-12 p-0 pl-4 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
+                                    type="text"
+                                    placeholder="KES XXXX"
+                                    name={`seven_price`}
+                                    value={availability.seven_price}
+                                    onChange={(event) => handlePriceChange(index, 'seven_price', event.target.value)}
+                                  />
+                                </div>
+                              </div>
 
                               {/* Fourteen */}
-                              
                               <div className="flex flex-row gap-4 mt-4 items-center justify-start self-stretch w-full">
-                                    <div className="flex flex-col gap-2 items-start justify-start self-stretch w-full">
-                                      <Text
-                                        className="font-normal not-italic text-left text-white_A700 w-auto"
-                                        variant="body4"
-                                      >
-                                        Number Of Days
-                                      </Text>
-                                    
-                                      <input
-                                        className="bg-gray_800 h-12 p-0 pl-4 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
-                                        type="number"
-                                        name={`video_available[${index}].fourteen_days`}
-                                        placeholder="14"
-                                        value={availability.fourteen_days}
-                                        onChange={(event) => handleAvailabilityChange(index, 'fourteen_days', event.target.value)}
-                                      />
-
-                                    </div>
-                                    <div className="flex flex-col gap-2 items-start justify-start self-stretch w-full">
-                                      <Text
-                                        className="font-normal not-italic text-left text-white_A700 w-auto"
-                                        variant="body4"
-                                      >
-                                        Price
-                                      </Text>
-                                      <input
-                                        className="bg-gray_800 h-12 p-0 pl-4 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
-                                        type="text"
-                                        placeholder="KES XXXX"
-                                        name={`video_available[${index}].fourteen_price`}
-                                        value={availability.fourteen_price}
-                                        onChange={(event) => handleAvailabilityChange(index, 'fourteen_price', event.target.value)}
-                                      />
-                                    </div>
-                                  </div>
-
-
+                                <div className="flex flex-col gap-2 items-start justify-start self-stretch w-full">
+                                  <Text
+                                    className="font-normal not-italic text-left text-white_A700 w-auto"
+                                    variant="body4"
+                                  >
+                                    Number Of Days
+                                  </Text>
+                                  <input
+                                    className="bg-gray_800 h-12 p-0 pl-4 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
+                                    type="number"
+                                    name={`fourteen_days`}
+                                    placeholder="14"
+                                    value={availability.fourteen_days}
+                                    onChange={(event) => handleAvailabilityChange(index, 'fourteen_days', event.target.value)}
+                                  />
+                                </div>
+                                <div className="flex flex-col gap-2 items-start justify-start self-stretch w-full">
+                                  <Text
+                                    className="font-normal not-italic text-left text-white_A700 w-auto"
+                                    variant="body4"
+                                  >
+                                    Price
+                                  </Text>
+                                  <input
+                                    className="bg-gray_800 h-12 p-0 pl-4 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
+                                    type="text"
+                                    placeholder="KES XXXX"
+                                    name={`fourteen_price`}
+                                    value={availability.fourteen_price}
+                                    onChange={(event) => handlePriceChange(index, 'fourteen_price', event.target.value)}
+                                  />
+                                </div>
                               </div>
-                           ))}
+                            </div>
+                                            ))}
 
-                  
                         
                         </div>
 
@@ -994,6 +999,9 @@ return (
                       </div>
                     </Button>
                     <Button
+                     type="submit"
+                     // name="action"
+                     // value="post" // Value indicating "Post Live Show"
                       className="cursor-pointer flex items-center justify-center min-w-[164px] w-auto"
                       leftIcon={
                         <Img
