@@ -40,24 +40,23 @@ const AddPlayForm = () => {
   const [selectedPlayOffer, setSelectedPlayOffer] = useState(null);
   const [selectedOtherOffers, setSelectedOtherOffers] = useState([]);
   const [selectedTheatre, setSelectedTheatre] = useState("");
+  const isAvailableString = availability ? "true" : "false";
   const [castMembers, setCastMembers] = useState(
     Array.from({ length: 20 }, () => ({ real_name: "", cast_name: "" }))
   );
   const [selectedDates, setSelectedDates] = useState([]);
   const [selectedTimes, setSelectedTimes] = useState([]);
+  const playDateTimes = selectedDates.map((date, index) => ({
+    date: date.toISOString().split("T")[0], // Format: "YYYY-MM-DD"
+    time1: selectedTimes[index].time1,
+    time2: selectedTimes[index].time2,
+  }));
   const [bogofOffer, setBogofOffer] = useState({
     bogof: false,
     offer_day: '',
     number_of_tickets: '',
     promo_code: '',
   });
-  
-  const playDateTimes = selectedDates.map((date, index) => ({
-    date: date.toISOString().split("T")[0], // Format: "YYYY-MM-DD"
-    time1: selectedTimes[index].time1,
-    time2: selectedTimes[index].time2,
-  }));
-
   const [otherOffers, setOtherOffers] = useState([{ offers_name: '', offer_day: '', promo_code: '', percentage: '', number_of_tickets: '' }]);
   const [offerDates, setOfferDates] = useState(['']);
 
@@ -111,12 +110,21 @@ const AddPlayForm = () => {
     formData.append("poster", posterFile);
     formData.append("infotrailer", infotrailerFile);
     formData.append("theater", selectedTheatre);
+    formData.append("is_available", isAvailableString);
+
     formData.append("play_cast_list", JSON.stringify(castMembers));
     formData.append("play_dateTime", JSON.stringify(playDateTimes));
-    // Append BOGOF offer
-  if (bogofOffer.bogof) {
-    formData.append('play_offers', JSON.stringify([bogofOffer]));
-  }
+  
+    // Append BOGOF offer if selected
+    if (bogofOffer.bogof) {
+      formData.append('play_offers', JSON.stringify([{
+        bogof: bogofOffer.bogof,
+        offer_day: bogofOffer.offer_day,
+        number_of_tickets: bogofOffer.number_of_tickets,
+        promo_code: bogofOffer.promo_code,
+      }]));
+    }
+  
     // Append other_offers
     const offersToSend = otherOffers.slice(0, 5).map((offer, index) => ({
       offers_name: offer.offers_name,
@@ -135,6 +143,39 @@ const AddPlayForm = () => {
     const responseBody = await response.json();
     console.log(responseBody);
   };
+  
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   const apiUrl = "http://127.0.0.1:8000/api/plays/";
+  
+  //   const formData = new FormData();
+  //   formData.append("title", title);
+  //   formData.append("synopsis", synopsis);
+  //   formData.append("poster", posterFile);
+  //   formData.append("infotrailer", infotrailerFile);
+  //   formData.append("theater", selectedTheatre);
+  //   formData.append("play_cast_list", JSON.stringify(castMembers));
+  //   formData.append("play_dateTime", JSON.stringify(playDateTimes));
+  //   if (bogofOffer.bogof) {
+  //     formData.append('play_offers', JSON.stringify([bogofOffer]));
+  //   }
+  //   const offersToSend = otherOffers.slice(0, 5).map((offer, index) => ({
+  //     offers_name: offer.offers_name,
+  //     offer_day: offerDates[index], // Use the selected date from offerDates array
+  //     promo_code: offer.promo_code,
+  //     percentage: offer.percentage,
+  //     number_of_tickets: offer.number_of_tickets,
+  //   }));
+  //   formData.append("other_offers", JSON.stringify(offersToSend));
+  
+  //   const response = await fetch(apiUrl, {
+  //     method: "POST",
+  //     body: formData,
+  //   });
+  
+  //   const responseBody = await response.json();
+  //   console.log(responseBody);
+  // };
   
   // Cast Display(Loading):
   const castMembersPerPage = 5;
@@ -157,6 +198,7 @@ const AddPlayForm = () => {
     synopsis,
     selectedTheatre,
     posterFile,
+    'Availability: ', isAvailableString,
     infotrailerFile,
     castMembers,
     playDateTimes,
@@ -390,7 +432,7 @@ const AddPlayForm = () => {
                     </div>
                   </div>
 
-                  <div className="flex flex-col gap-2 items-start justify-start w-full sm:w-full">
+                  {/* <div className="flex flex-col gap-2 items-start justify-start w-full sm:w-full">
                     <Text
                       className="text-base text-white-A700 w-auto"
                       size="txtRobotoRomanRegular16"
@@ -403,7 +445,7 @@ const AddPlayForm = () => {
                       className="p-0 placeholder:text-gray-300 sm:pr-5 text-base text-gray-300 text-left w-full"
                       wrapClassName="bg-gray_800 pl-[13px] pr-[35px] py-4 rounded w-full"
                     ></Input>
-                  </div>
+                  </div> */}
                   <div className="flex flex-row gap-6 h-7 md:h-auto items-center justify-center w-auto">
                     <Text
                       className="text-base text-white_A700 w-auto"
@@ -524,8 +566,7 @@ const AddPlayForm = () => {
                         name="groupThirtyOne"
                         placeholder="Enter code"
                         className="p-0 placeholder:text-gray_300 text-base bg-gray_800 text-gray_300 rounded w-[400px] text-left h-12 pl-4 pr-4"
-                        type="number"
-                        // wrapClassName="bg-gray-800 px-3 py-3.5 rounded w-full"
+                        type="text"
                       />
                     </div>
                   </div>
@@ -540,9 +581,6 @@ const AddPlayForm = () => {
 
                
                   {otherOffers.map((offer, index) => (
-
-
-
                     <div
                       key={index}
                       className="flex flex-col gap-4 items-start justify-start w-auto sm:w-full"
@@ -569,21 +607,6 @@ const AddPlayForm = () => {
                             Day
                           </Text>
                           <div className="bg-gray_800 flex flex-col h-12 md:h-auto items-start justify-center rounded w-[162px] sm:w-full">
-                            {/* <select
-                              className="p-0 placeholder:text-gray_300 text-base bg-gray_800 text-gray_300 rounded w-full text-left h-12 pl-4"
-                              name="selectedDate"
-                            >
-                              <option value="" disabled>
-                                Select a date
-                              </option>
-                              {selectedDates.map((selectedDate, index) => (
-                                <option key={index} value={selectedDate}>
-                                  {new Date(selectedDate).toLocaleDateString(
-                                    "en-US"
-                                  )}{" "}
-                                </option>
-                              ))}
-                            </select> */}
 
                             <select
                                 className="p-0 placeholder:text-gray_300 text-base bg-gray_800 text-gray_300 rounded w-full text-left h-12 pl-4"
@@ -652,19 +675,14 @@ const AddPlayForm = () => {
                         placeholder="Enter code"
                         className="p-0 placeholder:text-gray_300 text-base bg-gray_800 text-gray_300 rounded w-[400px] text-left h-12 pl-4"
                         type="text"
-                        value={offer.promo_code} // Use the promo code value from the state
+                        value={offer.promo_code} 
                         onChange={(e) => {
                           const updatedOffers = [...otherOffers];
                           updatedOffers[index].promo_code = e.target.value;
                           setOtherOffers(updatedOffers);
                         }}
                       />
-                      {/* <input
-                        name="groupThirtyOne"
-                        placeholder="Enter code"
-                        className="p-0 placeholder:text-gray_300 text-base bg-gray_800 text-gray_300 rounded w-[400px] text-left h-12 pl-4 pr-4"
-                        type="number"
-                      /> */}
+                    
                     </div>
                   </div>
                     </div>
@@ -685,20 +703,6 @@ const AddPlayForm = () => {
                   Load More Offers
                 </Text>
               </div>
-
-
-                 
-
-                {/* {offersDisplayCount < selectedOtherOffers.length && (
-              <div className="flex flex-col items-center justify-start pt-[3px]">
-                <Text
-                  className="text-sm text-white_A700 underline"
-                  onClick={handleLoadMoreOffers}
-                >
-                  Load More Offers
-                </Text>
-              </div>
-            )} */}
 
               </div>
             </div>
@@ -837,6 +841,9 @@ const AddPlayForm = () => {
           {/* Save Play */}
           <div className="flex flex-row gap-[25px] items-start justify-start ml-auto mt-6 self-stretch w-auto">
             <Button
+            // type="submit"
+            // name="action"
+            // value="draft" 
               className="cursor-pointer flex items-center justify-center min-w-[166px] w-auto"
               leftIcon={
                 <Img
@@ -855,6 +862,9 @@ const AddPlayForm = () => {
             </Button>
 
             <Button
+            type="submit"
+            // name="action"
+            // value="post" // Value indicating "Post Live Show"
               className="cursor-pointer flex items-center justify-center min-w-[164px] w-auto"
               leftIcon={
                 <Img
