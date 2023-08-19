@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from 'axios';
+
 
 import { Button, Img, Input, List, Line,Text } from "UI_Components";
 
@@ -11,21 +13,50 @@ import PieChart from "Components/Admin/PieChart";
 import ListData from "Components/Admin/ListData";
 import DashboardTable from "Components/Admin/DashboardTable";
 
-
+import { apiUrl } from "../../../../env";
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
   const [active, setActive] = useState('Home');
   const [toggle, setToggle] = useState(false);
 
-// User info:
-const [userInfo, setUserInfo] = useState({});
 
-useEffect(() => {
-  // Retrieve user information from local storage or context
-  const storedUserInfo = JSON.parse(localStorage.getItem('userInfo'));
-  setUserInfo(storedUserInfo);
-}, []);
+// User info:
+  const [userInfo, setUserInfo] = useState({});
+  const accessToken = localStorage.getItem('accessToken');
+
+ useEffect(() => {
+    if (accessToken) {
+      fetchUserInfo();
+    } else {
+      // Redirect to login if no access token
+      navigate('/login');
+    }
+  }, [accessToken]);
+
+ console.log('Authorization:  ', accessToken)
+ console.log('Authorization: ',`Bearer ${accessToken}`)
+
+
+  const fetchUserInfo = async () => {
+    try {
+      const response = await axios.get(`${apiUrl}/auth/users/me/`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`
+        }
+      });
+  
+      // Update the user information state
+      setUserInfo(response.data);
+  
+      // Console log the user information
+      console.log('User Info:', response.data);
+    } catch (error) {
+      console.error('Error fetching user info:', error);
+      // Handle error (e.g., redirect to an error page)
+    }
+  };
+  
 
 
   return (
@@ -330,12 +361,13 @@ useEffect(() => {
                     className="font-bold text-left text-white_A700 w-auto"
                     variant="body4"
                   >
-                    Cameron Williamson
+                    {userInfo.first_name} {userInfo.last_name}
                   </Text>
                   <Text
                     className="not-italic text-gray_300 text-left w-auto"
                     variant="body5"
                   >
+                    {userInfo.email}
                     System administrator
                   </Text>
                 </div>
@@ -386,7 +418,7 @@ useEffect(() => {
                     className="font-bold text-left text-white_A700 w-auto"
                     variant="body4"
                   >
-                    Cameron Williamson
+                    {userInfo.first_name} {userInfo.last_name}
                   </Text>
                   <Text
                     className="not-italic text-gray_300 text-left w-auto"

@@ -36,26 +36,15 @@ const AdminAddStream = () => {
   
  
 
-// Plays
-// const [formData, setFormData] = useState({
-//   title: '',
-//   synopsis: '',
-//   video: '',
-//   trailer: '',
-//   video_poster: '',
-//   video_casts: Array.from({ length: 20 }, () => ({ real_name: '', cast_name: '', image: null })),
-//   video_available: [
-//     { three_days: '', three_price: '', seven_days: '', seven_price: '', fourteen_days: '', fourteen_price: '' },
-//   ],
-// });
 
+// Streams
 const [title, setTitle] = useState('');
 const [synopsis, setSynopsis] = useState('');
 const [poster, setPoster] = useState(null);
 const [trailer, setTrailer] = useState(null);
 const [video, setVideo] =useState('');
-const [video_casts, setvideo_casts] = useState(
-  Array.from({ length: 20 }, () => ({ real_name: '', cast_name: '' }))
+const [castMembers, setCastMembers] = useState(
+  Array.from({ length: 20 }, () => ({ real_name: "", cast_name: "" }))
 );
 const [video_available, setvideo_available] = useState([
   { three_days: '', three_price: '', seven_days: '', seven_price: '', fourteen_days: '', fourteen_price: '' },
@@ -72,71 +61,93 @@ const handleChange = (event) => {
   }));
 };
 
-const handleCastChange = (event, index) => {
-  const { name, value } = event.target;
-  const newCasts = [...formData.video_casts];
-  newCasts[index][name] = value;
-  setFormData((prevData) => ({
-    ...prevData,
-    video_casts: newCasts,
-  }));
+
+  // Cast Change:
+  const handleCastChange = (index, field, value) => {
+    const updatedCastMembers = [...castMembers];
+    updatedCastMembers[index][field] = value;
+    setCastMembers(updatedCastMembers);
+  };
+
+// handling cast image preview:
+const handleImageChange = (index, event) => {
+  const file = event.target.files[0];
+  if (file) {
+    const updatedCastMembers = [...castMembers];
+    updatedCastMembers[index].imagePreview = URL.createObjectURL(file);
+    setCastMembers(updatedCastMembers);
+  }
 };
 
-const handleImageChange = (event, index) => {
-  const { name, files } = event.target;
-  const newCasts = [...formData.video_casts];
-  newCasts[index][name] = files[0];
-  setFormData((prevData) => ({
-    ...prevData,
-    video_casts: newCasts,
-  }));
-};
+const handleSubmit = async (e) => {
+  console.log("Submitting........");
 
-const handleSubmit = async (event) => {
-  event.preventDefault();
+  e.preventDefault();
+
+  // Check if the user is authenticated before submitting the play
+  const accessToken = localStorage.getItem('accessToken');
+  if (!accessToken) {
+    // User is not authenticated, handle accordingly (e.g., show an error message)
+    console.log("User is not authenticated");
+    return;
+  }
+
+
+  const formData = new FormData();
+  formData.append("title", title);
+  formData.append("synopsis", synopsis);
+  formData.append("poster", posterFile);
+  formData.append("infotrailer", infotrailerFile);
+  formData.append("video", videoFile);
+  formData.append("theater", selectedTheatre);
+  formData.append("is_available", isAvailableString);
+  formData.append("play_cast_list", JSON.stringify(castMembers));
+
+ 
+
+ 
+  console.log('POST Request Payload:', formData); // Log the payload you're sending
+  console.log('Headers:', {
+    Authorization: `Bearer ${accessToken}`,
+    'Content-Type': 'multipart/form-data', // Make sure to set the content type if required
+  });
+
 
   try {
-    const response = await axios.post('http://127.0.0.1:8000/api/videos/', formData, {
+    const response = await axios.post(`${apiUrl}/api/videos/`, formData, {
       headers: {
-        'Content-Type': 'multipart/form-data',
-        Authorization: 'Bearer YOUR_ACCESS_TOKEN', // Replace with your actual token
+        Authorization: `Bearer ${accessToken}`,
+        'Content-Type': 'multipart/form-data', // Make sure to set content type
+
       },
     });
 
-    console.log(response.data);
-    // Handle success, show a success message to the user
+    const responseBody = response.data;
+    console.log(responseBody);
+    navigate('/admin-allstreams');
+
   } catch (error) {
-    console.error(error);
-    // Handle error, show an error message to the user
+    // Handle error
+    console.error('Error submitting play:', error);
+if (error.response) {
+  console.log('API Response:', error.response.data);
+}
   }
 };
 
 
-  // Cast Display(Loading):
-// const video_castsPerPage = 5;
-const video_castsPerPage = 5;
-const totalvideo_casts = video_casts.length;
-const [castDisplayCount, setCastDisplayCount] = useState(video_castsPerPage);
-const showLoadMoreButton = castDisplayCount < totalvideo_casts;
 
-// handling cast image preview:
-// const handleImageChange = (index, event) => {
-//   const file = event.target.files[0];
-//   if (file) {
-//     const updatedvideo_casts = [...video_casts];
-//     updatedvideo_casts[index].imagePreview = URL.createObjectURL(file);
-//     setvideo_casts(updatedvideo_casts);
-//   }
-// };
 
-const handleAvailabilityChange = (index, field, value) => {
-  const newVideoAvailable = [...video_available];
-  newVideoAvailable[index][field] = value;
-  setvideo_available(newVideoAvailable);
-};
+
+const castMembersPerPage = 5;
+const totalCastMembers = castMembers.length;
+const [castDisplayCount, setCastDisplayCount] = useState(castMembersPerPage);
+const showLoadMoreButton = castDisplayCount < totalCastMembers;
+
+
 
 console.log(
-  "Data: ", title, synopsis,poster,trailer,video,video_casts,video_available
+  "Data: ", title, synopsis,poster,trailer,video, castMembers,video_available
 )
 
 return (
@@ -521,151 +532,15 @@ return (
                           synopsis
                         </Text>
                       </div>
-                       
-                    </div>
-                    {/* Content */}
-                    <div className="bg-black_900 w-[725px] flex sm:flex-1 flex-col items-start justify-start mb-[51px] md:px-10 px-12 sm:px-5 py-6 rounded-lg md:w-[535px] sm:w-full">
-                    <List
-                        className="flex-col gap-8 grid items-start w-[443px] md:w-full"
-                        orientation="vertical"
-                      >
-                        {/* Play Poster */}
-                        <div className="flex flex-col gap-4 items-start justify-center my-0 w-[443px] sm:w-full">
-                          <Text
-                            className="font-normal not-italic text-left text-white_A700 w-auto"
-                            variant="body4"
-                          >
-                            Play poster
-                          </Text>
-                          <div className="flex items-center justify-center w-full">
-                                <label htmlFor="poster-file" className="flex flex-col items-center justify-center w-full h-64 border border-gray_800 border-dashed rounded-lg cursor-pointer bg-black_900 hover:bg-black_900_01">
-                                <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                                    <Img
-                                    src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927652/HeartStrings/SVG/img_iconparkoutli_dznpma.svg"
-                                    className="h-6 w-6 mb-4"
-                                    alt="iconparkoutli"
-                                    />
-                                    <p className="mb-2 text-sm text-white_A700 font-semibold">Drop an image here or click to upload</p>
-                                    <p className="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or WEBP (MAX. 800x400px)</p>
-                                </div>
-                                <input
-                                    id="poster-file"
-                                    type="file"
-                                    accept="image/*"
-                                    className="hidden"
-                                    onChange={(e) => setPoster(e.target.files[0])}
-                                />
-                                </label>
-                                <div id="image-preview">
-                                    {poster && (
-                                        <img
-                                        id="preview-image"
-                                        className="w-64 h-32"
-                                        src={URL.createObjectURL(poster)}
-                                        alt="Poster Preview"
-                                        />
-                                    )}
-                                </div>
-                            </div>
 
-                        </div>
-
-                        {/* Info Trailer */}
-                        <div className="flex flex-col gap-6 items-start justify-center my-0 w-[443px] sm:w-full">
-                          <Text
-                            className="font-normal not-italic text-left text-white_A700 w-auto"
-                            variant="body4"
-                          >
-                            Infotrailer
-                          </Text>
-                          <div className="flex items-center justify-center w-full">
-                                <label htmlFor="trailer-file" className="flex flex-col items-center justify-center w-full h-64 border border-gray_800 border-dashed rounded-lg cursor-pointer bg-black_900 hover:bg-black_900_01">
-                                <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                                    <Img
-                                    src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927652/HeartStrings/SVG/img_iconparkoutli_dznpma.svg"
-                                    className="h-6 w-6 mb-4"
-                                    alt="iconparkoutli"
-                                    />
-                                    <p className="mb-2 text-sm text-white_A700 font-semibold">Drop an infotrailer here or click to upload</p>
-                                    <p className="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or WEBP (MAX. 800x400px)</p>
-                                </div>
-                                <input
-                                    id="trailer-file"
-                                    type="file"
-                                    accept="video/*"
-                                    className="hidden"
-                                    onChange={(e) => setTrailer(e.target.files[0])}
-                                />
-                                </label>
-                                <div id="image-preview">
-                                    {trailer && (
-                                        <img
-                                        id="preview-image"
-                                        className="w-64 h-32"
-                                        src={URL.createObjectURL(trailer)}
-                                        alt="Infotrailer Preview"
-                                        />
-                                    )}
-                                </div>
-                            </div>
-
-                        </div>
-
-                        {/* Video */}
-                        <div className="flex flex-col gap-6 items-start justify-center my-0 w-[443px] sm:w-full">
-                          <Text
-                            className="font-normal not-italic text-left text-white_A700 w-auto"
-                            variant="body4"
-                          >
-                            Play Video
-                          </Text>
-                          <div className="flex items-center justify-center w-full">
-                                <label htmlFor="video-file" className="flex flex-col items-center justify-center w-full h-64 border border-gray_800 border-dashed rounded-lg cursor-pointer bg-black_900 hover:bg-black_900_01">
-                                <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                                    <Img
-                                    src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927652/HeartStrings/SVG/img_iconparkoutli_dznpma.svg"
-                                    className="h-6 w-6 mb-4"
-                                    alt="iconparkoutli"
-                                    />
-                                    <p className="mb-2 text-sm text-white_A700 font-semibold">Drop a video here or click to upload</p>
-                                    <p className="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or WEBP (MAX. 800x400px)</p>
-                                </div>
-                                <input
-                                    id="video-file"
-                                    type="file"
-                                    accept="video/*"
-                                    className="hidden"
-                                    onChange={(e) => setVideo(e.target.files[0])}
-                                />
-                                </label>
-                                <div id="image-preview">
-                                    {video && (
-                                        <img
-                                        id="preview-image"
-                                        className="w-64 h-32"
-                                        src={URL.createObjectURL(video)}
-                                        alt="Poster Preview"
-                                        />
-                                    )}
-                                </div>
-                            </div>
-
-                        </div>
-
-                      </List>
-                    </div>
-
-                  </div>
-
-
-
-                  {/* Time */}
-                  <div className="bg-black_900 flex flex-col gap-8 items-start justify-start max-w-[450px] mt-7 sm:px-5 px-6 py-12 rounded-lg w-full">
+                      
+                    {/* Time */}
+                  <div className="bg-black_900 flex flex-col gap-8 items-start justify-start  mt-7 sm:px-5 px-6 py-12 rounded-lg w-full">
                   <div className="flex flex-col gap-8 items-start justify-start self-stretch w-auto sm:w-full">
                         <div className="flex flex-col gap-6 items-start justify-start self-stretch w-auto sm:w-full">
                           <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto">
                             <Text
-                              className="font-normal not-italic text-left text-white_A700 w-auto"
+                              className="font-normal not-italic text-start text-white_A700 w-auto"
                               as="h5"
                               variant="h5"
                             >
@@ -825,116 +700,279 @@ return (
                       </div>
 
                     </div>
-                 
-                  {/* Cast */}
-                  <div className="bg-black_900 flex flex-col gap-8 items-start justify-start max-w-[1450px] mt-7 sm:px-5 px-6 py-12 rounded-lg w-full">
-                    <Text
-                      className="font-bold text-left text-white_A700 w-auto"
-                      as="h5"
-                      variant="h5"
-                    >
-                      Add cast
-                    </Text>
-                    <Text
-                      className="font-normal not-italic text-gray_300 text-left w-auto"
-                      variant="body4"
-                    >
-                      Cast picture
-                    </Text>
-                    <div className="gap-2 grid sm:grid-cols-1 md:grid-cols-3 grid-cols-5 items-start justify-start self-stretch w-auto md:w-full">
-                      
-                      {video_casts.slice(0, castDisplayCount).map((castMember, index) => (
-
-
-                        <div key={index} className="flex flex-col gap-8 items-start justify-start self-stretch w-full">
-                          <div className="flex flex-col items-start justify-start w-[200px]">
-                            {/* Drag and Drop */}
-                            <div className="flex items-center justify-center w-full">
-                            <label htmlFor={`dropzone-file-${index}`} className="flex flex-col items-center justify-center w-full h-64 border border-gray_800 border-dashed rounded-lg cursor-pointer bg-black_900 hover:bg-black_900_01">
+                       
+                    </div>
+                    {/* Content */}
+                    <div className="bg-black_900 w-[725px] flex sm:flex-1 flex-col items-start justify-start mb-[51px] md:px-10 px-12 sm:px-5 py-6 rounded-lg md:w-[535px] sm:w-full">
+                    <List
+                        className="flex-col gap-8 grid items-start w-[443px] md:w-full"
+                        orientation="vertical"
+                      >
+                        {/* Play Poster */}
+                        <div className="flex flex-col gap-4 items-start justify-center my-0 w-[443px] sm:w-full">
+                          <Text
+                            className="font-normal not-italic text-left text-white_A700 w-auto"
+                            variant="body4"
+                          >
+                            Play poster
+                          </Text>
+                          <div className="flex items-center justify-center w-full">
+                                <label htmlFor="poster-file" className="flex flex-col items-center justify-center w-full h-64 border border-gray_800 border-dashed rounded-lg cursor-pointer bg-black_900 hover:bg-black_900_01">
                                 <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                                  {castMember.imagePreview ? (
-                                    <img src={castMember.imagePreview} className="h-24 w-24 mb-4" alt="Preview" />
-                                  ) : (
                                     <Img
-                                      src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927652/HeartStrings/SVG/img_iconparkoutli_dznpma.svg"
-                                      className="h-6 w-6 mb-4"
-                                      alt="iconparkoutli"
+                                    src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927652/HeartStrings/SVG/img_iconparkoutli_dznpma.svg"
+                                    className="h-6 w-6 mb-4"
+                                    alt="iconparkoutli"
                                     />
-                                  )}
-                                  <p className="mb-2 text-sm text-white_A700 font-semibold">Drop an image here or click to browse</p>
-                                  <p className="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or WEBP (MAX. 800x400px)</p>
+                                    <p className="mb-2 text-sm text-white_A700 font-semibold">Drop an image here or click to upload</p>
+                                    <p className="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or WEBP (MAX. 800x400px)</p>
                                 </div>
                                 <input
-                                  id={`dropzone-file-${index}`}
-                                  type="file"
-                                  accept="image/*"
-                                  className="hidden"
-                                  onChange={(e) => handleImageChange(index, e)}
+                                    id="poster-file"
+                                    type="file"
+                                    accept="image/*"
+                                    className="hidden"
+                                    onChange={(e) => setPoster(e.target.files[0])}
                                 />
-                              </label>
-
-                              {/* preview */}
-                              {/* <div id={`image-preview-${index}`} className="hidden mt-4">
-                                <img id={`preview-image-${index}`} className="w-64 h-32" src="#" alt="Preview" />
-                              </div> */}
-
+                                </label>
+                                <div id="image-preview">
+                                    {poster && (
+                                        <img
+                                        id="preview-image"
+                                        className="w-64 h-32"
+                                        src={URL.createObjectURL(poster)}
+                                        alt="Poster Preview"
+                                        />
+                                    )}
+                                </div>
                             </div>
-                          </div>
 
-                          <div className="flex flex-col gap-4 items-center justify-start self-stretch w-auto">
-                            <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto">
-                              <Text
-                                className="font-normal not-italic text-left text-white_A700 w-auto"
-                                variant="body4"
-                              >
-                                Real name
-                              </Text>
-                              <input
-                                className="bg-gray_800 h-12 p-0 pl-4 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
-                                name={`real_name_${index}`}
-                                placeholder="Anne Gitau"
-                                
-                                value={castMember.real_name}
-                                onChange={(e) => handleCastChange(index, 'real_name', e.target.value)}
-                              />
-                            </div>
-                            <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto">
-                              <Text
-                                className="font-normal not-italic text-left text-white_A700 w-auto"
-                                variant="body4"
-                              >
-                                Cast name
-                              </Text>
-                              <input
-                                // wrapClassName="w-full"
-                                className="bg-gray_800 h-12 p-0 pl-4 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
-                                name={`cast_name_${index}`}
-                                placeholder="Anne Gitau"
-                                shape="RoundedBorder4"
-                                size="md"
-                                variant="FillGray800"
-                                value={castMember.cast_name}
-                                onChange={(e) => handleCastChange(index, 'cast_name', e.target.value)}
-                              />
-                            </div>
-                          </div>
                         </div>
-                      ))}
+
+                        {/* Info Trailer */}
+                        <div className="flex flex-col gap-6 items-start justify-center my-0 w-[443px] sm:w-full">
+                          <Text
+                            className="font-normal not-italic text-left text-white_A700 w-auto"
+                            variant="body4"
+                          >
+                            Infotrailer
+                          </Text>
+                          <div className="flex items-center justify-center w-full">
+                                <label htmlFor="trailer-file" className="flex flex-col items-center justify-center w-full h-64 border border-gray_800 border-dashed rounded-lg cursor-pointer bg-black_900 hover:bg-black_900_01">
+                                <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                                    <Img
+                                    src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927652/HeartStrings/SVG/img_iconparkoutli_dznpma.svg"
+                                    className="h-6 w-6 mb-4"
+                                    alt="iconparkoutli"
+                                    />
+                                    <p className="mb-2 text-sm text-white_A700 font-semibold">Drop an infotrailer here or click to upload</p>
+                                    <p className="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or WEBP (MAX. 800x400px)</p>
+                                </div>
+                                <input
+                                    id="trailer-file"
+                                    type="file"
+                                    accept="video/*"
+                                    className="hidden"
+                                    onChange={(e) => setTrailer(e.target.files[0])}
+                                />
+                                </label>
+                                <div id="image-preview">
+                                    {trailer && (
+                                        <img
+                                        id="preview-image"
+                                        className="w-64 h-32"
+                                        src={URL.createObjectURL(trailer)}
+                                        alt="Infotrailer Preview"
+                                        />
+                                    )}
+                                </div>
+                            </div>
+
+                        </div>
+
+                        {/* Video */}
+                        <div className="flex flex-col gap-6 items-start justify-center my-0 w-[443px] sm:w-full">
+                          <Text
+                            className="font-normal not-italic text-left text-white_A700 w-auto"
+                            variant="body4"
+                          >
+                            Play Video
+                          </Text>
+                          <div className="flex items-center justify-center w-full">
+                                <label htmlFor="video-file" className="flex flex-col items-center justify-center w-full h-64 border border-gray_800 border-dashed rounded-lg cursor-pointer bg-black_900 hover:bg-black_900_01">
+                                <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                                    <Img
+                                    src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927652/HeartStrings/SVG/img_iconparkoutli_dznpma.svg"
+                                    className="h-6 w-6 mb-4"
+                                    alt="iconparkoutli"
+                                    />
+                                    <p className="mb-2 text-sm text-white_A700 font-semibold">Drop a video here or click to upload</p>
+                                    <p className="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or WEBP (MAX. 800x400px)</p>
+                                </div>
+                                <input
+                                    id="video-file"
+                                    type="file"
+                                    accept="video/*"
+                                    className="hidden"
+                                    onChange={(e) => setVideo(e.target.files[0])}
+                                />
+                                </label>
+                                <div id="image-preview">
+                                    {video && (
+                                        <img
+                                        id="preview-image"
+                                        className="w-64 h-32"
+                                        src={URL.createObjectURL(video)}
+                                        alt="Poster Preview"
+                                        />
+                                    )}
+                                </div>
+                            </div>
+
+                        </div>
+
+                        
+
+
+
+                      </List>
                     </div>
-                        {/* More Casts */}
-                        <button
-                          onClick={() => {
-                            if (castDisplayCount === totalvideo_casts) {
-                              setCastDisplayCount(video_castsPerPage);
-                            } else {
-                              setCastDisplayCount(castDisplayCount + video_castsPerPage);
-                            }
-                          }}
-                          className="text-red_900 hover:text-red_900_01 underline cursor-pointer"
+                    
+
+                  </div>
+
+                  
+
+
+
+
+                 
+                   {/* Cast */}
+          <div className="bg-black_900 flex flex-col gap-8 items-start justify-start max-w-[1450px] mt-7 sm:px-5 px-6 py-12 rounded-lg w-full">
+            <Text
+              className="font-bold text-left text-white_A700 w-auto"
+              as="h5"
+              variant="h5"
+            >
+              Add cast
+            </Text>
+            <Text
+              className="font-normal not-italic text-gray_300 text-left w-auto"
+              variant="body4"
+            >
+              Cast picture
+            </Text>
+            <div className="gap-2 grid sm:grid-cols-1 md:grid-cols-3 grid-cols-5 items-start justify-start self-stretch w-auto md:w-full">
+              {castMembers
+                .slice(0, castDisplayCount)
+                .map((castMember, index) => (
+                  <div
+                    key={index}
+                    className="flex flex-col gap-8 items-start justify-start self-stretch w-full"
+                  >
+                    <div className="flex flex-col items-start justify-start w-[200px]">
+                      {/* Drag and Drop */}
+                      <div className="flex items-center justify-center w-full">
+                        <label
+                          htmlFor={`dropzone-file-${index}`}
+                          className="flex flex-col items-center justify-center w-full h-64 border border-gray_800 border-dashed rounded-lg cursor-pointer bg-black_900 hover:bg-black_900_01"
                         >
-                          {castDisplayCount === totalvideo_casts ? "Show Less" : "Load More Casts"}
-                        </button>
-                   </div>
+                          <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                            {castMember.imagePreview ? (
+                              <img
+                                src={castMember.imagePreview}
+                                className="h-24 w-24 mb-4"
+                                alt="Preview"
+                              />
+                            ) : (
+                              <Img
+                                src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927652/HeartStrings/SVG/img_iconparkoutli_dznpma.svg"
+                                className="h-6 w-6 mb-4"
+                                alt="iconparkoutli"
+                              />
+                            )}
+                            <p className="mb-2 text-sm text-white_A700 font-semibold">
+                              Drop an image here or click to browse
+                            </p>
+                            <p className="text-xs text-gray-500 dark:text-gray-400">
+                              SVG, PNG, JPG or WEBP (MAX. 800x400px)
+                            </p>
+                          </div>
+                          <input
+                            id={`dropzone-file-${index}`}
+                            type="file"
+                            accept="image/*"
+                            className="hidden"
+                            onChange={(e) => handleImageChange(index, e)}
+                          />
+                        </label>
+
+                       
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col gap-4 items-center justify-start self-stretch w-auto">
+                      <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto">
+                        <Text
+                          className="font-normal not-italic text-left text-white_A700 w-auto"
+                          variant="body4"
+                        >
+                          Real name
+                        </Text>
+                        <input
+                          className="bg-gray_800 h-12 p-0 pl-4 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
+                          name={`real_name_${index}`}
+                          placeholder="Anne Gitau"
+                          shape="RoundedBorder4"
+                          size="md"
+                          variant="FillGray800"
+                          value={castMember.real_name}
+                          onChange={(e) =>
+                            handleCastChange(index, "real_name", e.target.value)
+                          }
+                        />
+                      </div>
+                      <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto mb-8">
+                        <Text
+                          className="font-normal not-italic text-left text-white_A700 w-auto"
+                          variant="body4"
+                        >
+                          Cast name
+                        </Text>
+                        <input
+                          className="bg-gray_800 h-12 p-0 pl-4 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
+                          name={`cast_name_${index}`}
+                          placeholder="Anne Gitau"
+                          shape="RoundedBorder4"
+                          size="md"
+                          variant="FillGray800"
+                          value={castMember.cast_name}
+                          onChange={(e) =>
+                            handleCastChange(index, "cast_name", e.target.value)
+                          }
+                        />
+                      </div>
+                    </div>
+                  </div>
+                ))}
+            </div>
+            {/* More Casts */}
+            {/* Show "Load More" or "Show Less" button */}
+            <button
+              onClick={() => {
+                if (castDisplayCount === totalCastMembers) {
+                  setCastDisplayCount(castMembersPerPage);
+                } else {
+                  setCastDisplayCount(castDisplayCount + castMembersPerPage);
+                }
+              }}
+              className="text-red_900 hover:text-red_900_01 underline cursor-pointer"
+            >
+              {castDisplayCount === totalCastMembers
+                ? "Show Less"
+                : "Load More Casts"}
+            </button>
+          </div>
 
                   {/* Save Play */}
                   <div className="flex flex-row gap-[25px] items-start justify-start ml-auto mt-6 self-stretch w-auto">

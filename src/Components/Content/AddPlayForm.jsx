@@ -15,10 +15,10 @@ import { apiUrl } from "../../../env";
 
 console.log('API: ', apiUrl)
 
-const YOUR_ACCESS_TOKEN =
-  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjkxNTkwMjg0LCJpYXQiOjE2OTE1ODYxODksImp0aSI6IjliNTMxMDU3ZGNmZTRhOWE4N2EwNTE0MjE0MjczMzc1IiwidXNlcl9pZCI6MX0.BJzwxGxuV4TNmXxc9fEv3j-zM4o1mEKSKmC3B6aBln8";
 
 const AddPlayForm = () => {
+  const navigate = useNavigate();
+
   const [availability, setAvailability] = React.useState(false);
 
   const handleSwitchChange = (newValue) => {
@@ -101,6 +101,18 @@ const AddPlayForm = () => {
     }));
   };
 
+// Theatre Mapping:
+const theaterMapping = {
+  "Alliance Française": 'Alliance Francaise',
+  "Nairobi Cinema": 'Nairobi Cinemas',
+  "Kenya National Theatre": 'Kenya National Theater',
+};
+
+
+const handleTheatreChange = (event) => {
+  setSelectedTheatre(theaterMapping[event.target.value]);
+};
+
   // New Handle Submit:
   const handleSubmit = async (e) => {
     console.log("Submitting........");
@@ -114,7 +126,6 @@ const AddPlayForm = () => {
       console.log("User is not authenticated");
       return;
     }
-    console.log("TOKEN: ",accessToken);
 
   
     const formData = new FormData();
@@ -122,7 +133,9 @@ const AddPlayForm = () => {
     formData.append("synopsis", synopsis);
     formData.append("poster", posterFile);
     formData.append("infotrailer", infotrailerFile);
+    console.log('Selected Theatre:', selectedTheatre);
     formData.append("theater", selectedTheatre);
+    // formData.append("theater", selectedTheatre);
     formData.append("is_available", isAvailableString);
   
     formData.append("play_cast_list", JSON.stringify(castMembers));
@@ -148,7 +161,11 @@ const AddPlayForm = () => {
     }));
     formData.append("other_offers", JSON.stringify(offersToSend));
 
-    console.log(formData);
+    console.log('POST Request Payload:', formData); // Log the payload you're sending
+    console.log('Headers:', {
+      Authorization: `Bearer ${accessToken}`,
+      'Content-Type': 'multipart/form-data', // Make sure to set the content type if required
+    });
 
   
     try {
@@ -156,6 +173,7 @@ const AddPlayForm = () => {
         headers: {
           Authorization: `Bearer ${accessToken}`,
           'Content-Type': 'multipart/form-data', // Make sure to set content type
+
         },
       });
   
@@ -167,100 +185,14 @@ const AddPlayForm = () => {
     } catch (error) {
       // Handle error
       console.error('Error submitting play:', error);
+  if (error.response) {
+    console.log('API Response:', error.response.data);
+  }
     }
   };
   
   
-  // Handle Submit
-  // const handleSubmit = async (e) => {
-  //   const userInfoUrl = `${apiUrl}/auth/users/me/`;
-  //   const userInfoResponse = await fetch(userInfoUrl, {
-  //     headers: {
-  //       Authorization: `Bearer ${yourAuthenticationToken}`, // Replace with the actual token
-  //     },
-  //   });
-  
-  //   if (userInfoResponse.status === 401) {
-  //     // User is not authenticated, handle accordingly (e.g., show an error message)
-  //     console.log("User is not authenticated");
-  //     return;
-  //   }
-
-  //   e.preventDefault();  
-  //   const formData = new FormData();
-  //   formData.append("title", title);
-  //   formData.append("synopsis", synopsis);
-  //   formData.append("poster", posterFile);
-  //   formData.append("infotrailer", infotrailerFile);
-  //   formData.append("theater", selectedTheatre);
-  //   formData.append("is_available", isAvailableString);
-
-  //   formData.append("play_cast_list", JSON.stringify(castMembers));
-  //   formData.append("play_dateTime", JSON.stringify(playDateTimes));
-  
-  //   // Append BOGOF offer if selected
-  //   if (bogofOffer.bogof) {
-  //     formData.append('play_offers', JSON.stringify([{
-  //       bogof: bogofOffer.bogof,
-  //       offer_day: bogofOffer.offer_day,
-  //       number_of_tickets: bogofOffer.number_of_tickets,
-  //       promo_code: bogofOffer.promo_code,
-  //     }]));
-  //   }
-  
-  //   // Append other_offers
-  //   const offersToSend = otherOffers.slice(0, 5).map((offer, index) => ({
-  //     offers_name: offer.offers_name,
-  //     offer_day: offerDates[index], // Use the selected date from offerDates array
-  //     promo_code: offer.promo_code,
-  //     percentage: offer.percentage,
-  //     number_of_tickets: offer.number_of_tickets,
-  //   }));
-  //   formData.append("other_offers", JSON.stringify(offersToSend));
-  
-  //   const response = await fetch(`${apiUrl}/api/videos/`, {
-  //     method: "POST",
-  //     body: formData,
-  //   });
-  
-  //   const responseBody = await response.json();
-  //   console.log(responseBody);
-  // };
-  
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   const apiUrl = "http://127.0.0.1:8000/api/plays/";
-  
-  //   const formData = new FormData();
-  //   formData.append("title", title);
-  //   formData.append("synopsis", synopsis);
-  //   formData.append("poster", posterFile);
-  //   formData.append("infotrailer", infotrailerFile);
-  //   formData.append("theater", selectedTheatre);
-  //   formData.append("play_cast_list", JSON.stringify(castMembers));
-  //   formData.append("play_dateTime", JSON.stringify(playDateTimes));
-  //   if (bogofOffer.bogof) {
-  //     formData.append('play_offers', JSON.stringify([bogofOffer]));
-  //   }
-  //   const offersToSend = otherOffers.slice(0, 5).map((offer, index) => ({
-  //     offers_name: offer.offers_name,
-  //     offer_day: offerDates[index], // Use the selected date from offerDates array
-  //     promo_code: offer.promo_code,
-  //     percentage: offer.percentage,
-  //     number_of_tickets: offer.number_of_tickets,
-  //   }));
-  //   formData.append("other_offers", JSON.stringify(offersToSend));
-  
-  //   const response = await fetch(apiUrl, {
-  //     method: "POST",
-  //     body: formData,
-  //   });
-  
-  //   const responseBody = await response.json();
-  //   console.log(responseBody);
-  // };
-  
-  // Cast Display(Loading):
+ 
   const castMembersPerPage = 5;
   const totalCastMembers = castMembers.length;
   const [castDisplayCount, setCastDisplayCount] = useState(castMembersPerPage);
@@ -275,19 +207,19 @@ const AddPlayForm = () => {
 
  
 
-  console.log(
-    "Data: ",
-    title,
-    synopsis,
-    selectedTheatre,
-    posterFile,
-    'Availability: ', isAvailableString,
-    infotrailerFile,
-    castMembers,
-    playDateTimes,
-    'Bogof: ',bogofOffer,
-    'Other Offers:  ',otherOffers,
-  );
+  // console.log(
+  //   "Data: ",
+  //   title,
+  //   synopsis,
+  //   selectedTheatre,
+  //   posterFile,
+  //   'Availability: ', isAvailableString,
+  //   infotrailerFile,
+  //   castMembers,
+  //   playDateTimes,
+  //   'Bogof: ',bogofOffer,
+  //   'Other Offers:  ',otherOffers,
+  // );
 
   return (
     <>
@@ -457,10 +389,8 @@ const AddPlayForm = () => {
                         id="theatre1"
                         name="theatre"
                         value="Alliance Française"
-                        checked={selectedTheatre === "Alliance Française"}
-                        onChange={() =>
-                          setSelectedTheatre("Alliance Française")
-                        }
+                        checked={selectedTheatre === theaterMapping["Alliance Française"]}
+                        onChange={handleTheatreChange}
                       />
                       <label htmlFor="theatre1">
                         <Text
@@ -479,8 +409,8 @@ const AddPlayForm = () => {
                         id="theatre2"
                         name="theatre"
                         value="Nairobi Cinema"
-                        checked={selectedTheatre === "Nairobi Cinema"}
-                        onChange={() => setSelectedTheatre("Nairobi Cinema")}
+                        checked={selectedTheatre === theaterMapping["Nairobi Cinema"]}
+                        onChange={handleTheatreChange}
                       />
                       <label htmlFor="Nairobi Cinema">
                         <Text
@@ -499,10 +429,8 @@ const AddPlayForm = () => {
                         id="theatre3"
                         name="theatre"
                         value="Kenya National Theatre"
-                        checked={selectedTheatre === "Kenya National Theatre"}
-                        onChange={() =>
-                          setSelectedTheatre("Kenya National Theatre")
-                        }
+                        checked={selectedTheatre === theaterMapping["Kenya National Theatre"]}
+                        onChange={handleTheatreChange}
                       />
                       <label htmlFor="KNT">
                         <Text
@@ -791,7 +719,6 @@ const AddPlayForm = () => {
             </div>
           </div>
 
-          {/* Cast */}
           <div className="bg-black_900 flex flex-col gap-8 items-start justify-start max-w-[1450px] mt-7 sm:px-5 px-6 py-12 rounded-lg w-full">
             <Text
               className="font-bold text-left text-white_A700 w-auto"
@@ -851,10 +778,7 @@ const AddPlayForm = () => {
                           />
                         </label>
 
-                        {/* preview */}
-                        {/* <div id={`image-preview-${index}`} className="hidden mt-4">
-                                <img id={`preview-image-${index}`} className="w-64 h-32" src="#" alt="Preview" />
-                              </div> */}
+                       
                       </div>
                     </div>
 
@@ -879,7 +803,7 @@ const AddPlayForm = () => {
                           }
                         />
                       </div>
-                      <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto">
+                      <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto mb-8">
                         <Text
                           className="font-normal not-italic text-left text-white_A700 w-auto"
                           variant="body4"
@@ -920,6 +844,7 @@ const AddPlayForm = () => {
                 : "Load More Casts"}
             </button>
           </div>
+
 
           {/* Save Play */}
           <div className="flex flex-row gap-[25px] items-start justify-start ml-auto mt-6 self-stretch w-auto">
