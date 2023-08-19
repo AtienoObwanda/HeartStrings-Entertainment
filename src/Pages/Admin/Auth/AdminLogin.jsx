@@ -19,6 +19,24 @@ const AdminLogin = () => {
   const [password, setPassword] = useState('');
   const [loginError, setLoginError] = useState('');
 
+  const handleRefresh = async (refreshToken) => {
+    try {
+      const response = await axios.post(`${apiUrl}/auth/users/me/`, {
+        refresh: refreshToken,
+      });
+  
+      // Update the access token
+      localStorage.setItem('accessToken', response.data.access);
+  
+      // You might also want to update the user information here if needed
+  
+      return response.data.access; // Return the new access token
+    } catch (error) {
+      console.error('Error refreshing token:', error);
+      // Handle the error as needed
+    }
+  };
+
   const handleLogin = async (e) => {
     e.preventDefault();
 
@@ -30,22 +48,7 @@ const AdminLogin = () => {
 
       // Store the access token and redirect on successful login
       localStorage.setItem('accessToken', response.data.access);
-
-      // Fetch user information
-    const userResponse = await axios.get(`${apiUrl}/api/get-user-info/`, {
-      headers: {
-        Authorization: `Bearer ${response.data.access}`
-      }
-    });
-
-    // Store user information in local storage or context
-    localStorage.setItem('userInfo', JSON.stringify(userResponse.data));
-
-    navigate('/admin-dashboard');
-
-
-
-
+      navigate('/admin-dashboard');
     } catch (error) {
       if (error.response && error.response.status === 401) {
         setLoginError('Invalid email or password'); // Display error message
@@ -56,6 +59,10 @@ const AdminLogin = () => {
     }
   };
 
+ 
+
+
+  
 
   return (
     <>

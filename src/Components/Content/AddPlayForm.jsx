@@ -13,6 +13,8 @@ import LiveShowCal from "Components/Admin/LiveShowCal";
 
 import { apiUrl } from "../../../env";
 
+console.log('API: ', apiUrl)
+
 const YOUR_ACCESS_TOKEN =
   "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjkxNTkwMjg0LCJpYXQiOjE2OTE1ODYxODksImp0aSI6IjliNTMxMDU3ZGNmZTRhOWE4N2EwNTE0MjE0MjczMzc1IiwidXNlcl9pZCI6MX0.BJzwxGxuV4TNmXxc9fEv3j-zM4o1mEKSKmC3B6aBln8";
 
@@ -98,11 +100,22 @@ const AddPlayForm = () => {
       [field]: value,
     }));
   };
-  
-  // Handle Submit
+
+  // New Handle Submit:
   const handleSubmit = async (e) => {
+    console.log("Submitting........");
+
     e.preventDefault();
-    const apiUrl = "http://127.0.0.1:8000/api/plays/";
+  
+    // Check if the user is authenticated before submitting the play
+    const accessToken = localStorage.getItem('accessToken');
+    if (!accessToken) {
+      // User is not authenticated, handle accordingly (e.g., show an error message)
+      console.log("User is not authenticated");
+      return;
+    }
+    console.log("TOKEN: ",accessToken);
+
   
     const formData = new FormData();
     formData.append("title", title);
@@ -111,7 +124,7 @@ const AddPlayForm = () => {
     formData.append("infotrailer", infotrailerFile);
     formData.append("theater", selectedTheatre);
     formData.append("is_available", isAvailableString);
-
+  
     formData.append("play_cast_list", JSON.stringify(castMembers));
     formData.append("play_dateTime", JSON.stringify(playDateTimes));
   
@@ -134,15 +147,85 @@ const AddPlayForm = () => {
       number_of_tickets: offer.number_of_tickets,
     }));
     formData.append("other_offers", JSON.stringify(offersToSend));
+
+    console.log(formData);
+
   
-    const response = await fetch(apiUrl, {
-      method: "POST",
-      body: formData,
-    });
+    try {
+      const response = await axios.post(`${apiUrl}/api/plays/`, formData, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          'Content-Type': 'multipart/form-data', // Make sure to set content type
+        },
+      });
   
-    const responseBody = await response.json();
-    console.log(responseBody);
+      const responseBody = response.data;
+      console.log(responseBody);
+      // Handle success 
+      navigate('/admin-allplays');
+
+    } catch (error) {
+      // Handle error
+      console.error('Error submitting play:', error);
+    }
   };
+  
+  
+  // Handle Submit
+  // const handleSubmit = async (e) => {
+  //   const userInfoUrl = `${apiUrl}/auth/users/me/`;
+  //   const userInfoResponse = await fetch(userInfoUrl, {
+  //     headers: {
+  //       Authorization: `Bearer ${yourAuthenticationToken}`, // Replace with the actual token
+  //     },
+  //   });
+  
+  //   if (userInfoResponse.status === 401) {
+  //     // User is not authenticated, handle accordingly (e.g., show an error message)
+  //     console.log("User is not authenticated");
+  //     return;
+  //   }
+
+  //   e.preventDefault();  
+  //   const formData = new FormData();
+  //   formData.append("title", title);
+  //   formData.append("synopsis", synopsis);
+  //   formData.append("poster", posterFile);
+  //   formData.append("infotrailer", infotrailerFile);
+  //   formData.append("theater", selectedTheatre);
+  //   formData.append("is_available", isAvailableString);
+
+  //   formData.append("play_cast_list", JSON.stringify(castMembers));
+  //   formData.append("play_dateTime", JSON.stringify(playDateTimes));
+  
+  //   // Append BOGOF offer if selected
+  //   if (bogofOffer.bogof) {
+  //     formData.append('play_offers', JSON.stringify([{
+  //       bogof: bogofOffer.bogof,
+  //       offer_day: bogofOffer.offer_day,
+  //       number_of_tickets: bogofOffer.number_of_tickets,
+  //       promo_code: bogofOffer.promo_code,
+  //     }]));
+  //   }
+  
+  //   // Append other_offers
+  //   const offersToSend = otherOffers.slice(0, 5).map((offer, index) => ({
+  //     offers_name: offer.offers_name,
+  //     offer_day: offerDates[index], // Use the selected date from offerDates array
+  //     promo_code: offer.promo_code,
+  //     percentage: offer.percentage,
+  //     number_of_tickets: offer.number_of_tickets,
+  //   }));
+  //   formData.append("other_offers", JSON.stringify(offersToSend));
+  
+  //   const response = await fetch(`${apiUrl}/api/videos/`, {
+  //     method: "POST",
+  //     body: formData,
+  //   });
+  
+  //   const responseBody = await response.json();
+  //   console.log(responseBody);
+  // };
   
   // const handleSubmit = async (e) => {
   //   e.preventDefault();
