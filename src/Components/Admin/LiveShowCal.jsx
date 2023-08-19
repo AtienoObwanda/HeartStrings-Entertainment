@@ -80,7 +80,23 @@ export default function LiveShowCal({ onDateSelection }) {
             setSelectedDays([...selectedDays, day]);
             setSelectedTimes([...selectedTimes, { time1: '', time2: '' }]);
 
+            // Format selected dates and times
+            const formattedDates = selectedDays.map(date => ({
+              play_date: date.toISOString().split('T')[0], // Format: "YYYY-MM-DD"
+            }));
+            
+            const formattedTimes = selectedTimes.map(timeObj => ({
+              play_time: timeObj.time1, // Assuming you want to use time1 here
+            }));
+            
+            const playDates = formattedDates.map((dateObj, index) => ({
+              ...dateObj,
+              ...formattedTimes[index],
+            }));
+
             onDateSelection(selectedDays, selectedTimes);
+              // Call the callback function with the formatted data
+              // onDateSelection(playDates);
 
         }
 
@@ -103,6 +119,10 @@ export default function LiveShowCal({ onDateSelection }) {
             setSelectedTimes(updatedTimes);
           }
 
+
+
+
+          
       
         
         // let selectedDayMeetings = meetings.filter((meeting) =>
@@ -119,7 +139,8 @@ export default function LiveShowCal({ onDateSelection }) {
             <div className="pt-16 w-full text-gray_400">
             <div className="px-4 mx-auto sm:px-7 md:max-w-4xl md:px-6 ">
               <div className="md:grid md:grid-cols-2 md:divide-x md:divide-gray-300 ">
-                <div className="md:pr-6 bg-red_900 rounded-lg w-[650px] h-[348px] p-6 sm:w-full">
+                {/* Adjust calendar here */}
+                <div className="md:pr-6 bg-red_900 rounded-lg w-[450px] h-[350px] p-6 sm:w-full">
                   <div className="flex items-center">
                     <h2 className="flex-auto font-semibold text-gray_300">
                       {format(firstDayCurrentMonth, 'MMMM yyyy')}
