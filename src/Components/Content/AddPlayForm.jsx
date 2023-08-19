@@ -51,25 +51,10 @@ const AddPlayForm = () => {
     time2: selectedTimes[index].time2,
   }));
 
-  // const [otherOffers, setOtherOffers] = useState(
-  //   Array.from({ length: 5 }, () => ({
-  //     offers_name: "",
-  //     offer_day: "",
-  //     promo_code: "",
-  //     percentage: "",
-  //     number_of_tickets: "",
-  //   }))
-  // );
-  
-  const otherOffers = selectedOtherOffers.map((offer) => ({
-    offers_name: offer.offers_name,
-    offer_day: offer.offer_day, // This will be the selected date
-    promo_code: offer.promo_code,
-    percentage: offer.percentage,
-    number_of_tickets: offer.number_of_tickets,
-  }));
- 
- 
+  const [otherOffers, setOtherOffers] = useState([{ offers_name: '', offer_day: '', promo_code: '', percentage: '', number_of_tickets: '' }]);
+  const [offerDates, setOfferDates] = useState(['']);
+
+
 
   // Handle date and time select:
   const handleDateSelection = (selectedDates, selectedTimes) => {
@@ -79,13 +64,8 @@ const AddPlayForm = () => {
 
   // Cast Change:
   const handleCastChange = (index, field, value) => {
-    // Create a shallow copy of the castMembers array to modify it
     const updatedCastMembers = [...castMembers];
-
-    // Update the specific field of the cast member at the given index
     updatedCastMembers[index][field] = value;
-
-    // Update the state with the modified castMembers array
     setCastMembers(updatedCastMembers);
   };
 
@@ -100,12 +80,18 @@ const AddPlayForm = () => {
   };
 
   // Handle offers:
+  const handleOfferChange = (index, field, value) => {
+    const updatedOffers = [...otherOffers];
+    updatedOffers[index][field] = value;
+    setOtherOffers(updatedOffers);
+  };
+  
 
   // Handle Submit
   const handleSubmit = async (e) => {
     e.preventDefault();
     const apiUrl = "http://127.0.0.1:8000/api/plays/";
-
+  
     const formData = new FormData();
     formData.append("title", title);
     formData.append("synopsis", synopsis);
@@ -114,42 +100,37 @@ const AddPlayForm = () => {
     formData.append("theater", selectedTheatre);
     formData.append("play_cast_list", JSON.stringify(castMembers));
     formData.append("play_dateTime", JSON.stringify(playDateTimes));
+  
     if (selectedPlayOffer) {
       formData.append("selected_play_offer", JSON.stringify(selectedPlayOffer));
     }
-    formData.append(  "selected_other_offers", JSON.stringify(otherOffers.slice(0, 5)) // Take up to 5 offers
-);
-
- 
-    // formData.append("selected_other_offers", JSON.stringify(otherOffers));
-
-
-
-    // formData.append('play_offers_list', JSON.stringify(offersList));
-    // formData.append('play_dates', JSON.stringify(formattedDates));
-    // formData.append('plays_time', JSON.stringify(playTimes));
-
-
+  
+    // Append other_offers
+    const offersToSend = otherOffers.slice(0, 5).map((offer, index) => ({
+      offers_name: offer.offers_name,
+      offer_day: offerDates[index], // Use the selected date from offerDates array
+      promo_code: offer.promo_code,
+      percentage: offer.percentage,
+      number_of_tickets: offer.number_of_tickets,
+    }));
+    formData.append("other_offers", JSON.stringify(offersToSend));
+  
     const response = await fetch(apiUrl, {
       method: "POST",
       body: formData,
     });
-
+  
     const responseBody = await response.json();
     console.log(responseBody);
   };
-
+  
   // Cast Display(Loading):
   const castMembersPerPage = 5;
   const totalCastMembers = castMembers.length;
   const [castDisplayCount, setCastDisplayCount] = useState(castMembersPerPage);
   const showLoadMoreButton = castDisplayCount < totalCastMembers;
 
-  // Offer Display:
-  // const otherOffersPerPage = 1;
-  // const totalOtherOffers = 5
-  // const [offersDisplayCount, setOffersDisplayCount] =
-  //   useState(otherOffersPerPage);
+  
 
 
     const [offersDisplayCount, setOffersDisplayCount] = useState(1);
@@ -174,7 +155,8 @@ const AddPlayForm = () => {
     posterFile,
     infotrailerFile,
     castMembers,
-    playDateTimes
+    playDateTimes,
+    otherOffers
   );
 
   return (
@@ -549,9 +531,9 @@ const AddPlayForm = () => {
                   </Text>
                 </div>
 
-                {otherOffers
-                  .slice(0, 5)
-                  .map((offer, index) => (
+               
+                  {otherOffers.map((offer, index) => (
+
 
 
                     <div
@@ -563,13 +545,7 @@ const AddPlayForm = () => {
                           <Text className="text-base text-white_A700 w-auto">
                             Offer name
                           </Text>
-                          {/* <input
-                              placeholder="Enter name"
-                              className="p-0 placeholder:text-gray_300 text-base bg-gray_800 text-gray_300 rounded w-[400px] text-left h-12 pl-4"
-                              type="text"
-                              value={offer.offers_name}
-                              onChange={(e) => handleOfferChange(index, "offers_name", e.target.value)}
-                            /> */}
+                         
                           <input
                             placeholder="Enter name"
                             className="p-0 placeholder:text-gray_300 text-base bg-gray_800 text-gray_300 rounded w-[400px] text-left h-12 pl-4"
@@ -605,8 +581,8 @@ const AddPlayForm = () => {
                             <select
                                 className="p-0 placeholder:text-gray_300 text-base bg-gray_800 text-gray_300 rounded w-full text-left h-12 pl-4"
                                 name="selectedDate"
-                              value={offerDates[index]} // Use the selected date from the state
-                              onChange={(e) => {
+                                 value={offerDates[index]}
+                                onChange={(e) => {
                                 const updatedDates = [...offerDates];
                                 updatedDates[index] = e.target.value;
                                 setOfferDates(updatedDates);
@@ -686,6 +662,23 @@ const AddPlayForm = () => {
                   </div>
                     </div>
                   ))}
+
+             
+
+                <div className="flex flex-col items-center justify-start pt-[3px]">
+                <Text
+                  className="text-sm text-white_A700 underline"
+                  onClick={() => {
+                    if (otherOffers.length < 5) {
+                      setOtherOffers([...otherOffers, { offers_name: '', offer_day: '', promo_code: '', percentage: '', number_of_tickets: '' }]);
+                      setOfferDates([...offerDates, '']);
+                    }
+                  }}
+                >
+                  Load More Offers
+                </Text>
+              </div>
+
 
                  
 
