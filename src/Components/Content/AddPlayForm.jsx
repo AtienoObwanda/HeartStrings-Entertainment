@@ -45,6 +45,13 @@ const AddPlayForm = () => {
   );
   const [selectedDates, setSelectedDates] = useState([]);
   const [selectedTimes, setSelectedTimes] = useState([]);
+  const [bogofOffer, setBogofOffer] = useState({
+    bogof: false,
+    offer_day: '',
+    number_of_tickets: '',
+    promo_code: '',
+  });
+  
   const playDateTimes = selectedDates.map((date, index) => ({
     date: date.toISOString().split("T")[0], // Format: "YYYY-MM-DD"
     time1: selectedTimes[index].time1,
@@ -85,8 +92,14 @@ const AddPlayForm = () => {
     updatedOffers[index][field] = value;
     setOtherOffers(updatedOffers);
   };
+  // Bogof
+  const handleBogofChange = (field, value) => {
+    setBogofOffer((prevBogofOffer) => ({
+      ...prevBogofOffer,
+      [field]: value,
+    }));
+  };
   
-
   // Handle Submit
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -100,11 +113,10 @@ const AddPlayForm = () => {
     formData.append("theater", selectedTheatre);
     formData.append("play_cast_list", JSON.stringify(castMembers));
     formData.append("play_dateTime", JSON.stringify(playDateTimes));
-  
-    if (selectedPlayOffer) {
-      formData.append("selected_play_offer", JSON.stringify(selectedPlayOffer));
-    }
-  
+    // Append BOGOF offer
+  if (bogofOffer.bogof) {
+    formData.append('play_offers', JSON.stringify([bogofOffer]));
+  }
     // Append other_offers
     const offersToSend = otherOffers.slice(0, 5).map((offer, index) => ({
       offers_name: offer.offers_name,
@@ -137,15 +149,7 @@ const AddPlayForm = () => {
     const otherOffersPerPage = 1; // Adjust the number of offers per page
 
 
-    const handleLoadMoreOffers = () => {
-      setOffersDisplayCount(offersDisplayCount + otherOffersPerPage);
-    };
-    
-  // const handleLoadMoreOffers = () => {
-  //   if (offersDisplayCount < totalOtherOffers) {
-  //     setOffersDisplayCount(offersDisplayCount + otherOffersPerPage);
-  //   }
-  // };
+ 
 
   console.log(
     "Data: ",
@@ -156,7 +160,8 @@ const AddPlayForm = () => {
     infotrailerFile,
     castMembers,
     playDateTimes,
-    otherOffers
+    'Bogof: ',bogofOffer,
+    'Other Offers:  ',otherOffers,
   );
 
   return (
@@ -464,6 +469,8 @@ const AddPlayForm = () => {
                         type="radio"
                         className="h-6 w-6 checked:bg-red-900 
                           text-red-900 p-3 my-4"
+                          onChange={(e) => handleBogofChange('bogof', e.target.checked)}
+                          checked={bogofOffer.bogof}
                       />
                       <Text className="text-sm text-white_A700 w-auto pl-3">
                         BOGOF
@@ -477,8 +484,8 @@ const AddPlayForm = () => {
                         <select
                           className="p-0 placeholder:text-gray_300 text-base bg-gray_800 text-gray_300 rounded w-full text-left h-12 pl-4"
                           name="selectedDate"
-                          // value={selectedDates}
-                          // onChange={(e) => setSelectedDates(e.target.value)}
+                          value={bogofOffer.offer_day}
+                          onChange={(e) => handleBogofChange('offer_day', e.target.value)}
                         >
                           <option value="" disabled>
                             Select a date
