@@ -5,11 +5,22 @@ import Footer from "Layout/Footer/Footer";
 import StreamCards from "UI_Components/StreamCards/index";
 import Navbar from "Layout/Navbar/Navbar";
 import { connect } from 'react-redux';
+import { format } from "date-fns";
+import { BiArrowBack } from 'react-icons/bi'
+import { FaCloud, FaHeart, FaPlay } from 'react-icons/fa';
 import axios from 'axios';
+import ReactPlayer from 'react-player';
+
 import { apiUrl } from '../../../env';
 
+import { Button, Img } from "UI_Components";
+
+
+
 const AllPlays = () => {
-  const [plays, setPlays] = useState([]); // Change 'videos' to 'plays'
+  const [plays, setPlays] = useState([]); 
+  const [start, setStart] = useState(false)
+
 
   useEffect(() => {
     fetchPlays();
@@ -28,6 +39,11 @@ const AllPlays = () => {
       console.error('Error fetching plays:', error);
     }
   }
+
+
+  // const formattedDate = format(new Date(plays.added_on), "MMMM dd, yyyy");
+
+
       return (
         <>
         <div className="bg-black_900 flex flex-col font-roboto items-center justify-start mx-auto w-full">
@@ -89,18 +105,84 @@ const AllPlays = () => {
               <div className="md:gap-5 gap-6 grid sm:grid-cols-1 md:grid-cols-2 grid-cols-3 justify-center min-h-[auto] w-full">
                   
               {plays.map((play, index) => (
-                <Link to={`/plays/${play.id}`} key={index}> {/* Use play.id to generate unique link */}
-                  <StreamCards
-                      key={index}
-                      className="bg-black_900_01 flex flex-col gap-4 items-center justify-start p-4 rounded-lg w-full hover:border border-white rounded-md p-2"
-                      playPoster={play.poster} alt={`${play.title} Poster`}
-                      playTitle={play.title}
-                      playDescription={play.synopsis.substring(0, 110) + '...'}
-                      userbuttonlabel="Rent play" // You can customize this if needed
-                     //usertime={play.duration}
-                     usertime={play.added_on} // Update this with the relevant field 
+                
+                <Link 
+                // to={`/plays/${play.id}`} key={index}
+                > {/* Use play.id to generate unique link */}
+                  
+                    
 
-                    />
+                    {/* new card */}
+                    <div
+                      className="bg-black_900_01 flex flex-col gap-4 h-[420px] items-center justify-start p-4 rounded-lg w-full hover:border border-white rounded-md p-2"
+                      key={index} >
+                        <div className="flex flex-col items-center justify-start w-full">
+                      <div className="h-[191px] relative w-full">
+                      <ReactPlayer 
+                      light={<img src='https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927767/HeartStrings/SVG/img_rectangle8_570x1140_ot5kmw.png' 
+                      alt='Poster' />}
+                      url='https://res.cloudinary.com/dyiuol5sx/video/upload/v1692514513/OFFICIAL_MULLY_MOVIE_THEATRICAL_TRAILER_bnobmj.mp4'
+                      // url={play.infotrailer} 
+                      playing  controls 
+                      width='100%'
+                      height='100%'
+                      config={{
+                        file: {
+                          attributes: {
+                            controlsList: 'nodownload' // Disable download option
+                          }
+                        }
+                      }}
+                      />
+                     
+                      </div>
+                          </div>
+                          <div className="flex flex-col gap-8 items-start justify-start w-auto">
+                          <div className="flex flex-col gap-4 items-start justify-start w-auto">
+                            <Text
+                              className="text-2xl md:text-[22px] text-white sm:text-xl w-auto"
+                              size="txtRobotoRomanBold24"
+                            >
+                              {play.title}
+                            </Text>
+                            <Text
+                              className="leading-[175.00%] max-w-[332px] md:max-w-full text-gray-300 text-xl"
+                              size="txtRobotoRomanRegular20Gray300"
+                            >
+                              {play.synopsis.substring(0, 110) + '...'}
+                            </Text>
+                          </div>
+                          <div className="flex flex-row gap-[103px] items-center justify-between w-auto">
+                            <Button 
+                            className="cursor-pointer font-bold font-roboto min-w-[116px] text-center text-transparent text-xl w-auto"
+                                          shape="RoundedBorder8"
+                                          size="lg"
+                            >
+                              label
+                            </Button>
+                            <div className="flex flex-row gap-2 items-center justify-center w-auto">
+                              <Img
+                                className="h-6 w-6"
+                                src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927664/HeartStrings/SVG/img_mdiclocktimenine_wcpsyc.svg"
+                                alt="clock icon"
+                              />
+                              <div className="flex flex-col items-start justify-start w-auto text-white">
+                                <Text
+                                  className="text-base text-white-A700 w-auto"
+                                  size="txtRobotoRomanRegular16"
+                                >
+                                 {/* {play.duration} */}
+                                 {play.added_on.substring(0, 10)}
+                                </Text>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                    </div>
+                    
+
+                    
                 </Link>
                 
               ))}
@@ -109,6 +191,7 @@ const AllPlays = () => {
 
             )}
             </div>
+            
           </div>
     
     
