@@ -108,28 +108,28 @@ const AllPlays = () => {
                 
                 <Link 
                 // to={`/plays/${play.id}`} key={index}
-                > {/* Use play.id to generate unique link */}
-                  
-                    
-
-                    {/* new card */}
+                > 
                     <div
-                      className="bg-black_900_01 flex flex-col gap-4 h-[420px] items-center justify-start p-4 rounded-lg w-full hover:border border-white rounded-md p-2"
+                      className="bg-black_900_01 flex flex-col gap-4 h-[440px] items-center justify-start p-4 rounded-lg w-full hover:border border-white rounded-md p-2"
                       key={index} >
                         <div className="flex flex-col items-center justify-start w-full">
-                      <div className="h-[191px] relative w-full">
+                      <div className="h-[230px] relative w-full">
                       <ReactPlayer 
-                      light={<img src='https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927767/HeartStrings/SVG/img_rectangle8_570x1140_ot5kmw.png' 
-                      alt='Poster' />}
+                      light={
+                      <img 
+                      src='https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927767/HeartStrings/SVG/img_rectangle8_570x1140_ot5kmw.png' 
+                      alt='Poster' 
+                      className="max-w-full h-full"
+                      />}
                       url='https://res.cloudinary.com/dyiuol5sx/video/upload/v1692514513/OFFICIAL_MULLY_MOVIE_THEATRICAL_TRAILER_bnobmj.mp4'
                       // url={play.infotrailer} 
                       playing  controls 
                       width='100%'
-                      height='100%'
+                      height='240px'
                       config={{
                         file: {
                           attributes: {
-                            controlsList: 'nodownload' // Disable download option
+                            controlsList: 'nodownload' // Disable download
                           }
                         }
                       }}
@@ -179,10 +179,7 @@ const AllPlays = () => {
                           </div>
                         </div>
 
-                    </div>
-                    
-
-                    
+                    </div>   
                 </Link>
                 
               ))}

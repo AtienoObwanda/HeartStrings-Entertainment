@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import StreamCards from "UI_Components/StreamCards";
 import { Button, Img, List, Text } from "UI_Components";
 import {Streams} from '../../../Data/Streams'
+import ReactPlayer from 'react-player';
 
 
 
@@ -38,18 +39,82 @@ const StreamPlays = () => {
             >
              
               {Streams.slice(0,3).map((Stream, index) => (
-                <Link to={`/streams/${Stream.title}`}
-                onClick={() => window.location.reload()}>
-                  <StreamCards
-                    key={index}
-                    className="bg-black_900_01 flex flex-col gap-4 items-center justify-start p-4 rounded-lg w-full hover:border border-white rounded-md p-2"
-                    playPoster={Stream.titleImage}
-                    playTitle={Stream.title}
-                    playDescription={Stream.synopsis}
-                    userbuttonlabel="Rent play" // You can customize this if needed
-                    usertime={Stream.duration}
-                  />
-                </Link>
+               <Link 
+               // to={`/Stream/${Stream.id}`} key={index}
+               > 
+                   <div
+                     className="bg-black_900_01 flex flex-col gap-4 h-[440px] items-center justify-start p-4 rounded-lg w-full hover:border border-white rounded-md p-2"
+                     key={index} >
+                       <div className="flex flex-col items-center justify-start w-full">
+                     <div className="h-[230px] relative w-full">
+                     <ReactPlayer 
+                     light={
+                     <img 
+                     src='https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927767/HeartStrings/SVG/img_rectangle8_570x1140_ot5kmw.png' 
+                     alt='Poster' 
+                     className="max-w-full h-full"
+                     />}
+                     url='https://res.cloudinary.com/dyiuol5sx/video/upload/v1692514513/OFFICIAL_MULLY_MOVIE_THEATRICAL_TRAILER_bnobmj.mp4'
+                     // url={Stream.infotrailer} 
+                     playing  controls 
+                     width='100%'
+                     height='240px'
+                     config={{
+                       file: {
+                         attributes: {
+                           controlsList: 'nodownload' // Disable download
+                         }
+                       }
+                     }}
+                     />
+                    
+                     </div>
+                         </div>
+                         <div className="flex flex-col gap-8 items-start justify-start w-auto">
+                         <div className="flex flex-col gap-4 items-start justify-start w-auto">
+                           <Text
+                             className="text-2xl md:text-[22px] text-white sm:text-xl w-auto"
+                             size="txtRobotoRomanBold24"
+                           >
+                             {Stream.title}
+                           </Text>
+                           <Text
+                             className="leading-[175.00%] max-w-[332px] md:max-w-full text-gray-300 text-xl"
+                             size="txtRobotoRomanRegular20Gray300"
+                           >
+                             {Stream.synopsis.substring(0, 110) + '...'}
+                           </Text>
+                         </div>
+                         <div className="flex flex-row gap-[103px] items-center justify-between w-auto">
+                           <Button 
+                           className="cursor-pointer font-bold font-roboto min-w-[116px] text-center text-transparent text-xl w-auto"
+                                         shape="RoundedBorder8"
+                                         size="lg"
+                           >
+                             label
+                           </Button>
+                           <div className="flex flex-row gap-2 items-center justify-center w-auto">
+                             <Img
+                               className="h-6 w-6"
+                               src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927664/HeartStrings/SVG/img_mdiclocktimenine_wcpsyc.svg"
+                               alt="clock icon"
+                             />
+                             <div className="flex flex-col items-start justify-start w-auto text-white">
+                               <Text
+                                 className="text-base text-white-A700 w-auto"
+                                 size="txtRobotoRomanRegular16"
+                               >
+                                {/* {Stream.duration} */}
+                                {/* {Stream.added_on.substring(0, 10)} */}
+                                1hr 20 mins
+                               </Text>
+                             </div>
+                           </div>
+                         </div>
+                       </div>
+
+                   </div>   
+               </Link>
             
           ))}
               
