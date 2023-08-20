@@ -82,16 +82,18 @@ const StreamPlays = () => {
                              className="leading-[175.00%] max-w-[332px] md:max-w-full text-gray-300 text-xl"
                              size="txtRobotoRomanRegular20Gray300"
                            >
-                             {Stream.synopsis.substring(0, 110) + '...'}
+                             {Stream.synopsis.substring(0, 70) + '...'}
                            </Text>
                          </div>
-                         <div className="flex flex-row gap-[103px] items-center justify-between w-auto">
+                         <div className="flex flex-row gap-[103px] items-center justify-between w-auto pb-6">
                            <Button 
-                           className="cursor-pointer font-bold font-roboto min-w-[116px] text-center text-transparent text-xl w-auto"
-                                         shape="RoundedBorder8"
-                                         size="lg"
+                            className="cursor-pointer font-bold font-roboto min-w-[116px] text-center text-white_A700 text-xl w-auto"
+                            shape="RoundedBorder8"
+                            size="lg"
+                            variant="FillGray900"
+                            
                            >
-                             label
+                             Rent Play(s)
                            </Button>
                            <div className="flex flex-row gap-2 items-center justify-center w-auto">
                              <Img

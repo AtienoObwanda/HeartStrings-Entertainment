@@ -149,18 +149,19 @@ const AllPlays = () => {
                               className="leading-[175.00%] max-w-[332px] md:max-w-full text-gray-300 text-xl"
                               size="txtRobotoRomanRegular20Gray300"
                             >
-                              {play.synopsis.substring(0, 110) + '...'}
+                              {play.synopsis.substring(0, 70) + '...'}
                             </Text>
                           </div>
                           <div className="flex flex-row gap-[103px] items-center justify-between w-auto">
                             <Button 
-                            className="cursor-pointer font-bold font-roboto min-w-[116px] text-center text-transparent text-xl w-auto"
-                                          shape="RoundedBorder8"
-                                          size="lg"
+                            className="cursor-pointer font-bold font-roboto min-w-[116px] text-center text-white_A700 text-xl w-auto"
+                            shape="RoundedBorder8"
+                            size="lg"
+                            variant="FillGray900"
                             >
-                              label
+                              Buy Ticket(S)
                             </Button>
-                            <div className="flex flex-row gap-2 items-center justify-center w-auto">
+                            <div className="flex flex-row gap-2 items-center justify-center w-auto pb-6">
                               <Img
                                 className="h-6 w-6"
                                 src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927664/HeartStrings/SVG/img_mdiclocktimenine_wcpsyc.svg"
