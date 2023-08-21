@@ -1,4 +1,5 @@
-import React, { useRef, useEffect } from 'react';
+\import React, { useEffect, useState, useRef } from 'react';
+
 import { useState } from 'react';
 import moment from 'moment';
 
@@ -13,6 +14,26 @@ import TicketDetails from 'Components/Users/TicketDetails';
 
 
 const BuyingTicket = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
+const accessToken = localStorage.getItem('accessToken');
+
+
+
+useEffect(() => {
+
+  if (accessToken) {
+    setIsAuthenticated(true);
+  } else {
+    setIsAuthenticated(false);
+  }
+}, [])
+
+const handleLogout = () => {
+  setIsAuthenticated(false);
+  
+ navigate('/login');
+};
+  
 
   return (
     <>

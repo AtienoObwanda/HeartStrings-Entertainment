@@ -212,7 +212,7 @@ const Navbar = (props) => {
 
                     
                     <div className="flex flex-row gap-3 items-center justify-center self-stretch w-auto"
-                        onClick={() => navigate("/login")}
+                        onClick={() => navigate("/my-streams")}
                         >
                         <Text
                         className="font-bold font-roboto text-left text-white_A700 w-auto"
@@ -227,10 +227,14 @@ const Navbar = (props) => {
                         alt="materialsymbol"
                         />
                     </div>
+
                         
             
                 </a>
                     </li>
+                    
+
+                    
                     )}
                     </ul>
 

@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom'; // Import useHistory
 import { useNavigate } from "react-router-dom";
 // import Sidebar from "Components/Sidebar";
 import { Button, Img, Input, Line, List, Text } from "UI_Components";
@@ -9,6 +10,25 @@ const MyStreams = (props) => {
   const navigate = useNavigate();
   const [active, setActive] = useState("Home");
   const [toggle, setToggle] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
+  const accessToken = localStorage.getItem('accessToken');
+
+
+  
+  useEffect(() => {
+
+    if (accessToken) {
+      setIsAuthenticated(true);
+    } else {
+      setIsAuthenticated(false);
+    }
+  }, [])
+
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    
+   navigate('/login');
+  };
 
   return (
     <>
@@ -83,18 +103,17 @@ const MyStreams = (props) => {
                   Help
                 </Text>
               </div>
-              <div className="flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-8 self-stretch w-auto">
+              <div 
+              onClick={handleLogout}
+              className="flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-8 self-stretch w-auto">
                 <Img
                   src="images/img_iconsaxboldlogout.svg"
                   className="h-6 w-6"
                   alt="iconsaxboldlogo"
-                />
-                <a
-                  href="javascript:"
-                  className="font-normal not-italic text-base text-gray_300 text-left w-auto"
-                >
-                  <Text className="">Logout</Text>
-                </a>
+=                />
+              
+                  <Text className="text-white"
+                 >Logout</Text>
               </div>
             </div>
           </aside>
@@ -191,18 +210,17 @@ const MyStreams = (props) => {
                   </li>
 
                   <li className="py-3 cursor-pointer text-16">
-                    <div className="flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-8 self-stretch w-auto">
+                    <div 
+                    onClick={handleLogout}
+                    className="flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-8 self-stretch w-auto">
                       <Img
                         src="images/img_iconsaxboldlogout.svg"
                         className="h-6 w-6"
                         alt="iconsaxboldlogo"
                       />
-                      <a
-                        href="javascript:"
-                        className="font-normal not-italic text-base text-gray_300 text-left w-auto"
-                      >
-                        <Text className="">Logout</Text>
-                      </a>
+                      
+                        <Text className="text-white"
+                        >Logout</Text>
                     </div>
                   </li>
                 </ul>

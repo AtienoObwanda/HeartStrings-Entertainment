@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { Button, Img, Input, Line, Text } from "UI_Components";
 import close from "../../../assets/close.svg";
@@ -8,6 +8,27 @@ const MyAccount = (props) => {
   const navigate = useNavigate();
   const [active, setActive] = useState("Home");
   const [toggle, setToggle] = useState(false);
+
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
+  const accessToken = localStorage.getItem('accessToken');
+
+
+  
+  useEffect(() => {
+
+    if (accessToken) {
+      setIsAuthenticated(true);
+    } else {
+      setIsAuthenticated(false);
+    }
+  }, [])
+
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    
+   navigate('/login');
+  };
+
 
     return (
       <>
@@ -85,18 +106,16 @@ const MyAccount = (props) => {
                     Help
                   </Text>
                 </div>
-                <div className="flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-8 self-stretch w-auto transition-colors duration-300 ease-in-out group-hover:bg-icon-hover group-hover:rotate-12">
+                <div
+                  onClick={handleLogout}
+                 className="flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-8 self-stretch w-auto transition-colors duration-300 ease-in-out group-hover:bg-icon-hover group-hover:rotate-12">
                   <Img
                     src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927657/HeartStrings/SVG/img_iconsaxboldlogout_cmxo47.svg"
                     className="h-6 w-6"
                     alt="iconsaxboldlogo"
                   />
-                  <a
-                    href="#"
-                    className="font-normal not-italic text-base text-gray_300 text-left w-auto"
-                  >
-                    <Text className="">Logout</Text>
-                  </a>
+                  
+                    <Text className="text-white">Logout</Text>
                 </div>
               </div>
 
@@ -199,18 +218,17 @@ const MyAccount = (props) => {
                             </li>
 
                             <li className="py-3 cursor-pointer text-16">                     
-                              <div className="flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-8 self-stretch w-auto">
+                              <div  
+                              onClick={handleLogout}
+
+                               className="flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-8 self-stretch w-auto">
                                 <Img
                                   src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927657/HeartStrings/SVG/img_iconsaxboldlogout_cmxo47.svg"
                                   className="h-6 w-6"
                                   alt="Log Out"
                                 />
-                                <a
-                                  href="javascript:"
-                                  className="font-normal not-italic text-base text-gray_300 text-left w-auto"
-                                >
-                                  <Text className="">Logout</Text>
-                                </a>
+                               
+                                  <Text className="text-white_A07">Logout</Text>
                               </div>
                             </li>
                           </ul>

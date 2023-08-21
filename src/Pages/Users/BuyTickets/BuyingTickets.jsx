@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from 'react';
 
 import { Button, Text } from "UI_Components";
 import Footer from "Layout/Footer/Footer";
 import Navbar from "Layout/Navbar/Navbar";
 
 const BuyingTickets = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
+const accessToken = localStorage.getItem('accessToken');
+
+
+
+  
   return (
     <>
       <div className="bg-black_900 flex flex-col font-roboto items-center justify-start mx-auto w-full">
