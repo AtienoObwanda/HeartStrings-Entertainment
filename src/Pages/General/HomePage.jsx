@@ -14,18 +14,21 @@ import StreamPlays from "Components/General/Home/StreamPlays";
 const HomePage = () => {
   const navigate = useNavigate();
   const [toggle, setToggle] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false); // Initial state is unauthenticated
+
 
   return (
     <>
     <div className="bg-black_900 flex flex-col font-roboto items-center justify-start mx-auto w-full overflow-hidden">
         {/* Navbar Section */}
-        <Navbar
+        <Navbar isAuthenticated={isAuthenticated}
           className="flex flex-row items-center justify-center md:px-5 w-full md:top-0  z-10"
           buyTicketS="Buy ticket (s)"
           streamPlays="Stream plays"
           account="Account"
         />
-        <HeroSection className='relative z-0'/>
+        <HeroSection  isAuthenticated={isAuthenticated}
+        className='relative z-0'/>
         <TheatrePlays/>
         <StreamPlays/>
         

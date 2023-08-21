@@ -1,16 +1,25 @@
-import React from "react";
+import React, { useState } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 import ProjectRoutes from "./Routes";
-import {AuthProvider} from './context/AuthContext'
 
 
 function App() {
+
+
+    // // Simulate login
+    // const login = () => {
+    //   setIsAuthenticated(true);
+    // };
+  
+    // // Simulate logout
+    // const logout = () => {
+    //   setIsAuthenticated(false);
+    // };
+
   return (
     <Router>
-      <AuthProvider>
       <ProjectRoutes />
-      </ AuthProvider>
 
     </Router>
   );

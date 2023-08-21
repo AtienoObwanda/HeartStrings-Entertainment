@@ -1,21 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from 'react';
 import { useNavigate,useLocation } from "react-router-dom";
 import { Button, Img, Text } from "UI_Components";
 import close from "../../assets/close.svg";
 import  menu from "../../assets/menu.svg";
 
 const Navbar = (props) => {
-  const navigate = useNavigate();
-  const [active, setActive] = useState("Home");
-  const [toggle, setToggle] = useState(false);
+    const navigate = useNavigate();
+    const [active, setActive] = useState("Home");
+    const [toggle, setToggle] = useState(false);
     const location = useLocation();
 
-//   console.log("Current Path:", location.pathname);
-//   const isHomepage = location.pathname === "/";
-//   console.log("Is Homepage:", isHomepage);
+    
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const accessToken = localStorage.getItem('accessToken');
 
-//   const [toggle, setToggle] = useState(!isHomepage);
-  
+    useEffect(() => {
+
+        if (accessToken) {
+        setIsAuthenticated(true);
+        } else {
+        setIsAuthenticated(false);
+        }
+    }, [])
+
+
 
 
   return (
@@ -71,8 +79,8 @@ const Navbar = (props) => {
                         {props?.onlinePlays}
                     </div>
             </Button>
-
-        <div className="flex flex-row gap-2 items-center justify-center self-stretch w-auto"
+            {!isAuthenticated && (
+        <div className="flex flex-row gap-2 items-center justify-center self-stretch w-auto cursor-pointer"
                             onClick={() => navigate("/login")}
                             >
                     {/* <Img src="images/img_user.svg" className="h-6 w-6" alt="user" /> */}
@@ -89,7 +97,35 @@ const Navbar = (props) => {
                     alt="Heartstrings Entertainment user account"
                     />
         </div>
+            )}
+
+            {/* Logged in users */}
+            {isAuthenticated && (
+                    
+
+                    
+                    <div className="flex flex-row gap-2 items-center justify-center self-stretch w-auto cursor-pointer"
+                            onClick={() => navigate("/my-streams")}
+                            >
+                        <Text
+                    className="font-bold font-roboto text-left text-white_A700 w-auto"
+                    as="h6"
+                        variant="h6"
+                        >
+                        My Account
+                        </Text>
+                        <Img
+                        src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927749/HeartStrings/SVG/img_user_boknn6.svg"
+                        className="h-6 w-6"
+                        alt="materialsymbol"
+                        />
+                    </div>
+                        
+            
+               
+                    )}
         </div>
+        
 
         {/* Display Medium Screens  */}
         <div className="hidden md:flex gap-6 mb-19">
@@ -143,10 +179,11 @@ const Navbar = (props) => {
                     </Button>
                     </li>
 
-
+                    {!isAuthenticated && (
                     <li className="py-3 text-white font-poppins font-normal cursor-pointer text-16">
                     <a href="/login">
 
+                    
                     <div className="flex flex-row gap-3 items-center justify-center self-stretch w-auto"
                         onClick={() => navigate("/login")}
                         >
@@ -162,10 +199,39 @@ const Navbar = (props) => {
                         className="h-6 w-6"
                         alt="materialsymbol"
                         />
+                    </div>
                         
-          </div>
+            
                 </a>
                     </li>
+                    )}
+                    {/* Logged in users */}
+                    {isAuthenticated && (
+                    <li className="py-3 text-white font-poppins font-normal cursor-pointer text-16">
+                    <a href="/my-streams">
+
+                    
+                    <div className="flex flex-row gap-3 items-center justify-center self-stretch w-auto"
+                        onClick={() => navigate("/login")}
+                        >
+                        <Text
+                        className="font-bold font-roboto text-left text-white_A700 w-auto"
+                        as="h6"
+                        variant="h6"
+                        >
+                        My Account
+                        </Text>
+                        <Img
+                        src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927749/HeartStrings/SVG/img_user_boknn6.svg"
+                        className="h-6 w-6"
+                        alt="materialsymbol"
+                        />
+                    </div>
+                        
+            
+                </a>
+                    </li>
+                    )}
                     </ul>
 
                 </div>

@@ -1,11 +1,26 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
 import { Button, Img, List, Text } from "UI_Components";
 
-import { useAuth } from 'context/AuthContext';
+// import { useAuth } from 'context/AuthContext';
 
 const HeroSection= () => {
 
-  const { isAuthenticated } = useAuth();
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const accessToken = localStorage.getItem('accessToken');
+
+  useEffect(() => {
+
+    if (accessToken) {
+      setIsAuthenticated(true);
+    } else {
+      setIsAuthenticated(false);
+    }
+  }, [])
+
+  console.log('isAuthenticated:', isAuthenticated);
+  // console.log('Token:', accessToken);
+
+
 
   return (
     <>
