@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useLocation } from "react-router-dom";
 import { Button, Img, Text } from "UI_Components";
 import close from "../../assets/close.svg";
 import  menu from "../../assets/menu.svg";
@@ -8,15 +8,26 @@ const Navbar = (props) => {
   const navigate = useNavigate();
   const [active, setActive] = useState("Home");
   const [toggle, setToggle] = useState(false);
+    const location = useLocation();
+
+//   console.log("Current Path:", location.pathname);
+//   const isHomepage = location.pathname === "/";
+//   console.log("Is Homepage:", isHomepage);
+
+//   const [toggle, setToggle] = useState(!isHomepage);
+  
+
 
   return (
     <>
     <header className={props.className}>
     <nav className="mt-2 w-full flex justify-between items-center navbar">
-    <div className="h-60">
+    <div className="h-50">
     <img  
       src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689933646/HeartStrings/logo/HeartStringsLogo.png"
-      className="h-[40%] w-[8em] md:ml-[0] ml-[150px] my-2 w-auto md:h-30 md:w-full sm:h-1/2"
+      className="h-[30%] w-[6em] md:ml-[0] ml-[150px] my-2 w-auto md:h-20 md:w-full md:mb-4"
+    // className="h-[30%] w-[4em] md:w-full md:ml-[0] ml-[150px] my-2 w-auto md:h-30 sm:object-fit: scale-down"
+
       alt="Heart Strings Entertainment logo"
       onClick={() => navigate("/")} 
       />
@@ -24,7 +35,7 @@ const Navbar = (props) => {
         {/* Display on Large Screens  */}
         <div className="md:hidden flex gap-8 items-center justify-center mr-[100px] ml-[411px] mr-[150px] mt-4 my-4 self-stretch w-auto">
             <Button
-                        className="common-pointer cursor-pointer flex items-center justify-center min-w-[150px] w-auto"
+                        className="common-pointer cursor-pointer flex items-center justify-center min-w-[135px] w-auto pt-[10px] pb-[10px] pr-[20px] pl-[20px]"
                         onClick={() => navigate("/all-plays")}
                         rightIcon={
                         <Img
@@ -43,7 +54,7 @@ const Navbar = (props) => {
                 </Button> 
 
             <Button
-                    className="common-pointer cursor-pointer flex items-center justify-center min-w-[198px] w-auto"
+                    className="common-pointer cursor-pointer flex items-center justify-center min-w-[178px] w-auto pt-[10px] pb-[10px]"
                     onClick={() => navigate("/all-streams")}
                     rightIcon={
                         <Img
@@ -81,7 +92,7 @@ const Navbar = (props) => {
         </div>
 
         {/* Display Medium Screens  */}
-        <div className="hidden md:flex gap-6">
+        <div className="hidden md:flex gap-6 mb-19">
         <img src = {toggle ? close : menu} alt="menu"
                 className="w-[28px] h-[28px] object-contain"
                 onClick={() => setToggle((prev) => !prev)} />

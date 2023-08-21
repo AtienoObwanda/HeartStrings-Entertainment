@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { useNavigate } from "react-router-dom";
 
@@ -13,18 +13,19 @@ import StreamPlays from "Components/General/Home/StreamPlays";
 
 const HomePage = () => {
   const navigate = useNavigate();
+  const [toggle, setToggle] = useState(false);
 
   return (
     <>
-    <div className="bg-black_900 flex flex-col font-roboto items-center justify-start mx-auto w-full">
+    <div className="bg-black_900 flex flex-col font-roboto items-center justify-start mx-auto w-full overflow-hidden">
         {/* Navbar Section */}
         <Navbar
-          className="flex flex-row items-center justify-center md:px-5 w-full"
+          className="flex flex-row items-center justify-center md:px-5 w-full md:top-0  z-10"
           buyTicketS="Buy ticket (s)"
           streamPlays="Stream plays"
           account="Account"
         />
-        <HeroSection/>
+        <HeroSection className='relative z-0'/>
         <TheatrePlays/>
         <StreamPlays/>
         

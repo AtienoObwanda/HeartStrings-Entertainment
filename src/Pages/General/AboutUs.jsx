@@ -38,8 +38,7 @@ const AboutUs = () => {
      
             
           <Hero/>
-          {/* <Stats/> */}
-          {/* <AboutFooter/> */}
+
 
           </div>        
         {/* Footer Section*/}
