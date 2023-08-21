@@ -21,7 +21,7 @@ const TheatrePlays = () => {
             className="text-left text-white_A700 w-auto font-roboto"
             as="h2"
             variant="h2"
-            style={{ fontSize: '35px', lineHeight: '42px' }}
+            style={{ fontSize: '72px', lineHeight: '126px' }}
 
             
             >
@@ -32,7 +32,7 @@ const TheatrePlays = () => {
               className="font-normal not-italic text-gray_300 text-left w-auto"
               as="h6"
               variant="h6"
-              style={{ fontSize: '18px', lineHeight: '42px' }}
+              style={{ fontSize: '24px', lineHeight: '42px' }}
 
             >
               Our lineup is better than before!
