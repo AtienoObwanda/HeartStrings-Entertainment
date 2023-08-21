@@ -1,5 +1,6 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Routes, Route,useNavigate } from "react-router-dom";
+import axios from 'axios';
 import { Provider } from 'react-redux';
 import store from './store';
 
@@ -77,19 +78,66 @@ const AdminAddPlay = React.lazy(() => import("Pages/Admin/Content/AdminAddPlay")
 const AdminAllPlays = React.lazy(() => import("Pages/Admin/Content/AdminAllPlays"));
 const AdminDashboard = React.lazy(() => import("Pages/Admin/Dashboard/AdminDashboard"));
 // const RentingPlayPaymentConfirmation = React.lazy(() => import("pages/RentingPlayPaymentConfirmation"));
+import { apiUrl } from '../env';
+
+
 
 const ProjectRoutes = () => {
-  // const [userRole, setUserRole] = useState('');
+  const [isAdmin, setIsAdmin] = useState(false);
+  const navigate = useNavigate(); // Get the navigate function from React Router
+  const accessToken = localStorage.getItem('accessToken');
 
-  // useEffect(() => {
-  //     const user = authenticateUser(); 
-  //     setUserRole(user.role); 
-  // }, []);
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+    const response = await axios.get(`${apiUrl}/auth/users/me/`, {
+    headers: {
+      Authorization: `Bearer ${accessToken}`
+    },
+  });
+        const userData = response.data;
+        setIsAdmin(userData.is_staff);
+      } catch (error) {
+        // Handle error here
+        console.error('Error fetching user data:', error);
+      }
+    };
 
+    fetchUserData();
+  }, []);
+
+  const handleUnauthorizedAccess = () => {
+    navigate('/access-denied');
+  };
+
+
+//   const fetchUserData = async () => {
+//   try {
+//     const response = await axios.get(`${apiUrl}/auth/users/me/`, {
+//         headers: {
+//           Authorization: `Bearer ${accessToken}`
+//         },
+//     });
+//     const userData = response.data;
+//     setIsAdmin(userData.is_staff);
+//   } catch (error) {
+//     if (error.response && error.response.status === 401) {
+//       // Redirect the user to login or access denied page
+//       navigate('/access-denied'); // Assuming you have a route for access denied
+//     } else {
+//       // Handle other errors
+//       console.error('Error fetching user data:', error);
+//     }
+//   }
+// };
+
+
+  // Function to handle unauthorized access to admin routes
+ 
 
   return (
     <React.Suspense fallback={<>Loading...</>}>
-      <Router>
+      {/* <Router> */}
         <Routes>
           {/* General Routes */}
 
@@ -125,6 +173,9 @@ const ProjectRoutes = () => {
             
           {/* Authenticated UserRoutes */}
           {/* Account Route */}
+          {isAdmin ? null : (
+            <>
+           
           <Route path="/edit-my-password" element={<EditMyAccount />} />
           <Route path="/edit-my-account" element={<MyAccount />} />
 
@@ -156,16 +207,21 @@ const ProjectRoutes = () => {
           <Route path="/play-ticket-payment-confirmation" element={<PlayTicketPaymentConfirmation />}/>
           
           
-         
+          </>
+          )}
+
 
           {/* Admin Routes */}
+          
 
           <Route path="/admin-signup" element={<AdminSignUp />} />
           <Route path="/admin-login" element={<AdminLogin />} />
           <Route path="/admin-forgot-password" element={<AdminForgotPassword />}/>
           <Route path="/admin-password-reset" element={<AdminPasswordReset />} />
           <Route path="/admin-password-reset-complete" element={<AdminPasswordResetComplete />} />
-          
+
+          {isAdmin ? (
+            <>
           <Route path="/admin-dashboard" element={<AdminDashboard />} />
           <Route path="/admin-allplays" element={<AdminAllPlays />} />
           <Route path="/add-play" element={<AdminAddPlay />} />
@@ -176,8 +232,23 @@ const ProjectRoutes = () => {
           {/* Buy Client a ticket
               Edit a ticket
                 */}
+
+        </>
+         ) : (
+          <>
+          <Route path="/admin-dashboard" element={<AccessDenied />} />
+          <Route path="/admin-allplays" element={<AccessDenied />} />
+          <Route path="/add-play" element={<AccessDenied />} />
+          <Route path="/admin-allstreams" element={<AccessDenied />} />
+          <Route path="/add-stream" element={<AccessDenied />} />
+          <Route path="/ticket-management" element={<AccessDenied />} />
+          <Route path="/user-management" element={<AccessDenied />} />   
+          </>
+
+        )}
         </Routes>
-      </Router>
+     
+      {/* </Router> */}
     </React.Suspense>
   );
 };

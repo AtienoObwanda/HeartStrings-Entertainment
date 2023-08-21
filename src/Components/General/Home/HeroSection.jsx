@@ -1,9 +1,12 @@
 import React from 'react'
 import { Button, Img, List, Text } from "UI_Components";
 
+import { useAuth } from 'context/AuthContext';
 
+const HeroSection= () => {
 
-const HeroSection= ({ isAuthenticated }) => {
+  const { isAuthenticated } = useAuth();
+
   return (
     <>
   <div className="h-[720px] md:px-5 relative w-full">
