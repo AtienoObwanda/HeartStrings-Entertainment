@@ -1,8 +1,7 @@
-import React, { useState } from "react";
-
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
-  
 import { Input, Button, Img, Line, List, Text } from "UI_Components";
+
 
 import close from "../../../assets/close.svg";
 import  menu from "../../../assets/menu.svg";
@@ -15,6 +14,57 @@ const AdminTicketManagement = () => {
   const navigate = useNavigate();
   const [active, setActive] = useState("Home");
   const [toggle, setToggle] = useState(false);
+
+  // User info:
+  const [userInfo, setUserInfo] = useState({});
+  const accessToken = localStorage.getItem('accessToken');
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
+
+
+ useEffect(() => {
+    if (accessToken) {
+      fetchUserInfo();
+    } else {
+      // Redirect to login if no access token
+      navigate('/login');
+    }
+  }, [accessToken]);
+
+
+
+  const fetchUserInfo = async () => {
+    try {
+      const response = await axios.get(`${apiUrl}/auth/users/me/`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`
+        }
+      });
+  
+      // Update the user information state
+      setUserInfo(response.data);
+  
+      // Console log the user information
+      console.log('User Info:', response.data);
+    } catch (error) {
+      console.error('Error fetching user info:', error);
+      // Handle error (e.g., redirect to an error page)
+    }
+  };
+  
+  useEffect(() => {
+
+    if (accessToken) {
+      setIsAuthenticated(true);
+    } else {
+      setIsAuthenticated(false);
+    }
+  }, [])
+  
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    
+   navigate('/admin-login');
+  };
 
     return (
       <>
@@ -118,7 +168,9 @@ const AdminTicketManagement = () => {
 
 
                 <div className="flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-8 self-stretch w-auto group">
-                      <div className="h-10 w-10 transition-colors duration-300 ease-in-out group-hover:bg-icon-hover group-hover:rotate-12">
+                      <div   
+                          onClick={handleLogout}
+                          className="h-10 w-10 transition-colors duration-300 ease-in-out group-hover:bg-icon-hover group-hover:rotate-12">
                           <Img
                               src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927657/HeartStrings/SVG/img_iconsaxboldlogout_cmxo47.svg"
                               className="h-full w-full hover:fill-red-500 svg"
@@ -127,12 +179,8 @@ const AdminTicketManagement = () => {
 
                          
                             </div>
-                              <a
-                                  href="#:"
-                                  className="font-normal not-italic text-base text-gray-300 text-left w-auto"
-                              >
-                                  <Text className="">Logout</Text>
-                              </a>
+                             
+                                  <Text className="text-white">Logout</Text>
                       </div>
 
 
@@ -271,7 +319,9 @@ const AdminTicketManagement = () => {
                     
                     
                     <div className="flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-8 self-stretch w-auto group">
-                                <div className="h-10 w-10 transition-colors duration-300 ease-in-out group-hover:bg-icon-hover group-hover:rotate-12">
+                                <div 
+                                  onClick={handleLogout}
+                                  className="h-10 w-10 transition-colors duration-300 ease-in-out group-hover:bg-icon-hover group-hover:rotate-12">
                                     <Img
                                         src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927657/HeartStrings/SVG/img_iconsaxboldlogout_cmxo47.svg"
                                         className="h-full w-full hover:fill-red-500 svg"
@@ -280,12 +330,8 @@ const AdminTicketManagement = () => {
 
                                   
                                       </div>
-                                        <a
-                                            href="#:"
-                                            className="font-normal not-italic text-base text-gray-300 text-left w-auto"
-                                        >
-                                            <Text className="">Logout</Text>
-                                        </a>
+                                       
+                                            <Text className="text-white">Logout</Text>
                                 </div>
 
                       

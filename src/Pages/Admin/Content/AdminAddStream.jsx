@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { Button, Img, Input, Line, List, Switch, Text } from "UI_Components";
 import PlaysAddPlayAddshift from "UI_Components/PlaysAddPlay";
@@ -16,6 +16,24 @@ import { apiUrl } from '../../../../env'
 
 
 const AdminAddStream = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
+  const accessToken = localStorage.getItem('accessToken');
+
+  useEffect(() => {
+
+    if (accessToken) {
+      setIsAuthenticated(true);
+    } else {
+      setIsAuthenticated(false);
+    }
+  }, [])
+
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    
+  navigate('/admin-login');
+  };
+
   const navigate = useNavigate();
   const [active, setActive] = useState("Home");
   const [toggle, setToggle] = useState(false);
@@ -273,21 +291,17 @@ return (
 
 
                 <div className="flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-8 self-stretch w-auto group">
-                      <div className="h-10 w-10 transition-colors duration-300 ease-in-out group-hover:bg-icon-hover group-hover:rotate-12">
+                      <div   
+                          onClick={handleLogout}
+                          className="h-10 w-10 transition-colors duration-300 ease-in-out group-hover:bg-icon-hover group-hover:rotate-12">
                           <Img
                               src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927657/HeartStrings/SVG/img_iconsaxboldlogout_cmxo47.svg"
                               className="h-full w-full hover:fill-red-500 svg"
                               alt="iconsaxboldlogo"
                                   />
-
-                         
                             </div>
-                              <a
-                                  href="#:"
-                                  className="font-normal not-italic text-base text-gray-300 text-left w-auto"
-                              >
-                                  <Text className="">Logout</Text>
-                              </a>
+                              
+                                  <Text className="text-white">Logout</Text>
                       </div>
 
 
@@ -425,7 +439,9 @@ return (
                   
                   
                   <div className="flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-8 self-stretch w-auto group">
-                              <div className="h-10 w-10 transition-colors duration-300 ease-in-out group-hover:bg-icon-hover group-hover:rotate-12">
+                              <div 
+                                onClick={handleLogout}
+                                className="h-10 w-10 transition-colors duration-300 ease-in-out group-hover:bg-icon-hover group-hover:rotate-12">
                                   <Img
                                       src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927657/HeartStrings/SVG/img_iconsaxboldlogout_cmxo47.svg"
                                       className="h-full w-full hover:fill-red-500 svg"
@@ -434,12 +450,8 @@ return (
 
                                 
                                     </div>
-                                      <a
-                                          href="#:"
-                                          className="font-normal not-italic text-base text-gray-300 text-left w-auto"
-                                      >
-                                          <Text className="">Logout</Text>
-                                      </a>
+                                     
+                                          <Text className="text-white">Logout</Text>
                               </div>
 
                     

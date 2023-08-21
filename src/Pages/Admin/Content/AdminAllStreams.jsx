@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 
 import { Button, Img, Line, List, Text } from "UI_Components";
@@ -11,7 +11,27 @@ const AdminAllStreams = () => {
   const [active, setActive] = useState("Home");
   const [toggle, setToggle] = useState(false);
 
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
+  const accessToken = localStorage.getItem('accessToken');
+
+  useEffect(() => {
+
+    if (accessToken) {
+      setIsAuthenticated(true);
+    } else {
+      setIsAuthenticated(false);
+    }
+  }, [])
+
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    
+  navigate('/admin-login');
+  };
+
   return (
+
+    
     <>
       <div className="bg-black_900_01 flex sm:flex-col md:flex-col flex-row font-roboto sm:gap-5 md:gap-5 items-center mx-auto w-full">
       <div className="flex md:flex-col flex-row md:gap-5 items-start justify-evenly w-full">
@@ -115,7 +135,9 @@ const AdminAllStreams = () => {
 
 
                 <div className="flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-8 self-stretch w-auto group">
-                      <div className="h-10 w-10 transition-colors duration-300 ease-in-out group-hover:bg-icon-hover group-hover:rotate-12">
+                      <div 
+                        onClick={handleLogout}
+                        className="h-10 w-10 transition-colors duration-300 ease-in-out group-hover:bg-icon-hover group-hover:rotate-12">
                           <Img
                               src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927657/HeartStrings/SVG/img_iconsaxboldlogout_cmxo47.svg"
                               className="h-full w-full hover:fill-red-500 svg"
@@ -124,12 +146,8 @@ const AdminAllStreams = () => {
 
                          
                             </div>
-                              <a
-                                  href="#:"
-                                  className="font-normal not-italic text-base text-gray-300 text-left w-auto"
-                              >
-                                  <Text className="">Logout</Text>
-                              </a>
+                              
+                                  <Text className="text-white">Logout</Text>
                       </div>
 
 
@@ -267,7 +285,9 @@ const AdminAllStreams = () => {
                     
                     
                     <div className="flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-8 self-stretch w-auto group">
-                                <div className="h-10 w-10 transition-colors duration-300 ease-in-out group-hover:bg-icon-hover group-hover:rotate-12">
+                                <div 
+                                  onClick={handleLogout}
+                                  className="h-10 w-10 transition-colors duration-300 ease-in-out group-hover:bg-icon-hover group-hover:rotate-12">
                                     <Img
                                         src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927657/HeartStrings/SVG/img_iconsaxboldlogout_cmxo47.svg"
                                         className="h-full w-full hover:fill-red-500 svg"
@@ -276,12 +296,8 @@ const AdminAllStreams = () => {
 
                                   
                                       </div>
-                                        <a
-                                            href="#:"
-                                            className="font-normal not-italic text-base text-gray-300 text-left w-auto"
-                                        >
-                                            <Text className="">Logout</Text>
-                                        </a>
+                                        
+                                            <Text className="text-white">Logout</Text>
                                 </div>
 
                       

@@ -5,8 +5,6 @@ import React, { useEffect, useState } from 'react';
 const [isAuthenticated, setIsAuthenticated] = useState(true);
 const accessToken = localStorage.getItem('accessToken');
 
-
-
 useEffect(() => {
 
   if (accessToken) {
@@ -19,7 +17,7 @@ useEffect(() => {
 const handleLogout = () => {
   setIsAuthenticated(false);
   
- navigate('/login');
+ navigate('/admin-login');
 };
   // BTN
   onClick={handleLogout}
