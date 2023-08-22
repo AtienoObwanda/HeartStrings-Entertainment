@@ -176,8 +176,10 @@ const ProjectRoutes = () => {
 
           {/* Content Routes */}
           <Route path="/all-plays" element={<AllPlays />} />
-          <Route path="/play-details" element={<PlayDetails />} />
-          <Route path="/streams/:id" element={<StreamDetails />} />
+          <Route path="/play/:id" element={<PlayDetails />} />
+          <Route path="/stream/:id" element={<StreamDetails />} />
+          {/*         <Route path="/play/:id" component={SinglePlayPage} />
+ */}
           <Route path="/all-streams" element={<AllStreams />} />
 
           {/* UserRoutes */}

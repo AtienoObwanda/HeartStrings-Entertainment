@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useParams } from "react-router-dom";
 
 import { Button, Img, PagerIndicator, Slider, Text } from "UI_Components";
 
@@ -9,18 +10,61 @@ import DetailsPagePlayRow from "UI_Components/DetailsPagePlayRow/index";
 import Columnprice from "UI_Components/ColumnPrice/ColumnPrice";
 import Footer from "Layout/Footer/Footer";
 import Navbar from "Layout/Navbar/Navbar";
+import ReactPlayer from 'react-player';
 
+
+import { apiUrl } from '../../../env';
 
 
 
 const PlayDetails = () => {
+  const [playData, setPlayData] = useState(null);
+  const [playDates, setPlayDates] = useState([]);
+  const { id } = useParams();
+
   const navigate = useNavigate();
 
   const sliderRef = React.useRef(null);
   const [sliderState, setsliderState] = React.useState(0);
 
+
+  // useEffect(() => {
+
+  //   axios.get(`${apiUrl}/api/plays/${id}`)
+  //     .then(response => {
+  //       setPlayData(response.data.data);
+  //     })
+  //     .catch(error => {
+  //       console.error('Error fetching data:', error);
+  //     });
+  // }, [id]);
+
+
+  useEffect(() => {
+    fetchPlay();
+  }, []);
+
+  async function fetchPlay() {
+    try {
+      const response = await axios.get(`${apiUrl}/api/plays/${id}`);
+      const data = response.data;
+      if (!data.error) {
+        setPlayData(data.data); 
+        setPlayDates(data.data.play_dates);
+
+      } else {
+        console.error('Error fetching play:', data.message);
+      }
+    } catch (error) {
+      console.error('Error fetching play:', error);
+    }
+  }
+
   return (
     <>
+      {playData === null ? (
+      <p>Loading...</p>
+    ) : (
       <div className="bg-black_900 flex flex-col font-roboto items-center justify-start mx-auto w-full">
         <div className="flex flex-col items-center justify-start w-full">
           <Navbar
@@ -36,7 +80,7 @@ const PlayDetails = () => {
           {/* Hero Section */}
           <div className="h-[600px] md:px-5 relative w-full">
             <Img
-              src="images/img_rectangle2.png"
+              src={playData.poster}
               className="h-[600px] m-auto object-cover w-full"
               alt="Heartstrings Entertainment PLay Poster"
             />
@@ -46,7 +90,7 @@ const PlayDetails = () => {
                 as="h1"
                 variant="h1"
               >
-                Bridegroom for sale.
+                {playData.title}
               </Text>
               <Text
                 className="font-bold leading-[175.00%] text-gray_300 text-left"
@@ -67,13 +111,11 @@ const PlayDetails = () => {
                   as="h6"
                   variant="h6"
                 >
-                  The synopsis goes here and here and here, once it starts
-                  overflowing it goes here ,the synopsis goes here and here and
-                  here, once it starts overflowing it goes here.
+                  {playData.synopsis}
                 </Text>
                 <div className="flex flex-col items-center justify-start w-[87%] md:w-full">
                   <Img
-                    src="images/img_rectangle4_269x460.png"
+                    src={playData.poster}
                     className="h-[269px] md:h-auto object-cover rounded-lg w-full"
                     alt="rectangleFour"
                   />
@@ -81,28 +123,27 @@ const PlayDetails = () => {
                 <div className="flex flex-col gap-2 items-start justify-center self-stretch w-auto">
                   <div className="flex flex-row gap-2 items-start justify-start self-stretch w-auto">
                     <Img
-                      src="images/img_materialsymbol.svg"
+                      src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927662/HeartStrings/SVG/img_materialsymbol_rcrxkq.svg"
                       className="h-6 w-6"
                       alt="materialsymbol_One"
                     />
                     <div className="flex flex-col gap-2.5 items-start justify-start self-stretch w-auto">
-                      <Text
-                        className="font-normal not-italic text-left text-white_A700 w-auto"
-                        variant="body4"
-                      >
-                        Thur 30th & Fri 31st @ 6:30pm{" "}
-                      </Text>
-                      <Text
-                        className="font-normal not-italic text-left text-white_A700 w-auto"
-                        variant="body4"
-                      >
-                        Sat 1st, Sun 2nd@ 3pm, 6:30pm & 8:30pm
-                      </Text>
-                    </div>
+  {playDates.map((playDate) => (
+    
+    <Text
+      key={playDate.id}
+      className="font-normal not-italic text-left text-white_A700 w-auto"
+      variant="body4"
+    >
+      {playDate.play_date} @ {playDate.time1}, {playDate.time2}, {playDate.time3}
+    </Text>
+  ))}
+</div>
+
                   </div>
                   <div className="flex flex-row gap-2 items-start justify-start self-stretch w-auto">
                     <Img
-                      src="images/img_materialsymbolslocationon.svg"
+                      src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927662/HeartStrings/SVG/img_materialsymbolslocationon_vleymq.svg"
                       className="h-6 w-6"
                       alt="materialsymbols"
                     />
@@ -110,12 +151,14 @@ const PlayDetails = () => {
                       <Text
                         className="font-normal not-italic text-left text-white_A700 w-auto"
                         variant="body4"
-                      ></Text>
+                      >
+                        {playData.theatre}
+                      </Text>
                     </div>
                   </div>
                   <div className="flex flex-row gap-2 items-start justify-start self-stretch w-auto">
                     <Img
-                      src="images/img_solarchatroundmoneybold.svg"
+                      src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927741/HeartStrings/SVG/img_solarchatroundmoneybold_tj6jkg.svg"
                       className="h-6 w-6"
                       alt="solarchatroundm"
                     />
@@ -136,7 +179,7 @@ const PlayDetails = () => {
               />
               <Button
                 className="common-pointer cursor-pointer font-bold min-w-[151px] text-center text-white_A700 text-xl w-auto"
-                onClick={() => navigate("/buyingticket")}
+                onClick={() => navigate("/buying-ticket")}
                 shape="RoundedBorder8"
                 size="lg"
                 variant="FillRed900"
@@ -154,16 +197,35 @@ const PlayDetails = () => {
                   Watch infotrailer
                 </Text>
                 <div className="h-[300px] relative w-full">
-                  <Img
-                    src="images/img_rectangle8_300x557.png"
-                    className="h-[300px] m-auto object-cover rounded-lg w-full"
-                    alt="rectangleEight"
-                  />
-                  <Img
-                    src="images/img_materialsymbolsplaycircle.svg"
-                    className="absolute h-16 inset-[0] justify-center m-auto w-16"
-                    alt="materialsymbols_One"
-                  />
+                <div className="flex flex-col items-center justify-start w-full">
+                      <div className="h-[230px] relative w-full">
+                      <ReactPlayer 
+                      light={
+                      <img 
+                      src={playData.poster}
+                      // src='https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927767/HeartStrings/SVG/img_rectangle8_570x1140_ot5kmw.png' 
+                      alt='Poster' 
+                      // className="max-w-full h-full"
+                      className="h-[250px] md:h-auto object-cover rounded-lg w-full"
+
+                      />}
+                      // url='https://res.cloudinary.com/dyiuol5sx/video/upload/v1692514513/OFFICIAL_MULLY_MOVIE_THEATRICAL_TRAILER_bnobmj.mp4'
+                      url={playData.infotrailer} 
+                      playing  controls 
+                      width='100%'
+                      height='240px'
+                      config={{
+                        file: {
+                          attributes: {
+                            controlsList: 'nodownload' // Disable download
+                          }
+                        }
+                      }}
+                      />
+                    
+                      </div>
+                          </div>
+                
                 </div>
               </div>
               <div className="flex flex-row gap-[9px] items-center justify-center self-stretch w-auto">
@@ -185,12 +247,8 @@ const PlayDetails = () => {
           {/* Cast Details */}
           <div className="flex flex-col gap-6 items-center justify-center max-w-[1140px] mt-24 mx-auto md:px-5 self-stretch w-full">
             <div className="flex flex-col items-start justify-start self-stretch w-auto md:w-full">
-              <div className="flex flex-col gap-[34px] items-start justify-start w-full">
-                <Text
-                  className="text-left text-white_A700 w-auto"
-                  as="h2"
-                  variant="h2"
-                >
+            <div className="flex flex-col gap-[34px] items-start justify-start w-full">
+                <Text className="text-left text-white_A700 w-auto" as="h2" variant="h2">
                   Cast
                 </Text>
                 <Slider
@@ -207,15 +265,18 @@ const PlayDetails = () => {
                   }}
                   ref={sliderRef}
                   className="gap-6 self-stretch w-auto"
-                  items={[...Array(16)].map(() => (
-                    <React.Fragment key={Math.random()}>
-                      <DetailsPagePlayColumn
-                        className="flex flex-col gap-2 items-start justify-center mx-2.5 self-stretch"
-                        rectanglefour="images/img_rectangle4_267x267.png"
-                        realname="Real name "
-                        ascastname="as cast name "
-                      />
-                    </React.Fragment>
+                  items={playData.play_casts.map((castGroup, index) => (
+                    <div key={index} className="flex gap-2">
+                      {castGroup.map(cast => (
+                        <DetailsPagePlayColumn
+                          key={cast.id}
+                          className="flex flex-col gap-2 items-start justify-center self-stretch pr-4"                          
+                          rectanglefour={`${apiUrl}${cast.image}`}
+                          realname={cast.real_name}
+                          ascastname={cast.cast_name}
+                        />
+                      ))}
+                    </div>
                   ))}
                   renderDotsItem={({ isActive }) => {
                     if (isActive) {
@@ -233,6 +294,7 @@ const PlayDetails = () => {
                   }}
                 />
               </div>
+
             </div>
             <PagerIndicator
               className="flex gap-4 h-2.5 items-center justify-center self-stretch w-[102px]"
@@ -256,7 +318,9 @@ const PlayDetails = () => {
           />
         </div>
       </div>
-    </>
+   )}
+   
+   </>
   );
 };
 

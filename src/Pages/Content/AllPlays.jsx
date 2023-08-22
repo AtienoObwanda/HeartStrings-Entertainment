@@ -106,23 +106,24 @@ const AllPlays = () => {
                   
               {plays.map((play, index) => (
                 
-                <Link 
-                // to={`/plays/${play.id}`} key={index}
-                > 
+                
                     <div
                       className="bg-black_900_01 flex flex-col gap-4 h-[440px] items-center justify-start p-4 rounded-lg w-full hover:border border-white rounded-md p-2"
                       key={index} >
                         <div className="flex flex-col items-center justify-start w-full">
-                      <div className="h-[230px] relative w-full">
+                      <div className="h-[250px] relative w-full">
                       <ReactPlayer 
                       light={
                       <img 
-                      src='https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927767/HeartStrings/SVG/img_rectangle8_570x1140_ot5kmw.png' 
+                      src={play.poster}
+                      // src='https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927767/HeartStrings/SVG/img_rectangle8_570x1140_ot5kmw.png' 
                       alt='Poster' 
-                      className="max-w-full h-full"
+                      className="h-[249px] md:h-auto object-cover rounded-lg w-full"
+
+                      // className="max-w-full h-full"
                       />}
-                      url='https://res.cloudinary.com/dyiuol5sx/video/upload/v1692514513/OFFICIAL_MULLY_MOVIE_THEATRICAL_TRAILER_bnobmj.mp4'
-                      // url={play.infotrailer} 
+                      // url='https://res.cloudinary.com/dyiuol5sx/video/upload/v1692514513/OFFICIAL_MULLY_MOVIE_THEATRICAL_TRAILER_bnobmj.mp4'
+                      url={play.infotrailer} 
                       playing  controls 
                       width='100%'
                       height='240px'
@@ -134,9 +135,11 @@ const AllPlays = () => {
                         }
                       }}
                       />
-                     
+                    
                       </div>
                           </div>
+
+                          <Link to={`/play/${play.id}`} >  
                           <div className="flex flex-col gap-8 items-start justify-start w-auto">
                           <div className="flex flex-col gap-4 items-start justify-start w-auto">
                             <Text
@@ -153,6 +156,8 @@ const AllPlays = () => {
                             </Text>
                           </div>
                           <div className="flex flex-row gap-[103px] items-center justify-between w-auto">
+                            <Link
+                            >
                             <Button 
                             className="cursor-pointer font-bold font-roboto min-w-[116px] text-center text-white_A700 text-xl w-auto"
                             shape="RoundedBorder8"
@@ -161,6 +166,7 @@ const AllPlays = () => {
                             >
                               Buy Ticket(S)
                             </Button>
+                            </Link>
                             <div className="flex flex-row gap-2 items-center justify-center w-auto pb-6">
                               <Img
                                 className="h-6 w-6"
@@ -179,9 +185,9 @@ const AllPlays = () => {
                             </div>
                           </div>
                         </div>
+                        </Link>
 
                     </div>   
-                </Link>
                 
               ))}
                
