@@ -28,10 +28,14 @@ const AllPlays = () => {
   
   async function fetchPlays() {
     try {
-      const response = await axios.get(`${apiUrl}/api/plays/`); // Use the correct API endpoint
+      const response = await axios.get(`${apiUrl}/api/plays/`);
       const data = response.data;
       if (data.error === false) {
-        setPlays(data.data); // Update state variable name
+        // Sort the plays array by the 'added_on' property in descending order
+        const sortedPlays = data.data.sort((a, b) => {
+          return new Date(b.added_on) - new Date(a.added_on);
+        });
+        setPlays(sortedPlays); // Update state with sorted array
       } else {
         console.error('Error fetching plays:', data.message);
       }
@@ -39,6 +43,8 @@ const AllPlays = () => {
       console.error('Error fetching plays:', error);
     }
   }
+
+  
 
 
   // const formattedDate = format(new Date(plays.added_on), "MMMM dd, yyyy");
