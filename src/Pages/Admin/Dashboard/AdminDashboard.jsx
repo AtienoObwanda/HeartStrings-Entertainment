@@ -27,16 +27,18 @@ const AdminDashboard = () => {
   const accessToken = localStorage.getItem('accessToken');
   const [isAuthenticated, setIsAuthenticated] = useState(true);
 
+  console.log(accessToken)
 
  useEffect(() => {
     if (accessToken) {
       fetchUserInfo();
     } else {
       // Redirect to login if no access token
-      navigate('/login');
+      navigate('/admin-login');
     }
   }, [accessToken]);
 
+  console.log(accessToken)
 
 
   const fetchUserInfo = async () => {

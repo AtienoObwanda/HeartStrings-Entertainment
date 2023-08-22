@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 
-import { useState } from 'react';
+// import { useState } from 'react';
 import moment from 'moment';
 
 import Footer from "Layout/Footer/Footer";
@@ -52,7 +52,7 @@ const handleLogout = () => {
          <SeatSelection/>
 
           {/* Ticket Details Checkout: */}
-          {/* <TicketDetails/> */}
+          <TicketDetails/>
         </div>
 
         <Footer

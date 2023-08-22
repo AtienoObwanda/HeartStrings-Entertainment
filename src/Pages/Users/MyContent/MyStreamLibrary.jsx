@@ -26,6 +26,8 @@ const MyStreamLibrary = () => {
     }
   }, [])
 
+  console.log(accessToken)
+
   const handleLogout = () => {
     setIsAuthenticated(false);
     

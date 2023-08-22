@@ -83,32 +83,55 @@ import { apiUrl } from '../env';
 
 
 const ProjectRoutes = () => {
-  const [isAdmin, setIsAdmin] = useState(false);
+  // const [isAdmin, setIsAdmin] = useState(false);
   const navigate = useNavigate(); // Get the navigate function from React Router
   const accessToken = localStorage.getItem('accessToken');
+
+  const [userType, setUserType] = useState('normal');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-    const response = await axios.get(`${apiUrl}/auth/users/me/`, {
-    headers: {
-      Authorization: `Bearer ${accessToken}`
-    },
-  });
+        const response = await axios.get(`${apiUrl}/auth/users/me/`, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`
+          },
+        });
         const userData = response.data;
-        setIsAdmin(userData.is_staff);
+        setUserType(userData.user_type);
+        setIsLoggedIn(true); // Assuming successful login
       } catch (error) {
         // Handle error here
         console.error('Error fetching user data:', error);
+        setIsLoggedIn(false);
       }
     };
 
     fetchUserData();
-  }, []);
+  }, [accessToken]);
 
-  const handleUnauthorizedAccess = () => {
-    navigate('/access-denied');
-  };
+  // useEffect(() => {
+  //   const fetchUserData = async () => {
+  //     try {
+  //   const response = await axios.get(`${apiUrl}/auth/users/me/`, {
+  //   headers: {
+  //     Authorization: `Bearer ${accessToken}`
+  //   },
+  // });
+  //       const userData = response.data;
+  //       setIsAdmin(userData.is_staff);
+  //     } catch (error) {
+  //       console.error('Error fetching user data:', error);
+  //     }
+  //   };
+
+  //   fetchUserData();
+  // }, []);
+
+  // const handleUnauthorizedAccess = () => {
+  //   navigate('/access-denied');
+  // };
 
 
 //   const fetchUserData = async () => {
@@ -173,7 +196,7 @@ const ProjectRoutes = () => {
             
           {/* Authenticated UserRoutes */}
           {/* Account Route */}
-          {isAdmin ? null : (
+          {isLoggedIn && userType === 'normal' && (
             <>
            
           <Route path="/edit-my-password" element={<EditMyAccount />} />
@@ -220,7 +243,7 @@ const ProjectRoutes = () => {
           <Route path="/admin-password-reset" element={<AdminPasswordReset />} />
           <Route path="/admin-password-reset-complete" element={<AdminPasswordResetComplete />} />
 
-          {isAdmin ? (
+          {userType === 'admin' ? (
             <>
           <Route path="/admin-dashboard" element={<AdminDashboard />} />
           <Route path="/admin-allplays" element={<AdminAllPlays />} />
