@@ -27,13 +27,12 @@ const AdminDashboard = () => {
   const accessToken = localStorage.getItem('accessToken');
   const [isAuthenticated, setIsAuthenticated] = useState(true);
 
-  console.log(accessToken)
+  // console.log(accessToken)
 
  useEffect(() => {
     if (accessToken) {
       fetchUserInfo();
     } else {
-      // Redirect to login if no access token
       navigate('/admin-login');
     }
   }, [accessToken]);
@@ -71,7 +70,8 @@ const AdminDashboard = () => {
   
   const handleLogout = () => {
     setIsAuthenticated(false);
-    
+    localStorage.clear();
+
    navigate('/admin-login');
   };
 
@@ -378,7 +378,7 @@ const AdminDashboard = () => {
                     className="not-italic text-gray_300 text-left w-auto"
                     variant="body5"
                   >
-                    {userInfo.email}
+                    {/* {userInfo.email} */}
                     System administrator
                   </Text>
                 </div>

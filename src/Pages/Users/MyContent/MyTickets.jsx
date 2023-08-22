@@ -4,7 +4,9 @@ import { createColumnHelper } from "@tanstack/react-table";
 import {FiEdit} from 'react-icons/fi'
 import {IoEyeSharp} from 'react-icons/io5'
 import { Img, Line, ReactTable, Text } from "UI_Components";
+import axios from 'axios'
 
+import { apiUrl } from '../../../../env';
 // import { Button, Img, Input, Line, List, Text } from "Components";
 import close from "../../../assets/close.svg";
 import menu from "../../../assets/menu.svg";
@@ -17,42 +19,42 @@ const MyTickets = () => {
       seats: "A1, A2, A3, A4",
       location: "Alliance Francaise",
       // priceSix: <FiEdit/>,
-      // priceSix: <IoEyeSharp/>,
+      priceSix: "https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927649/HeartStrings/SVG/img_frame40131_gjvsxq.svg",
     },
     {
       play: "KSH 3,000",
       dateandtime: "Monday 4 -17 - 2023 | 1:23 PM",
       seats: "A1, A2, A3, A4",
       location: "Alliance Francaise",
-      priceSix: "images/img_frame40131.svg",
+      priceSix: "https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927649/HeartStrings/SVG/img_frame40131_gjvsxq.svg",
     },
     {
       play: "KSH 3,000",
       dateandtime: "Monday 4 -17 - 2023 | 1:23 PM",
       seats: "A1, A2, A3, A4",
       location: "Alliance Francaise",
-      priceSix: "images/img_frame40131.svg",
+      priceSix: "https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927649/HeartStrings/SVG/img_frame40131_gjvsxq.svg",
     },
     {
       play: "KSH 3,000",
       dateandtime: "Monday 4 -17 - 2023 | 1:23 PM",
       seats: "A1, A2, A3, A4",
       location: "Alliance Francaise",
-      priceSix: "images/img_frame40131.svg",
+      priceSix: "https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927649/HeartStrings/SVG/img_frame40131_gjvsxq.svg",
     },
     {
       play: "KSH 3,000",
       dateandtime: "Monday 4 -17 - 2023 | 1:23 PM",
       seats: "A1, A2, A3, A4",
       location: "Alliance Francaise",
-      priceSix: "images/img_frame40131.svg",
+      priceSix: "https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927649/HeartStrings/SVG/img_frame40131_gjvsxq.svg",
     },
     {
       play: "KSH 3,000",
       dateandtime: "Monday 4 -17 - 2023 | 1:23 PM",
       seats: "A1, A2, A3, A4",
       location: "Alliance Francaise",
-      priceSix: "images/img_frame40131.svg",
+      priceSix: "https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927649/HeartStrings/SVG/img_frame40131_gjvsxq.svg",
     },
   ]);
 
@@ -164,8 +166,40 @@ const MyTickets = () => {
 
 const [isAuthenticated, setIsAuthenticated] = useState(true);
 const accessToken = localStorage.getItem('accessToken');
+const [userInfo, setUserInfo] = useState({});
 
 
+// User Info:
+useEffect(() => {
+  if (accessToken) {
+    fetchUserInfo();
+  } else {
+    navigate('/admin-login');
+  }
+}, [accessToken]);
+
+// console.log(accessToken)
+
+
+const fetchUserInfo = async () => {
+  try {
+    const response = await axios.get(`${apiUrl}/auth/users/me/`, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`
+      }
+    });
+
+    // Update the user information state
+    setUserInfo(response.data);
+
+    // Console log the user information
+    console.log('User Info:', response.data);
+  } catch (error) {
+    console.error('Error fetching user info:', error);
+    // Handle error (e.g., redirect to an error page)
+  }
+};
+// END OF USER INFO
 
 useEffect(() => {
 
@@ -189,25 +223,27 @@ const handleLogout = () => {
 
   return (
     <>
-      <div className="bg-black_900_01 flex sm:flex-col md:flex-col flex-row font-roboto md:gap-5 sm:gap-5 sm:pb-5 md:pb-[20em] items-center mx-auto w-full">
+      <div className="bg-black_900_01 flex sm:flex-col md:flex-col flex-row font-roboto pb-[10em] md:gap-5 sm:gap-5 sm:pb-5 md:pb-[20em] items-center mx-auto w-full">
       <div className="flex md:flex-col flex-row md:gap-5 items-start justify-evenly w-full">
           {/* Side Bar */}
           {/* Large Screens */}
         <aside className="md:hidden flex bg-black_900 flex flex-col md:hidden justify-start md:px-5 w-[247px]">
-          <Img
-            src="images/img_dummylogo02.svg"
-            className="common-pointer h-14 ml-6 md:ml-[0] mr-[87px] mt-12 w-auto"
-            alt="dummylogoTwo"
-            onClick={() => navigate("/")}
-          />
+        <div className="flex flex-col justify-start mt-12 mx-auto w-[81%]">
+              <Img
+                  src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689933646/HeartStrings/logo/HeartStringsLogo.png"
+                  className="common-pointer h-[25%] w-[35%]"
+                  alt="Heart Strings Entertainment Logo"
+                  onClick={() => navigate("/")}
+                />
+            </div>
           <div
             className="common-pointer flex flex-row gap-2 items-center justify-center ml-6 md:ml-[0] mr-[9px] mt-16 pl-6 md:pr-10 pr-[73px] sm:px-5 py-2.5 self-stretch w-auto"
-            onClick={() => navigate("/editmyaccount")}
+            onClick={() => navigate("/edit-my-account")}
           >
             <Img
-              src="images/img_iconsaxbolduser_gray_300.svg"
+              src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927660/HeartStrings/SVG/img_iconsaxbolduser_cixk7a.svg"
               className="h-6 w-6"
-              alt="iconsaxbolduser"
+              alt="User Icon"
             />
             <Text
               className="font-normal not-italic text-gray_300 text-left w-auto"
@@ -218,23 +254,24 @@ const handleLogout = () => {
           </div>
           <div
             className="common-pointer flex flex-row gap-2 items-center justify-start mt-3 mx-auto pl-6 md:pr-10 pr-[73px] sm:px-5 py-2.5 w-[199px]"
-            onClick={() => navigate("/mystreams")}
+            onClick={() => navigate("/my-streams")}
           >
             <Img
-              src="images/img_iconsaxboldelement2.svg"
+              src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927657/HeartStrings/SVG/img_iconsaxboldelement2_white_a700_f8nhvw.svg"
               className="h-6 w-6"
-              alt="iconsaxboldelem"
+              alt="Streams"
             />
             <Text
               className="font-normal not-italic text-gray_300 text-left w-auto"
               variant="body4"
             >
-              My Tickets
+              My Streams
             </Text>
           </div>
-          <div className="bg-gray_800 flex flex-row gap-2 items-center justify-center mt-[22px] mx-auto pl-6 md:pr-10 pr-[66px] sm:px-5 py-2.5 rounded-lg self-stretch w-auto">
+          <div className="bg-gray_800 flex flex-row gap-2 items-center justify-center mt-[22px] mx-auto pl-6 md:pr-10 pr-[66px] sm:px-5 py-2.5 rounded-lg self-stretch w-auto"
+                onClick={() => navigate("/my-tickets")}>
             <Img
-              src="images/img_iconsaxboldreceipt1.svg"
+              src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927659/HeartStrings/SVG/img_iconsaxboldreceipt1_z01egp.svg"
               className="h-6 w-6"
               alt="iconsaxboldrece"
             />
@@ -246,9 +283,11 @@ const handleLogout = () => {
             </Text>
           </div>
           <Line className="bg-gray_800 h-px mt-[60px] mx-auto w-[81%]" />
-          <div className="flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[50px] mr-[132px] mt-[63px] self-stretch w-auto">
+          <div className="flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[50px] mr-[132px] mt-[63px] self-stretch w-auto"
+                onClick={() => navigate("/contact-us")}>
+          
             <Img
-              src="images/img_iconsaxboldmessagequestion_gray_300.svg"
+              src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927659/HeartStrings/SVG/img_iconsaxboldmessagequestion_gray_300_nml9u7.svg"
               className="h-6 w-6"
               alt="iconsaxboldmess"
             />
@@ -263,7 +302,7 @@ const handleLogout = () => {
             onClick={handleLogout}
             className="flex flex-row gap-2 items-center justify-center mb-[466px] md:ml-[0] ml-[50px] mr-[115px] mt-8 self-stretch w-auto">
             <Img
-              src="images/img_iconsaxboldlogout.svg"
+              src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927657/HeartStrings/SVG/img_iconsaxboldlogout_cmxo47.svg"
               className="h-6 w-6"
               alt="iconsaxboldlogo"
             />
@@ -283,10 +322,10 @@ const handleLogout = () => {
                   onClick={() => setToggle((prev) => !prev)}
                 />
                 <Img
-                  src="images/img_dummylogo02.svg"
-                  className="md:ml-[580px] sm:ml-[200px] common-pointer h-14 w-auto"
-                  alt="dummylogoTwo"
-                  onClick={() => navigate("/")}
+                src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689933646/HeartStrings/logo/HeartStringsLogo.png"
+                className="common-pointer h-18 w-[35%]"
+                alt="Heart Strings Entertainment Logo"
+                onClick={() => navigate("/")}
                 />
               </div>
               <div
@@ -295,11 +334,12 @@ const handleLogout = () => {
               >
                 <ul className="list-none justify-start items-center flex-1">
                   <li className="py-3 cursor-pointer text-16">
-                    <div className="bg-gray_800 flex flex-row gap-2 items-center justify-center mt-16 pl-6 md:pr-10 pr-[58px] sm:px-5 py-2.5 rounded-lg self-stretch w-auto">
+                    <div className="bg-gray_800 flex flex-row gap-2 items-center justify-center mt-16 pl-6 md:pr-10 pr-[58px] sm:px-5 py-2.5 rounded-lg self-stretch w-auto"
+                    onClick={() => navigate("/edit-my-account")}>
                       <Img
-                        src="images/img_iconsaxbolduser.svg"
+                        src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927660/HeartStrings/SVG/img_iconsaxbolduser_cixk7a.svg"
                         className="h-6 w-6"
-                        alt="iconsaxbolduser"
+                        alt="User Icon"
                       />
                       <Text
                         className="font-normal not-italic text-left text-white_A700 w-auto"
@@ -311,11 +351,12 @@ const handleLogout = () => {
                   </li>
 
                   <li className="py-3 cursor-pointer text-16">
-                    <div className="bg-gray_800 flex flex-row gap-2 items-center justify-start md:ml-[0] mt-3 mx-6 pl-6 md:pr-10 pr-[55px] sm:px-5 py-2.5 rounded-lg w-[199px]">
+                    <div className="bg-gray_800 flex flex-row gap-2 items-center justify-start md:ml-[0] mt-3 mx-6 pl-6 md:pr-10 pr-[55px] sm:px-5 py-2.5 rounded-lg w-[199px]"
+                    onClick={() => navigate("/my-streams")}>
                       <Img
-                        src="images/img_iconsaxboldelement2_white_a700.svg"
+                        src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927657/HeartStrings/SVG/img_iconsaxboldelement2_white_a700_f8nhvw.svg"
                         className="h-6 w-6"
-                        alt="iconsaxboldelem"
+                        alt="Stream"
                       />
                       <Text
                         className="font-normal not-italic text-gray_300 text-left w-auto"
@@ -329,10 +370,10 @@ const handleLogout = () => {
                   <li className="py-3 cursor-pointer text-16">
                     <div
                       className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-8 self-stretch w-auto"
-                      onClick={() => navigate("/mytickets")}
+                      onClick={() => navigate("/my-tickets")}
                     >
                       <Img
-                        src="images/img_iconsaxboldreceipt1_gray_300.svg"
+                        src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927659/HeartStrings/SVG/img_iconsaxboldreceipt1_z01egp.svg"
                         className="h-6 w-6"
                         alt="iconsaxboldrece"
                       />
@@ -348,9 +389,10 @@ const handleLogout = () => {
                   <Line className="bg-gray_800 h-px mt-[60px] w-full" />
 
                   <li className="py-3 cursor-pointer text-16">
-                    <div className="flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-8 self-stretch w-auto">
+                    <div className="flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-8 self-stretch w-auto"
+                    onClick={() => navigate("/contact-us")}>
                       <Img
-                        src="images/img_iconsaxboldmessagequestion_gray_300.svg"
+                        src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927659/HeartStrings/SVG/img_iconsaxboldmessagequestion_gray_300_nml9u7.svg"
                         className="h-6 w-6"
                         alt="iconsaxboldmess"
                       />
@@ -368,7 +410,7 @@ const handleLogout = () => {
                       onClick={handleLogout}
                       className="flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-8 self-stretch w-auto">
                       <Img
-                        src="images/img_iconsaxboldlogout.svg"
+                        src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927657/HeartStrings/SVG/img_iconsaxboldlogout_cmxo47.svg"
                         className="h-6 w-6"
                         alt="iconsaxboldlogo"
                       />
@@ -397,7 +439,7 @@ const handleLogout = () => {
 
               <div className="flex flex-row gap-[21px] items-center justify-start mr-5 self-stretch w-auto">
                 <Img
-                  src="images/img_share.svg"
+                  src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927739/HeartStrings/SVG/img_share_obssio.svg"
                   className="h-6 w-6"
                   alt="share"
                 />
@@ -406,7 +448,7 @@ const handleLogout = () => {
                     className="font-normal not-italic text-left text-white_A700 w-auto"
                     variant="body4"
                   >
-                    Hi, Gloria
+                    Hi, {userInfo.first_name}
                   </Text>
                 </div>
               </div>

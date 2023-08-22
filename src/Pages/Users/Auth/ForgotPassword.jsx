@@ -29,7 +29,7 @@ const ForgotPassword = () => {
   };
 
   return (
-    <div className="bg-black_900 flex flex-col font-roboto sm:gap-10 md:gap-10 gap-6 items-center justify-start mx-auto pb-[429px] w-full">
+    <div className="bg-black_900 flex flex-col font-roboto sm:gap-10 md:gap-10 gap-6 items-center justify-start mx-auto pb-[49em] w-full">
       <SignupColumnlogotwo className="flex flex-col items-center justify-start p-8 sm:px-5 w-full" />
       <div className="flex flex-col gap-8 items-center justify-start md:px-5 md:pb-[350px] self-stretch w-auto sm:w-full">
         <a className="font-bold text-2xl md:text-[22px] text-left text-white_A700 sm:text-xl w-auto">

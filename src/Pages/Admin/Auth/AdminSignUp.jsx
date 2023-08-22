@@ -76,7 +76,7 @@ const AdminSignUp = () => {
           <a
             className="font-bold mt-[15px] text-2xl md:text-[22px] text-left text-white_A700 sm:text-xl w-auto"
           >
-            <Text className="">Signup</Text>
+            <Text className=""> Admin Signup</Text>
           </a>
           <div className="flex flex-col gap-12 items-start justify-start mt-[49px] md:px-5 self-stretch w-auto sm:w-full">
             <div className="flex flex-col gap-4 items-start justify-start self-stretch w-auto sm:w-full">

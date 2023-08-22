@@ -66,7 +66,7 @@ const AdminLogin = () => {
 
   return (
     <>
-      <div className="bg-black_900 flex flex-col font-roboto items-center justify-start mx-auto pb-[242px] w-full">
+      <div className="bg-black_900 flex flex-col font-roboto items-center justify-start mx-auto pb-[265px] w-full">
         <SignupColumnlogotwo className="flex flex-col items-center justify-start p-8 sm:px-5 w-full sm:p-4" />
         <a
           className="font-bold mt-[29px] text-2xl md:text-[22px] text-left text-white_A700 sm:text-xl w-auto"
@@ -152,10 +152,10 @@ const AdminLogin = () => {
 
             <div
               className="common-pointer flex flex-col gap-4 items-center justify-start self-stretch w-430 sm:w-full"
-              onClick={() => navigate("/admin-forgot-password")}
+              onClick={() => navigate("/forgot-password")}
             >
               <a
-                href="javascript:"
+                href=""
                 className="font-normal not-italic text-base text-left text-white_A700 underline w-auto"
               >
                 <Text className="">Forgot your password?</Text>

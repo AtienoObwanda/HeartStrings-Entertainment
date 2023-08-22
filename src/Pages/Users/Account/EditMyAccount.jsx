@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import axios from 'axios'
+
+
+import { apiUrl } from '../../../../env';
 import { Button, Img, Input, Line, Text } from "UI_Components";
 import close from "../../../assets/close.svg";
 import  menu from "../../../assets/menu.svg";
@@ -11,6 +15,8 @@ const EditMyAccount  = (props) => {
 
   const [isAuthenticated, setIsAuthenticated] = useState(true);
   const accessToken = localStorage.getItem('accessToken');
+  
+  const [userInfo, setUserInfo] = useState({});
 
 
   
@@ -27,6 +33,38 @@ const EditMyAccount  = (props) => {
     setIsAuthenticated(false);
     
    navigate('/login');
+  };
+
+
+  // user data:
+  useEffect(() => {
+    if (accessToken) {
+      fetchUserInfo();
+    } else {
+      navigate('/admin-login');
+    }
+  }, [accessToken]);
+
+  // console.log(accessToken)
+
+
+  const fetchUserInfo = async () => {
+    try {
+      const response = await axios.get(`${apiUrl}/auth/users/me/`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`
+        }
+      });
+  
+      // Update the user information state
+      setUserInfo(response.data);
+  
+      // Console log the user information
+      console.log('User Info:', response.data);
+    } catch (error) {
+      console.error('Error fetching user info:', error);
+      // Handle error (e.g., redirect to an error page)
+    }
   };
 
 
@@ -267,7 +305,7 @@ const EditMyAccount  = (props) => {
                       className="font-normal not-italic text-left text-white_A700 w-auto"
                       variant="body4"
                     >
-                      Hi, Gloria
+                    Hi, {userInfo.first_name}
                     </Text>
                   </div>
                 </div>

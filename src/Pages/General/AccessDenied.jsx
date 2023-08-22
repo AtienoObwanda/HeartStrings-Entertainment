@@ -1,5 +1,5 @@
 import React from 'react'
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 import { Button, Img, Text } from "UI_Components";
 import SignupColumnlogotwo from "UI_Components/SignupColumn";
@@ -10,7 +10,7 @@ const AccessDenied = () => {
   return (
     <>
         {/* Main Page Section */}
-        <div className="bg-black_900 flex flex-col font-roboto sm:gap-10 md:gap-10 gap-[77px] items-center justify-start mx-auto pb-[30px] w-full  md:h-[1200px] sm:h-[900px]">
+        <div className="bg-black_900 flex flex-col font-roboto sm:gap-10 md:gap-10 gap-[77px] items-center justify-start mx-auto pb-[150px] w-full  md:h-[1200px] sm:h-[900px]">
         <SignupColumnlogotwo className="flex flex-col items-center justify-start p-8 sm:px-5 w-full" />
         
         
@@ -58,7 +58,7 @@ const AccessDenied = () => {
             </Text>
           </div>
         </div>
-
+        <Link to="/">
           <Button
             className="cursor-pointer font-bold min-w-[293px] text-center text-white_A700 text-xl w-auto"
             shape="RoundedBorder8"
@@ -67,6 +67,7 @@ const AccessDenied = () => {
           >
             Go back Home
           </Button>
+          </Link>
         </div> 
 
 
@@ -112,15 +113,16 @@ const AccessDenied = () => {
               3
             </Text>
         </div>
-
+        <Link to="/">
           <Button
             className="mt-15 cursor-pointer font-bold min-w-[293px] text-center text-white_A700 text-xl w-auto"
             shape="RoundedBorder8"
             size="lg"
             variant="FillRed900"
           >
-            Go back Home
+          Go back Home
           </Button>
+          </Link>
         </div> 
 
        </div>

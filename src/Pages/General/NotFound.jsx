@@ -1,5 +1,5 @@
 import React from 'react'
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 import Footer from "Layout/Footer/Footer";
 import Navbar from "Layout/Navbar/Navbar";
 
@@ -12,7 +12,7 @@ const NotFound = () => {
 
   return (
     <>
-    <div className="bg-black_900 flex flex-col font-roboto sm:gap-10 md:gap-10 gap-[77px] items-center justify-start mx-auto pb-[77px] w-full">
+    <div className="bg-black_900 flex flex-col font-roboto sm:gap-10 md:gap-10 gap-[77px] items-center justify-start mx-auto pb-[127px] w-full">
 
      {/* Main Page Section */}
      <div className="bg-black_900 flex flex-col font-roboto sm:gap-10 md:gap-10 gap-[77px] items-center justify-start mx-auto pb-[30px] w-full  md:h-[1200px] sm:h-[900px]">
@@ -67,14 +67,16 @@ const NotFound = () => {
           </div>
         </div>
 
+        <Link to="/">
           <Button
-            className="cursor-pointer font-bold min-w-[293px] text-center text-white_A700 text-xl w-auto"
+            className="mt-15 cursor-pointer font-bold min-w-[293px] text-center text-white_A700 text-xl w-auto"
             shape="RoundedBorder8"
             size="lg"
             variant="FillRed900"
           >
-            Go back Home
+          Go back Home
           </Button>
+          </Link>
         </div> 
 
 
@@ -122,14 +124,16 @@ const NotFound = () => {
             </Text>
         </div>
 
+        <Link to="/">
           <Button
             className="mt-15 cursor-pointer font-bold min-w-[293px] text-center text-white_A700 text-xl w-auto"
             shape="RoundedBorder8"
             size="lg"
             variant="FillRed900"
           >
-            Go back Home
+          Go back Home
           </Button>
+          </Link>
         </div> 
 
        </div>

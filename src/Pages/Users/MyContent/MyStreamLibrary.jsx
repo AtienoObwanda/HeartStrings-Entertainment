@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom'; 
+import axios from 'axios'
 
 import { Button, Img, Input, Line, List, Text } from "UI_Components";
 // import WhiteIcon from "Components/WhiteIcon";
@@ -7,16 +8,47 @@ import LibrarySmallnoicon from "UI_Components/LibrarySmallnoicon";
 import close from "../../../assets/close.svg";
 import menu from "../../../assets/menu.svg";
 
+import { apiUrl } from '../../../../env';
+
 const MyStreamLibrary = () => {
   const navigate = useNavigate();
   const [active, setActive] = useState("Home");
   const [toggle, setToggle] = useState(false);
-  
+  const [userInfo, setUserInfo] = useState({});
   const [isAuthenticated, setIsAuthenticated] = useState(true);
   const accessToken = localStorage.getItem('accessToken');
 
-
   
+  useEffect(() => {
+    if (accessToken) {
+      fetchUserInfo();
+    } else {
+      navigate('/admin-login');
+    }
+  }, [accessToken]);
+
+  // console.log(accessToken)
+
+
+  const fetchUserInfo = async () => {
+    try {
+      const response = await axios.get(`${apiUrl}/auth/users/me/`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`
+        }
+      });
+  
+      // Update the user information state
+      setUserInfo(response.data);
+  
+      // Console log the user information
+      console.log('User Info:', response.data);
+    } catch (error) {
+      console.error('Error fetching user info:', error);
+      // Handle error (e.g., redirect to an error page)
+    }
+  };
+
   useEffect(() => {
 
     if (accessToken) {
@@ -34,9 +66,11 @@ const MyStreamLibrary = () => {
    navigate('/login');
   };
 
+ 
+
   return (
     <>
-      <div className="bg-black_900_01 flex flex-col font-roboto items-center justify-start mx-auto w-full">
+      <div className="bg-black_900_01 flex flex-col font-roboto items-center justify-start mx-auto w-full pb-[15em]">
         <div className="flex md:flex-col flex-row md:gap-5 items-start justify-evenly w-full">
           {/* Side Bar */}
           {/* Display on Large Screens  */}
@@ -263,7 +297,7 @@ const MyStreamLibrary = () => {
                     className="font-normal not-italic text-left text-white_A700 w-auto"
                     variant="body4"
                   >
-                    Hi, Gloria
+                    Hi, {userInfo.first_name}
                   </Text>
                 </div>
               </div>

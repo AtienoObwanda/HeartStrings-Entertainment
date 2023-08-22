@@ -110,7 +110,7 @@ const MyStreams = (props) => {
                   src="images/img_iconsaxboldlogout.svg"
                   className="h-6 w-6"
                   alt="iconsaxboldlogo"
-=                />
+                   />
               
                   <Text className="text-white"
                  >Logout</Text>
@@ -254,7 +254,7 @@ const MyStreams = (props) => {
                     className="font-normal not-italic text-left text-white_A700 w-auto"
                     variant="body4"
                   >
-                    Hi, Gloria
+                    Hi, {userInfo.first_name}
                   </Text>
                 </div>
               </div>

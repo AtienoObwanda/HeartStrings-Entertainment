@@ -239,9 +239,9 @@ const ProjectRoutes = () => {
 
           <Route path="/admin-signup" element={<AdminSignUp />} />
           <Route path="/admin-login" element={<AdminLogin />} />
-          <Route path="/admin-forgot-password" element={<AdminForgotPassword />}/>
-          <Route path="/admin-password-reset" element={<AdminPasswordReset />} />
-          <Route path="/admin-password-reset-complete" element={<AdminPasswordResetComplete />} />
+          {/* <Route path="/admin-forgot-password" element={<AdminForgotPassword />}/> */}
+          {/* <Route path="/admin-password-reset" element={<AdminPasswordReset />} /> */}
+          {/* <Route path="/admin-password-reset-complete" element={<AdminPasswordResetComplete />} /> */}
 
           {userType === 'admin' ? (
             <>
