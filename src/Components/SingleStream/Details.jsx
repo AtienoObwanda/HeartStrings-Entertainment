@@ -6,7 +6,7 @@ import DetailsPagePlayColumn from "UI_Components/DetailsPagePlayColumn";
 const Details = ({ stream }) =>  {
   return (
     <>
-     <div className="flex flex-col gap-4 items-start justify-start md:ml-[0] ml-[150px] md:px-5 self-stretch w-auto md:w-full">
+     <div className="flex flex-col gap-4 items-start justify-start mt-10 md:ml-[0] ml-[150px] md:px-5 self-stretch w-auto md:w-full">
         <Text
           className="text-left text-white_A700 w-auto"
           as="h2"
@@ -26,7 +26,8 @@ const Details = ({ stream }) =>  {
               className="font-normal not-italic text-left text-white_A700 w-auto"
               variant="body4"
             >
-              {stream.duration}
+              {/* {stream.duration} */}
+              1 hr  40 Mins
             </Text>
           {/* </div> */}
         </div>

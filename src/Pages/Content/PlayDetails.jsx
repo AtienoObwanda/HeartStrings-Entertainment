@@ -28,16 +28,6 @@ const PlayDetails = () => {
   const [sliderState, setsliderState] = React.useState(0);
 
 
-  // useEffect(() => {
-
-  //   axios.get(`${apiUrl}/api/plays/${id}`)
-  //     .then(response => {
-  //       setPlayData(response.data.data);
-  //     })
-  //     .catch(error => {
-  //       console.error('Error fetching data:', error);
-  //     });
-  // }, [id]);
 
 
   useEffect(() => {

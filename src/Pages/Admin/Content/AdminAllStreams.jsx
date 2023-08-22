@@ -4,6 +4,10 @@ import { useNavigate } from "react-router-dom";
 import { Button, Img, Line, List, Text } from "UI_Components";
 import close from "../../../assets/close.svg";
 import  menu from "../../../assets/menu.svg";
+import ReactPlayer from 'react-player';
+
+
+import { apiUrl } from '../../../../env';
 
 const AdminAllStreams = () => {
 
@@ -28,6 +32,31 @@ const AdminAllStreams = () => {
     
   navigate('/admin-login');
   };
+
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    fetchMovies();
+  }, []);
+  
+  async function fetchMovies() {
+    try {
+      const response = await axios.get(`${apiUrl}/api/videos/`);
+      const data = response.data;
+      if (data.error === false) {
+        // Sort the movies array by the 'added_on' property in descending order
+        const sortedMovies = data.data.sort((a, b) => {
+          return new Date(b.added_on) - new Date(a.added_on);
+        });
+        setMovies(sortedMovies); // Update state with sorted array
+        console.log(data);
+      } else {
+        console.error('Error fetching movies:', data.message);
+      }
+    } catch (error) {
+      console.error('Error fetching movies:', error);
+    }
+  }
 
   return (
 

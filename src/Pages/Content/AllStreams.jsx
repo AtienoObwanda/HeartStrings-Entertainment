@@ -12,29 +12,6 @@ import ReactPlayer from 'react-player';
 import { Button, Img } from "UI_Components";
 
 const AllStreams = () => {
-  // const [videos, setVideos] = useState([]);
-
-  
-
-  // useEffect(() => {
-  //   fetchVideos();
-  // }, []);
-  
-  // async function fetchVideos() {
-  //   try {
-  //     const response = await axios.get(`${apiUrl}/api/videos/`); 
-  //     const data = response.data; 
-  //     if (data.error === false) {
-  //       // if (response.status >= 200 && response.status < 300) {
-  //         setVideos(data.data);
-  //         console.log(data)
-  //     } else {
-  //       console.error('Error fetching videos:', data.message);
-  //     }
-  //   } catch (error) {
-  //     console.error('Error fetching videos:', error);
-  //   }
-  // }
 
   const [movies, setMovies] = useState([]);
 
@@ -44,10 +21,14 @@ const AllStreams = () => {
   
   async function fetchMovies() {
     try {
-      const response = await axios.get(`${apiUrl}/api/videos/`); 
-      const data = response.data; 
+      const response = await axios.get(`${apiUrl}/api/videos/`);
+      const data = response.data;
       if (data.error === false) {
-        setMovies(data.data);
+        // Sort the movies array by the 'added_on' property in descending order
+        const sortedMovies = data.data.sort((a, b) => {
+          return new Date(b.added_on) - new Date(a.added_on);
+        });
+        setMovies(sortedMovies); // Update state with sorted array
         console.log(data);
       } else {
         console.error('Error fetching movies:', data.message);
@@ -56,6 +37,7 @@ const AllStreams = () => {
       console.error('Error fetching movies:', error);
     }
   }
+  
   
 
   return (
@@ -120,9 +102,8 @@ const AllStreams = () => {
               
           {movies.map((movie, index) => (
             // <Link to={`/streams/${movie.title}`}> {/* Fixed variable name */}
-            <Link 
-                // to={`/plays/${play.id}`} key={index}
-                > 
+            <Link to={`/stream/${movie.id}`} >  
+            
                     <div
                       className="bg-black_900_01 flex flex-col gap-4 h-[440px] items-center justify-start p-4 rounded-lg w-full hover:border border-white rounded-md p-2"
                       key={index} >
@@ -131,12 +112,13 @@ const AllStreams = () => {
                       <ReactPlayer 
                       light={
                       <img 
-                      src='https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927767/HeartStrings/SVG/img_rectangle8_570x1140_ot5kmw.png' 
+                      src={movie.video_poster}
+                      // src='https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927767/HeartStrings/SVG/img_rectangle8_570x1140_ot5kmw.png' 
                       alt='Poster' 
-                      className="max-w-full h-full"
+                      className="h-[249px] md:h-auto object-cover rounded-lg w-full"
+
                       />}
-                      url='https://res.cloudinary.com/dyiuol5sx/video/upload/v1692514513/OFFICIAL_MULLY_MOVIE_THEATRICAL_TRAILER_bnobmj.mp4'
-                      // url={movie.infotrailer} 
+                      url={movie.trailer} 
                       playing  controls 
                       width='100%'
                       height='240px'
