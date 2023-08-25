@@ -15,6 +15,7 @@ import { apiUrl } from '../../../env';
 const UserManagement = () => {
   const [users, setUsers] = useState([]);
   const accessToken = localStorage.getItem('accessToken');
+  const [openModalId, setOpenModalId] = useState(null);
 
   useEffect(() => {
     const headers = {
@@ -106,13 +107,37 @@ const UserManagement = () => {
     setIsDeleteConfirmationOpen(false);
   };
 
-  const handleDeleteUser = () => {
+  // const handleDeleteUser = () => {
 
-    closeViewModal();
-    closeDeleteConfirmation();
+    // closeViewModal();
+    // closeDeleteConfirmation();
+  // };
+
+  const handleDeleteUser = async (userId) => {
+    try {
+      const headers = {
+        Authorization: `Bearer ${accessToken}`, // Replace with your authentication token
+      };
+  
+      const response = await axios.delete(`${apiUrl}/api/delete-user/${userId}/`, { headers });
+
+      if (response.status === 204) {
+        console.log('User deleted successfully.');
+      } else {
+        console.log('Failed to delete user.');
+       
+      }
+    } catch (error) {
+      console.error('Error deleting user:', error);
+    } finally {
+      closeViewModal(); 
+      closeDeleteConfirmation(); 
+    }
   };
+  
 
- 
+
+
 
   
 
@@ -163,11 +188,17 @@ const UserManagement = () => {
           <td className="px-6 py-4">
             <IoEyeSharp
             className="h-5 w-5 text-white_A700"
-            onClick={openViewModal}
+            // onClick={openViewModal}
+            onClick={() => setOpenModalId(item.id)}
             />
       <UserViewModal
-        isOpen={isViewModalOpen}
-        onClose={closeViewModal}
+        // isOpen={isViewModalOpen}
+        // onClose={closeViewModal}
+        // item={item}
+        // onDelete={handleDeleteUser}
+        key={item.id}
+        isOpen={openModalId === item.id}
+        onClose={() => setOpenModalId(null)}
         item={item}
         onDelete={handleDeleteUser}
       />
@@ -176,7 +207,8 @@ const UserManagement = () => {
 
           <td className="px-6 py-4">
             <BiSolidUserX
-            className="h-6 w-6 text-white_A700"/>
+            className="h-6 w-6 text-white_A700"
+            />
             </td>
          
         </tr>

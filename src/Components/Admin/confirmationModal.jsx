@@ -21,7 +21,7 @@ const ConfirmationModal = ({ isOpen, onCancel, onConfirm }) => {
                  </div>
          </div>
         <div className="bg-black_900_01 rounded-lg p-6 gap-4 pl-[60px]">
-            <Text className="text-base text-white-A700 w-auto">Are you sure you want to delete this user?</Text>
+            <Text className="text-base text-white_A700 w-auto">Are you sure you want to delete this user?</Text>
             <br></br>
             <button
             onClick={onCancel}

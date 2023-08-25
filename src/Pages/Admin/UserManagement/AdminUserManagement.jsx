@@ -1,14 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import {TiExport} from 'react-icons/ti';
+import {AiFillCloseCircle} from 'react-icons/ai'
+
+import axios from 'axios';
+import { CSVLink } from 'react-csv';
+import * as XLSX from 'xlsx';
+
+import pdfMake from 'pdfmake/build/pdfmake';
+import pdfFonts from 'pdfmake/build/vfs_fonts';
 
 
 import { Button, Img, Input, Line, List, Text } from "UI_Components";
 import UserManagement from "Components/Admin/UserManagement";
 
+import { apiUrl } from '../../../../env';
 import close from "../../../assets/close.svg";
 import  menu from "../../../assets/menu.svg";
-  
+
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
 
 const AdminUserManagement = () => {
 
@@ -62,6 +73,74 @@ const AdminUserManagement = () => {
     }
   }, [])
   
+
+
+
+
+  const [users, setUsers] = useState([]); // Declare users state variable at the top
+
+  useEffect(() => {
+    const headers = {
+      Authorization: `Bearer ${accessToken}`,
+    };
+
+    axios.get(`${apiUrl}/auth/users/`, { headers })
+      .then(response => {
+        setUsers(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching users:', error);
+      });
+  }, []);
+  
+  // Export User data:
+// Modal:
+const [isModalOpen, setIsModalOpen] = useState(false);
+const handleExportAllClick = () => {
+  setIsModalOpen(true);
+};
+const closeModal = () => {
+  setIsModalOpen(false);
+};
+
+
+const handleExportPDF = () => {
+   // Export PDF Data
+   const pdfDefinition = {
+    content: [
+      'User Data',
+      {
+        table: {
+          headerRows: 1,
+          widths: ['auto', 'auto', 'auto', 'auto'],
+          body: [
+            ['Name', 'Email', 'Phone', 'Role'],
+            ...users.map(user => [
+              `${user.first_name} ${user.last_name}`,
+              user.email,
+              user.phone,
+              user.user_type,
+            ]),
+          ],
+        },
+      },
+    ],
+  };
+
+  const pdfDoc = pdfMake.createPdf(pdfDefinition);
+  pdfDoc.download('user_data.pdf');
+};
+
+const handleExportXLSX = () => {
+  const excelData = [['Name', 'Email', 'Phone', 'Role'], ...users.map(user => [user.first_name, user.last_name, user.phone, user.email, user.user_type])];
+  const excelSheet = XLSX.utils.aoa_to_sheet(excelData);
+  const excelWorkbook = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(excelWorkbook, excelSheet, 'UserData');
+  XLSX.writeFile(excelWorkbook, 'user_data.xlsx');
+
+};
+
+// LOGOUT
   const handleLogout = () => {
     setIsAuthenticated(false);
     
@@ -452,7 +531,9 @@ const AdminUserManagement = () => {
                     >
                       Users
                     </Text>
-                    <div className="bg-red_900 flex flex-row gap-2 items-center justify-center sm:pl-5 pl-6 pr-3 py-2.5 rounded-lg self-stretch w-auto">
+                    <div className="bg-red_900 flex flex-row gap-2 items-center justify-center sm:pl-5 pl-6 pr-3 py-2.5 rounded-lg self-stretch w-auto"
+                          onClick={handleExportAllClick}
+                          >
                       <TiExport
                         className="h-6 w-6 text-white_A700"
                         alt="Export"
@@ -464,8 +545,51 @@ const AdminUserManagement = () => {
                         Export
                       </Text>
                     </div>
+                   
                   </div>
 {/* component */}
+
+                    {isModalOpen && (
+                        <div className="modal fixed inset-0 flex items-center justify-center z-50 ">
+                        <div
+                              className="m-auto !w-[27%]"
+                              >
+                                
+                                 <div className="max-h-[10vh] overflow-y-none sm:w-full md:w-full">
+                                
+                                    <div className="bg-black_900_01 flex flex-col gap-2.5 items-start justify-start mt-[3px] p-[2px] md:px-5 rounded-lg w-auto md:w-full">
+                                    <AiFillCloseCircle className="h-12 w-12 pl-4 mt-4 text-white_A700" src="#" alt="Close" 
+                                              onClick={closeModal}
+                                              />
+                                              <br></br>
+                                              <Text className="font-bold text-white_A700 text-xl w-auto pl-[60px]">Export Users</Text>
+
+                                              </div>
+
+                                              </div>
+                                              
+                                              <div className="bg-black_900_01 rounded-lg p-6 gap-4 pl-[60px]">
+                                                  <Text className="text-base text-white_A700 w-auto">Select the desired export format</Text>
+                                                  <br></br>
+                                                  <button
+                                                  onClick={handleExportPDF}
+                                                  className="bg-gray-300 hover:bg-gray-400 text-gray-800 px-4 py-2 rounded mr-[40px] mt-[3em]"
+
+                                                  >
+                                                  Export As PDF
+                                                  </button>
+                                                  <button
+                                                      onClick={handleExportXLSX}
+                                                      className="bg-red_900 hover:bg-red-700 text-white px-4 py-2 rounded"
+                                                  >
+                                                  Export As Excel
+                                                  </button>
+                                              </div>
+                                              </div>
+                                              </div>
+
+                       
+                      )}
                   <UserManagement/>
                   
                   
@@ -485,6 +609,8 @@ const AdminUserManagement = () => {
           </div>
         </div>
       </div>
+    
+                                  
     </>
   );
 };

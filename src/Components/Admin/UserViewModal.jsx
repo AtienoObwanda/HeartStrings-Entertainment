@@ -5,7 +5,7 @@ import ConfirmationModal from './ConfirmationModal';
 
 import {BiSolidUserX} from 'react-icons/bi'
 
-
+import {AiFillCloseCircle} from 'react-icons/ai'
 
 
 const UserViewModal = ({ isOpen, onClose, item, onDelete }) => {
@@ -20,8 +20,6 @@ const UserViewModal = ({ isOpen, onClose, item, onDelete }) => {
       const closeConfirmation = () => {
         setIsConfirmationOpen(false);
       };
-      
-
 
 
   return (
@@ -37,8 +35,8 @@ const UserViewModal = ({ isOpen, onClose, item, onDelete }) => {
                   className="m-auto !w-[47%]"
                   >
                      <div className="max-h-[97vh] overflow-y-auto sm:w-full md:w-full">
-                        <div className="bg-black_900_01 flex flex-col gap-2.5 items-start justify-start mt-[91px] p-[120px] md:px-5 rounded-lg w-auto md:w-full">
-                        <Img className="h-12 w-12" src="#" alt="Close" 
+                        <div className="bg-black_900_01 flex flex-col gap-2.5 items-start justify-start mt-[50px] p-[110px] md:px-5 rounded-lg w-auto md:w-full">
+                        <AiFillCloseCircle className="h-12 w-12 text-white_A700" src="#" alt="Close" 
                                   onClick={onClose}
                                   />
                         <div className="flex flex-col gap-12 items-start justify-center w-auto">
@@ -97,7 +95,7 @@ const UserViewModal = ({ isOpen, onClose, item, onDelete }) => {
         </div>
       )}
         
-      {isConfirmationOpen && (
+      {/* {isConfirmationOpen && (
         <ConfirmationModal
           isOpen={isConfirmationOpen}
           onCancel={closeConfirmation}
@@ -107,7 +105,19 @@ const UserViewModal = ({ isOpen, onClose, item, onDelete }) => {
             onClose();
           }}
         />
-      )}
+      )} */}
+
+{isConfirmationOpen && (
+      <ConfirmationModal
+        isOpen={isConfirmationOpen}
+        onCancel={closeConfirmation}
+        onConfirm={() => {
+          onDelete(item.id);
+          closeConfirmation();
+          onClose();
+        }}
+      />
+    )}
 
       
       {/* jj */}
