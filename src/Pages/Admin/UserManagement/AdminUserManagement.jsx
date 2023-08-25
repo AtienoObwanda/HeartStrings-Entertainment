@@ -465,7 +465,10 @@ const AdminUserManagement = () => {
                       </Text>
                     </div>
                   </div>
+{/* component */}
                   <UserManagement/>
+                  
+                  
                     <Text
                       className="hidden md:hidden lg:hidden sm:block text-sm font-bold ml-6 pl-6 md:ml-[0] mt-[5px] text-center text-white_A700 w-auto"
                       as="h6"

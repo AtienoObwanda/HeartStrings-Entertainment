@@ -52,7 +52,7 @@ const AllPlays = () => {
 
       return (
         <>
-        <div className="bg-black_900 flex flex-col font-roboto items-center justify-start mx-auto w-full">
+        <div className="bg-black_900 flex flex-col font-roboto items-center justify-start mx-auto w-full mb-[20em]">
           {/* Navbar */}
           <Navbar
             className="flex flex-row items-center justify-center md:px-5 w-full"

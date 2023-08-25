@@ -26,7 +26,7 @@ const StreamDetails = () => {
   const [videoData, setvideoData] = useState(null);
   const [playDates, setPlayDates] = useState([]);
   
-console.log(videoData.video_casts)
+// console.log(videoData.video_casts)
 
   useEffect(() => {
     fetchPlay();
@@ -79,7 +79,7 @@ console.log(videoData.video_casts)
         {/* Cast Details */}
         {/* <Cast  stream={videoData}/> */}
            {/* Cast Details */}
-           <div className="flex flex-col gap-6 items-center justify-center max-w-[1140px] mt-24 mx-auto md:px-5 self-stretch w-full">
+           {/* <div className="flex flex-col gap-6 items-center justify-center max-w-[1140px] mt-24 mx-auto md:px-5 self-stretch w-full">
             <div className="flex flex-col items-start justify-start self-stretch w-auto md:w-full">
             <div className="flex flex-col gap-[34px] items-start justify-start w-full">
                 <Text className="text-left text-white_A700 w-auto" as="h2" variant="h2">
@@ -140,7 +140,7 @@ console.log(videoData.video_casts)
               selectedWrapperCss="inline-block"
               unselectedWrapperCss="inline-block"
             />
-          </div>
+          </div> */}
 
 
         {/* Related Plays */}

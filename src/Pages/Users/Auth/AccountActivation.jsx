@@ -30,7 +30,7 @@ const AccountActivation = () => {
         console.log('Response status:', response.status);
         console.log('Response data:', response.data);
       
-        if (response.status === 200 && response.data.message === 'Account activated successfully.') {
+        if (response.status === 204 && response.data.message === 'Account activated successfully.') {
           setActivationMessage(response.data.message);
           setActivationSuccess(true);
         } else {
