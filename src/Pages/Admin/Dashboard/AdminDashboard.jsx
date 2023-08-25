@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 
+import UserManagement from "Components/Admin/UserManagement";
 
 import { Button, Img, Input, List, Line,Text } from "UI_Components";
 
@@ -476,7 +477,8 @@ const AdminDashboard = () => {
 
 
                     {/* Table */}
-                    <DashboardTable/>
+                    {/* <DashboardTable/> */}
+                    <UserManagement/>
 
                    
                   </div>

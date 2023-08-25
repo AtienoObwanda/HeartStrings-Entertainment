@@ -124,7 +124,7 @@ const UserManagement = () => {
         setShowSuccessAlert(true);
         setTimeout(() => {
           setShowSuccessAlert(false); // Hide the success alert after a brief delay
-        }, 3000); // Set  success alert visibility
+        }, 1500); // Set  success alert visibility
       } else {
         console.log('Failed to delete user.');
        
@@ -223,6 +223,8 @@ const UserManagement = () => {
           <td className="px-6 py-4">
             <BiSolidUserX
             className="h-6 w-6 text-white_A700"
+            onClick={() => setOpenModalId(item.id)}
+
             />
             </td>
          

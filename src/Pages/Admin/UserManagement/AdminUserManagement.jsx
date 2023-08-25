@@ -463,7 +463,7 @@ const handleExportXLSX = () => {
 
               <div className="flex sm:flex-1 flex-row gap-6 items-center justify-center ml-5 md:ml-[0] self-stretch w-auto sm:w-full">
                 <Text
-                  className="text-left text-white_A700 w-auto text-xl"
+                  className="text-left text-white_A700 w-auto text-xx"
                   as="h3"
                   variant="h3"
                 >
