@@ -462,13 +462,14 @@ return (
                     
                     
                         <div
-                          className="bg-black_900_01 flex flex-col gap-4 h-[440px] items-center justify-start p-4 rounded-lg w-full hover:border border-white rounded-md p-2"
+                          className="bg-black_900_01 flex flex-col gap-4 h-[470px] items-center justify-start p-4 rounded-lg w-full hover:border border-white rounded-md p-2"
                           key={index} >
                             <div className="flex flex-col items-center justify-start w-full">
                           <div className="h-[250px] relative w-full">
                           <FaEdit
                             className="absolute top-[0%] w-8 h-8 right-[2%] text-white"
-                            alt="frame40161"
+                            alt="Edit Play"
+                            onClick={() => navigate(`/edit-play/${play.id}`)}                            
                           />
                           <ReactPlayer 
                           light={

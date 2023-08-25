@@ -114,7 +114,7 @@ const AllPlays = () => {
                 
                 
                     <div
-                      className="bg-black_900_01 flex flex-col gap-4 h-[440px] items-center justify-start p-4 rounded-lg w-full hover:border border-white rounded-md p-2"
+                      className="bg-black_900_01 flex flex-col gap-4 h-[470px] items-center justify-start p-4 rounded-lg w-full hover:border border-white rounded-md p-2"
                       key={index} >
                         <div className="flex flex-col items-center justify-start w-full">
                       <div className="h-[250px] relative w-full">

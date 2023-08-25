@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import { Button, Img, Input, Line, List, Switch, Text } from "UI_Components";
 import PlaysAddPlayAddshift from "UI_Components/PlaysAddPlay";
@@ -8,16 +8,18 @@ import PlaysAddPlayColumniconparkoutli from "UI_Components/PlaysAddPlayColumnIco
 import PlayAddPlayVideo from "UI_Components/PlayAddPlayVideo";
 import { InputRadio } from "UI_Components/InputRadio";
 
+
 import close from "../../../assets/close.svg";
 import menu from "../../../assets/menu.svg";
 import DatePickerCal from "Components/Admin/DatePickerCal";
 import LiveShowCal from "Components/Admin/LiveShowCal";
-import AddPlayForm from "Components/Content/AddPlayForm";
+import EditPlayForm from "Components/Content/EditPlayForm";
 
-const AdminAddPlay = () => {
+const AdminEditPlay = () => {
   const navigate = useNavigate();
   const [active, setActive] = useState("Home");
   const [toggle, setToggle] = useState(false);
+
 
   const [isAuthenticated, setIsAuthenticated] = useState(true);
   const accessToken = localStorage.getItem("accessToken");
@@ -349,7 +351,7 @@ const AdminAddPlay = () => {
                     Go back to all live shows
                   </Text>
                 </div>
-                <AddPlayForm />
+                <EditPlayForm />
               </div>
             </div>
           </div>
@@ -359,4 +361,4 @@ const AdminAddPlay = () => {
   );
 };
 
-export default AdminAddPlay;
+export default AdminEditPlay;

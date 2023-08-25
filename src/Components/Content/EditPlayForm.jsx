@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useParams } from "react-router-dom";
 
 import { Button, Img, Input, Line, List, Switch, Text } from "UI_Components";
 import PlaysAddPlayAddshift from "UI_Components/PlaysAddPlay";
@@ -13,26 +13,71 @@ import LiveShowCal from "Components/Admin/LiveShowCal";
 
 import { apiUrl } from "../../../env";
 
-console.log('API: ', apiUrl)
 
 
-const AddPlayForm = () => {
-  const navigate = useNavigate();
+const EditPlayForm = () => {
+    const [fetchedPlay, setFetchedPlay] = useState({});
+    const navigate = useNavigate();
+    const { id } = useParams();
 
-  const [availability, setAvailability] = React.useState(false);
 
-  const handleSwitchChange = (newValue) => {
-    setAvailability(newValue);
-  };
+      
+// Fetch Play data:
+// useEffect(() => {
+//     fetchPlay();
+//   }, []);
+  
+//   async function fetchPlay() {
+//     try {
+//       const response = await axios.get(`${apiUrl}/api/plays/${id}`);
+//       const data = response.data;
+//       if (!data.error) {
+//         const fetchedPlayData = data.data;
+//         setTitle(fetchedPlayData.title || "");
+//         setSynopsis(fetchedPlayData.synopsis || "");
+//         setSelectedTheatre(playData.theater);
+//         setAvailability(playData.is_available === 1);
+//         setCastChange(playData.play_casts)
+//         const fetchedBOGOF = playData.play_offers.find(offer => offer.bogof === 1); 
+//         const isBOGOFOfferActive = fetchedBOGOF !== undefined;
+//         setBogofOffer({
+//         bogof: isBOGOFOfferActive,
+//         offer_day: isBOGOFOfferActive ? fetchedBOGOF.offer_day : '',
+//         number_of_tickets: isBOGOFOfferActive ? fetchedBOGOF.number_of_tickets : '',
+//         promo_code: isBOGOFOfferActive ? fetchedBOGOF.promo_code : ''
+//         });
+//         const fetchedCastMembers = playData.play_casts;
+//         setCastMembers(fetchedCastMembers);
 
-  // Toggle Casts:
-  function toggleMoreCasts() {
-    const hiddenCasts = document.getElementById("hidden-casts");
 
-    if (hiddenCasts) {
-      hiddenCasts.classList.toggle("hidden");
+
+
+        
+//         setFetchedPlay(fetchedPlayData); 
+//       } else {
+//         console.error('Error fetching play:', data.message);
+//       }
+//     } catch (error) {
+//       console.error('Error fetching play:', error);
+//     }
+//   }
+  
+
+
+    const [availability, setAvailability] = React.useState(false);
+
+    const handleSwitchChange = (newValue) => {
+        setAvailability(newValue);
+    };
+
+    // Toggle Casts:
+    function toggleMoreCasts() {
+        const hiddenCasts = document.getElementById("hidden-casts");
+
+        if (hiddenCasts) {
+        hiddenCasts.classList.toggle("hidden");
+        }
     }
-  }
 
   // Plays
   const [title, setTitle] = useState("");
@@ -166,10 +211,12 @@ const handleTheatreChange = (event) => {
       Authorization: `Bearer ${accessToken}`,
       'Content-Type': 'multipart/form-data', // Make sure to set the content type if required
     });
+    // const response = await axios.put(
+    //   `${apiUrl}/api/plays/${playId}/`,
 
   
     try {
-      const response = await axios.post(`${apiUrl}/api/plays/`, formData, {
+      const response = await axios.put(`${apiUrl}/api/plays/${id}/`, formData, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
           'Content-Type': 'multipart/form-data', // Make sure to set content type
@@ -205,21 +252,7 @@ const handleTheatreChange = (event) => {
     const otherOffersPerPage = 1; // Adjust the number of offers per page
 
 
- 
-
-  // console.log(
-  //   "Data: ",
-  //   title,
-  //   synopsis,
-  //   selectedTheatre,
-  //   posterFile,
-  //   'Availability: ', isAvailableString,
-  //   infotrailerFile,
-  //   castMembers,
-  //   playDateTimes,
-  //   'Bogof: ',bogofOffer,
-  //   'Other Offers:  ',otherOffers,
-  // );
+  
 
   return (
     <>
@@ -242,8 +275,9 @@ const handleTheatreChange = (event) => {
                   type="text"
                   // placeholder="Enter play title"
                   value={title}
+                  
                   onChange={(e) => setTitle(e.target.value)}
-                />
+                  />
               </div>
 
               {/* synopsis */}
@@ -443,20 +477,7 @@ const handleTheatreChange = (event) => {
                     </div>
                   </div>
 
-                  {/* <div className="flex flex-col gap-2 items-start justify-start w-full sm:w-full">
-                    <Text
-                      className="text-base text-white-A700 w-auto"
-                      size="txtRobotoRomanRegular16"
-                    >
-                      Location
-                    </Text>
-                    <Input
-                      name="frame40146"
-                      placeholder="Search"
-                      className="p-0 placeholder:text-gray-300 sm:pr-5 text-base text-gray-300 text-left w-full"
-                      wrapClassName="bg-gray_800 pl-[13px] pr-[35px] py-4 rounded w-full"
-                    ></Input>
-                  </div> */}
+             
                   <div className="flex flex-row gap-6 h-7 md:h-auto items-center justify-center w-auto">
                     <Text
                       className="text-base text-white_A700 w-auto"
@@ -501,6 +522,7 @@ const handleTheatreChange = (event) => {
                             onDateSelection={handleDateSelection}
                             /> */}
                 <LiveShowCal onDateSelection={handleDateSelection} />
+                
 
                 {/* Offers: */}
               </div>
@@ -850,19 +872,14 @@ const handleTheatreChange = (event) => {
           <div className="flex flex-row gap-[25px] items-start justify-start ml-auto mt-6 self-stretch w-auto">
             <Button
               className="cursor-pointer flex items-center justify-center min-w-[166px] w-auto"
-              leftIcon={
-                <Img
-                  src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927654/HeartStrings/SVG/img_iconsax_bold_save2_bgaabn.svg"
-                  className="mb-px mr-3"
-                  alt="Save"
-                />
-              }
+              onClick={() => navigate("/admin-allplays")}
               shape="RoundedBorder8"
               size="lg"
               variant="OutlineWhiteA700_1"
+
             >
               <div className="font-bold text-left text-white_A700 text-xl">
-                Save Live Show
+                Cancel
               </div>
             </Button>
 
@@ -882,7 +899,7 @@ const handleTheatreChange = (event) => {
               variant="FillRed900"
             >
               <div className="font-bold text-left text-white_A700 text-xl">
-                Post Live Show
+                Update Live Show
               </div>
             </Button>
           </div>
@@ -893,4 +910,4 @@ const handleTheatreChange = (event) => {
   );
 };
 
-export default AddPlayForm;
+export default EditPlayForm;
