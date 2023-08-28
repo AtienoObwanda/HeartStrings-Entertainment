@@ -76,6 +76,7 @@ const AdminAddStream = React.lazy(() => import("Pages/Admin/Content/AdminAddStre
 const AdminAllStreams = React.lazy(() => import("Pages/Admin/Content/AdminAllStreams"));
 const AdminAddPlay = React.lazy(() => import("Pages/Admin/Content/AdminAddPlay"));
 const AdminEditPlay = React.lazy(() => import("Pages/Admin/Content/AdminEditPlay"));
+const AdminEditStream = React.lazy(() => import ("Pages/Admin/Content/AdminEditStream"))
 const AdminAllPlays = React.lazy(() => import("Pages/Admin/Content/AdminAllPlays"));
 const AdminDashboard = React.lazy(() => import("Pages/Admin/Dashboard/AdminDashboard"));
 // const RentingPlayPaymentConfirmation = React.lazy(() => import("pages/RentingPlayPaymentConfirmation"));
@@ -253,6 +254,7 @@ const ProjectRoutes = () => {
           <Route path="/add-play" element={<AdminAddPlay />} />
           <Route path="/edit-play/:id" element={<AdminEditPlay />} />
           <Route path="/admin-allstreams" element={<AdminAllStreams />} />
+          <Route path="/edit-stream/:id" element={<AdminEditStream />} />
           <Route path="/add-stream" element={<AdminAddStream />} />
           <Route path="/ticket-management" element={<AdminTicketManagement />} />
           <Route path="/user-management" element={<AdminUserManagement />} />    

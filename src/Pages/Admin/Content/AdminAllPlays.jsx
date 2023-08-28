@@ -462,7 +462,7 @@ return (
                     
                     
                         <div
-                          className="bg-black_900_01 flex flex-col gap-4 h-[470px] items-center justify-start p-4 rounded-lg w-full hover:border border-white rounded-md p-2"
+                          className="bg-black_900_01 flex flex-col gap-4 h-[430px] items-center justify-start p-4 rounded-lg w-full hover:border border-white rounded-md p-2"
                           key={index} >
                             <div className="flex flex-col items-center justify-start w-full">
                           <div className="h-[250px] relative w-full">
@@ -511,35 +511,7 @@ return (
                                   {play.synopsis.substring(0, 70) + '...'}
                                 </Text>
                               </div>
-                              <div className="flex flex-row gap-[103px] items-center justify-between w-auto">
-                                <Link
-                                >
-                                <Button 
-                                className="cursor-pointer font-bold font-roboto min-w-[116px] text-center text-white_A700 text-xl w-auto"
-                                shape="RoundedBorder8"
-                                size="lg"
-                                variant="FillGray900"
-                                >
-                                  Buy Ticket(S)
-                                </Button>
-                                </Link>
-                                <div className="flex flex-row gap-2 items-center justify-center w-auto pb-6">
-                                  <Img
-                                    className="h-6 w-6"
-                                    src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927664/HeartStrings/SVG/img_mdiclocktimenine_wcpsyc.svg"
-                                    alt="clock icon"
-                                  />
-                                  <div className="flex flex-col items-start justify-start w-auto text-white">
-                                    <Text
-                                      className="text-base text-white-A700 w-auto"
-                                      size="txtRobotoRomanRegular16"
-                                    >
-                                    {/* {play.duration} */}
-                                    {play.added_on.substring(0, 10)}
-                                    </Text>
-                                  </div>
-                                </div>
-                              </div>
+                              
                             </div>
                             </Link>
 

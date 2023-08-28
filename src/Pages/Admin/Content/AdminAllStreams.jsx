@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import {FaEdit} from "react-icons/fa"
+import axios from 'axios';
 
 import { Button, Img, Line, List, Text } from "UI_Components";
 import close from "../../../assets/close.svg";
@@ -62,8 +64,8 @@ const AdminAllStreams = () => {
 
     
     <>
-      <div className="bg-black_900_01 flex sm:flex-col md:flex-col flex-row font-roboto sm:gap-5 md:gap-5 items-center mx-auto w-full">
-      <div className="flex md:flex-col flex-row md:gap-5 items-start justify-evenly w-full">
+      <div className="bg-black_900_01 pb-[40em] flex sm:flex-col md:flex-col flex-row font-roboto sm:gap-5 md:gap-5 items-start mx-auto w-full">
+      {/* <div className="flex md:flex-col flex-row md:gap-5 items-start justify-evenly w-full"> */}
 
         {/* Large screen */}
         <aside className="md:hidden flex justify-start md:px-5 w-[247px]">
@@ -337,259 +339,209 @@ const AdminAllStreams = () => {
           </div>
 
           </aside>
-
-
-
-
-        <div className="flex-1 h-[1024px] md:h-[1198px] sm:h-[1776px] md:px-5 relative w-full">
-          <div className="absolute bottom-[0] flex flex-col gap-6 inset-x-[0] items-center justify-center mx-auto p-[46px] md:px-10 sm:px-5 w-full">
-            <div className="flex flex-row md:gap-10 gap-[788px] items-center justify-between mt-0.5 self-stretch w-auto md:w-full">
-              <div className="flex flex-col items-start justify-center self-stretch w-auto">
-                <div className="flex flex-col items-start justify-center self-stretch w-auto">
+       
+          <div className="flex-1 h-[1123px] md:h-[175px] md:px-5 relative w-full">
+          <div className=" flex flex-row md:gap-10 inset-x-[0] items-center justify-between mx-auto p-6 sm:px-5 top-[0] w-full">
+              <div className="flex flex-col items-center justify-center ml-6 mt-[9px] self-stretch w-auto">
+                <Text
+                  className="text-left text-white_A700 w-auto"
+                  as="h2"
+                  variant="h2"
+                >
+                  Plays
+                </Text>
+              </div>
+              <div className="flex flex-row gap-[21px] items-center justify-start mr-6 self-stretch w-auto">
+                <Img
+                  src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927649/HeartStrings/SVG/img_ellipse1_jfdd8k.png"
+                  className="h-[61px] md:h-auto rounded-[50%] w-[61px]"
+                  alt="ellipseOne"
+                />
+                <div className="flex flex-col gap-2 items-start justify-center self-stretch w-auto">
                   <Text
                     className="font-bold text-left text-white_A700 w-auto"
-                    as="h5"
-                    variant="h5"
+                    variant="body4"
                   >
-                    All Streams
+                    Cameron Williamson
+                  </Text>
+                  <Text
+                    className="not-italic text-gray_300 text-left w-auto"
+                    variant="body5"
+                  >
+                    System administrator
                   </Text>
                 </div>
               </div>
-              <Button
-                className="common-pointer cursor-pointer flex items-center justify-center min-w-[184px] w-auto"
-                onClick={() => navigate("/add-stream")}
-                leftIcon={
-                  <Img
-                    src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927652/HeartStrings/SVG/img_iconsax_bold_addcircle_a598f7.svg"
-                    className="mt-px"
-                    alt="Iconsax/Bold/addcircle"
-                  />
-                }
-                shape="RoundedBorder8"
-                size="lg"
-                variant="FillRed900"
-              >
-                <div className="font-bold text-left text-white_A700 text-xl">
-                  Add stream
-                </div>
-              </Button>
             </div>
-            <div className="md:h-[1025px] sm:h-[1603px] h-[275px] mb-[472px] relative w-full">
-              <div className="flex flex-row h-full items-center justify-between ml-[104px] mt-[59px] w-[56%]">
-                <Img
-                  src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927663/HeartStrings/SVG/img_materialsymbolsplaycircle_black_900_e8p0ow.svg"
-                  className="h-12 w-12"
-                  alt="materialsymbols"
-                />
-                
-                
-              </div>
-              <List
-                className="absolute sm:flex-col flex-row gap-[25px] grid sm:grid-cols-1 md:grid-cols-2 grid-cols-4 inset-[0] justify-start m-auto self-stretch w-auto"
-                orientation="horizontal"
-              >
-                <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto">
-                  <div className="h-[200px] relative w-full">
-                    <Img
-                      src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927767/HeartStrings/SVG/img_rectangle8_570x1140_ot5kmw.png"
-                      className="h-[200px] m-auto object-cover rounded-lg w-full"
-                      alt="rectangleFour"
-                    />
-                    <Button
-                      className="absolute flex h-11 items-center justify-center right-[6%] top-[5%] w-11"
-                      shape="icbRoundedBorder2"
-                      size="smIcn"
-                      variant="icbFillGray800"
-                    >
-                      <Img
-                        src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927647/HeartStrings/SVG/img_camera_n3rcqz.svg"
-                        className="h-6"
-                        alt="camera"
-                      />
-                    </Button>
-                  </div>
-                  <div className="flex flex-col gap-1 items-start justify-center self-stretch w-auto">
-                    <div className="flex flex-col items-center justify-start self-stretch w-auto">
-                      <Text
-                        className="font-bold text-left text-white_A700 w-auto"
-                        as="h6"
-                        variant="h6"
-                      >
-                        Bridegroom for sale
-                      </Text>
-                    </div>
-                    <div className="flex flex-row gap-2 items-center justify-center self-stretch w-auto">
-                      <Img
-                        src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927664/HeartStrings/SVG/img_mdiclocktimenine_wcpsyc.svg"
-                        className="h-6 w-6"
-                        alt="mdiclocktimenin"
-                      />
-                      <div className="flex flex-col items-start justify-start self-stretch w-auto">
-                        <Text
-                          className="font-normal not-italic text-left text-white_A700 w-auto"
-                          variant="body4"
-                        >
-                          1hr 20mins
-                        </Text>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto">
-                  <div className="h-[200px] relative w-full">
-                    <Img
-                      src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927731/HeartStrings/SVG/img_rectangle8_300x557_xlnnpm.png"
-                      className="h-[200px] m-auto object-cover rounded-lg w-full"
-                      alt="rectangleFour"
-                    />
-                    <Img
-                      src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927664/HeartStrings/SVG/img_materialsymbolsplaycircle_white_a700_ousntd.svg"
-                      className="absolute h-12 inset-[0] justify-center m-auto w-12"
-                      alt="materialsymbols"
-                    />
-                  </div>
-                  <div className="flex flex-col gap-1 items-start justify-center self-stretch w-auto">
-                    <div className="flex flex-col items-center justify-start self-stretch w-auto">
-                      <Text
-                        className="font-bold text-left text-white_A700 w-auto"
-                        as="h6"
-                        variant="h6"
-                      >
-                        Bridegroom for sale
-                      </Text>
-                    </div>
-                    <div className="flex flex-row gap-2 items-center justify-center self-stretch w-auto">
-                      <Img
-                        src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927664/HeartStrings/SVG/img_mdiclocktimenine_wcpsyc.svg"
-                        className="h-6 w-6"
-                        alt="mdiclocktimenin"
-                      />
-                      <div className="flex flex-col items-start justify-start self-stretch w-auto">
-                        <Text
-                          className="font-normal not-italic text-left text-white_A700 w-auto"
-                          variant="body4"
-                        >
-                          1hr 20mins
-                        </Text>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto">
-                  <div className="h-[200px] relative w-full">
-                    <Img
-                      src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927725/HeartStrings/SVG/img_rectangle8_1_cblvcv.png"
-                      className="h-[200px] m-auto object-cover rounded-lg w-full"
-                      alt="rectangleFour"
-                    />
-                    <Img
-                      src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927664/HeartStrings/SVG/img_materialsymbolsplaycircle_white_a700_ousntd.svg"
-                      className="absolute h-12 inset-[0] justify-center m-auto w-12"
-                      alt="materialsymbols"
-                    />
-                  </div>
-                  <div className="flex flex-col gap-1 items-start justify-center self-stretch w-auto">
-                    <div className="flex flex-col items-center justify-start self-stretch w-auto">
-                      <Text
-                        className="font-bold text-left text-white_A700 w-auto"
-                        as="h6"
-                        variant="h6"
-                      >
-                        Bridegroom for sale
-                      </Text>
-                    </div>
-                    <div className="flex flex-row gap-2 items-center justify-center self-stretch w-auto">
-                      <Img
-                        src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927664/HeartStrings/SVG/img_mdiclocktimenine_wcpsyc.svg"
-                        className="h-6 w-6"
-                        alt="mdiclocktimenin"
-                      />
-                      <div className="flex flex-col items-start justify-start self-stretch w-auto">
-                        <Text
-                          className="font-normal not-italic text-left text-white_A700 w-auto"
-                          variant="body4"
-                        >
-                          1hr 20mins
-                        </Text>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto">
-                  <div className="h-[200px] relative w-full">
-                    <Img
-                      src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927736/HeartStrings/SVG/img_rectangle8_191x332_ykeufx.png"
-                      className="h-[200px] m-auto object-cover rounded-lg w-full"
-                      alt="rectangleFour"
-                    />
-                    <Img
-                      src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927664/HeartStrings/SVG/img_materialsymbolsplaycircle_white_a700_ousntd.svg"
-                      className="absolute h-12 inset-x-[0] mx-auto top-[30%] w-12"
-                      alt="materialsymbols"
-                    />
-                  </div>
-                  <div className="flex flex-col gap-1 items-start justify-center self-stretch w-auto">
-                    <div className="flex flex-col items-center justify-start self-stretch w-auto">
-                      <Text
-                        className="font-bold text-left text-white_A700 w-auto"
-                        as="h6"
-                        variant="h6"
-                      >
-                        Bridegroom for sale
-                      </Text>
-                    </div>
-                    <div className="flex flex-row gap-2 items-center justify-center self-stretch w-auto">
-                      <Img
-                        src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927664/HeartStrings/SVG/img_mdiclocktimenine_wcpsyc.svg"
-                        className="h-6 w-6"
-                        alt="mdiclocktimenin"
-                      />
-                      <div className="flex flex-col items-start justify-start self-stretch w-auto">
-                        <Text
-                          className="font-normal not-italic text-left text-white_A700 w-auto"
-                          variant="body4"
-                        >
-                          1hr 20mins
-                        </Text>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </List>
-            </div>
-          </div>
-          <div className="absolute flex flex-row md:gap-10 inset-x-[0] items-center justify-between mx-auto p-[29px] sm:px-5 top-[0] w-full">
-            <Text
-              className="ml-[19px] text-left text-white_A700 w-auto"
-              as="h2"
-              variant="h2"
-            >
-              Streams
-            </Text>
-            <div className="flex flex-row gap-[21px] items-center justify-start mr-[19px] self-stretch w-auto">
-              <Img
-                src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927649/HeartStrings/SVG/img_ellipse1_jfdd8k.png"
-                className="h-[61px] md:h-auto rounded-[50%] w-[61px]"
-                alt="ellipseOne"
-              />
-              <div className="flex flex-col gap-2 items-start justify-center self-stretch w-auto">
+            <div className="flex flex-col gap-6  items-center justify-start mx-auto p-12 md:px-10 sm:px-5 w-full">
+              <div className="flex flex-row md:gap-10 gap-[40px] items-center justify-between self-stretch w-auto md:w-full">
                 <Text
                   className="font-bold text-left text-white_A700 w-auto"
-                  variant="body4"
+                  as="h5"
+                  variant="h5"
                 >
-                  Cameron Williamson
+                  All Streams
                 </Text>
-                <Text
-                  className="not-italic text-gray_300 text-left w-auto"
-                  variant="body5"
+                <Button
+                  className="common-pointer cursor-pointer flex items-center  justify-center min-w-[164px] w-auto"
+                  onClick={() => navigate("/add-play")}
+                  leftIcon={
+                    <Img
+                      src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927652/HeartStrings/SVG/img_iconsax_bold_addcircle_a598f7.svg"
+                      className="mb-px mr-4"
+                      alt="Iconsax/Bold/addcircle"
+                    />
+                  }
+                  shape="RoundedBorder8"
+                  size="lg"
+                  variant="FillRed900"
                 >
-                  System administrator
-                </Text>
+                  <div className="font-bold text-left text-white_A700 text-xl">
+                    Post play
+                  </div>
+                </Button>
               </div>
+             
+
+              {/* Live */}
+              <div className="flex flex-col gap-6 items-start justify-start  max-w-[1140px] mt-24  mx-auto md:px-5 self-stretch w-full">
+                {movies.length === 0 ? (
+                  <Text
+                  className="text-center justify-center items center text-black w-auto"
+                  as="h2"
+                  variant="h2"
+                >
+                  No Plays Available
+                </Text>
+                ):(
+                  <Text
+                  className="text-left text-white_A700 w-auto"
+                  as="h2"
+                  variant="h2"
+                >
+                  Live Plays
+                </Text>
+                )} 
+                <div className="flex flex-col items-center justify-center self-stretch w-auto md:w-full">
+                {movies.length === 0 ? (
+                      <div className="bg-black_900_01 h-80 border border-gray_300 border-solid flex flex-col items-center justify-center px-40 md:px-5 py-12 rounded-lg self-stretch w-1/2 md:w-90% md:mt-[130px] sm:w-full  mx-auto">
+
+                      <div className="flex flex-col gap-4 items-center justify-center self-stretch w-auto sm:w-full">
+                          <Text
+                            className="text-gray_300 text-center w-auto"
+                            as="h3"
+                            variant="h3"
+                          >
+                            No live plays available!
+                          </Text>
+                          <div className="flex flex-col items-center justify-start self-stretch w-auto sm:w-full">
+                            <Text
+                              className="font-normal leading-[175.00%] max-w-[458px] md:max-w-full not-italic text-center text-gray_300_a2"
+                              as="h6"
+                              variant="h6"
+                            >
+                              <>
+                              Please check in soon for new updates.
+                              </>
+                            </Text>
+                          </div>
+                          
+                        </div>
+
+                    </div>
+                ) : (
+                  <div className="md:gap-5 gap-6 grid sm:grid-cols-1 md:grid-cols-2 grid-cols-3 justify-center min-h-[auto] w-full">
+                      
+                  {movies.map((movie, index) => (
+                    
+                    
+                        <div
+                          className="bg-black_900_01 flex flex-col gap-4 h-[430px] items-center justify-start p-4 rounded-lg w-full hover:border border-white rounded-md p-2"
+                          key={index} >
+                            <div className="flex flex-col items-center justify-start w-full">
+                          <div className="h-[250px] relative w-full">
+                          <FaEdit
+                            className="absolute top-[0%] w-8 h-8 right-[2%] text-white"
+                            alt="Edit Play"
+                            onClick={() => navigate(`/edit-stream/${movie.id}`)}                            
+                          />
+                          <ReactPlayer 
+                          light={
+                          <img 
+                          src={movie.video_poster}
+                          alt='Poster' 
+                          className="h-[249px] md:h-auto object-cover rounded-lg w-full"
+
+                          />}
+                          url={movie.trailer} 
+                          playing  controls 
+                          width='100%'
+                          height='240px'
+                          config={{
+                            file: {
+                              attributes: {
+                                controlsList: 'nodownload' // Disable download
+                              }
+                            }
+                          }}
+                          />
+                        
+                          </div>
+                              </div>
+
+                              <Link to={`/play/${movie.id}`} >  
+                              <div className="flex flex-col gap-8 items-start justify-start w-auto">
+                              <div className="flex flex-col gap-4 items-start justify-start w-auto">
+                                <Text
+                                  className="text-2xl md:text-[22px] text-white sm:text-xl w-auto"
+                                  size="txtRobotoRomanBold24"
+                                >
+                                  {movie.title}
+                                </Text>
+                                <Text
+                                  className="leading-[175.00%] max-w-[332px] md:max-w-full text-gray-300 text-xl"
+                                  size="txtRobotoRomanRegular20Gray300"
+                                >
+                                  {movie.synopsis.substring(0, 70) + '...'}
+                                </Text>
+                              </div>
+                              <div className="flex flex-row gap-[103px] items-center justify-between w-auto">
+                                
+                                
+                              </div>
+                            </div>
+                            </Link>
+
+                    </div>   
+                
+              ))}
+               
+                </div>
+
+            )}
             </div>
+            
           </div>
-        </div>
-      </div>
+    
+
+              {/* Archived */}
+
+
+              <div className="flex md:flex-1 flex-col mt-[44px] gap-6 items-start justify-start self-stretch w-auto md:w-full">
+                  <div className="flex flex-col items-center justify-center self-stretch w-auto sm:w-full">
+                    <Text
+                      className="font-bold text-5xl md:text-[22px] text-left text-white_A700 sm:text-xl"
+                      
+                    >
+                      Archived Streams
+                    </Text>
+                  </div>
+                 
+                </div>
+            </div>
+           
+          </div>
+      {/* </div> */}
       </div>
     </>
   );
