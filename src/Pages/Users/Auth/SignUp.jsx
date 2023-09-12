@@ -34,17 +34,14 @@ const SignUp = ({  }) => {
     if (password === re_password) {
       try {
         const response = await axios.post(`${apiUrl}/auth/users/`, {
-        // const response = await axios.post('https://api.jaafrikaimages.org/auth/users/', {
           first_name,
           last_name,
           phone,
           email,
+          user_type: 'normal',
           password,
           re_password,
         });
-  
-        // if (response.data.error === false) {
-        // if (response.data.success === true) {
 
           if (response.status >= 200 && response.status < 300) {
 

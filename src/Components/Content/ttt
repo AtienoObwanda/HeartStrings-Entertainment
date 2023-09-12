@@ -1,8 +1,0 @@
-Poster:
-
-                        setInfotrailerFile(playData.Infotrailer)
-                        setSelectedTheatre(playData.theater);
-                        setAvailability(playData.is_available === 1);
-playData.poster
-playData.infotrailer
-setCastChange(playData.play_casts)
