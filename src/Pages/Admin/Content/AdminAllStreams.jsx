@@ -489,7 +489,7 @@ const AdminAllStreams = () => {
                           </div>
                               </div>
 
-                              <Link to={`/play/${movie.id}`} >  
+                              <Link to={`/stream/${movie.id}`} >  
                               <div className="flex flex-col gap-8 items-start justify-start w-auto">
                               <div className="flex flex-col gap-4 items-start justify-start w-auto">
                                 <Text

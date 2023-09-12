@@ -138,9 +138,19 @@ const handleSubmit = async (e) => {
     video,
     trailer,
     video_poster: poster,
-    video_casts: castMembers,
-    video_available,
+    video_casts: castMembers, 
+    video_available: video_available,
   };
+
+  const nonEmptyCastMembers = castMembers.filter(member => member.real_name !== '' && member.cast_name !== '');
+  const nonEmptyVideoAvailable = video_available.filter(item => (
+    item.three_days !== '' &&
+    item.three_price !== '' &&
+    item.seven_days !== '' &&
+    item.seven_price !== '' &&
+    item.fourteen_days !== '' &&
+    item.fourteen_price !== ''
+  ));
 
   const formData = new FormData();
   formData.append("title", title);
@@ -148,10 +158,15 @@ const handleSubmit = async (e) => {
   formData.append("video", video);
   formData.append("trailer", trailer);
   formData.append("video_poster", poster);
-  formData.append("video_casts", JSON.stringify(castMembers));
-  formData.append("video_available", JSON.stringify(video_available));
+  // formData.append("video_casts", JSON.stringify(castMembers));
+  // formData.append("video_available", JSON.stringify(video_available));
+  formData.append("video_casts", JSON.stringify(nonEmptyCastMembers));
+  formData.append("video_available", JSON.stringify(nonEmptyVideoAvailable));
 
 
+
+
+ 
 
   console.log('POST Request Payload:', formData); 
   // console.log('POST Request Payload:', requestBody); 
@@ -168,7 +183,9 @@ const handleSubmit = async (e) => {
     const response = await axios.post(`${apiUrl}/api/videos/`, formData, {
       headers: {
         Authorization: `Bearer ${accessToken}`,
-        'Content-Type': 'multipart/form-data', 
+        'Content-Type': 'multipart/form-data',
+        // 'Content-Type': 'application/json',
+
 
       },
     });
@@ -198,7 +215,7 @@ const showLoadMoreButton = castDisplayCount < totalCastMembers;
 
 
 console.log(
-  "Data: ", title, synopsis,poster,trailer,video, castMembers,video_available
+  "Play Data: ", title, synopsis,poster,'Video Availability: ',video_available, video,trailer, 'castMembers',castMembers,
 )
 
 return (
@@ -532,6 +549,7 @@ return (
           <div className="w-[96%] md:w-full">
 
               <form onSubmit={handleSubmit}>
+                
 
                   <div className="flex md:flex-col flex-row gap-4 items-start justify-between mt-6 w-full">
                     <div className="bg-black_900 w-[725px] flex sm:flex-1 flex-col gap-6 items-center justify-center mb-8 sm:px-5 px-6 py-12 rounded-lg md:w-[535px] sm:w-full">
@@ -1023,6 +1041,11 @@ return (
                         Save Stream
                       </div>
                     </Button>
+
+                    {/* <Button 
+                     variant="OutlineWhiteA700_1"
+                    className='cursor-pointer flex items-center justify-center min-w-[166px] w-auto' onClick={() => console.log('Form Data:', formData)}>Log Form Data</Button> */}
+
                     <Button
                      type="submit"
                      // name="action"
