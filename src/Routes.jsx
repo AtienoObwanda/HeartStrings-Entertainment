@@ -188,6 +188,8 @@ const ProjectRoutes = () => {
 
           {/* TO DELETE: */}
                     <Route path="/renting-play/:id" element={<RentingPlay />} />
+                    <Route path="/buying-ticket/:id" element={<BuyingTicket />} /> {/*Actual ticket details page */}
+
 
 
           {/* UserRoutes */}
@@ -225,7 +227,8 @@ const ProjectRoutes = () => {
           {/* Tickets */}
           {/* ***************************************8 */}
           <Route path="/buying-tickets" element={<BuyingTickets />} />
-          <Route path="/buying-ticket" element={<BuyingTicket />} /> {/*Actual ticket details page */}
+          {/* <Route path="/buying-ticket" element={<BuyingTicket />} /> */}
+           {/*Actual ticket details page */}
           {/* ***************************************8 */}
 
           {/* Payments */}

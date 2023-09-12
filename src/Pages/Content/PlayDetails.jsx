@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-import { useNavigate,useParams } from "react-router-dom";
+import { useNavigate,useParams, Link } from "react-router-dom";
 
 import { Button, Img, PagerIndicator, Slider, Text } from "UI_Components";
 
@@ -167,15 +167,19 @@ const PlayDetails = () => {
                 className="bg-black_900 border-2 border-red_900 border-solid flex flex-col gap-2.5 items-center justify-center px-5 py-2.5 rounded-lg self-stretch w-auto sm:w-full"
                 price="We’ve got a special offer for you: BOGOF show @ 3pm on Sat 1st . KES 1,000"
               />
-              <Button
-                className="common-pointer cursor-pointer font-bold min-w-[151px] text-center text-white_A700 text-xl w-auto"
-                onClick={() => navigate("/buying-ticket")}
-                shape="RoundedBorder8"
-                size="lg"
-                variant="FillRed900"
-              >
-                Buy ticket (s)
-              </Button>
+             
+
+              <Link to={`/buying-ticket/${playData.id}`} >  
+                  <Button
+                    className="common-pointer cursor-pointer font-bold min-w-[151px] text-center text-white_A700 text-xl w-auto"
+                    onClick={() => navigate("/buying-ticket")}
+                    shape="RoundedBorder8"
+                    size="lg"
+                    variant="FillRed900"
+                  >
+                    Buy ticket (s)
+                  </Button>
+          </Link>
             </div>
             <div className="flex md:flex-1 flex-col gap-[27px] items-start justify-start w-[49%] md:w-full">
               <div className="flex flex-col gap-4 items-start justify-start self-stretch w-auto sm:w-full">

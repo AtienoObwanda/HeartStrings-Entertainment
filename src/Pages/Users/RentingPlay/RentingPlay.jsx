@@ -10,7 +10,7 @@ const RentingPlay = () => {
   const {id} = useParams()
   const [videoData, setvideoData] = useState(null);
   const [selectedAmount, setSelectedAmount] = useState(null);
-  const [response, setResponse] = useState(null);
+  // const [response, setResponse] = useState(null);
   const [selectedTipOption, setSelectedTipOption] = useState("no_tip");
   const [customTip, setCustomTip] = useState('0');
 

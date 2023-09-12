@@ -10,16 +10,22 @@ import SelectingShowTimeColumn1 from "UI_Components/SelectingShowTimeColumn1";
 import BookingCalendar from 'Components/Users/BookingCalendar';
 import SeatSelection from 'Components/Users/SeatSelection';
 import TicketDetails from 'Components/Users/TicketDetails';
+import { useParams } from 'react-router-dom'
 
 
 
 const BuyingTicket = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(true);
-const accessToken = localStorage.getItem('accessToken');
+  const accessToken = localStorage.getItem('accessToken');
+  const [playData, setPlayData] = useState(null);
+  const [playDates, setPlayDates] = useState([]);
+  const { id } = useParams();
+
 
 
 
 useEffect(() => {
+
 
   if (accessToken) {
     setIsAuthenticated(true);
