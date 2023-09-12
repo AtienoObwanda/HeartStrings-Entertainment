@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom';
 import { Button, Img, PagerIndicator, Slider, Text } from "UI_Components";
 import DetailsPagePlayColumn from "UI_Components/DetailsPagePlayColumn";
 
@@ -38,7 +38,13 @@ const Details = ({ stream }) =>  {
         >
           {stream.synopsis}
         </Text>
-      </div>
+        <Link to={`/renting-play/${stream.id}`} >  
+
+        <Button className="bg-red_900 cursor-pointer font-bold py-[15px] rounded-lg text-center text-white_A700 text-xl w-[195px]">
+          Rent play
+          </Button>
+          </Link>
+        </div>
       </>
   )
 }

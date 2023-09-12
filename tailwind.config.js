@@ -41,6 +41,7 @@ module.exports = {
         black_900_02: "#08040c",
         gray_300_a2: "#e6e6e6a2",
         border_color: "#ffffff" ,
+
       },
      
       backgroundImage: {

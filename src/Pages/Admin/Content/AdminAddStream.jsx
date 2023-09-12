@@ -66,6 +66,7 @@ const [video, setVideo] =useState('');
 const [castMembers, setCastMembers] = useState(
   Array.from({ length: 20 }, () => ({ real_name: "", cast_name: "" }))
 );
+
 const [video_available, setvideo_available] = useState([
   { three_days: '', three_price: '', seven_days: '', seven_price: '', fourteen_days: '', fourteen_price: '' },
 ]);
@@ -141,18 +142,30 @@ const handleSubmit = async (e) => {
     video_available,
   };
 
- 
-  console.log('POST Request Payload:', requestBody); // Log the payload you're sending
+  const formData = new FormData();
+  formData.append("title", title);
+  formData.append("synopsis", synopsis);
+  formData.append("video", video);
+  formData.append("trailer", trailer);
+  formData.append("video_poster", poster);
+  formData.append("video_casts", JSON.stringify(castMembers));
+  formData.append("video_available", JSON.stringify(video_available));
+
+
+
+  console.log('POST Request Payload:', formData); 
+  // console.log('POST Request Payload:', requestBody); 
   console.log('Headers:', {
     Authorization: `Bearer ${accessToken}`,
-    'Content-Type': 'multipart/form-data', // Make sure to set the content type if required
+    'Content-Type': 'multipart/form-data', 
   });
 
 
 
 
   try {
-    const response = await axios.post(`${apiUrl}/api/videos/`, requestBody, {
+    //     const response = await axios.post(`${apiUrl}/api/videos/`, requestBody, {
+    const response = await axios.post(`${apiUrl}/api/videos/`, formData, {
       headers: {
         Authorization: `Bearer ${accessToken}`,
         'Content-Type': 'multipart/form-data', 

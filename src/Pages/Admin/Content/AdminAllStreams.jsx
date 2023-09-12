@@ -64,7 +64,7 @@ const AdminAllStreams = () => {
 
     
     <>
-      <div className="bg-black_900_01 pb-[40em] flex sm:flex-col md:flex-col flex-row font-roboto sm:gap-5 md:gap-5 items-start mx-auto w-full">
+      <div className="bg-black_900_01  flex sm:flex-col md:flex-col flex-row font-roboto sm:gap-5 md:gap-5 items-start mx-auto w-full">
       {/* <div className="flex md:flex-col flex-row md:gap-5 items-start justify-evenly w-full"> */}
 
         {/* Large screen */}
@@ -384,7 +384,7 @@ const AdminAllStreams = () => {
                 </Text>
                 <Button
                   className="common-pointer cursor-pointer flex items-center  justify-center min-w-[164px] w-auto"
-                  onClick={() => navigate("/add-play")}
+                  onClick={() => navigate("/add-stream")}
                   leftIcon={
                     <Img
                       src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927652/HeartStrings/SVG/img_iconsax_bold_addcircle_a598f7.svg"
@@ -397,7 +397,7 @@ const AdminAllStreams = () => {
                   variant="FillRed900"
                 >
                   <div className="font-bold text-left text-white_A700 text-xl">
-                    Post play
+                    Post Online Play
                   </div>
                 </Button>
               </div>

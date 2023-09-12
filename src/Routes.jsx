@@ -163,6 +163,8 @@ const ProjectRoutes = () => {
   return (
     <React.Suspense fallback={<>Loading...</>}>
       {/* <Router> */}
+      <div className="min-h-screen bg-black_900_01 flex flex-col">
+
         <Routes>
           {/* General Routes */}
 
@@ -185,7 +187,7 @@ const ProjectRoutes = () => {
           <Route path="/all-streams" element={<AllStreams />} />
 
           {/* TO DELETE: */}
-                    <Route path="/renting-play" element={<RentingPlay />} />
+                    <Route path="/renting-play/:id" element={<RentingPlay />} />
 
 
           {/* UserRoutes */}
@@ -279,7 +281,7 @@ const ProjectRoutes = () => {
 
         )}
         </Routes>
-     
+     </div>
       {/* </Router> */}
     </React.Suspense>
   );

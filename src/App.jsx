@@ -7,15 +7,6 @@ import ProjectRoutes from "./Routes";
 function App() {
 
 
-    // // Simulate login
-    // const login = () => {
-    //   setIsAuthenticated(true);
-    // };
-  
-    // // Simulate logout
-    // const logout = () => {
-    //   setIsAuthenticated(false);
-    // };
 
   return (
     <Router>
