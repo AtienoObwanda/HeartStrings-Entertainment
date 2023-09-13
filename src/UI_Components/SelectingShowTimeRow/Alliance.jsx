@@ -124,7 +124,7 @@ return seats;
         <div className="flex flex-col md:gap-10 gap-24 items-center justify-start w-full md:w-full">
           {/* Stage Layout */}
           <div
-            className="bg-cover bg-no-repeat flex flex-col h-60 w-[800px] md:w-600 items-center justify-start p-[52px] md:px-10 sm:px-5 w-auto md:w-full"
+            className="bg-cover bg-no-repeat flex flex-col mt-[2em] h-60 w-[900px] md:w-600 items-center justify-start p-[52px] md:px-10 sm:px-5 w-auto md:w-full"
             style={{
               backgroundImage: "url('https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927652/HeartStrings/SVG/img_group40109_pbzc2u.png')",
             }}
@@ -134,14 +134,13 @@ return seats;
               as="h1"
               variant="h1"
             >
-              {props?.stage}
+              STAGE
             </Text>
           </div>
 
           {/* Seats Layout */}
-          <div className="flex flex-col md:gap-10 gap-10 items-center justify-start w-[480em] md:w-full">
-            <div className="flex md:flex-col flex-row gap-[35px] items-start justify-center w-auto md:w-full">
-              {/* TEST */}
+          <div className="flex flex-col md:gap-10 gap-10 items-center justify-center w-[125em] md:w-full">
+            <div className="flex md:flex-col flex-row gap-[35px] items-center justify-center w-auto md:w-full">
               <div>
               {renderSeats()}
             </div>

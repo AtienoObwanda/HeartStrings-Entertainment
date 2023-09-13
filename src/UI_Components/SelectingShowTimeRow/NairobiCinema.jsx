@@ -1,37 +1,38 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
 import { Img, List, Text } from "UI_Components";
+
+const Seat = ({ id, color, onClick }) => {
+  return (
+    <div onClick={() => onClick(id)} style={{ display: 'inline-block', margin: '5px', width: '10px', textAlign: 'center' }}>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 9.15V7C5 5.9 5.9 5 7 5H17C18.1 5 19 5.9 19 7V9.16C17.84 9.57 17 10.67 17 11.97V14H7V11.96C7 10.67 6.16 9.56 5 9.15ZM20 10C18.9 10 18 10.9 18 12V15H6V12C6 11.4696 5.78929 10.9609 5.41421 10.5858C5.03914 10.2107 4.53043 10 4 10C3.46957 10 2.96086 10.2107 2.58579 10.5858C2.21071 10.9609 2 11.4696 2 12V17C2 18.1 2.9 19 4 19V21H6V19H18V21H20V19C21.1 19 22 18.1 22 17V12C22 10.9 21.1 10 20 10Z" fill={color} />
+      </svg>
+    </div>
+  );
+};
+
+
 
 
 const NairobiCinema = (props) => {
-  const { className, a, b, c, d, e, f, g, h, i, stage, available, reserved, selected } = props;
+  
+  const [selectedSeats, setSelectedSeats] = useState([]);
 
-  const SeatIcons = {
-    Selected:(
-      <Img
-        src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927665/HeartStrings/SVG/img_mdiloveseat_red_900_24x24_q3fq2e.svg"
-        className="h-6 w-6"
-        alt="mdiloveseat_Three"
-      />
-    ),
+  const handleSeatClick = (id) => {
+    const updatedSelectedSeats = [...selectedSeats];
+    const seatIndex = updatedSelectedSeats.indexOf(id);
   
-    Available:(
-      <Img
-      src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927664/HeartStrings/SVG/img_mdiloveseat_f7ateu.svg"
-      className="h-6 w-6"
-      alt="mdiloveseat_Five"
-      />
+    if (seatIndex !== -1) {
+      updatedSelectedSeats.splice(seatIndex, 1);
+    } else {
+      updatedSelectedSeats.push(id);
+    }
   
-    ),
-  
-    Reserved:(
-    <Img
-      src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927664/HeartStrings/SVG/img_mdiloveseat_gray_800_icconh.svg"
-      className="h-6 w-6"
-      alt="mdiloveseat"
-      />
-       )
-  
+    setSelectedSeats(updatedSelectedSeats);
   };
+
+
+
 
   return (
     <>
@@ -60,162 +61,566 @@ const NairobiCinema = (props) => {
             <div className="flex flex-col gap-4 items-end justify-center w-auto">
                {/* Row D */}
                 <div className="flex flex-row gap-2 items-center justify-center sm:pr-5 pr-8 w-auto">
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
+                <Seat
+                id="A1" // Replace with actual seat ID
+                color={selectedSeats ? '#C81B1B' : 'white'}
+                onClick={handleSeatClick}
+              />
+                <Seat
+                  id="A2" // Replace with actual seat ID
+                  color={selectedSeats ? '#C81B1B' : 'white'}
+                  onClick={handleSeatClick}
+                />
+                <Seat
+                  id="A3" // Replace with actual seat ID
+                  color={selectedSeats ? '#C81B1B' : 'white'}
+                  onClick={handleSeatClick}
+                />
+                <Seat
+                  id="A4" // Replace with actual seat ID
+                  color={selectedSeats ? '#C81B1B' : 'white'}
+                  onClick={handleSeatClick}
+                />
+                <Seat
+                  id="A5" // Replace with actual seat ID
+                  color={selectedSeats ? '#C81B1B' : 'white'}
+                  onClick={handleSeatClick}
+                />
                 </div>
 
                 {/* Row E */}
                 <div className="flex flex-row gap-2 items-center justify-center sm:pr-5 pr-8 w-auto">
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
                 </div>
 
                 {/* Row F */}
                 <div className="flex flex-row gap-2 mt-2 items-center justify-center sm:pr-5 pr-8 w-auto">
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
                 </div>
                
 
                 {/* Row G */}
                 <div className="flex flex-row gap-2 mt-2 items-center justify-center sm:pr-5 pr-8 w-auto">
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
                 </div>
 
                 {/* Row H */}
                 <div className="flex flex-row gap-2 mt-2 items-center justify-center sm:pr-5 pr-8 w-auto">
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
                 </div>
                
 
                 {/* Row I */}
                 <div className="flex flex-row gap-2 mt-2 items-center justify-center sm:pr-5 pr-8 w-auto">
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
                 </div>
                 
 
                 {/* Row J */}
                 <div className="flex flex-row gap-2 mt-1 items-center justify-center sm:pr-5 pr-8 w-auto">
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
                 </div>
                 
 
                 {/* Row K */}
                 <div className="flex flex-row gap-2 mt-2 items-center justify-center sm:pr-5 pr-8 w-auto">
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
                 </div>
 
                 {/* Row L */}
                 <div className="flex flex-row gap-2 mt-1 items-center justify-center sm:pr-5 pr-8 w-auto">
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
                 </div>
                 
 
                 {/* Row M */}
                 <div className="flex flex-row gap-2 mt-1 items-center justify-center sm:pr-5 pr-8 w-auto">
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
                 </div>
 
                 {/* Row N */}
                 <div className="flex flex-row gap-2 mt-2 items-center justify-center sm:pr-5 pr-8 w-auto">
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
                 </div>
                 
 
                 {/* Row O */}
                 <div className="flex flex-row gap-2 mt-2 items-center justify-center sm:pr-5 pr-8 w-auto">
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
                 </div>
                 
 
                 {/* Row P */}
                 <div className="flex flex-row gap-2 mt-1 items-center justify-center sm:pr-5 pr-8 w-auto">
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
                 </div>
                 
 
@@ -255,297 +660,1225 @@ const NairobiCinema = (props) => {
             <div className="flex flex-col gap-4 items-center justify-center w-auto">
                {/* Row A */}
                 <div className="flex flex-row gap-2 items-center justify-center sm:pl-5 pl-8 pr-8 w-auto">
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
                 </div>
                 {/* Row B */}
                 <div className="flex flex-row gap-2 mt-2 items-center justify-center sm:pl-5 pl-8 pr-8 w-auto">
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
                 </div>
 
                 {/* Row C */}
                 <div className="flex flex-row gap-2 mt-2 items-center justify-center sm:pl-5 pl-8 pr-8 w-auto">
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
                 </div>
 
                 {/* Row D */}
                 <div className="flex flex-row gap-2 mt-2 items-center justify-center sm:pl-5 pl-8 pr-8 w-auto">
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
                 </div>
 
                 {/* Row E */}
                 <div className="flex flex-row gap-2 items-center justify-center sm:pl-5 pl-8 pr-8 w-auto">
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
                 </div>
 
                 {/* Row F */}
                 <div className="flex flex-row gap-2 mt-2 items-center justify-center sm:pl-5 pl-8 pr-8 w-auto">
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
                 </div>
 
                 {/* Row G */}
                 <div className="flex flex-row gap-2 mt-2 items-center justify-center sm:pl-5 pl-8 pr-8 w-auto">
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
                 </div>
 
                 {/* Row H */}
                 <div className="flex flex-row gap-2 mt-1 items-center justify-center sm:pl-5 pl-8 pr-8 w-auto">
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
                 </div>
 
                 {/* Row I */}
                 <div className="flex flex-row mt-2 gap-2 items-center justify-center sm:pl-5 pl-8 pr-8 w-auto">
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
                 </div>
 
                 {/* Row J */}
                 <div className="flex flex-row gap-2 mt-2 items-center justify-center sm:pl-5 pl-8 pr-8 w-auto">
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
                 </div>
 
                 {/* Row K */}
                 <div className="flex flex-row gap-2 mt-1 items-center justify-center sm:pl-5 pl-8 pr-8 w-auto">
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
                 </div>
 
                 {/* Row L */}
                 <div className="flex flex-row gap-2 items-center justify-center sm:pl-5 pl-8 pr-8 w-auto">
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
                 </div>
 
                 {/* Row M */}
                 <div className="flex flex-row gap-2 mt-2 items-center justify-center sm:pl-5 pl-8 pr-8 w-auto">
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
                 </div>
 
                 {/* Row N */}
                 <div className="flex flex-row gap-2 mt-2 items-center justify-center sm:pl-5 pl-8 pr-8 w-auto">
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
                 </div>
 
                 {/* Row O */}
                 <div className="flex flex-row gap-2 mt-2 items-center justify-center sm:pl-5 pl-8 pr-8 w-auto">
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
                 </div>
 
                 {/* Row P */}
                 <div className="flex flex-row gap-2 mt-2 items-center justify-center sm:pl-5 pl-8 pr-8 w-auto">
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
                 </div>
 
                 </div>
@@ -583,162 +1916,566 @@ const NairobiCinema = (props) => {
             <div className="flex flex-col gap-4 items-start justify-center w-auto">
                {/* Row D */}
                 <div className="flex flex-row gap-2 items-center justify-center sm:pl-5 pl-8 w-auto">
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
                 </div>
 
                 {/* Row E */}
                 <div className="flex flex-row gap-2 items-center justify-center sm:pl-5 pl-8 w-auto">
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
                 </div>
 
                 {/* Row F */}
                 <div className="flex flex-row gap-2 mt-2 items-center justify-center sm:pl-5 pl-8 w-auto">
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
                 </div>
                
 
                 {/* Row G */}
                 <div className="flex flex-row gap-2 mt-2 items-center justify-center sm:pl-5 pl-8 w-auto">
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
                 </div>
 
                 {/* Row H */}
                 <div className="flex flex-row gap-2 mt-2 items-center justify-center sm:pl-5 pl-8 w-auto">
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
                 </div>
                
 
                 {/* Row I */}
                 <div className="flex flex-row gap-2 mt-2 items-center justify-center sm:pl-5 pl-8 w-auto">
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
                 </div>
                 
 
                 {/* Row J */}
                 <div className="flex flex-row gap-2 mt-1 items-center justify-center sm:pr-l pl-8 w-auto">
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
                 </div>
                 
 
                 {/* Row K */}
                 <div className="flex flex-row gap-2 mt-2 items-center justify-center sm:pl-5 pl-8 w-auto">
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
                 </div>
 
                 {/* Row L */}
                 <div className="flex flex-row gap-2 mt-1 items-center justify-center sm:pl-5 pl-8 w-auto">
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
                 </div>
                 
 
                 {/* Row M */}
                 <div className="flex flex-row gap-2 mt-1 items-center justify-center sm:pl-5 pl-8 w-auto">
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
                 </div>
 
                 {/* Row N */}
                 <div className="flex flex-row gap-2 mt-2 items-center justify-center sm:pl-5 pl-8 w-auto">
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
                 </div>
                 
 
                 {/* Row O */}
                 <div className="flex flex-row gap-2 mt-2 items-center justify-center sm:pl-5 pl-8 w-auto">
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
                 </div>
                 
 
                 {/* Row P */}
                 <div className="flex flex-row gap-2 mt-1 items-center justify-center sm:pl-5 pl-8 w-auto">
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
-                {SeatIcons[available]}
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
+                <Seat
+        id="#" // Replace with actual seat ID
+        color={selectedSeats ? '#C81B1B' : 'white'}
+        onClick={handleSeatClick}
+      />
                 </div>
                 
 
