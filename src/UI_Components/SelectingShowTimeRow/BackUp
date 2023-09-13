@@ -18,7 +18,7 @@ import { Img, List, Text } from "UI_Components";
 const Seat = ({ color, onClick }) => {
   return (
     <div onClick={onClick} style={{ display: 'inline-block', margin: '5px', width: '30px', textAlign: 'center' }}>
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M5 9.15V7C5 5.9 5.9 5 7 5H17C18.1 5 19 5.9 19 7V9.16C17.84 9.57 17 10.67 17 11.97V14H7V11.96C7 10.67 6.16 9.56 5 9.15ZM20 10C18.9 10 18 10.9 18 12V15H6V12C6 11.4696 5.78929 10.9609 5.41421 10.5858C5.03914 10.2107 4.53043 10 4 10C3.46957 10 2.96086 10.2107 2.58579 10.5858C2.21071 10.9609 2 11.4696 2 12V17C2 18.1 2.9 19 4 19V21H6V19H18V21H20V19C21.1 19 22 18.1 22 17V12C22 10.9 21.1 10 20 10Z" fill={color} />
       </svg>
     </div>
@@ -80,48 +80,35 @@ const Alliance = (props) => {
   const renderSeats = () => {
     const seats = [];
 
-const wingStyles = {
-  display: 'inline-block', 
-  marginRight: '40px', 
-};
+    for (let wing in seatLayout) {
+      seats.push(<h2 key={wing}>{wing}</h2>);
 
-for (let wing in seatLayout) {
-  const wingSeats = [];
-
-  for (let row in seatLayout[wing]) {
-    const cols = seatLayout[wing][row];
-    if (cols > 0) {
-      for (let i = 1; i <= cols; i++) {
-        const seatId = `${wing}-${row}${i}`;
-        wingSeats.push(
-          <Seat
-            key={seatId}
-            color={selectedSeats.includes(seatId) ? '#C81B1B' : 'white'}
-            onClick={() => handleSeatClick(seatId)}
-          />
-        );
+      for (let row in seatLayout[wing]) {
+        const cols = seatLayout[wing][row];
+        if (cols > 0) {
+          for (let i = 1; i <= cols; i++) {
+            const seatId = `${wing}-${row}${i}`;
+            seats.push(
+              <Seat
+                key={seatId}
+                color={selectedSeats.includes(seatId) ? '#C81B1B' : 'white'}
+                onClick={() => handleSeatClick(seatId)}
+              />
+            );
+          }
+          seats.push(<br key={`br${wing}${row}`} />); // Add a line break after each row
+        }
       }
-      wingSeats.push(<br key={`br${wing}${row}`} />); // Add a line break after each row
     }
-  }
 
-  seats.push(
-    <div key={wing} style={wingStyles}>
-      <h2>{wing}</h2>
-      {wingSeats}
-    </div>
-  );
-}
-
-return seats;
-
+    return seats;
   };
 
   return (
     <>
       
 
-        <div className="flex flex-col md:gap-10 gap-24 items-center justify-start w-full md:w-full">
+        <div className="flex flex-col md:gap-10 gap-24 items-center justify-start w-auto md:w-full">
           {/* Stage Layout */}
           <div
             className="bg-cover bg-no-repeat flex flex-col h-60 w-[800px] md:w-600 items-center justify-start p-[52px] md:px-10 sm:px-5 w-auto md:w-full"
@@ -139,7 +126,7 @@ return seats;
           </div>
 
           {/* Seats Layout */}
-          <div className="flex flex-col md:gap-10 gap-10 items-center justify-start w-[480em] md:w-full">
+          <div className="flex flex-col md:gap-10 gap-10 items-center justify-start w-auto md:w-full">
             <div className="flex md:flex-col flex-row gap-[35px] items-start justify-center w-auto md:w-full">
               {/* TEST */}
               <div>

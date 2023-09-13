@@ -1,0 +1,134 @@
+Left:
+A - 3
+B - 4
+C - 5
+D - 6
+E - 7
+F - 8
+G 
+H 
+I 
+
+Center:
+A - 14
+B - 15
+C - 14
+D - 15
+E - 14
+F - 15
+G - 14
+H - 15
+I -14
+
+Right:
+
+Left:
+A - 3
+B - 4
+C - 5
+D - 6
+E - 7
+F - 8
+G 
+H 
+I 
+
+
+Initially I had them mapped out like:
+
+  {/* Left Wing */}
+<div className="flex flex-col gap-4 items-start justify-center w-auto">
+<div className="flex flex-row gap-2 items-center justify-center sm:pl-5 pl-8 w-auto">
+    </div>
+<div className="flex flex-row gap-2 items-center justify-center sm:pl-5 pl-6 w-auto">
+    </div>
+    <div className="flex flex-row gap-2 items-center justify-center pl-[18px] w-auto">
+    </div>
+    <div className="flex flex-row gap-2 items-center justify-center pl-3 w-auto">
+</div>
+    <div className="flex flex-row gap-2 items-center justify-center pl-1.5 w-auto">
+    </div>
+    <div className="flex flex-row gap-2 items-center justify-center w-auto">
+    </div>
+</div>
+
+{/* Center Wing*/}
+<div className="flex flex-col items-center justify-start w-auto sm:w-full">
+<List className="flex flex-col gap-4 items-center w-full" orientation="vertical">
+    <div className="flex sm:flex-1 sm:flex-col flex-row gap-2 items-center justify-center w-auto sm:w-full">
+    </div>
+    <div className="flex sm:flex-1 sm:flex-col flex-row gap-2 items-center justify-center w-auto sm:w-full">
+    </div>
+    <div className="flex sm:flex-1 sm:flex-col flex-row gap-2 items-center justify-center w-auto sm:w-full">
+    </div>
+    <div className="flex sm:flex-1 sm:flex-col flex-row gap-2 items-center justify-center w-auto sm:w-full">
+    </div>
+    <div className="flex sm:flex-1 sm:flex-col flex-row gap-2 items-center justify-center w-auto sm:w-full">
+    </div>
+    <div className="flex sm:flex-1 sm:flex-col flex-row gap-2 items-center justify-center w-auto sm:w-full">
+    </div>
+    <div className="flex sm:flex-1 sm:flex-col flex-row gap-2 items-center justify-center w-auto sm:w-full">
+    </div>
+    <div className="flex sm:flex-1 sm:flex-col flex-row gap-2 items-center justify-center w-auto sm:w-full">
+    </div>
+    <div className="flex sm:flex-1 sm:flex-col flex-row gap-2 items-center justify-center w-auto sm:w-full">
+    </div>
+</List>
+</div>
+
+{/* Right Wing */}
+<div className="flex flex-col gap-4 items-right justify-center  w-auto">
+<div className="flex flex-row gap-2 items-center justify-center sm:pl-5 pl-8 w-auto">
+</div>
+<div className="flex flex-row gap-2 items-center justify-center sm:pl-5 pl-6 w-auto">
+</div>
+<div className="flex flex-row gap-2 items-center justify-center pl-[18px] w-auto">
+</div>
+<div className="flex flex-row gap-2 items-center justify-center pl-3 w-auto">
+    </div>
+<div className="flex flex-row gap-2 items-center justify-center pl-1.5 w-auto">
+</div>
+    <div className="flex flex-row gap-2 items-center justify-center w-auto">
+    </div>
+</div>
+
+
+
+The Left and right labels looked like:
+   {/* Right Outline */}
+        <div className="flex flex-col gap-4 items-start justify-start md:mt-0 mt-72 w-auto">
+        <Text className="font-roboto text-sm text-white_A700 w-auto">{}</Text>
+          <Text className="font-roboto text-sm text-white_A700 w-auto">{}</Text>
+          <Text className="font-roboto text-sm text-white_A700 w-auto">{}</Text>
+          <Text className="font-roboto text-sm text-white_A700 w-auto">{props?.aOne}</Text>
+          <Text className="font-roboto text-sm text-white_A700 w-auto">{props?.bOne}</Text>
+          <Text className="font-roboto text-sm text-white_A700 w-auto">{props?.cOne}</Text>
+          <Text className="font-roboto text-sm text-white_A700 w-auto">{props?.dOne}</Text>
+          <Text className="font-roboto text-sm text-white_A700 w-auto">{props?.eOne}</Text>
+          <Text className="font-roboto text-sm text-white_A700 w-auto">{props?.fOne}</Text>
+          <Text className="font-roboto text-sm text-white_A700 w-auto">{props?.gOne}</Text>
+          <Text className="font-roboto text-sm text-white_A700 w-auto">{props?.hOne}</Text>
+          <Text className="font-roboto text-sm text-white_A700 w-auto">{props?.iOne}</Text>
+        </div>
+
+
+
+
+
+A                    [] [] []                              [] [] [] [] [] [] [] [] [] [] [] [] [] [] []                                [] [] []             A  
+
+B                    [] [] [] []                           [] [] [] [] [] [] [] [] [] [] [] [] [] []                                 [] [] [] []            B
+
+C                    [] [] [] [] []                        [] [] [] [] [] [] [] [] [] [] [] [] [] [] []                            [] [] [] [] []           C
+
+D                    [] [] [] [] [] []                       [] [] [] [] [] [] [] [] [] [] [] [] [] []                           [] [] [] [] [] []          D
+
+E                    [] [] [] [] [] [] []                   [] [] [] [] [] [] [] [] [] [] [] [] [] [] []                       [] [] [] [] [] [] []         E       
+
+F                    [] [] [] [] [] [] [] []                  [] [] [] [] [] [] [] [] [] [] [] [] [] []                      [] [] [] [] [] [] [] []        F      
+
+G                                                            [] [] [] [] [] [] [] [] [] [] [] [] [] [] []                                                   G
+
+H                                                              [] [] [] [] [] [] [] [] [] [] [] [] [] []                                                    H                     
+
+I                                                              [] [] [] [] [] [] [] [] [] [] [] [] [] [] []                                                 I                   
