@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, Img, Input, List, Line,Text } from "UI_Components";
 
-const ListData = () => {
+const ListData = ({ homeStat }) => {
   return (
     <>
 
@@ -34,7 +34,7 @@ const ListData = () => {
                           className="font-normal not-italic text-left text-white_A700 w-auto"
                           variant="body4"
                         >
-                          10
+                          {homeStat.active_plays}
                         </Text>
                       </div>
                     </div>
@@ -63,8 +63,8 @@ const ListData = () => {
                         <Text
                           className="font-normal not-italic text-gray_300 text-left w-auto"
                           variant="body4"
-                        >
-                          150
+                        >                           
+                        {homeStat.active_streams}
                         </Text>
                       </div>
                     </div>
@@ -94,7 +94,8 @@ const ListData = () => {
                           className="font-normal not-italic text-gray_300 text-left w-auto"
                           variant="body4"
                         >
-                          150
+                        {homeStat.users}
+
                         </Text>
                       </div>
                     </div>

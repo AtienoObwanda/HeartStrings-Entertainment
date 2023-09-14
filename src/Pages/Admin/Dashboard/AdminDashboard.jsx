@@ -25,6 +25,7 @@ const AdminDashboard = () => {
 
 // User info:
   const [userInfo, setUserInfo] = useState({});
+  const[HomeInfo, setHomeInfo] = useState({})
   const accessToken = localStorage.getItem('accessToken');
   const [isAuthenticated, setIsAuthenticated] = useState(true);
 
@@ -33,6 +34,8 @@ const AdminDashboard = () => {
  useEffect(() => {
     if (accessToken) {
       fetchUserInfo();
+      fetchHomeInfo();
+
     } else {
       navigate('/admin-login');
     }
@@ -57,6 +60,23 @@ const AdminDashboard = () => {
     } catch (error) {
       console.error('Error fetching user info:', error);
       // Handle error (e.g., redirect to an error page)
+    }
+  };
+
+
+  const fetchHomeInfo = async () => {
+    try {
+      const res = await axios.get(`${apiUrl}/api/home_api/`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`
+        }
+      });
+  
+      setHomeInfo(res.data);
+  
+      console.log('Home Info:', res.data);
+    } catch (error) {
+      console.error('Error fetching home info:', error);
     }
   };
   
@@ -445,7 +465,7 @@ const AdminDashboard = () => {
             <div className="flex flex-col items-center justify-start p-[47px] md:px-10 sm:px-5 w-full">
               <div className="flex flex-col items-center justify-start mb-[74px] w-full">
                 {/* ListData */}
-                <ListData/>
+                <ListData  homeStat={HomeInfo}/>
 {/* End of Navbar area/Header */}
 
                 <div className="flex md:flex-col flex-row font-mulish gap-6 items-center justify-between mt-6 w-full">

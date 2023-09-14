@@ -65,7 +65,7 @@ const AdminAllPlays = () => {
 
 return (
       <>
-        <div className="bg-black_900_01 pb-[40em] flex sm:flex-col md:flex-col flex-row font-roboto sm:gap-5 md:gap-5 items-start mx-auto w-full">
+        <div className="bg-black_900_01 pb-[40em] flex sm:flex-col md:flex-col flex-row font-roboto sm:gap-5 md:gap-5 items-start mx-auto w-full pb-[300em]">
          {/* Large screen */}
          <aside className="md:hidden flex justify-start md:px-5 w-[247px]">
           {/* <aside className="flex flex-col md:hidden justify-start md:px-5 w-[247px]"> */}
@@ -456,7 +456,7 @@ return (
 
                     </div>
                 ) : (
-                  <div className="md:gap-5 gap-6 grid sm:grid-cols-1 md:grid-cols-2 grid-cols-3 justify-center min-h-[auto] w-full">
+                  <div className="md:gap-5 gap-6 grid sm:grid-cols-1 md:grid-cols-2 grid-cols-3 justify-center min-h-[auto]  w-full">
                       
                   {plays.map((play, index) => (
                     

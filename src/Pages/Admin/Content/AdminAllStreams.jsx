@@ -64,7 +64,7 @@ const AdminAllStreams = () => {
 
     
     <>
-      <div className="bg-black_900_01  flex sm:flex-col md:flex-col flex-row font-roboto sm:gap-5 md:gap-5 items-start mx-auto w-full">
+      <div className="bg-black_900_01  flex sm:flex-col md:flex-col flex-row font-roboto sm:gap-5 md:gap-5 items-start mx-auto w-full pb-[300em]">
       {/* <div className="flex md:flex-col flex-row md:gap-5 items-start justify-evenly w-full"> */}
 
         {/* Large screen */}
