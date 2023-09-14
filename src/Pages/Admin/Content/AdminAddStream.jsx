@@ -62,14 +62,6 @@ const [synopsis, setSynopsis] = useState('');
 const [poster, setPoster] = useState(null);
 const [trailer, setTrailer] = useState(null);
 const [video, setVideo] =useState('');
-
-// const [castMembers, setCastMembers] = useState(
-//   Array.from({ length: 20 }, () => ({ real_name: "", cast_name: "", cast_image:"" }))
-// );
-
-// const [video_available, setvideo_available] = useState([
-//   { three_days: '', three_price: '', seven_days: '', seven_price: '', fourteen_days: '', fourteen_price: '' },
-// ]);
 const [castMembers, setCastMembers] = useState(
   Array.from({ length: 20 }, () => ({ real_name: "", cast_name: "", cast_image:"" }))
 );
@@ -115,7 +107,9 @@ const handleImageChange = (index, event) => {
     updatedCastMembers[index].cast_image = file; // Set the actual file
     updatedCastMembers[index].imagePreview = URL.createObjectURL(file);
     setCastMembers(updatedCastMembers);
-  }
+  }else {
+        console.error('No image selected');
+      }
 };
 
 
@@ -163,16 +157,7 @@ const handleSubmit = async (e) => {
 
 
 
-  // const AddedCastMembers = castMembers.filter(member => member.real_name !== '' && member.cast_name !== '');
-  // const AddedVideoAvailable = video_available.filter(item => (
-  //   item.three_days !== '' &&
-  //   item.three_price !== '' &&
-  //   item.seven_days !== '' &&
-  //   item.seven_price !== '' &&
-  //   item.fourteen_days !== '' &&
-  //   item.fourteen_price !== ''
-  // ));
-
+  
   
 
   const AddedCastMembers = castMembers.filter(member => 
@@ -181,14 +166,7 @@ const handleSubmit = async (e) => {
     member.cast_image !== null
   );
 
-  // const AddedVideoAvailable = video_available.filter(item => (
-  //   item.three_days !== '' &&
-  //   item.three_price !== '' &&
-  //   item.seven_days !== '' &&
-  //   item.seven_price !== '' &&
-  //   item.fourteen_days !== '' &&
-  //   item.fourteen_price !== ''
-  // ));
+ 
 
   const AddedVideoAvailable = video_available.filter(item => 
     item.three_days !== '' &&
@@ -205,10 +183,6 @@ const handleSubmit = async (e) => {
   formData.append("video", video);
   formData.append("trailer", trailer);
   formData.append("video_poster", poster);
-  // formData.append("video_casts", JSON.stringify(castMembers));
-  // formData.append("video_available", JSON.stringify(video_available));
-  // formData.append("video_casts", JSON.stringify(AddedCastMembers)); 
-  // formData.append("video_available", JSON.stringify(AddedVideoAvailable)); 
   AddedVideoAvailable.forEach((item, index) => {
     formData.append(`video_available[${index}][three_days]`, item.three_days);
     formData.append(`video_available[${index}][three_price]`, item.three_price);
@@ -228,7 +202,6 @@ const handleSubmit = async (e) => {
  
 
   console.log('POST Request Payload:', formData); 
-  // console.log('POST Request Payload:', requestBody); 
   console.log('Headers:', {
     Authorization: `Bearer ${accessToken}`,
     'Content-Type': 'multipart/form-data', 
@@ -240,12 +213,10 @@ const handleSubmit = async (e) => {
 
 
   try {
-    //     const response = await axios.post(`${apiUrl}/api/videos/`, requestBody, {
     const response = await axios.post(`${apiUrl}/api/videos/`, formData, {
       headers: {
         Authorization: `Bearer ${accessToken}`,
         'Content-Type': 'multipart/form-data',
-        // 'Content-Type': 'application/json',
 
 
       },

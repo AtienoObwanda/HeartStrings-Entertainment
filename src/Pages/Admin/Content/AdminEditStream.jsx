@@ -67,8 +67,9 @@ const [trailer, setTrailer] = useState(null);
 const [video, setVideo] =useState('');
 
 const [castMembers, setCastMembers] = useState(
-  Array.from({ length: 20 }, () => ({ real_name: "", cast_name: "" }))
+  Array.from({ length: 20 }, () => ({ real_name: "", cast_name: "", cast_image:"" }))
 );
+
 const [video_available, setvideo_available] = useState([
   { three_days: '', three_price: '', seven_days: '', seven_price: '', fourteen_days: '', fourteen_price: '' },
 ]);
@@ -98,11 +99,13 @@ const handleImageChange = (index, event) => {
   const file = event.target.files[0];
   if (file) {
     const updatedCastMembers = [...castMembers];
+    updatedCastMembers[index].cast_image = file; // Set the actual file
     updatedCastMembers[index].imagePreview = URL.createObjectURL(file);
     setCastMembers(updatedCastMembers);
-  }
+  }else {
+        console.error('No image selected');
+      }
 };
-
 
 // Video availability change:
 const handleAvailabilityChange = (index, name, value) => {
@@ -125,27 +128,53 @@ const handleSubmit = async (e) => {
 
   e.preventDefault();
 
-  // Check if the user is authenticated before submitting the play
   const accessToken = localStorage.getItem('accessToken');
   if (!accessToken) {
-    // User is not authenticated, handle accordingly (e.g., show an error message)
     console.log("User is not authenticated");
     return;
   }
 
 
-  const requestBody = {
-    title,
-    synopsis,
-    video,
-    trailer,
-    video_poster: poster,
-    video_casts: castMembers,
-    video_available,
-  };
+  const AddedCastMembers = castMembers.filter(member => 
+    member.real_name !== '' && 
+    member.cast_name !== '' &&
+    member.cast_image !== null
+  );
 
  
-  console.log('POST Request Payload:', requestBody); // Log the payload you're sending
+
+  const AddedVideoAvailable = video_available.filter(item => 
+    item.three_days !== '' &&
+    item.three_price !== '' &&
+    item.seven_days !== '' &&
+    item.seven_price !== '' &&
+    item.fourteen_days !== '' &&
+    item.fourteen_price !== ''
+  );
+
+  const formData = new FormData();
+  formData.append("title", title);
+  formData.append("synopsis", synopsis);
+  formData.append("video", video);
+  formData.append("trailer", trailer);
+  formData.append("video_poster", poster);
+  AddedVideoAvailable.forEach((item, index) => {
+    formData.append(`video_available[${index}][three_days]`, item.three_days);
+    formData.append(`video_available[${index}][three_price]`, item.three_price);
+    formData.append(`video_available[${index}][seven_days]`, item.seven_days);
+    formData.append(`video_available[${index}][seven_price]`, item.seven_price);
+    formData.append(`video_available[${index}][fourteen_days]`, item.fourteen_days);
+    formData.append(`video_available[${index}][fourteen_price]`, item.fourteen_price);
+  });
+  AddedCastMembers.forEach((castMember, index) => {
+    formData.append(`video_casts[${index}][image]`, castMember.cast_image);
+    formData.append(`video_casts[${index}][real_name]`, castMember.real_name);
+    formData.append(`video_casts[${index}][cast_name]`, castMember.cast_name);
+  });
+
+
+ 
+  console.log('POST Request Payload:', formData); // Log the payload you're sending
   console.log('Headers:', {
     Authorization: `Bearer ${accessToken}`,
     'Content-Type': 'multipart/form-data', // Make sure to set the content type if required
@@ -156,7 +185,7 @@ const handleSubmit = async (e) => {
 
 
   try {
-    const response = await axios.put(`${apiUrl}/api/videos/${id}/`, requestBody, {
+    const response = await axios.put(`${apiUrl}/api/videos/${id}/`, formData, {
 
     // const response = await axios.post(`${apiUrl}/api/videos/`, requestBody, {
       headers: {
