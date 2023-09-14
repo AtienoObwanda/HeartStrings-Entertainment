@@ -15,6 +15,17 @@ const RentingPlay = () => {
   const [customTip, setCustomTip] = useState('0');
 
 
+  const accessToken = localStorage.getItem('accessToken');
+
+  // useEffect(() => {
+
+  //   if (accessToken) {
+  //     setIsAuthenticated(true);
+  //   } else {
+  //     setIsAuthenticated(false);
+  //   }
+  // }, [])
+
 
   
   const videoAvailableData = [
@@ -39,7 +50,6 @@ const RentingPlay = () => {
       const data = response.data;
       if (!data.error) {
         setvideoData(data.data); 
-        setPlayDates(data.data.play_dates);
 
       } else {
         console.error('Error fetching play:', data.message);
@@ -62,19 +72,7 @@ const RentingPlay = () => {
   ];
 
   const selectedPlanPrice = parseInt(selectedAmount);
-  // const selectedTipAmount =
-  // selectedTipOption !== "no_tip"
-  //   ? parseInt(selectedTipOption)
-  //   : customTip
-  //   ? parseInt(customTip)
-  //   : 0;
-
-
-
-  // const handleCustomTipChange = (e) => {
-  //   const value = e.target.value;
-  //   setCustomTip(value);
-  // };
+  
 
   const handleCustomTipChange = (e) => {
     const value = e.target.value;
@@ -116,10 +114,12 @@ console.log('Total Amount: ', totalAmount)
 
 
   const initiateVideoPayment = async (amount) => {
-    const url = 'http://127.0.0.1:8000/api/video-payments/initiate_payment/';
+    // 
+    // const url = 'http://127.0.0.1:8000/api/video-payments/initiate_payment/';
+    const url = `${apiUrl}/api/video-payments/initiate_payment/`
   
     const headers = {
-      'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk0Njc4ODMyLCJpYXQiOjE2OTQyNDY4MzIsImp0aSI6ImVkMmE1YjI1ZTMyNjQ4NzFiYmM2Y2RlYWI4YTY3ZmI5IiwidXNlcl9pZCI6MX0.J5aWVp7BLZr5XMO3YjrJhOW8EWGJXZoG6dHPMtfv5hM'
+      Authorization: `Bearer ${accessToken}`,
     };
   
     const body = {
@@ -129,7 +129,7 @@ console.log('Total Amount: ', totalAmount)
   
     try {
       const response = await axios.post(url, body, { headers });
-      setResponse(response.data);
+      console.log('Response:', response.data);
     } catch (error) {
       console.error('Error initiating video payment:', error);
     }
@@ -259,9 +259,20 @@ console.log('Total Amount: ', totalAmount)
                 </div>
               </div>
             </div>
-            <Button className="bg-red_900 cursor-pointer font-bold py-[15px] rounded-lg text-center text-white_A700 text-xl w-[430px]">
+            <Button 
+            onClick={initiateVideoPayment}
+            className="bg-red_900 cursor-pointer font-bold py-[15px] rounded-lg text-center text-white_A700 text-xl w-[430px]">
               Pay now
             </Button>
+            {/* <div>
+                <Button >Initiate Video Payment</Button>
+                {response && (
+                  <div>
+                    <h2>Response:</h2>
+                    <pre>{JSON.stringify(response, null, 2)}</pre>
+                  </div>
+                )}
+              </div> */}
           </div>
 
           {/* end */}
