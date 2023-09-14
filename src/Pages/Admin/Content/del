@@ -1,0 +1,40 @@
+{/* Play Poster */}
+                        <div className="flex flex-col gap-4 items-start justify-center my-0 w-[443px] sm:w-full">
+                          <Text
+                            className="font-normal not-italic text-left text-white_A700 w-auto"
+                            variant="body4"
+                          >
+                            Play poster
+                          </Text>
+                          <div className="flex items-center justify-center w-full">
+                                <label htmlFor="poster-file" className="flex flex-col items-center justify-center w-full h-64 border border-gray_800 border-dashed rounded-lg cursor-pointer bg-black_900 hover:bg-black_900_01">
+                                <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                                    <Img
+                                    src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927652/HeartStrings/SVG/img_iconparkoutli_dznpma.svg"
+                                    className="h-6 w-6 mb-4"
+                                    alt="iconparkoutli"
+                                    />
+                                    <p className="mb-2 text-sm text-white_A700 font-semibold">Drop an image here or click to upload</p>
+                                    <p className="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or WEBP (MAX. 800x400px)</p>
+                                </div>
+                                <input
+                                    id="poster-file"
+                                    type="file"
+                                    accept="image/*"
+                                    className="hidden"
+                                    onChange={(e) => setPoster(e.target.files[0])}
+                                />
+                                </label>
+                                <div id="image-preview">
+                                    {poster && (
+                                        <img
+                                        id="preview-image"
+                                        className="w-64 h-32"
+                                        src={URL.createObjectURL(poster)}
+                                        alt="Poster Preview"
+                                        />
+                                    )}
+                                </div>
+                            </div>
+
+                        </div>

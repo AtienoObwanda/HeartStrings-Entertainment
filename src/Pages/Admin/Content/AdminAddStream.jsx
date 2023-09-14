@@ -63,14 +63,20 @@ const [poster, setPoster] = useState(null);
 const [trailer, setTrailer] = useState(null);
 const [video, setVideo] =useState('');
 
+// const [castMembers, setCastMembers] = useState(
+//   Array.from({ length: 20 }, () => ({ real_name: "", cast_name: "", cast_image:"" }))
+// );
+
+// const [video_available, setvideo_available] = useState([
+//   { three_days: '', three_price: '', seven_days: '', seven_price: '', fourteen_days: '', fourteen_price: '' },
+// ]);
 const [castMembers, setCastMembers] = useState(
-  Array.from({ length: 20 }, () => ({ real_name: "", cast_name: "" }))
+  Array.from({ length: 20 }, () => ({ real_name: "", cast_name: "", cast_image:"" }))
 );
 
 const [video_available, setvideo_available] = useState([
   { three_days: '', three_price: '', seven_days: '', seven_price: '', fourteen_days: '', fourteen_price: '' },
 ]);
-
 
 
 
@@ -92,14 +98,39 @@ const handleChange = (event) => {
   };
 
 // handling cast image preview:
+// const handleImageChange = (index, event) => {
+//   const file = event.target.files[0];
+//   if (file) {
+//     const updatedCastMembers = [...castMembers];
+//     updatedCastMembers[index].imagePreview = URL.createObjectURL(file);
+//     setCastMembers(updatedCastMembers);
+//   }
+// };
+
+
 const handleImageChange = (index, event) => {
   const file = event.target.files[0];
   if (file) {
     const updatedCastMembers = [...castMembers];
+    updatedCastMembers[index].cast_image = file; // Set the actual file
     updatedCastMembers[index].imagePreview = URL.createObjectURL(file);
     setCastMembers(updatedCastMembers);
   }
 };
+
+
+// const handleImageChange = (index, event) => {
+//   const file = event.target.files[0];
+//   if (file) {
+//     const updatedCastMembers = [...castMembers];
+//     updatedCastMembers[index].cast_image = file;
+//     updatedCastMembers[index].imagePreview = URL.createObjectURL(file);
+//     setCastMembers(updatedCastMembers);
+//   } else {
+//     // No file selected, you may want to handle this case (e.g., show an error message)
+//     console.error('No image selected');
+//   }
+// };
 
 
 // Video availability change:
@@ -123,34 +154,50 @@ const handleSubmit = async (e) => {
 
   e.preventDefault();
 
-  // Check if the user is authenticated before submitting the play
   const accessToken = localStorage.getItem('accessToken');
   if (!accessToken) {
-    // User is not authenticated, handle accordingly (e.g., show an error message)
     console.log("User is not authenticated");
     return;
   }
 
 
-  const requestBody = {
-    title,
-    synopsis,
-    video,
-    trailer,
-    video_poster: poster,
-    video_casts: castMembers, 
-    video_available: video_available,
-  };
 
-  const nonEmptyCastMembers = castMembers.filter(member => member.real_name !== '' && member.cast_name !== '');
-  const nonEmptyVideoAvailable = video_available.filter(item => (
+
+  // const AddedCastMembers = castMembers.filter(member => member.real_name !== '' && member.cast_name !== '');
+  // const AddedVideoAvailable = video_available.filter(item => (
+  //   item.three_days !== '' &&
+  //   item.three_price !== '' &&
+  //   item.seven_days !== '' &&
+  //   item.seven_price !== '' &&
+  //   item.fourteen_days !== '' &&
+  //   item.fourteen_price !== ''
+  // ));
+
+  
+
+  const AddedCastMembers = castMembers.filter(member => 
+    member.real_name !== '' && 
+    member.cast_name !== '' &&
+    member.cast_image !== null
+  );
+
+  // const AddedVideoAvailable = video_available.filter(item => (
+  //   item.three_days !== '' &&
+  //   item.three_price !== '' &&
+  //   item.seven_days !== '' &&
+  //   item.seven_price !== '' &&
+  //   item.fourteen_days !== '' &&
+  //   item.fourteen_price !== ''
+  // ));
+
+  const AddedVideoAvailable = video_available.filter(item => 
     item.three_days !== '' &&
     item.three_price !== '' &&
     item.seven_days !== '' &&
     item.seven_price !== '' &&
     item.fourteen_days !== '' &&
     item.fourteen_price !== ''
-  ));
+  );
 
   const formData = new FormData();
   formData.append("title", title);
@@ -160,9 +207,21 @@ const handleSubmit = async (e) => {
   formData.append("video_poster", poster);
   // formData.append("video_casts", JSON.stringify(castMembers));
   // formData.append("video_available", JSON.stringify(video_available));
-  formData.append("video_casts", JSON.stringify(nonEmptyCastMembers));
-  formData.append("video_available", JSON.stringify(nonEmptyVideoAvailable));
-
+  // formData.append("video_casts", JSON.stringify(AddedCastMembers)); 
+  // formData.append("video_available", JSON.stringify(AddedVideoAvailable)); 
+  AddedVideoAvailable.forEach((item, index) => {
+    formData.append(`video_available[${index}][three_days]`, item.three_days);
+    formData.append(`video_available[${index}][three_price]`, item.three_price);
+    formData.append(`video_available[${index}][seven_days]`, item.seven_days);
+    formData.append(`video_available[${index}][seven_price]`, item.seven_price);
+    formData.append(`video_available[${index}][fourteen_days]`, item.fourteen_days);
+    formData.append(`video_available[${index}][fourteen_price]`, item.fourteen_price);
+  });
+  AddedCastMembers.forEach((castMember, index) => {
+    formData.append(`video_casts[${index}][image]`, castMember.cast_image);
+    formData.append(`video_casts[${index}][real_name]`, castMember.real_name);
+    formData.append(`video_casts[${index}][cast_name]`, castMember.cast_name);
+  });
 
 
 
@@ -174,6 +233,8 @@ const handleSubmit = async (e) => {
     Authorization: `Bearer ${accessToken}`,
     'Content-Type': 'multipart/form-data', 
   });
+
+  console.log('Casty',AddedCastMembers)
 
 
 
@@ -202,6 +263,59 @@ if (error.response) {
 }
   }
 };
+
+// const handleSubmit = async (e) => {
+//   console.log("Submitting........");
+
+//   e.preventDefault();
+
+//   // Check if the user is authenticated before submitting the play
+//   const accessToken = localStorage.getItem('accessToken');
+//   if (!accessToken) {
+//     // User is not authenticated, handle accordingly (e.g., show an error message)
+//     console.log("User is not authenticated");
+//     return;
+//   }
+
+//   const nonEmptyCastMembers = castMembers.filter(member => member.real_name !== '' && member.cast_name !== '');
+//     const nonEmptyVideoAvailable = video_available.filter(item => (
+//       item.three_days !== '' &&
+//       item.three_price !== '' &&
+//       item.seven_days !== '' &&
+//       item.seven_price !== '' &&
+//       item.fourteen_days !== '' &&
+//       item.fourteen_price !== ''
+//     ));
+//   const requestBody = {
+//     title,
+//     synopsis,
+//     video,
+//     trailer,
+//     video_poster: poster,
+//     video_casts: nonEmptyCastMembers, 
+//     video_available: nonEmptyVideoAvailable,
+//   };
+
+//   try {
+//     const response = await axios.post(`${apiUrl}/api/videos/`, requestBody, {
+//       headers: {
+//         Authorization: `Bearer ${accessToken}`,
+//         'Content-Type': 'application/json',
+//       },
+//     });
+
+//     const responseBody = response.data;
+//     console.log(responseBody);
+//     navigate('/admin-allstreams');
+//   } catch (error) {
+//     // Handle error
+//     console.error('Error submitting play:', error);
+//     if (error.response) {
+//       console.log('API Response:', error.response.data);
+//     }
+//   }
+// };
+
 
 
 

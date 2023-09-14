@@ -38,7 +38,6 @@ const StreamDetails = () => {
       const data = response.data;
       if (!data.error) {
         setvideoData(data.data); 
-        setPlayDates(data.data.play_dates);
 
       } else {
         console.error('Error fetching play:', data.message);
