@@ -39,13 +39,12 @@ const AddPlayForm = () => {
   const [synopsis, setSynopsis] = useState("");
   const [posterFile, setPosterFile] = useState(null);
   const [infotrailerFile, setInfotrailerFile] = useState(null);
-  const [selectedPlayOffer, setSelectedPlayOffer] = useState(null);
-  const [selectedOtherOffers, setSelectedOtherOffers] = useState([]);
   const [selectedTheatre, setSelectedTheatre] = useState("");
   const isAvailableString = availability ? "true" : "false";
   const [castMembers, setCastMembers] = useState(
-    Array.from({ length: 20 }, () => ({ real_name: "", cast_name: "" }))
+    Array.from({ length: 20 }, () => ({ real_name: "", cast_name: "", cast_image:"" }))
   );
+  
   const [selectedDates, setSelectedDates] = useState([]);
   const [selectedTimes, setSelectedTimes] = useState([]);
   const playDateTimes = selectedDates.map((date, index) => ({
@@ -77,15 +76,19 @@ const AddPlayForm = () => {
     setCastMembers(updatedCastMembers);
   };
 
-  // handling cast image preview:
   const handleImageChange = (index, event) => {
     const file = event.target.files[0];
     if (file) {
       const updatedCastMembers = [...castMembers];
+      updatedCastMembers[index].cast_image = file;
       updatedCastMembers[index].imagePreview = URL.createObjectURL(file);
       setCastMembers(updatedCastMembers);
     }
+    else {
+          console.error('No image selected');
+        }
   };
+  
 
   // Handle offers:
   const handleOfferChange = (index, field, value) => {
@@ -113,21 +116,36 @@ const handleTheatreChange = (event) => {
   setSelectedTheatre(theaterMapping[event.target.value]);
 };
 
-  // New Handle Submit:
   const handleSubmit = async (e) => {
     console.log("Submitting........");
 
     e.preventDefault();
   
-    // Check if the user is authenticated before submitting the play
     const accessToken = localStorage.getItem('accessToken');
     if (!accessToken) {
-      // User is not authenticated, handle accordingly (e.g., show an error message)
       console.log("User is not authenticated");
       return;
     }
 
+
+
   
+    const AddedCastMembers = castMembers.filter(member => 
+      member.real_name !== '' && 
+      member.cast_name !== '' &&
+      member.cast_image !== null
+    );
+
+
+    const offersToSend = otherOffers.slice(0, 5).map((offer, index) => ({
+      offers_name: offer.offers_name,
+      offer_day: offerDates[index],
+      promo_code: offer.promo_code,
+      percentage: offer.percentage,
+      number_of_tickets: offer.number_of_tickets,
+    }));
+
+    
     const formData = new FormData();
     formData.append("title", title);
     formData.append("synopsis", synopsis);
@@ -135,30 +153,31 @@ const handleTheatreChange = (event) => {
     formData.append("infotrailer", infotrailerFile);
     console.log('Selected Theatre:', selectedTheatre);
     formData.append("theater", selectedTheatre);
-    // formData.append("theater", selectedTheatre);
     formData.append("is_available", isAvailableString);
+    AddedCastMembers.forEach((castMember, index) => {
+      formData.append(`video_casts[${index}][image]`, castMember.cast_image);
+      formData.append(`video_casts[${index}][real_name]`, castMember.real_name);
+      formData.append(`video_casts[${index}][cast_name]`, castMember.cast_name);
+    });
   
-    formData.append("play_cast_list", JSON.stringify(castMembers));
     formData.append("play_dateTime", JSON.stringify(playDateTimes));
   
-    // Append BOGOF offer if selected
     if (bogofOffer.bogof) {
-      formData.append('play_offers', JSON.stringify([{
-        bogof: bogofOffer.bogof,
-        offer_day: bogofOffer.offer_day,
-        number_of_tickets: bogofOffer.number_of_tickets,
-        promo_code: bogofOffer.promo_code,
-      }]));
+      formData.append('play_offers[bogof]', bogofOffer.bogof);
+      formData.append('play_offers[offer_day]', bogofOffer.offer_day);
+      formData.append('play_offers[number_of_tickets]', bogofOffer.number_of_tickets);
+      formData.append('play_offers[promo_code]', bogofOffer.promo_code);
     }
+
   
     // Append other_offers
-    const offersToSend = otherOffers.slice(0, 5).map((offer, index) => ({
-      offers_name: offer.offers_name,
-      offer_day: offerDates[index], // Use the selected date from offerDates array
-      promo_code: offer.promo_code,
-      percentage: offer.percentage,
-      number_of_tickets: offer.number_of_tickets,
-    }));
+    // const offersToSend = otherOffers.slice(0, 5).map((offer, index) => ({
+    //   offers_name: offer.offers_name,
+    //   offer_day: offerDates[index], // Use the selected date from offerDates array
+    //   promo_code: offer.promo_code,
+    //   percentage: offer.percentage,
+    //   number_of_tickets: offer.number_of_tickets,
+    // }));
     formData.append("other_offers", JSON.stringify(offersToSend));
 
     console.log('POST Request Payload:', formData); // Log the payload you're sending
@@ -207,19 +226,19 @@ const handleTheatreChange = (event) => {
 
  
 
-  // console.log(
-  //   "Data: ",
-  //   title,
-  //   synopsis,
-  //   selectedTheatre,
-  //   posterFile,
-  //   'Availability: ', isAvailableString,
-  //   infotrailerFile,
-  //   castMembers,
-  //   playDateTimes,
-  //   'Bogof: ',bogofOffer,
-  //   'Other Offers:  ',otherOffers,
-  // );
+  console.log(
+    "Data: ",
+    title,
+    synopsis,
+    selectedTheatre,
+    posterFile,
+    'Availability: ', isAvailableString,
+    infotrailerFile,
+    castMembers,
+    playDateTimes,
+    'Bogof: ',bogofOffer,
+    'Other Offers:  ',otherOffers,
+  );
 
   return (
     <>

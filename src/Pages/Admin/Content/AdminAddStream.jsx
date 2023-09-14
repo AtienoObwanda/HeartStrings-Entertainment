@@ -89,22 +89,13 @@ const handleChange = (event) => {
     setCastMembers(updatedCastMembers);
   };
 
-// handling cast image preview:
-// const handleImageChange = (index, event) => {
-//   const file = event.target.files[0];
-//   if (file) {
-//     const updatedCastMembers = [...castMembers];
-//     updatedCastMembers[index].imagePreview = URL.createObjectURL(file);
-//     setCastMembers(updatedCastMembers);
-//   }
-// };
 
 
 const handleImageChange = (index, event) => {
   const file = event.target.files[0];
   if (file) {
     const updatedCastMembers = [...castMembers];
-    updatedCastMembers[index].cast_image = file; // Set the actual file
+    updatedCastMembers[index].cast_image = file; 
     updatedCastMembers[index].imagePreview = URL.createObjectURL(file);
     setCastMembers(updatedCastMembers);
   }else {
@@ -113,18 +104,7 @@ const handleImageChange = (index, event) => {
 };
 
 
-// const handleImageChange = (index, event) => {
-//   const file = event.target.files[0];
-//   if (file) {
-//     const updatedCastMembers = [...castMembers];
-//     updatedCastMembers[index].cast_image = file;
-//     updatedCastMembers[index].imagePreview = URL.createObjectURL(file);
-//     setCastMembers(updatedCastMembers);
-//   } else {
-//     // No file selected, you may want to handle this case (e.g., show an error message)
-//     console.error('No image selected');
-//   }
-// };
+
 
 
 // Video availability change:
