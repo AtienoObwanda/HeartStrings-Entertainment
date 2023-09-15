@@ -120,6 +120,7 @@ console.log('Total Amount: ', totalAmount)
     // 
     // const url = 'http://127.0.0.1:8000/api/video-payments/initiate_payment/';
     const url = `${apiUrl}/api/video-payments/initiate_payment/`
+    console.log('URL:', `${apiUrl}/api/video-payments/initiate_payment/`)
   
     const headers = {
       Authorization: `Bearer ${accessToken}`,
