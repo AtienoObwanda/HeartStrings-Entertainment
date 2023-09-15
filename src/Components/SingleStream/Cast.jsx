@@ -2,11 +2,21 @@ import React from 'react';
 import {Link } from 'react-router-dom'
 import { Text, Slider, PagerIndicator } from 'UI_Components';
 import DetailsPagePlayColumn from 'UI_Components/DetailsPagePlayColumn';
+import { apiUrl } from '../../../env';
 
-const Cast = ({ videoData }) => {
+const Cast = ({ stream }) => {
   // const [sliderState, setSliderState] = React.useState(0);
   const sliderRef = React.useRef(null);
   const [sliderState, setsliderState] = React.useState(0);
+    const video_cast = stream.video_casts;
+
+    const filtered_cast = video_cast.map(group => {
+      const unique_cast = group.reduce((unique, current) => {
+        return unique.some(c => c.id === current.id) ? unique : [...unique, current];
+      }, []);
+      return unique_cast;
+    });
+  
 
 
   return (
@@ -31,7 +41,8 @@ const Cast = ({ videoData }) => {
                   }}
                   ref={sliderRef}
                   className="gap-6 self-stretch w-auto"
-                  items={videoData.video_casts.map((castGroup, index) => (
+                  items={filtered_cast.map((castGroup, index) => (
+
                     <div key={index} className="flex gap-2">
                       {castGroup.map(cast => (
                         <DetailsPagePlayColumn

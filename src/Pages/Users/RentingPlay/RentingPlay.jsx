@@ -40,6 +40,7 @@ const RentingPlay = () => {
   ];
   
 
+
   useEffect(() => {
     fetchPlay();
   }, []);
@@ -49,8 +50,7 @@ const RentingPlay = () => {
       const response = await axios.get(`${apiUrl}/api/videos/${id}`);
       const data = response.data;
       if (!data.error) {
-        setvideoData(data.data); 
-
+        setvideoData(data.data);
       } else {
         console.error('Error fetching play:', data.message);
       }
@@ -58,7 +58,10 @@ const RentingPlay = () => {
       console.error('Error fetching play:', error);
     }
   }
-  console.log(videoData)
+
+  // Price:
+
+
 
   // PAYMENT:
 
@@ -135,6 +138,9 @@ console.log('Total Amount: ', totalAmount)
     }
   };
   
+  useEffect(() => {
+    console.log('Video Data:', videoData);
+  }, [videoData]);
   
 
 
@@ -179,34 +185,40 @@ console.log('Total Amount: ', totalAmount)
                 <Text className="text-base text-gray_300 w-auto">
                   How many days would you like to rent the play for?
                 </Text>
+                
                 <div className="flex sm:flex-col flex-row gap-4 items-center justify-center w-auto sm:w-full">
-                  <Button className="bg-black_900 cursor-pointer min-w-[149px] py-3.5 rounded-lg text-base text-center text-white_A700 hover:border border-white rounded-md p-2"
-                    onClick={() => {
-                      initiateVideoPayment(videoAvailableData[0].three_price);
-                      setSelectedAmount(videoAvailableData[0].three_price);
-                    }}
-                  >
-                    3 days (Kes {videoAvailableData[0].three_price})
-                  </Button>
-
-                  <Button className="bg-black-900 cursor-pointer min-w-[149px] py-3.5 rounded-lg text-base text-center text-white_A700 hover:border border-white rounded-md p-2"
-                    onClick={() => {
-                      initiateVideoPayment(videoAvailableData[0].seven_price);
-                      setSelectedAmount(videoAvailableData[0].seven_price);
-                    }}
-                  >
-                    3 days (Kes {videoAvailableData[0].seven_price})
-                  </Button>
-
-                  <Button className="bg-black-900 cursor-pointer min-w-[158px] py-3.5 rounded-lg text-base text-center text-white_A700 hover:border border-white rounded-md p-2"
-                    onClick={() => {
-                    initiateVideoPayment(videoAvailableData[0].fourteen_price);
-                    setSelectedAmount(videoAvailableData[0].fourteen_price);
-                  }}
-                >
-                  14 days (Kes {videoAvailableData[0].fourteen_price})
-                </Button>
-                </div>
+          <Button
+          className="bg-black_900 cursor-pointer min-w-[149px] py-3.5 rounded-lg text-base text-center text-white_A700 hover:border border-white rounded-md p-2"
+          onClick={() => {
+            initiateVideoPayment(videoData?.video_available[0]?.three_price);
+            setSelectedAmount(videoData?.video_available[0]?.three_price);
+          }}
+        >
+          3 days (Kes {videoData?.video_available[0]?.three_price})
+        </Button>
+        
+        <Button
+          className="bg-black_900 cursor-pointer min-w-[149px] py-3.5 rounded-lg text-base text-center text-white_A700 hover:border border-white rounded-md p-2"
+          onClick={() => {
+            initiateVideoPayment(videoData?.video_available[0]?.seven_price);
+            setSelectedAmount(videoData?.video_available[0]?.seven_price);
+          }}
+        >
+          7 days (Kes {videoData?.video_available[0]?.seven_price})
+        </Button>
+        
+        <Button
+          className="bg-black_900 cursor-pointer min-w-[158px] py-3.5 rounded-lg text-base text-center text-white_A700 hover:border border-white rounded-md p-2"
+          onClick={() => {
+            initiateVideoPayment(videoData?.video_available[0]?.fourteen_price);
+            setSelectedAmount(videoData?.video_available[0]?.fourteen_price);
+          }}
+        >
+          14 days (Kes {videoData?.video_available[0]?.fourteen_price})
+        </Button>
+        
+      </div>
+            
               </div>
               <div className="flex flex-col gap-[9px] mt-[3em] mb-[2em] items-start justify-center w-auto">
                 <Text className="text-base text-gray_300 w-auto">Amount due </Text>
@@ -224,8 +236,8 @@ console.log('Total Amount: ', totalAmount)
                 {tipButtons.map((button) => (
                   <Button
                     key={button.value}
-                    className={`bg-black-900 cursor-pointer h-12 py-3.5 min-w-[60] rounded-lg text-base text-center text-white_A700 w-[47px] hover:border border-white rounded-md p-2 ${
-                      selectedTipOption === button.value ? 'bg-green-500' : ''
+                    className={`bg-black-900 cursor-pointer h-12 py-3.5 min-w-[100px] rounded-lg text-base text-center text-white_A700 w-[47px] hover:border border-white rounded-md p-2 ${
+                      selectedTipOption === button.value ? 'bg-red_900' : ''
                     }`}
                     // onClick={() => setSelectedTipOption(button.value)}
                     onClick={() => {
@@ -239,11 +251,11 @@ console.log('Total Amount: ', totalAmount)
                   </Button>
                 ))}
                 
-                <input className="bg-gray_800 justify-center pl-4 sm:pr-5 pr-[29px] py-3 rounded-lg text-base text-gray_300_87 w-auto h-12" 
+                {/* <input className="bg-gray_800 justify-center pl-4 sm:pr-5 pr-[29px] py-3 rounded-lg text-base text-gray_300_87 w-auto h-12" 
                 placeholder="Other Amount"
                 value={customTip}
                 onChange={handleCustomTipChange}
-                />
+                /> */}
 
                 
               </div>
@@ -264,15 +276,7 @@ console.log('Total Amount: ', totalAmount)
             className="bg-red_900 cursor-pointer font-bold py-[15px] rounded-lg text-center text-white_A700 text-xl w-[430px]">
               Pay now
             </Button>
-            {/* <div>
-                <Button >Initiate Video Payment</Button>
-                {response && (
-                  <div>
-                    <h2>Response:</h2>
-                    <pre>{JSON.stringify(response, null, 2)}</pre>
-                  </div>
-                )}
-              </div> */}
+            
           </div>
 
           {/* end */}
