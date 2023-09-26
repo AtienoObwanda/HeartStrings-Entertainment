@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import { Img, Input, Text } from "UI_Components";
 
-import ConfirmationModal from './ConfirmationModal';
+import StreamConfirm from './DelStreamConfirm';
+
 
 import {BiSolidUserX} from 'react-icons/bi'
 
 import {AiFillCloseCircle} from 'react-icons/ai'
 
 
-const UserViewModal = ({ isOpen, onClose, item, onDelete }) => {
+const StreamViewModal = ({ isOpen, onClose, item, onDelete }) => {
    
 
       const [isConfirmationOpen, setIsConfirmationOpen] = useState(false);
@@ -41,48 +42,39 @@ const UserViewModal = ({ isOpen, onClose, item, onDelete }) => {
                                   />
                         <div className="flex flex-col gap-12 items-start justify-center w-auto">
                             <div className="flex flex-col items-start justify-center w-auto">
-                            <Text className="font-bold text-white-A700 text-xl w-auto">User information</Text>
+                            <Text className="font-bold text-white-A700 text-xl w-auto">Play Mete Data</Text>
                             </div>
                             <div className="flex flex-col items-start justify-start w-auto sm:w-full">
                             <div className="flex flex-col gap-4 items-start justify-start w-auto sm:w-full">
                                 <div className="flex flex-col gap-4 items-start justify-start w-auto sm:w-full">
-                                <Text className="text-base text-white-A700 w-auto">Name</Text>
+                                <Text className="text-base text-white-A700 w-auto">Title</Text>
                                 <Input
                                     name="name_One"
-                                    placeholder={`${item.first_name} ${item.last_name}`}
+                                    placeholder={`${item.title}`}
                                     disabled
                                     className="p-0 placeholder:text-gray_300 sm:pr-5 text-base text-gray-300 text-left w-[400px]"
                                     wrapClassName="bg-gray_800 pl-3 pr-[35px] py-3.5 rounded w-full"
                                 ></Input>
                                 </div>
                                 <div className="flex flex-col gap-2 items-start justify-start w-auto sm:w-full">
-                                <Text className="text-base text-white-A700 w-auto">Email address</Text>
+                                <Text className="text-base text-white-A700 w-auto">Synopsis</Text>
                                 <Input
                                     name="email"
-                                    placeholder={item.email}
+                                    placeholder={item.synopsis}
                                     disabled
                                     className="p-0 placeholder:text-gray_300 sm:pr-5 text-base text-gray-300 text-left w-[400px]"
                                     wrapClassName="bg-gray_800 pl-3 pr-[35px] py-3.5 rounded w-full"
                                     type="email"
                                 ></Input>
                                 </div>
-                                <div className="flex flex-col gap-2 items-start justify-start w-auto sm:w-full">
-                                <Text className="text-base text-white-A700 w-auto">Phone number</Text>
-                                <Input
-                                    name="phonenumber_One"
-                                    placeholder={item.phone}
-                                    disabled
-                                    className="p-0 placeholder:text-gray_300 sm:pr-5 text-base text-gray-300 text-left w-[400px]"
-                                    wrapClassName="bg-gray_800 pl-3 pr-[35px] py-3.5 rounded w-full"
-                                ></Input>
-                                </div>
+                               
                             </div>
                             </div>
                             <div className="bg-red_900 flex flex-row gap-2 items-center justify-center sm:pl-5 pl-6 pr-3 py-2.5 rounded-lg w-auto cursor-pointer"
                             onClick={openConfirmation}>
                             <BiSolidUserX
                             className="h-6 w-6 text-white_A700"/>
-                            <Text className="text-base text-white_A700 w-auto">Delete user</Text>
+                            <Text className="text-base text-white_A700 w-auto">Delete Play</Text>
                             </div>
 
                         </div>
@@ -94,11 +86,9 @@ const UserViewModal = ({ isOpen, onClose, item, onDelete }) => {
        
         </div>
       )}
-        
- 
 
 {isConfirmationOpen && (
-      <ConfirmationModal
+      <StreamConfirm
         isOpen={isConfirmationOpen}
         onCancel={closeConfirmation}
         onConfirm={() => {
@@ -116,4 +106,4 @@ const UserViewModal = ({ isOpen, onClose, item, onDelete }) => {
   );
 };
 
-export default UserViewModal;
+export default StreamViewModal;

@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 
 import { useNavigate, Link } from "react-router-dom";
 import {FaEdit} from "react-icons/fa"
+import { TiDelete } from 'react-icons/ti';
 import axios from 'axios';
+import PlayViewModal from '../../../Components/Admin/PlayViewModal'
 
 
 import { Button, CheckBox, Img, Line, List, Text } from "UI_Components";
@@ -17,6 +19,8 @@ const AdminAllPlays = () => {
 
   const [isAuthenticated, setIsAuthenticated] = useState(true);
   const accessToken = localStorage.getItem('accessToken');
+  const [openModalId, setOpenModalId] = useState(null);
+
 
   useEffect(() => {
 
@@ -61,6 +65,78 @@ const AdminAllPlays = () => {
     }
   }
 
+
+  // MODAL:
+  const [showSuccessAlert, setShowSuccessAlert] = useState(false);
+  const [isViewModalOpen, setIsViewModalOpen] = useState(false);
+  const [isDeleteConfirmationOpen, setIsDeleteConfirmationOpen] = useState(false);
+
+  const openViewModal = () => {
+    setIsViewModalOpen(true);
+  };
+  const closeViewModal = () => {
+    setIsViewModalOpen(false);
+  };
+
+  const openDeleteConfirmation = () => {
+    setIsDeleteConfirmationOpen(true);
+  };
+
+  const closeDeleteConfirmation = () => {
+    setIsDeleteConfirmationOpen(false);
+  };
+
+
+
+
+  const handleDeletePlay = async (playId) => {
+    try {
+      const headers = {
+        Authorization: `Bearer ${accessToken}`, 
+      };
+  
+      await axios.delete(`${apiUrl}/api/plays/${playId}/`, { headers });
+  
+      console.log('Play deleted successfully.');
+      setShowSuccessAlert(true);
+      setTimeout(() => {
+        setShowSuccessAlert(false); // Hide the success alert after a brief delay
+      }, 1500); // Set success alert visibility
+    } catch (error) {
+      console.error('Error deleting play:', error);
+    } finally {
+      closeViewModal(); 
+      closeDeleteConfirmation(); 
+    }
+  };
+  
+
+  // const handleDeletePlay = async (playId) => {
+  //   try {
+  //     const headers = {
+  //       Authorization: `Bearer ${accessToken}`, 
+  //     };
+  
+  //     const response = await axios.delete(`${apiUrl}/api/plays/${playId}/`, { headers });
+
+  //     if (response.status === 204) {
+  //       console.log('Play deleted successfully.');
+  //       setShowSuccessAlert(true);
+  //       setTimeout(() => {
+  //         setShowSuccessAlert(false); // Hide the success alert after a brief delay
+  //       }, 1500); // Set  success alert visibility
+  //     } else {
+  //       console.error('Error deleting play:', error.response.data);
+  //       console.log('Failed to delete play.');
+       
+  //     }
+  //   } catch (error) {
+  //     console.error('Error deleting play:', error);
+  //   } finally {
+  //     closeViewModal(); 
+  //     closeDeleteConfirmation(); 
+  //   }
+  // };
 
 
 return (
@@ -407,7 +483,19 @@ return (
                   </div>
                 </Button>
               </div>
-             
+               {/* Success Alert */}
+                {showSuccessAlert && (
+                    <div class="relative flex flex-col sm:flex-row sm:items-center bg-white w-3/4 shadow rounded-md py-5 pl-6 pr-8 sm:pr-6">
+                              <div class="flex flex-row items-center border-b sm:border-b-0 w-full sm:w-auto pb-4 sm:pb-0">
+                                <div class="text-green-500">
+                                  <svg class="w-6 sm:w-5 h-6 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                </div>
+                                <div class="text-sm font-medium ml-3">Success!.</div>
+                              </div>
+                              <div class="text-sm tracking-wide text-gray-500 mt-4 sm:mt-0 sm:ml-4">Live Has been deleted Suceessfully!!!</div>
+                            
+                            </div>
+                  )}
 
               {/* Live */}
               <div className="flex flex-col gap-6 items-start justify-start  max-w-[1140px] mt-24  mx-auto md:px-5 self-stretch w-full">
@@ -438,7 +526,7 @@ return (
                             as="h3"
                             variant="h3"
                           >
-                            No live plays available!
+                            No live  Plays available!
                           </Text>
                           <div className="flex flex-col items-center justify-start self-stretch w-auto sm:w-full">
                             <Text
@@ -447,7 +535,7 @@ return (
                               variant="h6"
                             >
                               <>
-                              Please check in soon for new updates.
+                              Please Upload new Plays!
                               </>
                             </Text>
                           </div>
@@ -467,10 +555,23 @@ return (
                             <div className="flex flex-col items-center justify-start w-full">
                           <div className="h-[250px] relative w-full">
                           <FaEdit
-                            className="absolute top-[0%] w-8 h-8 right-[2%] text-white"
+                            className="absolute top-[0%] w-6 h-6 right-[2%] text-white"
                             alt="Edit Play"
                             onClick={() => navigate(`/edit-play/${play.id}`)}                            
                           />
+                            <TiDelete
+                            className="absolute top-[10%] w-8 h-8 right-[2%] text-white"
+                            alt="Delete Play"
+                            onClick={() => setOpenModalId(play.id)}                           
+                          />
+                          <PlayViewModal
+                            key={play.id}
+                            isOpen={openModalId === play.id}
+                            onClose={() => setOpenModalId(null)}
+                            item={play}
+                            onDelete={handleDeletePlay}
+                          />
+                          
                           <ReactPlayer 
                           light={
                           <img 

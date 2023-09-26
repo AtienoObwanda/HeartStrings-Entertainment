@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, Link } from "react-router-dom";
 import {FaEdit} from "react-icons/fa"
+import { TiDelete } from 'react-icons/ti';
 import axios from 'axios';
+import StreamViewModal from '../../../Components/Admin/StreamViewModal'
 
 import { Button, Img, Line, List, Text } from "UI_Components";
 import close from "../../../assets/close.svg";
@@ -59,6 +61,51 @@ const AdminAllStreams = () => {
       console.error('Error fetching movies:', error);
     }
   }
+  // MODAL:
+  const [openModalId, setOpenModalId] = useState(null);
+  const [showSuccessAlert, setShowSuccessAlert] = useState(false);
+  const [isViewModalOpen, setIsViewModalOpen] = useState(false);
+  const [isDeleteConfirmationOpen, setIsDeleteConfirmationOpen] = useState(false);
+
+  const openViewModal = () => {
+    setIsViewModalOpen(true);
+  };
+  const closeViewModal = () => {
+    setIsViewModalOpen(false);
+  };
+
+  const openDeleteConfirmation = () => {
+    setIsDeleteConfirmationOpen(true);
+  };
+
+  const closeDeleteConfirmation = () => {
+    setIsDeleteConfirmationOpen(false);
+  };
+
+
+
+
+  const handleDeleteStream = async (videoId) => {
+    try {
+      const headers = {
+        Authorization: `Bearer ${accessToken}`, 
+      };
+  
+      await axios.delete(`${apiUrl}/api/videos/${videoId}/`, { headers });
+  
+      console.log('Play deleted successfully.');
+      setShowSuccessAlert(true);
+      setTimeout(() => {
+        setShowSuccessAlert(false); // Hide the success alert after a brief delay
+      }, 1500); // Set success alert visibility
+    } catch (error) {
+      console.error('Error deleting play:', error);
+    } finally {
+      closeViewModal(); 
+      closeDeleteConfirmation(); 
+    }
+  };
+
 
   return (
 
@@ -402,7 +449,19 @@ const AdminAllStreams = () => {
                 </Button>
               </div>
              
-
+                {/* Success Alert */}
+                {showSuccessAlert && (
+                      <div class="relative flex flex-col sm:flex-row sm:items-center bg-white w-3/4 shadow rounded-md py-5 pl-6 pr-8 sm:pr-6">
+                                <div class="flex flex-row items-center border-b sm:border-b-0 w-full sm:w-auto pb-4 sm:pb-0">
+                                  <div class="text-green-500">
+                                    <svg class="w-6 sm:w-5 h-6 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                  </div>
+                                  <div class="text-sm font-medium ml-3">Success!.</div>
+                                </div>
+                                <div class="text-sm tracking-wide text-gray-500 mt-4 sm:mt-0 sm:ml-4">Stream Has been deleted Suceessfully!!!</div>
+                              
+                              </div>
+                    )}
               {/* Live */}
               <div className="flex flex-col gap-6 items-start justify-start  max-w-[1140px] mt-24  mx-auto md:px-5 self-stretch w-full">
                 {movies.length === 0 ? (
@@ -432,7 +491,7 @@ const AdminAllStreams = () => {
                             as="h3"
                             variant="h3"
                           >
-                            No live plays available!
+                            No Streams available!
                           </Text>
                           <div className="flex flex-col items-center justify-start self-stretch w-auto sm:w-full">
                             <Text
@@ -441,7 +500,7 @@ const AdminAllStreams = () => {
                               variant="h6"
                             >
                               <>
-                              Please check in soon for new updates.
+                              Please upload new streams!
                               </>
                             </Text>
                           </div>
@@ -465,6 +524,21 @@ const AdminAllStreams = () => {
                             alt="Edit Play"
                             onClick={() => navigate(`/edit-stream/${movie.id}`)}                            
                           />
+
+                            <TiDelete
+                            className="absolute top-[10%] w-8 h-8 right-[2%] text-white"
+                            alt="Delete Play"
+                            onClick={() => setOpenModalId(movie.id)}                           
+                          />
+                          <StreamViewModal
+                            key={movie.id}
+                            isOpen={openModalId === movie.id}
+                            onClose={() => setOpenModalId(null)}
+                            item={movie}
+                            onDelete={handleDeleteStream}
+                          />
+
+
                           <ReactPlayer 
                           light={
                           <img 
