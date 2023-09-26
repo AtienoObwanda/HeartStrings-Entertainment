@@ -62,6 +62,7 @@ const AdminDashboard = () => {
       // Handle error (e.g., redirect to an error page)
     }
   };
+  const [weeklyTickets, setWeeklyTickets] = useState(null);
 
 
   const fetchHomeInfo = async () => {
@@ -73,6 +74,7 @@ const AdminDashboard = () => {
       });
   
       setHomeInfo(res.data);
+      setWeeklyTickets(response.data.weekly_tickets[0]);
   
       console.log('Home Info:', res.data);
     } catch (error) {
@@ -468,12 +470,17 @@ const AdminDashboard = () => {
                 <ListData  homeStat={HomeInfo}/>
 {/* End of Navbar area/Header */}
 
-                <div className="flex md:flex-col flex-row font-mulish gap-6 items-center justify-between mt-6 w-full">
+<div className="flex md:flex-col flex-row font-mulish gap-6 items-center justify-between mt-6 w-full">
 {/*Start of Bar Graph */}
-  <LineGraph/>
+<LineGraph />
+
+  {/* <LineGraph homeStat={HomeInfo}/>    analytics={analytics} */}
+
 {/* End Of Bar Graph Section*/}
 {/* Start Of PieChart */}
-<PieChart/>
+<PieChart  />
+{/* <PieChart weeklyTickets={weeklyTickets} />  */}
+
 {/* EndOfPieChart */}
                 </div>
                 <div className="md:h-[1305px] sm:h-[600px] h-[850px] relative w-[92%] md:w-full">

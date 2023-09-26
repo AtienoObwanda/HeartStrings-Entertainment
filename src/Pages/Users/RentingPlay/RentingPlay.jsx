@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom'
+import { useParams,useNavigate } from 'react-router-dom'
+
 import { Button, Img, Text } from "UI_Components";
 import Sidebar from "UI_Components/Sidebar";
 
 import { apiUrl } from "../../../../env";
 
 const RentingPlay = () => {
+  const navigate = useNavigate();
   const {id} = useParams()
   const [videoData, setvideoData] = useState(null);
   const [selectedAmount, setSelectedAmount] = useState(null);
@@ -118,8 +120,8 @@ console.log('Total Amount: ', totalAmount)
 
   const initiateVideoPayment = async (amount) => {
     // 
-    // const url = 'http://127.0.0.1:8000/api/video-payments/initiate_payment/';
-    const url = `${apiUrl}/api/video-payments/initiate_payment/`
+    const url = 'https://api.jaafrikaimages.org/api/video-payments/initiate_payment/';
+    // const url = `${apiUrl}/api/video-payments/initiate_payment/`
     console.log('URL:', `${apiUrl}/api/video-payments/initiate_payment/`)
   
     const headers = {
@@ -127,15 +129,19 @@ console.log('Total Amount: ', totalAmount)
     };
   
     const body = {
-      videoData_id: videoData.id, // Use the ID from videoData
+      video_id: videoData.id, // Use the ID from videoData
       amount:  totalAmount.toString()
     };
   
     try {
       const response = await axios.post(url, body, { headers });
       console.log('Response:', response.data);
+      // redirect
+      navigate('/my-streams');
     } catch (error) {
       console.error('Error initiating video payment:', error);
+      alert('Failed to initiate payment. Please ensure your registered phone number is linked with M-Pesa.');
+
     }
   };
   

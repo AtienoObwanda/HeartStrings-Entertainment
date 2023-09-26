@@ -44,6 +44,8 @@ const Login = () => {
       } else {
         console.error('Error logging in:', error);
         setLoginError('An error occurred. Please try again later.');
+        alert('An error occurred. Please try again later.');
+
       }
     }
   };
@@ -67,7 +69,7 @@ const Login = () => {
   const continueWithGoogle = async () => {
     try {
         const redUrl='http://localhost:5173'
-        const res = await axios.post(`${apiUrl}/auth/o/google-oauth2/?redirect_uri=${redUrl}`)
+        const res = await axios.get(`${apiUrl}/auth/o/google-oauth2/?redirect_uri=${redUrl}`)
 
         window.location.replace(res.data.authorization_url);
     } catch (err) {

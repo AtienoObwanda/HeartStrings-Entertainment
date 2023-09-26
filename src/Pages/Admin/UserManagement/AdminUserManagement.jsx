@@ -32,6 +32,8 @@ const AdminUserManagement = () => {
   const [userInfo, setUserInfo] = useState({});
   const accessToken = localStorage.getItem('accessToken');
   const [isAuthenticated, setIsAuthenticated] = useState(true);
+  const currentDate = new Date();
+  const formattedDate = `${currentDate.getDate()}${currentDate.getMonth() + 1}${currentDate.getFullYear()}`;
 
 
  useEffect(() => {
@@ -114,7 +116,7 @@ const handleExportPDF = () => {
           headerRows: 1,
           widths: ['auto', 'auto', 'auto', 'auto'],
           body: [
-            ['Name', 'Email', 'Phone', 'Role'],
+            ['First Name', 'Last Name','Phone Number','Email', 'Phone', 'Role'],
             ...users.map(user => [
               `${user.first_name} ${user.last_name}`,
               user.email,
@@ -128,15 +130,16 @@ const handleExportPDF = () => {
   };
 
   const pdfDoc = pdfMake.createPdf(pdfDefinition);
-  pdfDoc.download('user_data.pdf');
+  pdfDoc.download(`${formattedDate}-HeartStrings User Data.pdf`);
 };
 
 const handleExportXLSX = () => {
-  const excelData = [['Name', 'Email', 'Phone', 'Role'], ...users.map(user => [user.first_name, user.last_name, user.phone, user.email, user.user_type])];
+  const excelData = [['First Name', 'Last Name','Email', 'Phone Number', 'Role'], ...users.map(user => [user.first_name, user.last_name, user.email, user.phone, user.user_type])];
   const excelSheet = XLSX.utils.aoa_to_sheet(excelData);
   const excelWorkbook = XLSX.utils.book_new();
   XLSX.utils.book_append_sheet(excelWorkbook, excelSheet, 'UserData');
-  XLSX.writeFile(excelWorkbook, 'user_data.xlsx');
+  XLSX.writeFile(excelWorkbook, `${formattedDate}-HeartStrings User Data.xlsx`);
+  // xlsx
 
 };
 
@@ -519,7 +522,7 @@ const handleExportXLSX = () => {
 
 
 
-            <div className="md:h-[1305px] sm:h-[600px] h-[850px] relative w-[92%] md:w-full">
+            <div className="md:h-[1305px] sm:h-[600px] h-[1350px] relative w-[92%] md:w-full overflow-y:none">
                 <div className="font-roboto h-full md:h-[394px] sm:h-[112px] mt-[23px] relative w-full">
                   <div className="absolute bg-black_900 flex flex-col h-full inset-[0] items-start justify-start m-auto py-[17px] rounded w-full">
                     

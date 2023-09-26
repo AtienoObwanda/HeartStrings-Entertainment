@@ -189,6 +189,7 @@ const ProjectRoutes = () => {
           {/* TO DELETE: */}
                     <Route path="/renting-play/:id" element={<RentingPlay />} />
                     <Route path="/buying-ticket/:id" element={<BuyingTicket />} /> {/*Actual ticket details page */}
+                    <Route path="/my-streams" element={<MyStreamLibrary />} />
 
 
 
@@ -207,7 +208,7 @@ const ProjectRoutes = () => {
           <Route path="/reset-complete" element={<ResetComplete />} />
             
           {/* Authenticated UserRoutes */}
-          {isLoggedIn && userType === 'normal' && (
+          {userType !== 'admin' && (
             <>
             {/* Account Route */}
           <Route path="/edit-my-password" element={<EditMyAccount />} />
@@ -215,7 +216,10 @@ const ProjectRoutes = () => {
 
           {/* User Content */}
           {/* <Route path="/my-stream-library" element={<MyStreamLibrary />} /> */}
-          <Route path="/my-streams" element={<MyStreamLibrary />} />
+
+          {/* <Route path="/my-streams" element={<MyStreamLibrary />} /> */}
+
+
           {/* <Route path="/my-streams" element={<MyStreams />} /> */}
           <Route path="/my-tickets" element={<MyTickets />} />
           <Route path="/ticket-popup" element={<TicketPopUp />} />

@@ -125,7 +125,7 @@ const ListData = ({ homeStat }) => {
                           className="font-normal not-italic text-gray_300 text-left w-auto"
                           variant="body4"
                         >
-                          150
+                        {homeStat.tickets_sold}
                         </Text>
                       </div>
                     </div>

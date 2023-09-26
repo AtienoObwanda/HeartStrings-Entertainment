@@ -44,8 +44,21 @@ const data = {
     },
   };
   
+  const PieChart = () => {
 
-const PieChart = () => {
+// const PieChart = ({ weeklyTickets }) => {
+//   const data = {
+//     labels: ['Sold', 'Reserved', 'Available'],
+//     datasets: [
+//       {
+//         data: [weeklyTickets.sold, weeklyTickets.reserved, weeklyTickets.available],
+//         backgroundColor: ['#C71A1A', '#00ACEE', '#0b0c0f'],
+//         hoverBackgroundColor: ['#C71A1A', '#00ACEE', '#0b0c0f'],
+//         borderColor: ['#C71A1A', '#00ACEE', '#0b0c0f'],
+//       },
+//     ],
+//   };
+
   return (
     <>
     <div className="bg-black_900 flex md:flex-1 flex-col font-roboto gap-4 items-start justify-start p-4 rounded w-[37%] md:w-full">

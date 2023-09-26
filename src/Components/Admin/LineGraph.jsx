@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 import { Chart } from 'chart.js';
 import { Text } from "UI_Components";
+import { apiUrl } from '../../../env';
 
 // import {faker} from 'faker';
 
@@ -29,8 +31,32 @@ ChartJS.register(
     Legend,
     Filler // 1. Register Filler plugin
   );
-  
 
+const labels = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
+  
+export  const data = {
+    labels,
+    datasets: [
+      {
+        label: "Tickets",
+        data : [22000,17000,40000,46000,19000,108000,160000],
+        borderColor: "RGB(199,26,26)",
+        backgroundColor: "RGBA(199,26,26,1)",
+        fill: {
+          target: "origin", // Set the fill options
+          above: "RGBA(199,26,26,0.3)"
+        }
+      },
+      {
+        label: "Streams",
+        // data: labels.map(() => faker.datatype.number({ min: 0, max: 500 })),
+        data : [20000,15000,90000,25000,30000,24000,60000],
+        borderColor: "RGB(0,172,238)",
+        backgroundColor: "RGBA(0,172,238,1)",
+        fill: "origin" // Set the fill options
+      }
+    ]
+  };
 
 
   export const options = {
@@ -54,57 +80,67 @@ ChartJS.register(
           min: 0,
           reverse: true,
           callback: (value) => {
-            if (value === 0) return '0k';
-            else if (value === 20000) return '20k';
-            else if (value === 40000) return '40k';
-            else if (value === 60000) return '60k';
-            else if (value === 80000) return '80k';
-            else if (value === 100000) return '100k';
-            else if (value === 120000) return '120k';
-            else if (value === 140000) return '140k';
-            else if (value === 160000) return '160k';
-            else if (value === 180000) return '180k';
-            else if (value === 200000) return '200k';
-            else if (value === 220000) return '220k';
-            else if (value === 240000) return '240k';
-            else if (value === 260000) return '260k';
-            else if (value === 280000) return '280k';
-            else if (value === 300000) return '300k';
-            else if (value === 320000) return '320k';
-            else if (value === 340000) return '340k';
-            else if (value === 360000) return '360k';
-            else if (value === 380000) return '380k';
-            else if (value === 400000) return '400k';
-            else if (value === 420000) return '420k';
-            else if (value === 440000) return '440k';
-            else if (value === 460000) return '460k';
-            else if (value === 480000) return '480k';
-            else if (value === 500000) return '500k';
-            else if (value === 520000) return '520k';
-            else if (value === 540000) return '540k';
-            else if (value === 560000) return '560k';
-            else if (value === 580000) return '580k';
-            else if (value === 600000) return '600k';
-            else if (value === 620000) return '620k';
-            else if (value === 640000) return '640k';
-            else if (value === 660000) return '660k';
-            else if (value === 680000) return '680k';
-            else if (value === 700000) return '700k';
-            else if (value === 720000) return '720k';
-            else if (value === 740000) return '740k';
-            else if (value === 760000) return '760k';
-            else if (value === 780000) return '780k';
-            else if (value === 800000) return '800k';
-            else if (value === 820000) return '820k';
-            else if (value === 840000) return '840k';
-            else if (value === 860000) return '860k';
-            else if (value === 880000) return '880k';
-            else if (value === 900000) return '900k';
-            else if (value === 920000) return '920k';
-            else if (value === 940000) return '940k';
-            else if (value === 960000) return '960k';
-            else if (value === 980000) return '980k';
-            else if (value === 1000000) return '1M';
+            if (value <= 0) return '0k';
+            else if (value <= 1) return '1k';
+            else if (value <= 2) return '2k';
+            else if (value <= 3) return '3k';
+            else if (value <= 4) return '4k';
+            else if (value <= 5) return '5k';
+            else if (value <= 6) return '6k';
+            else if (value <= 7) return '7k';
+            else if (value <= 8) return '8k';
+
+
+            // else if (value <= 20000) return '20k';
+            // else if (value === 40000) return '40k';
+            // else if (value === 60000) return '60k';
+            // else if (value === 80000) return '80k';
+            // else if (value === 100000) return '100k';
+            // else if (value === 120000) return '120k';
+            // else if (value === 140000) return '140k';
+            // else if (value === 160000) return '160k';
+            // else if (value === 180000) return '180k';
+            // else if (value === 200000) return '200k';
+            // else if (value === 220000) return '220k';
+            // else if (value === 240000) return '240k';
+            // else if (value === 260000) return '260k';
+            // else if (value === 280000) return '280k';
+            // else if (value === 300000) return '300k';
+            // else if (value === 320000) return '320k';
+            // else if (value === 340000) return '340k';
+            // else if (value === 360000) return '360k';
+            // else if (value === 380000) return '380k';
+            // else if (value === 400000) return '400k';
+            // else if (value === 420000) return '420k';
+            // else if (value === 440000) return '440k';
+            // else if (value === 460000) return '460k';
+            // else if (value === 480000) return '480k';
+            // else if (value === 500000) return '500k';
+            // else if (value === 520000) return '520k';
+            // else if (value === 540000) return '540k';
+            // else if (value === 560000) return '560k';
+            // else if (value === 580000) return '580k';
+            // else if (value === 600000) return '600k';
+            // else if (value === 620000) return '620k';
+            // else if (value === 640000) return '640k';
+            // else if (value === 660000) return '660k';
+            // else if (value === 680000) return '680k';
+            // else if (value === 700000) return '700k';
+            // else if (value === 720000) return '720k';
+            // else if (value === 740000) return '740k';
+            // else if (value === 760000) return '760k';
+            // else if (value === 780000) return '780k';
+            // else if (value === 800000) return '800k';
+            // else if (value === 820000) return '820k';
+            // else if (value === 840000) return '840k';
+            // else if (value === 860000) return '860k';
+            // else if (value === 880000) return '880k';
+            // else if (value === 900000) return '900k';
+            // else if (value === 920000) return '920k';
+            // else if (value === 940000) return '940k';
+            // else if (value === 960000) return '960k';
+            // else if (value === 980000) return '980k';
+            // else if (value === 1000000) return '1M';
   
   
   
@@ -148,37 +184,41 @@ ChartJS.register(
   
   
   
-  const labels = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
   
-  
-  export const data = {
-    labels,
-    datasets: [
-      {
-        label: "Tickets",
-        // data: labels.map(() => faker.datatype.number({ min: 0, max: 500 })),
-        data : [22000,17000,40000,46000,19000,108000,160000],
-        borderColor: "RGB(199,26,26)",
-        backgroundColor: "RGBA(199,26,26,1)",
-        fill: {
-          target: "origin", // Set the fill options
-          above: "RGBA(199,26,26,0.3)"
-        }
-      },
-      {
-        label: "Streams",
-        // data: labels.map(() => faker.datatype.number({ min: 0, max: 500 })),
-        data : [20000,15000,90000,25000,30000,24000,60000],
-        borderColor: "RGB(0,172,238)",
-        backgroundColor: "RGBA(0,172,238,1)",
-        fill: "origin" // Set the fill options
-      }
-    ]
-  };
+
 
   
+ 
 
 const LineGraph = () => {
+ 
+  // const LineGraph = ({ homeStat }) => {
+
+  // const data = {
+  //   labels: ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"],
+  //   datasets: [
+  //     {
+  //       label: "Tickets",
+  //       data: HomeInfo && HomeInfo.weekly_tickets.map(ticket => ticket.amt),
+  //       borderColor: "RGB(199,26,26)",
+  //       backgroundColor: "RGBA(199,26,26,1)",
+  //       fill: {
+  //         target: "origin",
+  //         above: "RGBA(199,26,26,0.3)"
+  //       }
+  //     },
+  //     {
+  //       label: "Streams",
+  //       data: HomeInfo && HomeInfo.weekly_streams.map(stream => stream.amt),
+  //       borderColor: "RGB(0,172,238)",
+  //       backgroundColor: "RGBA(0,172,238,1)",
+  //       fill: "origin"
+  //     }
+  //   ]
+  // };
+  
+
+
   return (
 <>
                     

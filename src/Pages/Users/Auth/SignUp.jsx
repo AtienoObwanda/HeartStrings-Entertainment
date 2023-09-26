@@ -15,6 +15,16 @@ import SignupColumnlogotwo from "UI_Components/SignupColumn";
 import SignupColumnsearchone from "UI_Components/SignupColumnsearchone";
 
 
+import {googleOAuth2Key} from '../../../../env.js'
+
+console.log(googleOAuth2Key)
+const redirectUri = 'http://localhost:5173'; // Redirect URI here
+
+https://api.jaafrikaimages.org/auth/o/google-oauth2/?redirect_uri=http://localhost:5173&client_id=1164711596-p5kfhp9la2n1qm49dah7otobco81s2j0.apps.googleusercontent.com
+//  POST /auth/o/google-oauth2/?redirect_uri=http://localhost:3000
+
+
+console.log(`${apiUrl}/auth/o/google-oauth2/?redirect_uri=${redirectUri}&client_id=${googleOAuth2Key}`)
 
 
 const SignUp = ({  }) => {
@@ -62,6 +72,17 @@ const SignUp = ({  }) => {
     }
   };
   
+ 
+  const continueWithGoogle = async () => {
+    try {
+        const redUrl='http://localhost:5173'
+        const res = await axios.get(`${apiUrl}/auth/o/google-oauth2/?redirect_uri=${redUrl}`)
+
+        window.location.replace(res.data.authorization_url);
+    } catch (err) {
+
+    }
+};
 
 
 
@@ -239,11 +260,15 @@ const SignUp = ({  }) => {
 
 
                       </div>
-                    
-                    <SignupColumnsearchone
+                    <div
+                    onClick={continueWithGoogle}>
+                           <SignupColumnsearchone
                       className="flex flex-col items-center justify-center w-[430px] sm:w-full"
                       loginwithgoogleOne="Login with google"
+                      onClick={continueWithGoogle}
                     />
+                    </div>
+                 
                   </div>
 
                   </form>
