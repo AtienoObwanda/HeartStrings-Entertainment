@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
 // import {FiEdit} from 'react-icons/fi'
 import {BiSolidUserX} from 'react-icons/bi'
 import {IoEyeSharp} from 'react-icons/io5'
-import axios from 'axios';
+import { FaEdit } from 'react-icons/fa';
+// import axios from 'axios';
 import Select from 'react-select';
 
 import { apiUrl } from '../../../env';
@@ -20,16 +23,17 @@ useEffect(() => {
   const headers = {
     Authorization: `Bearer ${accessToken}`
   };
-
+  
   axios.get(`${apiUrl}/api/tickets/`, { headers })
-
     .then(response => {
-      setTickets(response.data);
+      console.log('API Response:', response.data);
+      setTickets(response.data.data); // Access the data array
     })
     .catch(error => {
       console.error('Error fetching tickets:', error);
     });
 }, []);
+
 
 const [currentPage, setCurrentPage] = useState(1);
 const [resultsPerPage, setResultsPerPage] = useState(10); 
@@ -37,6 +41,7 @@ const startIndex = (currentPage - 1) * resultsPerPage;
 const endIndex = startIndex + resultsPerPage;
 // const visibleData = tickets.slice(startIndex, endIndex);
 const visibleData = Array.isArray(tickets) ? tickets.slice(startIndex, endIndex) : [];
+console.log(visibleData)
 
 const handleResultsPerPageChange = (newResultsPerPage) => {
   setResultsPerPage(newResultsPerPage);
@@ -111,13 +116,16 @@ const options = [
                     Payment Method
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Date and Time
+                  Purchase  Date & Time
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    View
+                 Seats
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Edit
+                    
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    
                 </th>
             </tr>
         </thead>
@@ -125,13 +133,15 @@ const options = [
         {visibleData.map((item, index) => (
     <tr key={index} className="border-b bg-transparent border-gray_800 text-white_A700">
       <th scope="row" className="px-6 py-4 font-medium whitespace-nowrap">
-        {item.Name}
+        {item.user.first_name} {item.user.last_name}
       </th>
-      <td className="px-6 py-4">{item.Email}</td>
-      <td className="px-6 py-4">{item.Phone_Number}</td>
-      <td className="px-6 py-4">{item.Status}</td>
-      <td className="px-6 py-4">{item.Payment_Method}</td>
-      <td className="px-6 py-4">{item.Date_Time}</td>
+      <td className="px-6 py-4">{item.user.email}</td>
+      <td className="px-6 py-4">{item.user.phone}</td>
+      <td className="px-6 py-4">{item.purchased ? "Purchased" : "Not Purchased"}</td>
+      <td className="px-6 py-4">{item.ticket_type}</td>
+      <td className="px-6 py-4">{item.added_on}</td>
+      <td className="px-6 py-4">{item.seat_numbers}</td>
+
       <td className="px-6 py-4">
       <IoEyeSharp
             className="h-5 w-5 text-white_A700"
@@ -139,7 +149,7 @@ const options = [
             />
       </td>
       <td className="px-6 py-4">
-      <BiSolidUserX
+      <FaEdit
             className="h-6 w-6 text-white_A700"
             // onClick={() => setOpenModalId(item.id)}
 

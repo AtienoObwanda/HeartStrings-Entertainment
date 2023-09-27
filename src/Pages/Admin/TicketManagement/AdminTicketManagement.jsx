@@ -26,7 +26,7 @@ const AdminTicketManagement = () => {
       fetchUserInfo();
     } else {
       // Redirect to login if no access token
-      navigate('/login');
+      navigate('/admin-login');
     }
   }, [accessToken]);
 

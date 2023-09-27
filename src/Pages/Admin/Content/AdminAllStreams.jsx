@@ -470,7 +470,6 @@ const AdminAllStreams = () => {
                   as="h2"
                   variant="h2"
                 >
-                  No Plays Available
                 </Text>
                 ):(
                   <Text
