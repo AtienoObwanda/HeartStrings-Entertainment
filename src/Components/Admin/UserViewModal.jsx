@@ -104,7 +104,7 @@ const handleSubmit = async (e) => {
       first_name: name.split(' ')[0],
       last_name: name.split(' ')[1],
       email,
-      // email: userData.email,
+      email: userData.email,
       phone: phonenumber,
     };
     // const data = {
@@ -176,8 +176,8 @@ const handleSubmit = async (e) => {
                                 <Input
                                    
                                    name="email"
-                                  //  placeholder={userData.email}
-                                  //  disabled  
+                                   placeholder={userData.email}
+                                   disabled  
                                   value={userData.email}
                                   onChange={(value) => handleItemChange('email', value)}  
                                   className="p-0 placeholder:text-gray_300 sm:pr-5 text-base text-gray-300 text-left w-[400px]"
