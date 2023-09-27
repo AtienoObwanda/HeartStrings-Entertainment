@@ -23,6 +23,7 @@
     "faker": "^5.5.3",
     "fontsource-roboto": "^4.0.0",
     "fs": "^0.0.1-security",
+    "html2canvas": "^1.4.1",
     "jspdf": "^2.5.1",
     "loggly-jslogger": "^2.2.4",
     "moment": "^2.29.4",

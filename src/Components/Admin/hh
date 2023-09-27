@@ -1,0 +1,60 @@
+ 
+
+  # <div className="flex flex-row items-start justify-start mt-6 w-auto">
+  #   <div className="flex h-7">
+  #     <img src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927662/HeartStrings/SVG/img_materialsymbolslocationon_vleymq.svg" alt="Theatre Tag" className="h-5 w-5" />
+  #     <Text className="text-base text-White_A700 ml-2">{item.play.theater}</Text>
+  #   </div>
+  # </div>
+
+  # <div className="flex flex-row gap-6 items-center justify-center mt-5 w-auto">
+  #   <div className="h-[87px] w-[33%] flex flex-col items-center justify-center">
+  #     <div>SEATS</div>
+  #     <div className='flex mt-6'>{item.seat_numbers}</div>
+  #   </div>
+  #   <div className="h-[87px] w-[33%] flex flex-col items-center justify-center">
+  #     <div>TIME</div>
+  #     <div className='flex mt-6'>12:00</div>
+  #   </div>
+  #   <div className="h-[87px] w-[33%] flex flex-col items-center justify-center">
+  #     <div>PRICE</div>
+  #     <div className='flex mt-6'>KSH {item.price}</div>
+  #   </div>
+  # </div>
+
+  <div className="flex flex-col items-start justify-start mt-5 w-auto">
+    <Text className="text-base text-White_A700 w-auto ml-5 pt-[2em]">
+      {item.ticket_type}
+    </Text>
+  </div>
+  <div className="h-7"></div>
+
+  <Text className="text-base text-red_900_01 w-full pt-[2em] ml-[6em]">
+    ------------------------------------------------------------------------------------------------------------------------------
+  </Text>
+
+  <div className="flex flex-col items-center justify-center mt-[50px] mb-[280px] w-auto">
+    <div className="flex flex-col items-center justify-center w-full">
+      <img src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689933646/HeartStrings/logo/HeartStringsLogo.png"
+       alt="HeartStrings Logo" 
+      className="h-[8em] w-[6em]" />
+    </div>
+
+    <div className="flex items-center justify-center w-full mt-9">
+      <img src={item.qr_code} alt="QR Code" className="h-[20em] w-[25em]" />
+    </div>
+
+    <div className="w-full">
+      <Text className="text-base text-White_A700 w-full text-center">
+        DOWNLOAD
+      </Text>
+    </div>
+
+    <div className="w-full">
+      <Text className="text-base text-White_A700 w-full text-center pb-2">
+        TERMS & CONDITIONS
+      </Text>
+    </div>
+  </div>
+
+</div>

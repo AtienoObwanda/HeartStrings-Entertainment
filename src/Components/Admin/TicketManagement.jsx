@@ -5,6 +5,8 @@ import axios from 'axios';
 import {BiSolidUserX} from 'react-icons/bi'
 import {IoEyeSharp} from 'react-icons/io5'
 import { FaEdit } from 'react-icons/fa';
+import TicketViewModal from './TicketViewModal';
+
 // import axios from 'axios';
 import Select from 'react-select';
 
@@ -145,9 +147,18 @@ const options = [
       <td className="px-6 py-4">
       <IoEyeSharp
             className="h-5 w-5 text-white_A700"
-            // onClick={() => setOpenModalId(item.id)}
+            onClick={() => setOpenModalId(item.id)}
             />
+            <TicketViewModal
+       
+        key={item.id}
+        isOpen={openModalId === item.id}
+        onClose={() => setOpenModalId(null)}
+        item={item}
+        // onDelete={handleDeleteUser}
+      />
       </td>
+
       <td className="px-6 py-4">
       <FaEdit
             className="h-6 w-6 text-white_A700"
