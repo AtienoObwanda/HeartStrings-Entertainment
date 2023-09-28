@@ -14,14 +14,13 @@ import pdfFonts from 'pdfmake/build/vfs_fonts';
 import { Button, Img, Input, Line, List, Text } from "UI_Components";
 import UserManagement from "Components/Admin/UserManagement";
 import { jsPDF } from "jspdf";
-import "jspdf-autotable";
 
 
 import { apiUrl } from '../../../../env';
 import close from "../../../assets/close.svg";
 import  menu from "../../../assets/menu.svg";
 
-pdfMake.vfs = pdfFonts.pdfMake.vfs;
+// pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 
 const AdminUserManagement = () => {
