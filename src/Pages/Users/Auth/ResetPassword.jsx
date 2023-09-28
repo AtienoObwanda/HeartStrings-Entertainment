@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Button, Input, Text } from 'UI_Components';
@@ -12,23 +12,79 @@ const ResetPassword = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [resetMessage, setResetMessage] = useState('');
 
-  const handleReset = async () => {
-    try {
-      // const response = await axios.post(`http://127.0.0.1:8000/auth/users/reset_password_confirm/`, {
-      const response = await axios.post(`${apiUrl}/auth/users/reset_password_confirm/`, {
-      uid: uidb64,
-        token: token,
-        new_password: password,
-        re_new_password: confirmPassword,
-      });
+  // const handleReset = async () => {
+  //   try {
+  //     console.log('uid:', uidb64);
+  //     console.log('token:', token);
+  //       const response = await axios.post(`${apiUrl}/auth/users/reset_password_confirm/`, {
 
-      setResetMessage(response.data.message);
-    } catch (error) {
-      console.error('Error confirming password reset:', error);
-      setResetMessage('An error occurred. Please try again later.');
-    }
-  };
+  //       uid: uidb64,
+  //       token: token,
+  //       new_password: password,
+  //       re_new_password: confirmPassword,
+  //     });
+
+  //     setResetMessage(response.data.message);
+  //     if (response.status >= 200 && response.status < 300) {
+  //       navigate('/reset-complete'); 
+  //     }
+  //   } catch (error) {
+  //     console.error('Error confirming password reset:', error);
+  //     setResetMessage('An error occurred. Please try again later.');
+  //   }
+  // };
  
+  // const handleReset = async () => {
+  //   try {
+  //     console.log('uid:', uidb64);
+  //     console.log('token:', token);
+  //     const response = await axios.post(`${apiUrl}/auth/users/reset_password_confirm/`, {
+  //       uid: uidb64,
+  //       token: token,
+  //       new_password: password,
+  //       re_new_password: confirmPassword,
+  //     });
+  
+  //     setResetMessage(response.data.message);
+  
+  //     if (response.data.error === false) {
+  //       navigate('/reset-complete'); 
+  //     }
+  //   } catch (error) {
+  //     console.error('Error confirming password reset:', error);
+  //     setResetMessage('An error occurred. Please try again later.');
+  //   }
+  // };
+
+    const handleReset = async () => {
+      try {
+        console.log('uid:', uidb64);
+        console.log('token:', token);
+        const response = await axios.post(`${apiUrl}/auth/users/reset_password_confirm/`, {
+          uid: uidb64,
+          token: token,
+          new_password: password,
+          re_new_password: confirmPassword,
+        });
+      
+        console.log('Response status:', response.status);
+        console.log('Response data:', response.data);
+      
+        if (response.status >= 200 && response.status < 300) 
+         {
+          navigate('/reset-complete'); 
+
+        } else {
+          console.log('Activation failed:', response.data.message);
+          setActivationMessage('Error activating account. Please try again later...');
+        }
+      } catch (error) {
+        console.error('Error activating account:', error);
+        console.error('Error activating account. Please try again later...');
+      }
+    };
+
+
   return (
     <>
       <div className="bg-black_900 flex flex-col font-roboto sm:gap-10 md:gap-10 gap-6 items-center justify-start mx-auto pb-[680px] w-full">

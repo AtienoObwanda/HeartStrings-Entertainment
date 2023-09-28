@@ -18,10 +18,12 @@ const ForgotPassword = () => {
       });
 
       setResetMessage(response.data.message);
-
-      if (response.data.error === false) {
+      if (response.status >= 200 && response.status < 300) {
         navigate('/reset/email-sent'); // Navigates to the email sent confirmation page
       }
+      // if (response.data.error === false) {
+      //   navigate('/reset/email-sent'); // Navigates to the email sent confirmation page
+      // }
     } catch (error) {
       console.error('Error resetting password:', error);
       setResetMessage('An error occurred. Please try again later.');

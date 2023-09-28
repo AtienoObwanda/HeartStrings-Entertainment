@@ -52,19 +52,7 @@ const Login = () => {
 
   
   
-  // const continueWithGoogle = async () => {
-  //   try {
-  //     // const redirectUri = `${process.env.REACT_APP_API_URL}/google`; // Redirect URI here
-  //     const redirectUri = 'http://localhost:5173'; // Redirect URI here
-  //     // /auth/o/google-oauth2/?redirect_uri=http://localhost:3000
-  //     const googleAuthUrl = `${apiUrl}/auth/o/google-oauth2/?redirect_uri=${redirectUri}&client_id=${googleOAuth2Key}`;
-  // // POST /auth/o/google-oauth2/?redirect_uri=http://localhost:3000
-  //     window.location.replace(googleAuthUrl);
-  //   } catch (error) {
-  //     // Handle error
-  //     console.error('Error initiating Google login:', error);
-  //   }
-  // };
+
   
   const continueWithGoogle = async () => {
     try {

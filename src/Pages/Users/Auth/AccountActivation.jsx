@@ -22,7 +22,7 @@ const AccountActivation = () => {
       try {
         console.log('uid:', uidb64);
         console.log('token:', token);
-        const response = await axios.post(`https://api.jaafrikaimages.org/auth/users/activation/`, {
+        const response = await axios.get(`${ apiUrl }/auth/users/activation/`, {
           uid: uidb64,
           token: token,
         });
@@ -30,7 +30,9 @@ const AccountActivation = () => {
         console.log('Response status:', response.status);
         console.log('Response data:', response.data);
       
-        if (response.status === 204 && response.data.message === 'Account activated successfully.') {
+        // if (response.status === 200 && response.data.message === 'Account activated successfully.')
+        if (response.status >= 200 && response.status < 300) 
+         {
           setActivationMessage(response.data.message);
           setActivationSuccess(true);
         } else {
