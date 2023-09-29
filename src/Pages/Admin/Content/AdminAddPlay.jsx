@@ -30,12 +30,18 @@ const AdminAddPlay = () => {
     }
   }, []);
 
-  const handleLogout = () => {
-    setIsAuthenticated(false);
-
-    navigate("/admin-login");
+  const clearAccessToken = () => {
+    localStorage.removeItem('accessToken');
   };
 
+  const handleLogout = () => {
+    localStorage.clear();
+    clearAccessToken(); 
+    setIsAuthenticated(false);
+    navigate('/admin-login');
+  };
+
+  
   return (
     <>
       <div className="bg-black_900_01 flex flex-col font-roboto items-center justify-start mx-auto pb-[109px] w-full">

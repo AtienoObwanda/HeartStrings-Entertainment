@@ -91,12 +91,19 @@ const AdminDashboard = () => {
     }
   }, [])
   
-  const handleLogout = () => {
-    setIsAuthenticated(false);
-    localStorage.clear();
-
-   navigate('/admin-login');
+  const clearAccessToken = () => {
+    localStorage.removeItem('accessToken');
   };
+
+  const handleLogout = () => {
+    localStorage.clear();
+    clearAccessToken(); 
+    setIsAuthenticated(false);
+    navigate('/admin-login');
+  };
+
+
+
 
   return (
     <>

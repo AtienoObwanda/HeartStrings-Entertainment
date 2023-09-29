@@ -31,11 +31,18 @@ const AdminAllStreams = () => {
     }
   }, [])
 
-  const handleLogout = () => {
-    setIsAuthenticated(false);
-    
-  navigate('/admin-login');
+  const clearAccessToken = () => {
+    localStorage.removeItem('accessToken');
   };
+
+  const handleLogout = () => {
+    localStorage.clear();
+    clearAccessToken(); 
+    setIsAuthenticated(false);
+    navigate('/admin-login');
+  };
+
+  
 
   const [movies, setMovies] = useState([]);
 
