@@ -16,8 +16,15 @@ const MyAccount = (props) => {
   const accessToken = localStorage.getItem('accessToken');
   const [userInfo, setUserInfo] = useState({});
 
+  // USER DATA:
+  const [userData, setUserData] = useState({
+    name: '',
+    email: '',
+    phonenumber: ''
+  });
+
+
   // USER DATA
-   // user data:
    useEffect(() => {
     if (accessToken) {
       fetchUserInfo();
@@ -26,7 +33,6 @@ const MyAccount = (props) => {
     }
   }, [accessToken]);
 
-  // console.log(accessToken)
 
 
   const fetchUserInfo = async () => {
@@ -37,14 +43,18 @@ const MyAccount = (props) => {
         }
       });
   
-      // Update the user information state
       setUserInfo(response.data);
   
-      // Console log the user information
       console.log('User Info:', response.data);
+
+      setUserData({
+        name: `${response.data.first_name} ${response.data.last_name}`,
+        email: response.data.email,
+        phonenumber: response.data.phone,
+      });
+
     } catch (error) {
       console.error('Error fetching user info:', error);
-      // Handle error (e.g., redirect to an error page)
     }
   };
 
@@ -58,11 +68,73 @@ const MyAccount = (props) => {
     }
   }, [])
 
-  const handleLogout = () => {
-    setIsAuthenticated(false);
-    
-   navigate('/login');
+  const clearAccessToken = () => {
+    localStorage.removeItem('accessToken');
   };
+
+  const handleLogout = () => {
+    localStorage.clear();
+    clearAccessToken(); 
+    setIsAuthenticated(false);
+    navigate('/login');
+  };
+
+
+  
+// Populate data
+
+
+// const [userData, setUserData] = useState({
+//   name: `${response.data.first_name} ${response.data.last_name}`,
+//   email: response.data.email,
+//   phonenumber: response.data.phone,
+// });
+
+
+
+
+const handleItemChange = (key, value) => {
+  setUserData(prevUserData => ({
+    ...prevUserData,
+    [key]: value
+  }));
+};
+
+
+// HandleEditSubmit:
+const handleSubmit = async (e) => {
+    e.preventDefault();
+  
+    const { name,email, phonenumber,password } = userData;
+  
+    const data = {
+      id: userInfo.id,
+      first_name: name.split(' ')[0],
+      last_name: name.split(' ')[1],
+      email,
+      // email: userData.email,
+      phone: phonenumber,
+      password
+    };
+   
+
+
+  try {
+    console.log('Data to send:', data);
+    const response = await axios.put(`${apiUrl}/api/update-user/`, data, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+
+    console.log('Updated user data:', response.data);
+    console.log('UPDATE SUCCESSFUL!!!!');
+    navigate('/my-streams');
+  } catch (error) {
+    console.error('Error updating user data:', error);
+    // Handle error, show error message, etc.
+  }
+};
 
 
     return (
@@ -313,6 +385,8 @@ const MyAccount = (props) => {
                 <div className="flex flex-col gap-12 items-start justify-start w-[97%] md:w-full">
                   
                   {/* Top Section */}
+
+                 
                 <div className="flex sm:flex-col flex-row md:gap-10 items-start justify-between w-full">
                     <div className="flex flex-col gap-3 items-start justify-center self-stretch w-auto sm:pt-5">
                       <Text
@@ -330,7 +404,8 @@ const MyAccount = (props) => {
                       </Text>
                     </div>
                     <div className="flex flex-row gap-[25px] sm:gap-[120px] items-start justify-start self-stretch w-auto sm:pt-5">
-                      <Button
+                     <a href='/my-streams'>
+                     <Button
                         className="cursor-pointer font-bold min-w-[94px] text-center text-white_A700 text-xl w-auto"
                         shape="RoundedBorder8"
                         size="lg"
@@ -338,14 +413,8 @@ const MyAccount = (props) => {
                       >
                         Cancel
                       </Button>
-                      <Button
-                        className="cursor-pointer font-bold min-w-[76px] text-center text-white_A700 text-xl w-auto"
-                        shape="RoundedBorder8"
-                        size="lg"
-                        variant="FillGray900"
-                      >
-                        Save
-                      </Button>
+                     </a>
+                     
                     </div>
                 </div>
 
@@ -354,12 +423,13 @@ const MyAccount = (props) => {
                   {/* Edit Details section */}
                   <div className="flex flex-col gap-12 items-start justify-start self-stretch w-1/2 sm:w-full">
                     
-                    
+                  <form onSubmit={handleSubmit}>
+
                     {/* Edit Account Details */}
-                    <div className="flex flex-col gap-4 items-start justify-start self-stretch w-auto sm:w-full">
-                      <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto sm:w-full">
+                    <div className="flex flex-col gap-4 items-start justify-start self-stretch w-[470px] sm:w-full">
+                      <div className="flex flex-col gap-2 items-start mt-[1.5em] justify-start self-stretch w-full sm:w-full">
                         <Text
-                          className="font-normal not-italic text-left text-white_A700 w-auto"
+                          className="font-normal not-italic text-left text-white_A700 w-full"
                           variant="body4"
                         >
                           Name
@@ -367,14 +437,15 @@ const MyAccount = (props) => {
                         <Input
                           wrapClassName="w-full"
                           className="font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
-                          name="groupThirtyTwo"
-                          placeholder="Wade Warren"
                           shape="RoundedBorder4"
                           size="md"
                           variant="FillGray800"
+                          type="text" 
+                          name="name" 
+                          defaultValue={userData.name}
                         ></Input>
                       </div>
-                      <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto sm:w-full">
+                      <div className="flex flex-col gap-2 items-start mt-[1.5em] justify-start self-stretch w-auto sm:w-full">
                         <Text
                           className="font-normal not-italic text-left text-white_A700 w-auto"
                           variant="body4"
@@ -385,14 +456,14 @@ const MyAccount = (props) => {
                           wrapClassName="w-full"
                           className="font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
                           type="email"
-                          name="email"
-                          placeholder="sara.cruz@example.com"
+                          name="email" 
+                          defaultValue={userData.email}                          
                           shape="RoundedBorder4"
                           size="md"
                           variant="FillGray800"
                         ></Input>
                       </div>
-                      <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto sm:w-full">
+                      <div className="flex flex-col gap-2 items-start mt-[1.5em] justify-start self-stretch w-auto sm:w-full">
                         <Text
                           className="font-normal not-italic text-left text-white_A700 w-auto"
                           variant="body4"
@@ -402,19 +473,19 @@ const MyAccount = (props) => {
                         <Input
                           wrapClassName="w-full"
                           className="font-normal not-italic p-0 placeholder:text-gray_300 text-base text-gray_300 text-left w-full"
-                          name="groupThirtyFour"
-                          placeholder="(205) 555-0100"
                           shape="RoundedBorder4"
                           size="md"
                           variant="FillGray800"
+                          name="phonenumber" 
+                          defaultValue={userData.phonenumber}
                         ></Input>
                       </div>
-                      <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto sm:w-full">
+                      <div className="flex flex-col gap-2 items-start justify-start self-stretch mt-[1.5em] w-auto sm:w-full">
                         <Text
                           className="font-normal not-italic text-left text-white_A700 w-auto"
                           variant="body4"
                         >
-                          Password
+                         New Password(Optional)
                         </Text>
                         <Input
                           wrapClassName="w-full"
@@ -432,10 +503,28 @@ const MyAccount = (props) => {
 
 
 
+                    {/* <Button
+                        className="cursor-pointer font-bold min-w-[76px] text-center text-white_A700 text-xl w-auto"
+                        shape="RoundedBorder8"
+                        size="lg"
+                        variant="FillGray900"
+                      >
+                        Save
+                      </Button> */}
 
+                      <Button
+                        className="cursor-pointer font-bold min-w-[168px] text-center text-white_A700 text-xl w-auto mt-[3em]"
+                        shape="RoundedBorder8"
+                        size="lg"
+                        variant="FillRed900"
+                        type="submit"
+                      >
+                        Save 
+                      </Button>
+                  </form>
 
                     {/* Edit Password */}
-                    <div className="flex flex-col gap-4 items-start justify-start self-stretch w-auto sm:w-full">
+                    {/* <div className="flex flex-col gap-4 items-start justify-start self-stretch w-auto sm:w-full">
                       <Text
                         className="font-bold text-left text-white_A700 w-auto"
                         as="h6"
@@ -502,14 +591,13 @@ const MyAccount = (props) => {
                       >
                         Save password
                       </Button>
-                    </div>
+                    </div> */}
 
 
 
 
                   </div>
-
-
+                 
 
                   {/* End of Editing Details section */}
 

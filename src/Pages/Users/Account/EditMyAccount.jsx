@@ -430,7 +430,7 @@ const EditMyAccount  = (props) => {
                       ></Input>
                     </div>
                   </div>
-                  <div className="flex flex-col gap-4 items-start justify-start self-stretch w-auto">
+                  {/* <div className="flex flex-col gap-4 items-start justify-start self-stretch w-auto">
                     <Text
                       className="font-bold text-left text-white_A700 w-auto"
                       as="h6"
@@ -456,7 +456,7 @@ const EditMyAccount  = (props) => {
                         Change password
                       </div>
                     </Button>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

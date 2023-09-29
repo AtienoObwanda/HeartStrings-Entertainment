@@ -31,9 +31,6 @@ const MyStreamLibrary = () => {
     }
   }, [accessToken]);
 
-  // console.log(accessToken)
-
-
   const fetchUserInfo = async () => {
     try {
       const response = await axios.get(`${apiUrl}/auth/users/me/`, {
@@ -42,14 +39,11 @@ const MyStreamLibrary = () => {
         }
       });
   
-      // Update the user information state
       setUserInfo(response.data);
   
-      // Console log the user information
       console.log('User Info:', response.data);
     } catch (error) {
       console.error('Error fetching user info:', error);
-      // Handle error (e.g., redirect to an error page)
     }
   };
 
@@ -62,7 +56,7 @@ const MyStreamLibrary = () => {
     }
   }, [])
 
-  console.log(accessToken)
+  console.log('AccessToken', accessToken)
 
   const handleLogout = () => {
     setIsAuthenticated(false);
@@ -72,20 +66,44 @@ const MyStreamLibrary = () => {
 
 
 // Fetch Paid Plays:
-useEffect(() => {
-  axios.get('https://api.jaafrikaimages.org/api/my-stream/', {
-  // axios.get(`${apiUrl}/api/my-stream/`, {
-    headers: {
-      Authorization: accessToken,
-    },
-  })
-  .then(response => {
-    console.log('API Response:', response.data);
+// useEffect(() => {
+//     // Define the JWT token
 
-    if (response.data.error) {
-      setError(response.data.message);
+//     // Define the headers
+//     const headers = {
+//       Authorization: `Bearer ${accessToken}`
+//     };
+//     axios.get(`${apiUrl}/api/my-stream/`, { headers })
+//           .then(response => {
+//             const { data } = response;
+
+//             if (data.error) {
+//               setErrorMessage(data.message);
+//             } else {
+//               setActivePlays(data.data);
+//             }
+//           })
+//           .catch(error => {
+//             console.error('Error fetching active plays:', error);
+//             setErrorMessage('An error occurred while fetching active plays.');
+//           });
+//       }, []);
+
+
+
+useEffect(() => {
+    const headers = {
+      Authorization: `Bearer ${accessToken}`
+    };
+
+    axios.get(`${apiUrl}/api/my-stream/`, { headers })
+  .then(response => {
+    console.log('Response:', response);
+    const { data } = response;
+    if (data.error) {
+      setError(data.message);
     } else {
-      const plays = response.data.data;
+      const plays = data.data;
       const activePlays = plays.filter(play => play.remaining_access_time > 0);
       const archivedPlays = plays.filter(play => play.remaining_access_time === 0);
 
@@ -94,8 +112,8 @@ useEffect(() => {
     }
   })
   .catch(error => {
+    console.error('Error fetching plays:', error);
     setError('Error fetching plays');
-    console.error(error);
   });
 }, []);
 
@@ -149,7 +167,8 @@ console.log('accessToken:', accessToken);
                   My streams
                 </Text>
               </div>
-              <div
+
+              {/* <div
                 className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[16px] mt-9 self-stretch w-auto hover:border border-white rounded-md p-2"
                 onClick={() => navigate("/my-tickets")}
               >
@@ -164,7 +183,8 @@ console.log('accessToken:', accessToken);
                 >
                   My Tickets
                 </Text>
-              </div>
+              </div> */}
+
               <Line className="bg-gray_800 h-px mt-[60px] w-full" />
               <div className="flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-[63px] self-stretch w-auto hover:border border-white rounded-md p-2"
               onClick={() => navigate("/contact-us")}>
@@ -346,7 +366,7 @@ console.log('accessToken:', accessToken);
                     className="font-normal not-italic text-gray_300 text-left w-auto"
                     variant="body4"
                   >
-                    Streamed plays that you have purchased.
+                    Stream plays that you have purchased.
                   </Text>
                 </div>
               </div>
@@ -358,7 +378,8 @@ console.log('accessToken:', accessToken);
                 {/* Main */}
                 <div className="flex flex-col gap-4 items-start justify-start self-stretch w-auto sm:w-full">
                   {/* If Error */}
-                  {error &&
+
+                  {/* {error &&
                   <div className="flex flex-col gap-4 items-center justify-center mb-[108px] ml-8 md:ml-[0] mt-12 self-stretch w-auto">
                     <Text
                       className="font text-center text-white_A700 w-auto"
@@ -369,9 +390,10 @@ console.log('accessToken:', accessToken);
                     </Text>
                    
                     </div>
-                     }
+                     } */}
 
                   {/* Listed recent Purchases */}
+
                   {activePlays.length > 0 && (
                   <div className="flex flex-col gap-4 items-start justify-center ml-8 md:ml-[0] mt-6 self-stretch w-auto md:w-full">
                     <Text
@@ -721,7 +743,21 @@ console.log('accessToken:', accessToken);
                         as="h5"
                         variant="h5"
                       >
-                        No Plays Found. Please Rent a play
+                                                <br></br>
+                                                <br></br>
+                                                <br></br>
+                                                <br></br>
+                                                <br></br>
+
+                        You have not purchased any plays. Start Browsing available plays.
+                        <br></br>
+                        <br></br>
+                        <br></br>
+
+                        <a
+                        href='/all-streams'>
+                          BROWSE PLAYS
+                        </a>
                       </Text>
                       </div>
                       )}

@@ -103,7 +103,7 @@ const handleSubmit = async (e) => {
       id: userInfo.id,
       first_name: name.split(' ')[0],
       last_name: name.split(' ')[1],
-      email,
+      // email,
       email: userData.email,
       phone: phonenumber,
     };
