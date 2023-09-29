@@ -58,11 +58,17 @@ const MyStreamLibrary = () => {
 
   console.log('AccessToken', accessToken)
 
-  const handleLogout = () => {
-    setIsAuthenticated(false);
-    
-   navigate('/login');
+  const clearAccessToken = () => {
+    localStorage.removeItem('accessToken');
   };
+
+  const handleLogout = () => {
+    localStorage.clear();
+    clearAccessToken(); 
+    setIsAuthenticated(false);
+    navigate('/login');
+  };
+
 
 
 // Fetch Paid Plays:
