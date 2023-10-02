@@ -187,9 +187,9 @@ const ProjectRoutes = () => {
           <Route path="/all-streams" element={<AllStreams />} />
 
           {/* TO DELETE: */}
-                    <Route path="/renting-play/:id" element={<RentingPlay />} />
-                    <Route path="/buying-ticket/:id" element={<BuyingTicket />} /> {/*Actual ticket details page */}
-                    <Route path="/my-streams" element={<MyStreamLibrary />} />
+                    {/* <Route path="/renting-play/:id" element={<RentingPlay />} />
+                    <Route path="/buying-ticket/:id" element={<BuyingTicket />} /> 
+                    <Route path="/my-streams" element={<MyStreamLibrary />} /> */}
 
 
 
@@ -206,44 +206,43 @@ const ProjectRoutes = () => {
           <Route path="/reset-password-confirm/:uidb64/:token" element={<ResetPassword />} />
           <Route path="/reset/email-sent" element={<ResetEmailSent/>}/>
           <Route path="/reset-complete" element={<ResetComplete />} />
-            
+
           {/* Authenticated UserRoutes */}
           {userType !== 'admin' && (
             <>
             {/* Account Route */}
           <Route path="/edit-my-password" element={<EditMyAccount />} />
-          <Route path="/edit-my-account" element={<MyAccount />} />
+          <Route path="/my-account" element={<MyAccount />} />
+          <Route path="/renting-play/:id" element={<RentingPlay />} />
+          <Route path="/buying-ticket/:id" element={<BuyingTicket />} /> {/*Actual ticket details page */}
+          <Route path="/my-streams" element={<MyStreamLibrary />} />
+          <Route path="/my-tickets" element={<MyTickets />} />
+          <Route path="/ticket-popup" element={<TicketPopUp />} />
+          <Route path="/paynow" element={<PayNow />} />
+          <Route path="/credit-card-payment" element={<CreditCardPayment />} />
+          <Route path="/renting-play-payment" element={<RentingPlayPayment />} />
+          <Route path="/play-ticket-payment-confirmation" element={<PlayTicketPaymentConfirmation />}/>
+
+
 
           {/* User Content */}
           {/* <Route path="/my-stream-library" element={<MyStreamLibrary />} /> */}
-
-          {/* <Route path="/my-streams" element={<MyStreamLibrary />} /> */}
-
-
-          {/* <Route path="/my-streams" element={<MyStreams />} /> */}
-          <Route path="/my-tickets" element={<MyTickets />} />
-          <Route path="/ticket-popup" element={<TicketPopUp />} />
-
-
           {/* Plays */}
-          {/* <Route path="/renting-play" element={<RentingPlay />} /> */}
 
           {/* Tickets */}
           {/* ***************************************8 */}
-          <Route path="/buying-tickets" element={<BuyingTickets />} />
+          {/* <Route path="/my-streams" element={<MyStreams />} /> */}
           {/* <Route path="/buying-ticket" element={<BuyingTicket />} /> */}
+          {/* <Route path="/buying-tickets" element={<BuyingTickets />} /> */}
            {/*Actual ticket details page */}
           {/* ***************************************8 */}
 
           {/* Payments */}
-          <Route path="/renting-play-payment" element={<RentingPlayPayment />} />
           {/* <Route path="/rent-play-payment-confirmation" element={<RentPlayPaymentConfirmation />}/> */}
           {/* <Route path="/credit-card-payments" element={<CreditCardPayments />} /> */}
           {/* <Route path="/renting-play-payment-confirmation" element={<RentingPlayPaymentConfirmation />}/> */}
-          <Route path="/paynow" element={<PayNow />} />
-          <Route path="/credit-card-payment" element={<CreditCardPayment />} />
+         
           {/* <Route path="/renting-play-payment-confirmation" element={<RentingPlayPaymentConfirmation />} /> */}
-          <Route path="/play-ticket-payment-confirmation" element={<PlayTicketPaymentConfirmation />}/>
           
           
           </>
