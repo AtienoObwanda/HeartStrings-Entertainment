@@ -1,0 +1,32 @@
+               <div className="flex flex-row gap-4 items-center justify-center w-auto">
+            <div className="flex flex-row gap-2 items-center justify-center w-auto">
+              <Img
+                className="h-6 w-6"
+                src="images/img_mdiclocktimenine.svg"
+                alt="mdiclocktimenin"
+              />
+              <div className="flex flex-col items-start justify-start w-auto">
+                <Text
+                  className="text-base text-white-A700 w-auto"
+                  size="txtRobotoRomanRegular16"
+                >
+                  time
+                </Text>
+              </div>
+            </div>
+            <div className="flex flex-col items-start justify-start w-auto">
+              <div className="flex flex-row gap-2 items-center justify-center w-auto">
+                <Img
+                  className="h-6 w-6"
+                  src="images/img_iconsaxboldtimer.svg"
+                  alt="iconsaxboldtime"
+                />
+                <Text
+                  className="text-base text-white-A700 w-auto"
+                  size="txtRobotoRomanRegular16"
+                >
+                  duration
+                </Text>
+              </div>
+            </div>
+          </div>

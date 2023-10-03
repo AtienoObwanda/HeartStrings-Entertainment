@@ -434,32 +434,20 @@ useEffect(() => {
                           </div>
                           <div className="flex flex-col gap-8 items-start justify-start w-auto">
                           <div className="flex flex-col gap-4 items-start justify-start w-auto">
-                            <Text
-                              className="text-2xl md:text-[22px] text-white sm:text-xl w-auto"
-                              size="txtRobotoRomanBold24"
-                            >
-                              {play.title}
-                            </Text>
-                            {/* <Text
-                              className="leading-[175.00%] max-w-[332px] md:max-w-full text-gray-300 text-xl"
-                              size="txtRobotoRomanRegular20Gray300"
-                            >
-                              {play.synopsis.substring(0, 70) + '...'}
-                            </Text> */}
+                         <Text
+                            className="text-center text-2xl mt-8 md:text-[22px] text-white sm:text-xl w-auto"
+                            size="txtRobotoRomanBold24"
+                          >
+                            {play.title}
+                          </Text>
+                           
                           </div>
                           <div className="flex flex-row gap-[103px] items-center justify-between w-auto pb-6">
-                            <Button 
-                            className="cursor-pointer font-bold font-roboto min-w-[116px] text-center text-white_A700 text-xl w-auto"
-                            shape="RoundedBorder8"
-                            size="lg"
-                            variant="FillGray900">
-                            Rent Play(s)
-                            </Button>
-                            <div className="flex flex-row gap-2 items-center justify-center w-auto">
+                          <div className="flex flex-row gap-2 items-center justify-center w-auto">
                               <Img
                                 className="h-6 w-6"
-                                src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927664/HeartStrings/SVG/img_mdiclocktimenine_wcpsyc.svg"
-                                alt="clock icon"
+                                src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1696318310/timee_vnhjaw.svg"
+                                alt="Duration"
                               />
                               <div className="flex flex-col items-start justify-start w-auto text-white">
                                 <Text
@@ -467,11 +455,31 @@ useEffect(() => {
                                   size="txtRobotoRomanRegular16"
                                 >
                                  {/* {movie.duration} */}
-                                 {play.remaining_access_time} days
+                                 1hr 30mins
+                                </Text>
+                              </div>
+                            </div>
+
+                            
+                            <div className="flex flex-row gap-2 items-center justify-center w-auto">
+                              <Img
+                                className="h-6 w-6"
+                                src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1696318310/timer_rvmgnj.svg"
+                                alt="Remaining Time Icon"
+                              />
+                              <div className="flex flex-col items-start justify-start w-auto text-white">
+                                <Text
+                                  className="text-base text-white-A700 w-auto"
+                                  size="txtRobotoRomanRegular16"
+                                >
+                                 {/* {movie.duration} */}
+                                 {play.remaining_access_time} days to go
                                 </Text>
                               </div>
                             </div>
                           </div>
+
+           
                         </div>
 
                     </div>   
