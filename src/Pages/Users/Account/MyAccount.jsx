@@ -116,9 +116,6 @@ const handleSubmit = async (e) => {
       phone: phonenumber,
       password
     };
-   
-
-
   try {
     console.log('Data to send:', data);
     const response = await axios.put(`${apiUrl}/api/update-user/`, data, {
@@ -126,9 +123,6 @@ const handleSubmit = async (e) => {
         Authorization: `Bearer ${accessToken}`,
       },
     });
-
-    console.log('Updated user data:', response.data);
-    console.log('UPDATE SUCCESSFUL!!!!');
     navigate('/my-streams');
   } catch (error) {
     console.error('Error updating user data:', error);

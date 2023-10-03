@@ -8,12 +8,12 @@ import { CSVLink } from 'react-csv';
 import * as XLSX from 'xlsx';
 
 import pdfMake from 'pdfmake/build/pdfmake';
-import pdfFonts from 'pdfmake/build/vfs_fonts';
+// import pdfFonts from 'pdfmake/build/vfs_fonts';
 
 
 import { Button, Img, Input, Line, List, Text } from "UI_Components";
 import UserManagement from "Components/Admin/UserManagement";
-import { jsPDF } from "jspdf";
+// import { jsPDF } from "jspdf";
 
 
 import { apiUrl } from '../../../../env';
