@@ -85,15 +85,7 @@ import { apiUrl } from '../env';
 
 
 const ProjectRoutes = () => {
-  // const ProjectRoutes = ({ setIsLoading }) => {
-  //   useEffect(() => {
-  //     setTimeout(() => {
-  //       setIsLoading(false);
-  //     }, 3000);
-  //   }, [setIsLoading]);
 
-
-  // const [isAdmin, setIsAdmin] = useState(false);
   const navigate = useNavigate(); // Get the navigate function from React Router
   const accessToken = localStorage.getItem('accessToken');
 
@@ -121,52 +113,7 @@ const ProjectRoutes = () => {
     fetchUserData();
   }, [accessToken]);
 
-  // useEffect(() => {
-  //   const fetchUserData = async () => {
-  //     try {
-  //   const response = await axios.get(`${apiUrl}/auth/users/me/`, {
-  //   headers: {
-  //     Authorization: `Bearer ${accessToken}`
-  //   },
-  // });
-  //       const userData = response.data;
-  //       setIsAdmin(userData.is_staff);
-  //     } catch (error) {
-  //       console.error('Error fetching user data:', error);
-  //     }
-  //   };
 
-  //   fetchUserData();
-  // }, []);
-
-  // const handleUnauthorizedAccess = () => {
-  //   navigate('/access-denied');
-  // };
-
-
-//   const fetchUserData = async () => {
-//   try {
-//     const response = await axios.get(`${apiUrl}/auth/users/me/`, {
-//         headers: {
-//           Authorization: `Bearer ${accessToken}`
-//         },
-//     });
-//     const userData = response.data;
-//     setIsAdmin(userData.is_staff);
-//   } catch (error) {
-//     if (error.response && error.response.status === 401) {
-//       // Redirect the user to login or access denied page
-//       navigate('/access-denied'); // Assuming you have a route for access denied
-//     } else {
-//       // Handle other errors
-//       console.error('Error fetching user data:', error);
-//     }
-//   }
-// };
-
-
-  // Function to handle unauthorized access to admin routes
- 
 
   return (
     <React.Suspense fallback={<>Loading...</>}>
@@ -216,7 +163,7 @@ const ProjectRoutes = () => {
           <Route path="/reset-complete" element={<ResetComplete />} />
 
           {/* Authenticated UserRoutes */}
-          {userType !== 'admin' && (
+          {userType !== 'admin' ? (
             <>
             {/* Account Route */}
           <Route path="/edit-my-password" element={<EditMyAccount />} />
@@ -254,6 +201,22 @@ const ProjectRoutes = () => {
           
           
           </>
+           ) : (
+            <>
+              <Route path="/edit-my-password" element={<AccessDenied />}/>
+              <Route path="/my-account" element={<AccessDenied />} />
+              <Route path="/renting-play/:id" element={<AccessDenied />} />
+              <Route path="/buying-ticket/:id"element={<AccessDenied />}/> {/*Actual ticket details page */}
+              <Route path="/my-streams" element={<AccessDenied />} />
+              <Route path="/my-tickets" element={<AccessDenied />} />
+              <Route path="/ticket-popup" element={<AccessDenied />} />
+              <Route path="/paynow" element={<AccessDenied />} />
+              <Route path="/credit-card-payment" element={<AccessDenied />} />
+              <Route path="/renting-play-payment" element={<AccessDenied />} />
+              <Route path="/play-ticket-payment-confirmation" element={<AccessDenied />}/>
+
+
+            </>
            )}
 
 

@@ -518,7 +518,7 @@ const handleLogout = () => {
                     className="font-bold text-left text-white_A700 w-auto"
                     variant="body4"
                   >
-                    Cameron Williamson
+                    {userInfo.first_name} {userInfo.last_name}
                   </Text>
                   <Text
                     className="not-italic text-gray_300 text-left w-auto"
