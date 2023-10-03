@@ -20,6 +20,16 @@ module.exports = {
     
     },
     extend: {
+        animation: {
+          loader: 'loader 3s ease-in-out infinite',
+        },
+        keyframes: {
+          loader: {
+            '0%': { transform: 'translateX(50px) scale(-1)' },
+            '50%': { transform: 'translateX(-30px) scale(1.5)' },
+            '100%': { transform: 'translateX(50px) scale(-1)' },
+          }
+        },
       colors: {
         gray_300_87: "#e6e6e687",
         red_900: "#c71a1a",

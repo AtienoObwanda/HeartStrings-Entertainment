@@ -85,6 +85,14 @@ import { apiUrl } from '../env';
 
 
 const ProjectRoutes = () => {
+  // const ProjectRoutes = ({ setIsLoading }) => {
+  //   useEffect(() => {
+  //     setTimeout(() => {
+  //       setIsLoading(false);
+  //     }, 3000);
+  //   }, [setIsLoading]);
+
+
   // const [isAdmin, setIsAdmin] = useState(false);
   const navigate = useNavigate(); // Get the navigate function from React Router
   const accessToken = localStorage.getItem('accessToken');

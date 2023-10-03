@@ -122,8 +122,16 @@ useEffect(() => {
   });
 }, []);
 
-console.log('Plays', activePlays)
-console.log('accessToken:', accessToken);
+const [showSection, setShowSection] = useState(false);
+
+useEffect(() => {
+  const delay = setTimeout(() => {
+    setShowSection(true);
+  }, 4000); 
+
+  return () => clearTimeout(delay);
+}, []);
+
 
 
   return (
@@ -496,7 +504,7 @@ console.log('accessToken:', accessToken);
 
 
                     {/* No Active Plays */}
-                    {activePlays.length === 0 && archivedPlays.length === 0 && (
+                    {showSection && activePlays.length === 0 && archivedPlays.length === 0 && (
                     <div className="flex flex-col gap-4 items-center justify-center mb-[108px] ml-8 md:ml-[0] mt-12 self-stretch w-auto">
                       <Text
                         className="text-center text-white_A700 w-auto"
