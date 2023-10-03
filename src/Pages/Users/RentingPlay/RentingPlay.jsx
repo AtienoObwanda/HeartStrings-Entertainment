@@ -19,30 +19,6 @@ const RentingPlay = () => {
 
   const accessToken = localStorage.getItem('accessToken');
 
-  // useEffect(() => {
-
-  //   if (accessToken) {
-  //     setIsAuthenticated(true);
-  //   } else {
-  //     setIsAuthenticated(false);
-  //   }
-  // }, [])
-
-
-  
-  // const videoAvailableData = [
-  //   {
-  //     three_days: "3",
-  //     three_price: "200",
-  //     seven_days: "7",
-  //     seven_price: "500",
-  //     fourteen_days: "14",
-  //     fourteen_price: "900",
-  //   }
-  // ];
-  
-
-
   useEffect(() => {
     fetchPlay();
   }, []);
@@ -137,11 +113,10 @@ console.log('Total Amount: ', totalAmount)
     try {
       const response = await axios.post(url, body, { headers });
       console.log('Response:', response.data);
-      // redirect
       navigate('/my-streams');
     } catch (error) {
       console.error('Error initiating video payment:', error);
-      alert('Failed to initiate payment. Please ensure your registered phone number is linked with M-Pesa.');
+      // alert('Failed to initiate payment. Please ensure your registered phone number is linked with M-Pesa.');
 
     }
   };
