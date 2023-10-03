@@ -74,56 +74,53 @@ const MyStreamLibrary = () => {
 
 
 // Fetch Paid Plays:
-useEffect(() => {
-    // Define the JWT token
-
-    // Define the headers
-    const headers = {
-      Authorization: `Bearer ${accessToken}`
-    };
-    axios.get(`${apiUrl}/api/my-stream/`, { headers })
-          .then(response => {
-            const { data } = response;
-
-            if (data.error) {
-              setErrorMessage(data.message);
-            } else {
-              setActivePlays(data.data);
-            }
-          })
-          .catch(error => {
-            console.error('Error fetching active plays:', error);
-            // setErrorMessage('An error occurred while fetching active plays.');
-          });
-      }, []);
-
-
-
 // useEffect(() => {
 //     const headers = {
 //       Authorization: `Bearer ${accessToken}`
 //     };
-
 //     axios.get(`${apiUrl}/api/my-stream/`, { headers })
-//   .then(response => {
-//     console.log('Response:', response);
-//     const { data } = response;
-//     if (data.error) {
-//       setError(data.message);
-//     } else {
-//       const plays = data.data;
-//       const activePlays = plays.filter(play => play.remaining_access_time > 0);
-//       const archivedPlays = plays.filter(play => play.remaining_access_time === 0);
+//           .then(response => {
+//             const { data } = response;
 
-//       setActivePlays(activePlays);
-//       setArchivedPlays(archivedPlays);
-//     }
-//   })
-//   .catch(error => {
-//     console.error('Error fetching plays:', error);
-//     setError('Error fetching plays');
-//   });
-// }, []);
+//             if (data.error) {
+//               setErrorMessage(data.message);
+//             } else {
+//               setActivePlays(data.data);
+//             }
+//           })
+//           .catch(error => {
+//             console.error('Error fetching active plays:', error);
+//             // setErrorMessage('An error occurred while fetching active plays.');
+//           });
+//       }, []);
+
+
+
+useEffect(() => {
+    const headers = {
+      Authorization: `Bearer ${accessToken}`
+    };
+
+    axios.get(`${apiUrl}/api/my-stream/`, { headers })
+  .then(response => {
+    console.log('Response:', response);
+    const { data } = response;
+    if (data.error) {
+      setError(data.message);
+    } else {
+      const plays = data.data;
+      const activePlays = plays.filter(play => play.remaining_access_time > 0);
+      const archivedPlays = plays.filter(play => play.remaining_access_time === 0);
+
+      setActivePlays(activePlays);
+      setArchivedPlays(archivedPlays);
+    }
+  })
+  .catch(error => {
+    console.error('Error fetching plays:', error);
+    setError('Error fetching plays');
+  });
+}, []);
 
 console.log('Plays', activePlays)
 console.log('accessToken:', accessToken);
@@ -379,29 +376,11 @@ console.log('accessToken:', accessToken);
                 </div>
               </div>
 
-              {/* End of top Section */}
 
-              {/* Main Page section */}
               <div className="flex flex-col gap-12 items-start justify-start self-stretch w-auto sm:w-full">
                 {/* Main */}
                 <div className="flex flex-col gap-4 items-start justify-start self-stretch w-auto sm:w-full">
                   {/* If Error */}
-
-                  {/* {error &&
-                  <div className="flex flex-col gap-4 items-center justify-center mb-[108px] ml-8 md:ml-[0] mt-12 self-stretch w-auto">
-                    <Text
-                      className="font text-center text-white_A700 w-auto"
-                      as="h5"
-                      variant="h5"
-                    >
-                       Error: {error}, please contact us. Thank you!
-                    </Text>
-                   
-                    </div>
-                     } */}
-
-                  {/* Listed recent Purchases */}
-
                   {activePlays.length > 0 && (
                   <div className="flex flex-col gap-4 items-start justify-center ml-8 md:ml-[0] mt-6 self-stretch w-auto md:w-full">
                     <Text
@@ -411,6 +390,8 @@ console.log('accessToken:', accessToken);
                     >
                       Recently purchased
                     </Text>
+                    <div className="md:gap-5 gap-6 grid sm:grid-cols-1 md:grid-cols-2 grid-cols-3 justify-center min-h-[auto] w-full">
+
                     {activePlays.map((play, index) => (
             // <Link to={`/stream/${movie.id}`} >  
             
@@ -478,7 +459,7 @@ console.log('accessToken:', accessToken);
                                   size="txtRobotoRomanRegular16"
                                 >
                                  {/* {movie.duration} */}
-                                 {play.added_on.substring(0, 10)}
+                                 {play.remaining_access_time} days
                                 </Text>
                               </div>
                             </div>
@@ -489,75 +470,16 @@ console.log('accessToken:', accessToken);
                 // </Link>
             
           ))}
-                    <List
-                      className="sm:flex-col flex-row gap-6 grid sm:grid-cols-1 md:grid-cols-2 grid-cols-4 justify-start self-stretch w-auto md:w-full"
-                      orientation="horizontal"
-                    >
-                      <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto">
-                        <div className="h-[200px] relative w-full">
-                          <Img
-                            src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927701/HeartStrings/SVG/img_rectangle4_200x256_ofmpv1.png"
-                            className="common-pointer h-[200px] m-auto object-cover rounded-lg w-full"
-                            alt="rectangleFour"
-                            onClick={() => navigate("/mystreamlibrary")}
-                          />
-                          <Img
-                            src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927664/HeartStrings/SVG/img_materialsymbolsplaycircle_white_a700_ousntd.svg"
-                            className="absolute h-12 inset-[0] justify-center m-auto w-12"
-                            alt="materialsymbols"
-                          />
-                        </div>
-                        <div className="flex flex-col gap-1 items-start justify-start self-stretch w-auto">
-                          <div className="flex flex-col items-center justify-start self-stretch w-auto">
-                            <Text
-                              className="font-normal not-italic text-left text-white_A700 w-auto"
-                              as="h5"
-                              variant="h5"
-                            >
-                              Bridegroom for sale
-                            </Text>
-                          </div>
-                          <div className="flex flex-row gap-4 items-center justify-center self-stretch w-auto">
-                            <div className="flex flex-row gap-2 items-center justify-center self-stretch w-auto">
-                              <Img
-                                src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927664/HeartStrings/SVG/img_mdiclocktimenine_wcpsyc.svg"
-                                className="h-6 w-6"
-                                alt="mdiclocktimenin"
-                              />
-                              <div className="flex flex-col items-start justify-start self-stretch w-auto">
-                                <Text
-                                  className="font-normal not-italic text-left text-white_A700 w-auto"
-                                  variant="body4"
-                                >
-                                  1hr 20mins
-                                </Text>
-                              </div>
-                            </div>
-                            <div className="flex flex-col items-start justify-start self-stretch w-auto">
-                              <div className="flex flex-row gap-2 items-center justify-center self-stretch w-auto">
-                                <Img
-                                  src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927660/HeartStrings/SVG/img_iconsaxboldtimer_lugksa.svg"
-                                  className="h-6 w-6"
-                                  alt="iconsaxboldtime"
-                                />
-                                <Text
-                                  className="font-normal not-italic text-left text-white_A700 w-auto"
-                                  variant="body4"
-                                >
-                                  7 days to go
-                                </Text>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    
-
-                     
-                    </List>
+          </div>
                   </div>
-                   )}
-
+                     )}
+                    <Text
+                        className="font-bold text-left text-white_A700 w-auto"
+                        as="h5"
+                        variant="h5"
+                      >
+                        Archived
+                      </Text>
                   {/* Watched */}
                   {archivedPlays.length > 0 && (
                   <div className="flex flex-col gap-4 items-start justify-center mb-[108px] ml-8 md:ml-[0] mt-12 self-stretch w-auto">
@@ -566,89 +488,9 @@ console.log('accessToken:', accessToken);
                         as="h5"
                         variant="h5"
                       >
-                        Watched
+                        Archived... Plays
                       </Text>
-                      <List
-                                        className="sm:flex-col flex-row gap-6 grid sm:grid-cols-1 md:grid-cols-2 grid-cols-4 justify-start self-stretch w-auto md:w-full"
-                                        orientation="horizontal"
-                                      >
-                                        <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto">
-                                          <div className="h-[200px] relative w-full">
-                                            <Img
-                                              src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927701/HeartStrings/SVG/img_rectangle4_200x256_ofmpv1.png"
-                                              className="common-pointer h-[200px] m-auto object-cover rounded-lg w-full"
-                                              alt="rectangleFour"
-                                              //onClick={() => navigate("/mystreamlibrary")}
-                                            />
-                                            {/* <Img
-                                              src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927664/HeartStrings/SVG/img_materialsymbolsplaycircle_white_a700_ousntd.svg"
-                                              className="absolute h-12 inset-[0] justify-center m-auto w-12"
-                                              alt="materialsymbols"
-                                            /> */}
-                                            <div className="absolute flex flex-col gap-[5px] h-max inset-[0] items-center justify-start m-auto self-stretch w-auto">
-                                              <Button
-                                                className="cursor-pointer font-bold text-center text-white_A700 text-xl w-[100px]"
-                                                shape="RoundedBorder8"
-                                                size="sm"
-                                                variant="FillRed900"
-                                              >
-                                                Rent again
-                                              </Button>
-                                              <Button
-                                                className="cursor-pointer font-bold min-w-[100px] text-black_900 text-center text-xl w-auto"
-                                                shape="RoundedBorder8"
-                                                size="sm"
-                                                variant="OutlineWhiteA700"
-                                              >
-                                                Watch trailer
-                                              </Button>
-                                            </div>
-                                          </div>
-                                          <div className="flex flex-col gap-1 items-start justify-start self-stretch w-auto">
-                                            <div className="flex flex-col items-center justify-start self-stretch w-auto">
-                                              <Text
-                                                className="font-normal not-italic text-left text-white_A700 w-auto"
-                                                as="h5"
-                                                variant="h5"
-                                              >
-                                                Bridegroom for sale
-                                              </Text>
-                                            </div>
-                                            <div className="flex flex-row gap-4 items-center justify-center self-stretch w-auto">
-                                              <div className="flex flex-row gap-2 items-center justify-center self-stretch w-auto">
-                                                <Img
-                                                  src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927664/HeartStrings/SVG/img_mdiclocktimenine_wcpsyc.svg"
-                                                  className="h-6 w-6"
-                                                  alt="mdiclocktimenin"
-                                                />
-                                                <div className="flex flex-col items-start justify-start self-stretch w-auto">
-                                                  <Text
-                                                    className="font-normal not-italic text-left text-white_A700 w-auto"
-                                                    variant="body4"
-                                                  >
-                                                    1hr 20mins
-                                                  </Text>
-                                                </div>
-                                              </div>
-                                              <div className="flex flex-col items-start justify-start self-stretch w-auto">
-                                                <div className="flex flex-row gap-2 items-center justify-center self-stretch w-auto">
-                                                  <Img
-                                                    src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927660/HeartStrings/SVG/img_iconsaxboldtimer_lugksa.svg"
-                                                    className="h-6 w-6"
-                                                    alt="iconsaxboldtime"
-                                                  />
-                                                  <Text
-                                                    className="font-normal not-italic text-left text-white_A700 w-auto"
-                                                    variant="body4"
-                                                  >
-                                                    0 days to go
-                                                  </Text>
-                                                </div>
-                                              </div>
-                                            </div>
-                                          </div>
-                                        </div>
-                                        </List>
+                      
                     </div>
                   )}
 
