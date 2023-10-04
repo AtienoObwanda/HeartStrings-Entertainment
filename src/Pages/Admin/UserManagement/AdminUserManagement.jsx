@@ -452,10 +452,10 @@ const handleLogout = () => {
               */}
               {/* Small and tablet only */}
               <div className="hidden md:flex flex-row gap-[21px] items-center justify-start mr-5 self-stretch w-auto">
-                <Img
-                  src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927649/HeartStrings/SVG/img_ellipse1_jfdd8k.png"
-                  className="h-[61px] md:h-auto rounded-[50%] w-[61px]"
-                  alt="ellipseOne"
+              <Img
+                  src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1696410070/adminUser_wlnb8a.svg"
+                  className="h-[40px] md:h-auto rounded-[50%] w-[61px]"
+                  alt="Heart Strings Entertainment Admin Icon"
                 />
                 <div className="flex flex-col gap-2.5 items-start justify-center self-stretch w-auto">
                   <Text
@@ -508,10 +508,10 @@ const handleLogout = () => {
 
               </div>
               <div className="md:hidden flex flex-row gap-[21px] items-center justify-start mr-5 self-stretch w-auto">
-                <Img
-                  src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927649/HeartStrings/SVG/img_ellipse1_jfdd8k.png"
-                  className="h-[61px] md:h-auto rounded-[50%] w-[61px]"
-                  alt="ellipseOne"
+              <Img
+                  src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1696410070/adminUser_wlnb8a.svg"
+                  className="h-[40px] md:h-auto rounded-[50%] w-[61px]"
+                  alt="Heart Strings Entertainment Admin Icon"
                 />
                 <div className="flex flex-col gap-2.5 items-start justify-center self-stretch w-auto">
                   <Text

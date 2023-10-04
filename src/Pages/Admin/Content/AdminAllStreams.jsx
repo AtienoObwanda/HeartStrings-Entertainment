@@ -441,10 +441,10 @@ const AdminAllStreams = () => {
                 </Text>
               </div>
               <div className="flex flex-row gap-[21px] items-center justify-start mr-6 self-stretch w-auto">
-                <Img
-                  src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927649/HeartStrings/SVG/img_ellipse1_jfdd8k.png"
-                  className="h-[61px] md:h-auto rounded-[50%] w-[61px]"
-                  alt="ellipseOne"
+              <Img
+                  src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1696410070/adminUser_wlnb8a.svg"
+                  className="h-[40px] md:h-auto rounded-[50%] w-[61px]"
+                  alt="Heart Strings Entertainment Admin Icon"
                 />
                 <div className="flex flex-col gap-2 items-start justify-center self-stretch w-auto">
                   <Text
