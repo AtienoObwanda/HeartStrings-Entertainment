@@ -1,14 +1,42 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
 import StreamCards from "UI_Components/StreamCards";
 import { Button, Img, List, Text } from "UI_Components";
-import {Streams} from '../../../Data/Streams'
 import ReactPlayer from 'react-player';
+import axios from 'axios';
 
-
+import { apiUrl } from '../../../../env';
+import {Streams} from '../../../Data/Streams'
 
 
 const StreamPlays = () => {
+
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    fetchMovies();
+  }, []);
+  
+  async function fetchMovies() {
+    try {
+      const response = await axios.get(`${apiUrl}/api/videos/`);
+      const data = response.data;
+      if (data.error === false) {
+        // Sort the movies array by the 'added_on' property in descending order
+        const sortedMovies = data.data.sort((a, b) => {
+          return new Date(b.added_on) - new Date(a.added_on);
+        });
+        setMovies(sortedMovies); // Update state with sorted array
+        console.log(data);
+      } else {
+        console.error('Error fetching movies:', data.message);
+      }
+    } catch (error) {
+      console.error('Error fetching movies:', error);
+    }
+  }
+
+
   return (
     <>
      {/* Streaming Plays */}
@@ -38,35 +66,35 @@ const StreamPlays = () => {
               orientation="horizontal"
             >
              
-              {Streams.slice(0,3).map((Stream, index) => (
-               <Link 
-               // to={`/Stream/${Stream.id}`} key={index}
-               > 
+              {movies.slice(0,3).map((movie, index) => (
+              <Link to={`/stream/${movie.id}`} >  
+
                    <div
                      className="bg-black_900_01 flex flex-col gap-4 h-[440px] items-center justify-start p-4 rounded-lg w-full hover:border border-white rounded-md p-2"
                      key={index} >
                        <div className="flex flex-col items-center justify-start w-full">
                      <div className="h-[230px] relative w-full">
                      <ReactPlayer 
-                     light={
-                     <img 
-                     src='https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927767/HeartStrings/SVG/img_rectangle8_570x1140_ot5kmw.png' 
-                     alt='Poster' 
-                     className="max-w-full h-full"
-                     />}
-                     url='https://res.cloudinary.com/dyiuol5sx/video/upload/v1692514513/OFFICIAL_MULLY_MOVIE_THEATRICAL_TRAILER_bnobmj.mp4'
-                     // url={Stream.infotrailer} 
-                     playing  controls 
-                     width='100%'
-                     height='240px'
-                     config={{
-                       file: {
-                         attributes: {
-                           controlsList: 'nodownload' // Disable download
-                         }
-                       }
-                     }}
-                     />
+                      light={
+                      <img 
+                      src={movie.video_poster}
+                      // src='https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927767/HeartStrings/SVG/img_rectangle8_570x1140_ot5kmw.png' 
+                      alt='Poster' 
+                      className="h-[249px] md:h-auto object-cover rounded-lg w-full"
+
+                      />}
+                      url={movie.trailer} 
+                      playing  controls 
+                      width='100%'
+                      height='240px'
+                      config={{
+                        file: {
+                          attributes: {
+                            controlsList: 'nodownload' // Disable download
+                          }
+                        }
+                      }}
+                      />
                     
                      </div>
                          </div>
@@ -76,13 +104,13 @@ const StreamPlays = () => {
                              className="text-2xl md:text-[22px] text-white sm:text-xl w-auto"
                              size="txtRobotoRomanBold24"
                            >
-                             {Stream.title}
+                             {movie.title}
                            </Text>
                            <Text
                              className="leading-[175.00%] max-w-[332px] md:max-w-full text-gray-300 text-xl"
                              size="txtRobotoRomanRegular20Gray300"
                            >
-                             {Stream.synopsis.substring(0, 70) + '...'}
+                             {movie.synopsis.substring(0, 70) + '...'}
                            </Text>
                          </div>
                          <div className="flex flex-row gap-[103px] items-center justify-between w-auto pb-6">
