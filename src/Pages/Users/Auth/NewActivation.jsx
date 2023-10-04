@@ -39,7 +39,7 @@ const NewActivation = () => {
               <a
                 className="font-bold text-2xl md:text-[22px] text-left text-white_A700 sm:text-xl w-auto"
               >
-                <Text className="">Forgot password?</Text>
+                <Text className="">New Account Activation</Text>
               </a>
               <div className="flex flex-col gap-4 items-start justify-start self-stretch w-auto sm:w-full">
                 <div className="flex flex-col gap-4 items-center justify-start self-stretch w-auto sm:w-full">
@@ -48,8 +48,8 @@ const NewActivation = () => {
                     variant="body4"
                   >
                     <>
-                      Enter your email address and you will receive a link <br />
-                      to reset your password.
+                      Enter your email address and you will receive a new link <br />
+                      to activate your account
                     </>
                   </Text>
                   {/* <Line className="bg-gray_900_63 h-px w-full" /> */}

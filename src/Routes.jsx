@@ -153,7 +153,7 @@ const ProjectRoutes = () => {
           <Route path="/signup" element={<Signup />} />
           <Route path="/signup-successful" element={<SignUpSuccessful />} />
           <Route path="/activate-account" element={<SignUpEmailSent/>}/>
-          <Route path="/activate-account/new_request" element={<NewActivation/>}/>
+          <Route path="/activate-account/new-request" element={<NewActivation/>}/>
           <Route path="/activate/:uidb64/:token" element={<AccountActivation/>} />
           <Route path="/login" element={<Login />} />
           <Route path="/google-callback" component={GoogleCallback} />
