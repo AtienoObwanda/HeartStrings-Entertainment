@@ -8,10 +8,13 @@ import menu from "../../../assets/menu.svg";
 
 import { apiUrl } from "../../../../env";
 
+
 const RentingPlay = () => {
   const [userInfo, setUserInfo] = useState({});
   const [isAuthenticated, setIsAuthenticated] = useState(true);
   const [toggle, setToggle] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [paymentSent, setPaymentSent] = useState(false);
 
   const navigate = useNavigate();
   const {id} = useParams()
@@ -148,20 +151,17 @@ const selectedTipAmount =
 
 
 
-// const totalAmount = selectedPlanPrice + selectedTipAmount;
 const totalAmount = selectedAmount ? selectedPlanPrice + selectedTipAmount : 0;
 
 console.log('Total Amount: ', totalAmount)
 
-    // const totalAmount = selectedPlanPrice + selectedTipAmount + customTipAmount;
 
 
 
   const initiateVideoPayment = async (amount) => {
-    console.log(accessToken)
-    // 
+    setLoading(true);
+    setPaymentSent(false);
     const url = `${apiUrl}/api/video-payments/initiate_payment/`;
-    // const url = `${apiUrl}/api/video-payments/initiate_payment/`
     console.log('URL:', `${apiUrl}/api/video-payments/initiate_payment/`)
   
     const headers = {
@@ -169,18 +169,21 @@ console.log('Total Amount: ', totalAmount)
     };
   
     const body = {
-      video_id: videoData.id, // Use the ID from videoData
+      video_id: videoData.id,
       amount:  totalAmount.toString()
     };
   
     try {
       const response = await axios.post(url, body, { headers });
       console.log('Response:', response.data);
+      setPaymentSent(true);
+      setLoading(false);
       navigate('/my-streams');
     } catch (error) {
       console.error('Error initiating video payment:', error);
-      // alert('Failed to initiate payment. Please ensure your registered phone number is linked with M-Pesa.');
-
+      console.error('Error initiating video payment:', error);
+      setLoading(false);
+      // Add Alert
     }
   };
   
@@ -421,6 +424,15 @@ console.log('Total Amount: ', totalAmount)
               </div>
             </div>
             <div className="bg-black_900_01 flex flex-col items-center justify-center md:ml-[0] ml-[169px] mr-[415px] p-[60px] md:px-10 sm:px-5 rounded-lg self-stretch shadow-bs w-auto md:w-full">
+            {paymentSent && (
+      <div className="flex items-center bg-blue-500 text-white text-sm font-bold px-4 py-3" role="alert">
+        <svg className="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+          <path d="M12.432 0c1.34 0 2.01.912 2.01 1.957 0 1.305-1.164 2.512-2.679 2.512-1.269 0-2.009-.75-1.974-1.99C9.789 1.436 10.67 0 12.432 0zM8.309 20c-1.058 0-1.833-.652-1.093-3.524l1.214-5.092c.211-.814.246-1.141 0-1.141-.317 0-1.689.562-2.502 1.117l-.528-.88c2.572-2.186 5.531-3.467 6.801-3.467 1.057 0 1.233 1.273.705 3.23l-1.391 5.352c-.246.945-.141 1.271.106 1.271.317 0 1.357-.392 2.379-1.207l.6.814C12.098 19.02 9.365 20 8.309 20z"/>
+        </svg>
+        <p>M-Pesa Payment Request has been sent to your phone!</p>
+      </div>
+    
+    )}
               {/* Start */}
 
               <div className="flex flex-col gap-12 items-start justify-center w-auto">
@@ -517,8 +529,11 @@ console.log('Total Amount: ', totalAmount)
             </div>
             <Button 
             onClick={initiateVideoPayment}
-            className="bg-red_900 cursor-pointer font-bold py-[15px] rounded-lg text-center text-white_A700 text-xl w-[430px]">
-              Pay now
+            className="bg-red_900 cursor-pointer font-bold py-[15px] rounded-lg text-center text-white_A700 text-xl w-[430px]"
+            disabled={loading}
+            >
+              {/* Pay now */}
+              {loading ? 'Processing...' : 'Pay Now'}
             </Button>
             
           </div>

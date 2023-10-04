@@ -28,6 +28,7 @@ console.log(`${apiUrl}/auth/o/google-oauth2/?redirect_uri=${redirectUri}&client_
 
 
 const SignUp = ({  }) => {
+  
   const navigate = useNavigate();
   // const history = useHistory();
   const [alertMessage, setAlertMessage] = useState(null);
