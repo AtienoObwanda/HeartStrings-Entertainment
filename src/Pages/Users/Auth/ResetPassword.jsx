@@ -125,6 +125,7 @@ const ResetPassword = () => {
                       placeholder="New Password"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
+                      x-model="password"
                     />
                   </div>
                   <div className="flex flex-col gap-2 items-start justify-start self-stretch w-[430px] sm:w-full mt-2 mx-auto">
@@ -140,8 +141,42 @@ const ResetPassword = () => {
                       placeholder="Confirm New Password"
                       value={confirmPassword}
                       onChange={(e) => setConfirmPassword(e.target.value)}
+                      x-model="re_password"
                     />
                   </div>
+                  <div className="flex justify-start mt-3 ml-4 p-1">
+                      <ul>
+                        <li className="flex items-center py-1">
+                          <div className={`rounded-full p-1 fill-current ${password === re_password && password.length > 0 ? 'bg-green-200 text-green-700' : 'bg-red-200 text-red-700'}`}>
+                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              {password === re_password && password.length > 0 ? (
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                              ) : (
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                              )}
+                            </svg>
+                          </div>
+                          <span className={`font-medium text-sm ml-3 ${password === re_password && password.length > 0 ? 'text-green-700' : 'text-red-700'}`}>
+                            {password === re_password && password.length > 0 ? 'Passwords match' : 'Passwords do not match'}
+                          </span>
+                        </li>
+                        <li className="flex items-center py-1">
+                          <div className={`rounded-full p-1 fill-current ${password.length > 7 ? 'bg-green-200 text-green-700' : 'bg-red-200 text-red-700'}`}>
+                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              {password.length > 7 ? (
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                              ) : (
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                              )}
+                            </svg>
+                          </div>
+                          <span className={`font-medium text-sm ml-3 ${password.length > 7 ? 'text-green-700' : 'text-red-700'}`}>
+                            {password.length > 7 ? 'The required length reached' : 'At least 8 characters required'}
+                          </span>
+                        </li>
+                      </ul>
+                    </div>
+                    
 
                 </div>
                 <Button
