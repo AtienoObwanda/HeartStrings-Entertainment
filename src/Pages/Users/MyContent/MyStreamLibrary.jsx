@@ -284,7 +284,7 @@ useEffect(() => {
                     </div>
                   </li>
 
-                  <li className="py-3 cursor-pointer text-16">
+                  {/* <li className="py-3 cursor-pointer text-16">
                     <div
                       className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-8 self-stretch w-auto"
                       onClick={() => navigate("/mytickets")}
@@ -301,7 +301,7 @@ useEffect(() => {
                         My Tickets
                       </Text>
                     </div>
-                  </li>
+                  </li> */}
 
                   <Line className="bg-gray_800 h-px mt-[60px] w-full" />
 

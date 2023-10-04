@@ -423,7 +423,7 @@ const AdminDashboard = () => {
                 >
                   Dashboard
                 </Text>
-                <Input
+                {/* <Input
                   wrapClassName="flex w-1/2 sm:w-full"
                   className="font-normal not-italic p-0 placeholder:text-white_A700 text-left text-sm text-white_A700 w-full"
                   name="duration"
@@ -445,7 +445,7 @@ const AdminDashboard = () => {
                   shape="RoundedBorder8"
                   size="sm"
                   variant="FillGray800"
-                ></Input>
+                ></Input> */}
 
               </div>
               <div className="md:hidden flex flex-row gap-[21px] items-center justify-start mr-5 self-stretch w-auto">

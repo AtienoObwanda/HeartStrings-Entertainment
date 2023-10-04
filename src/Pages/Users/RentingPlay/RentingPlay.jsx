@@ -408,8 +408,8 @@ console.log('Total Amount: ', totalAmount)
                 </Text>
               </div>
               <div className="flex flex-row gap-[21px] items-center justify-start mr-5 self-stretch w-auto">
-                <Img
-                  src="images/img_share.svg"
+              <Img
+                  src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927739/HeartStrings/SVG/img_share_obssio.svg"
                   className="h-6 w-6"
                   alt="share"
                 />

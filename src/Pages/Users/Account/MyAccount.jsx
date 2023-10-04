@@ -176,7 +176,7 @@ const handleSubmit = async (e) => {
                     My streams
                   </Text>
                 </div>
-                <div
+                {/* <div
                   className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[16px] mt-9 self-stretch w-auto hover:border border-white rounded-md p-2"
                   onClick={() => navigate("/my-tickets")}
                 >
@@ -191,7 +191,7 @@ const handleSubmit = async (e) => {
                   >
                     My Tickets
                   </Text>
-                </div>
+                </div> */}
                 <Line className="bg-gray_800 h-px mt-[60px] w-full" />
                 <div className="flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-[63px] self-stretch w-auto hover:border border-white rounded-md p-2"
                 onClick={() => navigate("/contact-us")}>
@@ -280,7 +280,7 @@ const handleSubmit = async (e) => {
                                   </div>
                             </li>
 
-                            <li className="py-3 cursor-pointer text-16">
+                            {/* <li className="py-3 cursor-pointer text-16">
                               <div
                                   className="common-pointer flex flex-row gap-2 items-center justify-center md:ml-[0] ml-[26px] mt-8 self-stretch w-auto"
                                     onClick={() => navigate("/my-tickets")}
@@ -297,7 +297,7 @@ const handleSubmit = async (e) => {
                                       My Tickets
                                     </Text>
                               </div>
-                            </li>
+                            </li> */}
 
                             <Line className="bg-gray_800 h-px mt-[60px] w-full" />
 
