@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 import { Button, Img, Input, Line, List, Switch, Text } from "UI_Components";
 import PlaysAddPlayAddshift from "UI_Components/PlaysAddPlay";
@@ -12,15 +13,18 @@ import close from "../../../assets/close.svg";
 import menu from "../../../assets/menu.svg";
 import DatePickerCal from "Components/Admin/DatePickerCal";
 import LiveShowCal from "Components/Admin/LiveShowCal";
+import { apiUrl } from "../../../../env";
 import AddPlayForm from "Components/Content/AddPlayForm";
 
 const AdminAddPlay = () => {
   const navigate = useNavigate();
   const [active, setActive] = useState("Home");
   const [toggle, setToggle] = useState(false);
-
+  const [userInfo, setUserInfo] = useState({});
   const [isAuthenticated, setIsAuthenticated] = useState(true);
   const accessToken = localStorage.getItem("accessToken");
+
+
 
   useEffect(() => {
     if (accessToken) {
@@ -29,6 +33,37 @@ const AdminAddPlay = () => {
       setIsAuthenticated(false);
     }
   }, []);
+
+  useEffect(() => {
+    if (accessToken) {
+      fetchUserInfo();
+
+    } else {
+      navigate('/admin-login');
+    }
+  }, [accessToken]);
+
+  const fetchUserInfo = async () => {
+    try {
+      const response = await axios.get(`${apiUrl}/auth/users/me/`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`
+        }
+      });
+  
+      // Update the user information state
+      setUserInfo(response.data);
+  
+      // Console log the user information
+      console.log('User Info:', response.data);
+    } catch (error) {
+      console.error('Error fetching user info:', error);
+      // Handle error (e.g., redirect to an error page)
+    }
+  };
+
+
+
 
   const clearAccessToken = () => {
     localStorage.removeItem('accessToken');
@@ -325,7 +360,7 @@ const AdminAddPlay = () => {
                     className="font-bold text-left text-white_A700 w-auto"
                     variant="body4"
                   >
-                    Cameron Williamson
+                    {userInfo.first_name} {userInfo.last_name}
                   </Text>
                   <Text
                     className="not-italic text-gray_300 text-left w-auto"

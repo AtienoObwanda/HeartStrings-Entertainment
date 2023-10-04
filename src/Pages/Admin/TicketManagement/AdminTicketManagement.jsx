@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { Input, Button, Img, Line, List, Text } from "UI_Components";
+import { apiUrl } from '../../../../env';
+import axios from 'axios';
 
 
 import close from "../../../assets/close.svg";
@@ -25,12 +27,18 @@ const AdminTicketManagement = () => {
     if (accessToken) {
       fetchUserInfo();
     } else {
-      // Redirect to login if no access token
       navigate('/admin-login');
     }
   }, [accessToken]);
 
+  useEffect(() => {
+    if (accessToken) {
+      fetchUserInfo();
 
+    } else {
+      navigate('/admin-login');
+    }
+  }, [accessToken]);
 
   const fetchUserInfo = async () => {
     try {
@@ -50,6 +58,8 @@ const AdminTicketManagement = () => {
       // Handle error (e.g., redirect to an error page)
     }
   };
+
+ 
   
   useEffect(() => {
 
@@ -423,7 +433,7 @@ const AdminTicketManagement = () => {
                     className="font-bold text-left text-white_A700 w-auto"
                     variant="body4"
                   >
-                    Cameron Williamson
+                   {userInfo.first_name} {userInfo.last_name}
                   </Text>
                   <Text
                     className="not-italic text-gray_300 text-left w-auto"

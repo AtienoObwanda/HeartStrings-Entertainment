@@ -533,7 +533,7 @@ console.log('Total Amount: ', totalAmount)
             disabled={loading}
             >
               {/* Pay now */}
-              {loading ? 'Processing...' : 'Pay Now'}
+              {loading ? 'Processing Payment...' : 'Pay Now'}
             </Button>
             
           </div>

@@ -14,7 +14,7 @@ import ReactPlayer from 'react-player';
 import { apiUrl } from '../../../../env';
 
 const AdminAllStreams = () => {
-
+  const [userInfo, setUserInfo] = useState({});
   const navigate = useNavigate();
   const [active, setActive] = useState("Home");
   const [toggle, setToggle] = useState(false);
@@ -30,6 +30,40 @@ const AdminAllStreams = () => {
       setIsAuthenticated(false);
     }
   }, [])
+
+  useEffect(() => {
+    if (accessToken) {
+      fetchUserInfo();
+
+    } else {
+      navigate('/admin-login');
+    }
+  }, [accessToken]);
+
+  const fetchUserInfo = async () => {
+    try {
+      const response = await axios.get(`${apiUrl}/auth/users/me/`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`
+        }
+      });
+  
+      // Update the user information state
+      setUserInfo(response.data);
+  
+      // Console log the user information
+      console.log('User Info:', response.data);
+    } catch (error) {
+      console.error('Error fetching user info:', error);
+      // Handle error (e.g., redirect to an error page)
+    }
+  };
+
+
+  const [weeklyTickets, setWeeklyTickets] = useState(null);
+
+
+  
 
   const clearAccessToken = () => {
     localStorage.removeItem('accessToken');
@@ -103,8 +137,9 @@ const AdminAllStreams = () => {
       console.log('Play deleted successfully.');
       setShowSuccessAlert(true);
       setTimeout(() => {
-        setShowSuccessAlert(false); // Hide the success alert after a brief delay
-      }, 1500); // Set success alert visibility
+        setShowSuccessAlert(false); 
+      }, 1500); 
+      window.location.reload(); 
     } catch (error) {
       console.error('Error deleting play:', error);
     } finally {
@@ -416,7 +451,7 @@ const AdminAllStreams = () => {
                     className="font-bold text-left text-white_A700 w-auto"
                     variant="body4"
                   >
-                    Cameron Williamson
+                   {userInfo.first_name} {userInfo.last_name}
                   </Text>
                   <Text
                     className="not-italic text-gray_300 text-left w-auto"
@@ -526,13 +561,13 @@ const AdminAllStreams = () => {
                             <div className="flex flex-col items-center justify-start w-full">
                           <div className="h-[250px] relative w-full">
                           <FaEdit
-                            className="absolute top-[0%] w-8 h-8 right-[2%] text-white"
+                            className="absolute top-[0%] w-6 h-6 right-[2%] text-white"
                             alt="Edit Play"
                             onClick={() => navigate(`/edit-stream/${movie.id}`)}                            
                           />
 
                             <TiDelete
-                            className="absolute top-[10%] w-8 h-8 right-[2%] text-white"
+                            className="absolute top-[10%] w-8 h-8 right-[2%] text-white mt-3"
                             alt="Delete Play"
                             onClick={() => setOpenModalId(movie.id)}                           
                           />

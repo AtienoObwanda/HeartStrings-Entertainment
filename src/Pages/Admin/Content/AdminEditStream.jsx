@@ -18,8 +18,10 @@ import { apiUrl } from '../../../../env'
 const AdminAddStream = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(true);
   const accessToken = localStorage.getItem('accessToken');
-
+  const [userInfo, setUserInfo] = useState({});
   const { id } = useParams();
+
+
 
 
   useEffect(() => {
@@ -30,6 +32,36 @@ const AdminAddStream = () => {
       setIsAuthenticated(false);
     }
   }, [])
+
+
+  useEffect(() => {
+    if (accessToken) {
+      fetchUserInfo();
+
+    } else {
+      navigate('/admin-login');
+    }
+  }, [accessToken]);
+
+  const fetchUserInfo = async () => {
+    try {
+      const response = await axios.get(`${apiUrl}/auth/users/me/`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`
+        }
+      });
+  
+      // Update the user information state
+      setUserInfo(response.data);
+  
+      // Console log the user information
+      console.log('User Info:', response.data);
+    } catch (error) {
+      console.error('Error fetching user info:', error);
+      // Handle error (e.g., redirect to an error page)
+    }
+  };
+
 
   const clearAccessToken = () => {
     localStorage.removeItem('accessToken');
@@ -528,7 +560,7 @@ return (
                       className="font-bold text-left text-white_A700 w-auto"
                       variant="body4"
                     >
-                      Cameron Williamson
+                      {userInfo.first_name} {userInfo.last_name}
                     </Text>
                     <Text
                       className="not-italic text-gray_300 text-left w-auto"
