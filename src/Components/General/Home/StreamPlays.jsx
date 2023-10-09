@@ -43,19 +43,12 @@ const StreamPlays = () => {
      <div className="flex flex-col gap-12 items-center justify-center max-w-[1140px] mt-[89px] mx-auto md:px-5 self-stretch w-full">
           <div className="flex flex-col gap-1 items-center justify-center self-stretch w-auto sm:w-full">
             <Text
-              className="text-center text-white_A700 w-auto"
-              as="h2"
-              variant="h2"
-              style={{ fontSize: '72px', lineHeight: '126px' }}
-
+                className="text-left text-white_A700 w-auto font-bold	font-roboto text-7xl sm:text-3xl mb-6"
             >
               Stream plays
             </Text>
             <Text
-              className="font-normal not-italic text-gray_300 text-left w-auto"
-              as="h6"
-              variant="h6"
-              style={{ fontSize: '24px', lineHeight: '42px' }}
+              className="font-normal not-italic text-gray_300 text-left w-auto text-3xl  sm:text-base"
 
             >
               The world of theatre from the comfort of your home.
@@ -70,7 +63,7 @@ const StreamPlays = () => {
               <Link to={`/stream/${movie.id}`} >  
 
                    <div
-                     className="bg-black_900_01 flex flex-col gap-4 h-[440px] items-center justify-start p-4 rounded-lg w-full hover:border border-white rounded-md p-2"
+                     className="bg-black_900_01 flex flex-col gap-4 h-[448px] items-center justify-start p-4 rounded-lg w-full hover:border border-white rounded-md p-2"
                      key={index} >
                        <div className="flex flex-col items-center justify-start w-full">
                      <div className="h-[230px] relative w-full">
@@ -78,9 +71,10 @@ const StreamPlays = () => {
                       light={
                       <img 
                       src={movie.video_poster}
-                      // src='https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927767/HeartStrings/SVG/img_rectangle8_570x1140_ot5kmw.png' 
                       alt='Poster' 
-                      className="h-[249px] md:h-auto object-cover rounded-lg w-full"
+                      // className="h-[249px] md:h-auto object-cover rounded-lg w-full"
+                      className="h-[249px] md:h-full sm:h-full object-cover rounded-lg w-full pt-2"
+
 
                       />}
                       url={movie.trailer} 
@@ -115,7 +109,9 @@ const StreamPlays = () => {
                          </div>
                          <div className="flex flex-row gap-[103px] items-center justify-between w-auto pb-6">
                            <Button 
-                            className="cursor-pointer font-bold font-roboto min-w-[116px] text-center text-white_A700 text-xl w-auto"
+                            // className="cursor-pointer font-bold font-roboto min-w-[116px] text-center text-white_A700 text-xl w-auto"
+                            className="cursor-pointer font-bold font-roboto min-w-[116px] text-center text-white_A700 text-base w-auto md:text-sm"
+
                             shape="RoundedBorder8"
                             size="lg"
                             variant="FillGray900"

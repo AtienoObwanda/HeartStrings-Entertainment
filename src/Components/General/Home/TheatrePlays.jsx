@@ -18,10 +18,10 @@ const TheatrePlays = () => {
       <div className="flex flex-col gap-12 items-center justify-center max-w-[1140px] mt-10 mx-auto md:px-5 self-stretch w-full">
           <div className="flex flex-col gap-1 items-center justify-center self-stretch w-auto md:w-full">
           <Text
-            className="text-left text-white_A700 w-auto font-roboto"
-            as="h2"
-            variant="h2"
-            style={{ fontSize: '72px', lineHeight: '126px' }}
+            className="text-left text-white_A700 w-auto font-bold	font-roboto mb-6 text-7xl sm:text-3xl"
+            // as="h2"
+            // variant="h2"
+            // style={{ fontSize: '72px', lineHeight: '126px' }}
 
             
             >
@@ -29,10 +29,10 @@ const TheatrePlays = () => {
             </Text>
 
             <Text
-              className="font-normal not-italic text-gray_300 text-left w-auto"
-              as="h6"
-              variant="h6"
-              style={{ fontSize: '24px', lineHeight: '42px' }}
+              className="font-normal not-italic text-gray_300 text-left w-auto text-4xl  sm:text-base"
+              // as="h6"
+              // variant="h6"
+              // style={{ fontSize: '24px', lineHeight: '42px' }}
 
             >
               Our lineup is better than before!
@@ -43,15 +43,15 @@ const TheatrePlays = () => {
             <div className="flex flex-col items-center justify-start w-full">
               <div className="bg-black_900_01 flex md:flex-col flex-row md:gap-5 items-start justify-start p-6 sm:px-5 rounded-lg w-full">
               {/* IMg */}
-              <div className="mb-[40px] flex sm:flex-1 flex-col h-[560px] sm:h-auto items-center justify-start w-[560px] sm:w-full">
+              <div className="mb-[40px] flex sm:flex-1 flex-col h-[560px] sm:h-auto items-center justify-start w-[560px] md:justify-center sm:w-full">
                   <Img
                     src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927562/HeartStrings/Heartstrings_Ent_KE_deny_zk8lqw.png"
-                    className="h-[560px] md:h-auto md:ml-[20px] object-cover rounded-lg w-[560px] sm:w-full"
+                    className="h-[560px] md:h-auto md:ml-[10em] sm:ml-[1em] object-cover rounded-lg w-[560px] sm:w-full"
                     alt="Heartstrings entertainment Play poster"
                   />
                 </div>
                 {/* texts */}
-                <div className="flex sm:flex-1 flex-col gap-6 items-start justify-center self-stretch w-auto sm:w-full ml-8">
+                <div className="flex sm:flex-1 flex-col gap-6 items-start justify-center self-stretch w-auto sm:w-full ml-4 ">
                   <div className="flex flex-col gap-6 items-start justify-start self-stretch w-auto sm:w-full">
                     <Text
                       className="text-left text-white_A700 w-auto"

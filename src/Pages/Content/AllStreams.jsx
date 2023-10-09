@@ -98,14 +98,14 @@ const AllStreams = () => {
 
                 </div>
             ) : (
-          <div className="md:gap-5 gap-6 grid sm:grid-cols-1 md:grid-cols-2 grid-cols-3 justify-center min-h-[auto] w-full">
+          <div className="md:gap-5 gap-6 grid sm:grid-cols-1 md:grid-cols-2 grid-cols-3 justify-center min-h-[auto] w-full pt-6">
               
           {movies.map((movie, index) => (
             // <Link to={`/streams/${movie.title}`}> {/* Fixed variable name */}
             <Link to={`/stream/${movie.id}`} >  
             
                     <div
-                      className="bg-black_900_01 flex flex-col gap-4 h-[440px] items-center justify-start p-4 rounded-lg w-full hover:border border-white rounded-md p-2"
+                      className="bg-black_900_01 flex flex-col gap-4 h-[448px] items-center justify-start p-4 rounded-lg w-full hover:border border-white rounded-md p-2"
                       key={index} >
                         <div className="flex flex-col items-center justify-start w-full">
                       <div className="h-[230px] relative w-full">
@@ -113,9 +113,8 @@ const AllStreams = () => {
                       light={
                       <img 
                       src={movie.video_poster}
-                      // src='https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927767/HeartStrings/SVG/img_rectangle8_570x1140_ot5kmw.png' 
                       alt='Poster' 
-                      className="h-[249px] md:h-auto object-cover rounded-lg w-full"
+                      className="h-[249px] md:h-full sm:h-full object-cover rounded-lg w-full pt-2"
 
                       />}
                       url={movie.trailer} 
@@ -136,7 +135,7 @@ const AllStreams = () => {
                           <div className="flex flex-col gap-8 items-start justify-start w-auto">
                           <div className="flex flex-col gap-4 items-start justify-start w-auto">
                             <Text
-                              className="text-2xl md:text-[22px] text-white sm:text-xl w-auto"
+                              className="text-2xl md:text-[22px] text-white sm:text-xl w-auto mt-4"
                               size="txtRobotoRomanBold24"
                             >
                               {movie.title}
@@ -150,7 +149,7 @@ const AllStreams = () => {
                           </div>
                           <div className="flex flex-row gap-[103px] items-center justify-between w-auto pb-6">
                             <Button 
-                            className="cursor-pointer font-bold font-roboto min-w-[116px] text-center text-white_A700 text-xl w-auto"
+                            className="cursor-pointer font-bold font-roboto min-w-[116px] text-center text-white_A700 text-base w-auto md:text-sm"
                             shape="RoundedBorder8"
                             size="lg"
                             variant="FillGray900">

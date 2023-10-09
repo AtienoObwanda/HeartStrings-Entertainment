@@ -19,6 +19,13 @@ module.exports = {
       // xl: "1700px",
     
     },
+    // listStyleType: {
+    //   none: 'none',
+    //   disc: 'disc',
+    //   decimal: 'decimal',
+    //   square: 'square',
+    //   roman: 'upper-roman',
+    // },
     extend: {
         animation: {
           loader: 'loader 3s ease-in-out infinite',

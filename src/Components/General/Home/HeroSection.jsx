@@ -54,19 +54,19 @@ const HeroSection= () => {
           <img  
             src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689933646/HeartStrings/logo/HeartStringsLogo.png"
             // className="h-[50%] w-[12.5em] md:h-[10%] sm:h-[8%]"
-            className="h-[100%] w-[8em] w-auto md:h-20 md:w-full"
+            className="h-[100%] w-[8em] w-auto md:h-20 md:w-full md:hidden"
             alt="Heart Strings Entertainment logo"
             onClick={() => navigate("/")} 
             />
           </div>
-        <Text className="font-bold text-2xl md:text-[22px] text-white_A700 sm:text-xl w-auto mt-5 mb-8 md:mt-0 md:mb-0 md:pl-8 md:pr-8 ">
+        <Text className="font-bold text-2xl md:text-[22px] text-white_A700 sm:text-base w-auto mt-5 mb-8 md:mt-0 md:mb-0 md:pl-8 md:pr-8 sm:pl-[4em]">
           Join the thousands of viewers already enjoying our plays.
         </Text>
         <Button 
           // className="bg-white_A700 border border-solid border-white_A700 cursor-pointer font-bold py-[15px] rounded-lg text-black_900 text-center text-xl w-full md:w-[75%] sm:w-full mt-6"
-        className="bg-white_A700 border border-solid border-white_A700 cursor-pointer font-bold py-[15px] rounded-lg text-black_900 text-center text-xl w-[594px] mt-6 md:w-3/4 sm:w-1.4"
+        className="bg-white_A700 border border-solid border-white_A700 cursor-pointer font-bold py-[15px] rounded-lg text-black_900 text-center text-xl  w-[594px] mt-6 md:w-3/4 sm:text-lg sm:w-1/2"
         >
-          Sign up to buy tickets and start streaming
+          Sign Up <span className='sm:hidden'> to buy tickets and start streaming </span>
         </Button>
       </div>
       <div className="md:h-[200px]"></div>

@@ -17,21 +17,21 @@ const Footer = (props) => {
             
               <div className="flex md:flex-row flex-row gap-2 items-start justify-start self-stretch w-auto md:w-full">
               
-              
-               
-
-                <div className="flex flex-col items-center justify-center w-auto md:w-full cursor-pointer"
-                    onClick={() => navigate("/")}
-                    >
-                  <Text
-                    className="font-normal font-roboto mt-0.5 not-italic text-left text-white_A700 w-auto"
-                    variant="body4"
-                  >
-                    {props?.home}
-                  </Text>
-                </div>
-
-                <div className="flex flex-col items-center justify-center w-auto md:w-full cursor-pointer"
+              <ul className="flex list-disc list-inside space-x-6">
+                        <li> 
+                        <div className="flex flex-col items-center justify-center w-auto md:w-full cursor-pointer"
+                          onClick={() => navigate("/")}
+                          >
+                        <Text
+                          className="font-normal font-roboto mt-0.5 not-italic text-left text-white_A700 w-auto"
+                          variant="body4"
+                        >
+                          {props?.home}
+                        </Text>
+                      </div>
+                        </li>
+                        <li>
+                        <div className="flex flex-col items-center justify-center w-auto md:w-full cursor-pointer"
                     onClick={() => navigate("/about-us")}
                     >
                   <Text
@@ -40,8 +40,9 @@ const Footer = (props) => {
                   >
                     {props?.about}
                   </Text>
-                </div>
-
+                </div> </li>
+                        <li>
+                          
                 <div className="flex flex-col items-center justify-center w-auto md:w-full cursor-pointer"
                 onClick={() => navigate("/contact-us")}>
                   <Text
@@ -50,9 +51,9 @@ const Footer = (props) => {
                   >
                     {props?.contact}
                   </Text>
-                </div>
-
-                <div className="flex flex-col items-center justify-center w-auto md:w-full cursor-pointer"
+                </div> </li>
+                        <li> 
+                        <div className="flex flex-col items-center justify-center w-auto md:w-full cursor-pointer"
                 onClick={() => navigate("/terms-and-conditions")}>
                   <Text
                     className="font-normal font-roboto mt-0.5 not-italic text-left text-white_A700 w-auto"
@@ -62,8 +63,9 @@ const Footer = (props) => {
 
                   </Text>
                 </div>
-
-                <div className="flex flex-col items-center justify-center w-auto md:w-full cursor-pointer"
+                        </li>
+                        <li > 
+                        <div className="flex flex-col items-center justify-center w-auto md:w-full cursor-pointer"
                 onClick={() => navigate("/privacy-policy")}>
                   <Text
                     className="font-normal font-roboto mt-0.5 not-italic text-left text-white_A700 w-auto"
@@ -73,6 +75,20 @@ const Footer = (props) => {
                   </Text>
                 </div>
                 
+                        </li>
+
+
+                </ul>
+               
+
+               
+
+               
+
+
+               
+
+       
 
 
 
