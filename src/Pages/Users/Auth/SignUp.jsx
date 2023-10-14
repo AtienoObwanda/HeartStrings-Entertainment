@@ -101,7 +101,16 @@ const SignUp = ({  }) => {
 
 
 <div className="bg-black_900 flex flex-col font-roboto items-center justify-start mx-auto pb-[242px] w-full">
-        <SignupColumnlogotwo className="flex flex-col items-center justify-start p-8 sm:px-5 w-full" />
+        {/* <SignupColumnlogotwo className="flex flex-col items-center justify-start p-8 sm:px-5 w-full" /> */}
+        <img  
+      src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689933646/HeartStrings/logo/HeartStringsLogo.png"
+      className="h-[80px] w-[80px] mt-[4em]"
+      // md:ml-[0] ml-[150px] my-2 w-auto md:h-20 md:w-full md:mb-4
+    // className="h-[30%] w-[4em] md:w-full md:ml-[0] ml-[150px] my-2 w-auto md:h-30 sm:object-fit: scale-down"
+
+      alt="Heart Strings Entertainment logo"
+      onClick={() => navigate("/")} 
+      />
         <a
           className="font-bold mt-[15px] text-2xl md:text-[22px] text-left text-white_A700 sm:text-xl w-auto"
         >
@@ -126,7 +135,7 @@ const SignUp = ({  }) => {
           ) : ( */}
 
               <form onSubmit={onSubmit}>
-                <div className="flex flex-col gap-8 items-start justify-start self-stretch w-auto sm:w-full">
+              <div className="flex flex-col gap-8 items-start justify-start self-stretch min-w-[320px] sm:max-w-[320px]">
                 <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto sm:w-full">
 
                   <Text
@@ -290,8 +299,8 @@ const SignUp = ({  }) => {
 
                       </Text>
 
-                    <Line className="bg-gray_900_63 mt-2 h-px w-full" />
-                    <div className="flex flex-col gap-4 items-center justify-start self-stretch w-auto sm:w-full">
+                    <Line className="bg-gray_900 mt-2 h-px w-full" />
+                    <div className="flex flex-col gap-4 items-center justify-start self-stretch w-[430px] sm:w-full">
 
                       <a
                         href="#"
@@ -313,14 +322,23 @@ const SignUp = ({  }) => {
 
 
                       </div>
-                    <div
-                    onClick={continueWithGoogle}>
-                           <SignupColumnsearchone
-                      className="flex flex-col items-center justify-center w-[430px] sm:w-full"
-                      loginwithgoogleOne="Login with google"
-                      onClick={continueWithGoogle}
+                    
+
+                    <div className="bg-gray_900 w-[430px] items-center gap-[29px] justify-center p-4 mt-2 mb-4 rounded-lg w-full flex sm:flex-row gap-[10px] pl-0 pr-0 pt-4 pb-4"
+                     onClick={continueWithGoogle}>
+                    <Img
+                      src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927734/HeartStrings/SVG/img_search1_hp3pkh.png"
+                      className="h-[100%] w-[30px] md:h-auto ml-[65px] object-cover w-[15px]"
+                      alt="searchOne"
                     />
-                    </div>
+                    <Text
+                      className="font-bold font-roboto mr-[118px] text-center text-white_A700 w-auto md:mr-[10px]"
+                      as="h6"
+                      variant="h6"
+                    >
+                      Login with Google
+                    </Text>
+                  </div>
                  
                   </div>
 

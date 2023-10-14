@@ -20,7 +20,9 @@ import SignupColumnlogotwo from "UI_Components/SignupColumn";
 import SignupColumnsearchone from "UI_Components/SignupColumnsearchone";
 
 
-const Login = () => {
+
+const Login = ({  }) => {
+  
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -49,10 +51,6 @@ const Login = () => {
     }
   };
 
-  
-  
-
-  
   const continueWithGoogle = async () => {
     try {
         const redUrl='http://localhost:5173'
@@ -64,10 +62,23 @@ const Login = () => {
     }
 };
 
+
+
   return (
     <>
-      <div className="bg-black_900 flex flex-col font-roboto items-center justify-start mx-auto pb-[242px] w-full">
-        <SignupColumnlogotwo className="flex flex-col items-center justify-start p-8 sm:px-5 w-full" />
+
+
+<div className="bg-black_900 flex flex-col font-roboto items-center justify-start mx-auto pb-[242px] w-full">
+        {/* <SignupColumnlogotwo className="flex flex-col items-center justify-start p-8 sm:px-5 w-full" /> */}
+        <img  
+      src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689933646/HeartStrings/logo/HeartStringsLogo.png"
+      className="h-[80px] w-[80px] mt-[4em]"
+      // md:ml-[0] ml-[150px] my-2 w-auto md:h-20 md:w-full md:mb-4
+    // className="h-[30%] w-[4em] md:w-full md:ml-[0] ml-[150px] my-2 w-auto md:h-30 sm:object-fit: scale-down"
+
+      alt="Heart Strings Entertainment logo"
+      onClick={() => navigate("/")} 
+      />
         <a
           className="font-bold mt-[15px] text-2xl md:text-[22px] text-left text-white_A700 sm:text-xl w-auto"
         >
@@ -84,15 +95,21 @@ const Login = () => {
           </svg>
           <p>{alertMessage}</p>
 
+
         </div>
       )}
             
-            
-            <form onSubmit={handleLogin}>
-                <div className="flex flex-col gap-8 items-start justify-start self-stretch w-auto sm:w-full">
+            {/* {accountCreated ? (
+            <p className='bg-light_blue_500 text-white_A700 W-40 H-40'>Account Created Successfully. An activation email has been sent.</p>
+          ) : ( */}
+
+<form onSubmit={handleLogin}>
+                <div className="flex flex-col gap-8 items-start justify-start self-stretch min-w-[320px]">
+             
+
+                  
               
-              
-                <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto sm:w-full">
+                <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto sm:w-full mt-2">
 
                       <Text
                         className="font-normal not-italic text-left text-white_A700 w-auto"
@@ -101,14 +118,17 @@ const Login = () => {
                         Email address
                       </Text>
                       <input
-                        className="flex bg-gray_800 h-12 w-full p-0 pl-4 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        placeholder="your-email@gmail.com"
-                      />
+                          className="bg-gray_800 h-12 p-0 pl-4 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
+                          type="email"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          placeholder="your-email@gmail.com"
+                          required
+                  />                      
                     </div>
-                <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto sm:w-full">
+
+                    
+                    <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto sm:w-full ">
                       <Text
                         className="font-normal not-italic text-left text-white_A700 w-auto"
                         variant="body4"
@@ -116,16 +136,18 @@ const Login = () => {
                         Password
                       </Text>
                       <input
-                        className="flex bg-gray_800 h-12 w-full p-0 pl-4 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
+                        className="bg-gray_800 h-12 p-0 pl-4 w-full text-white_A700 border-2 border-transparent focus:border-white_A700 rounded-md"
                         type="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         placeholder="******************"
-                      />
+                        required
+                     />
+                      </div>
+                    
 
-                    </div>
-                    <Button
-                      className="cursor-pointer font-bold text-center text-white_A700 text-xl w-[430px] sm:w-full mt-2"
+                      <Button
+                      className="cursor-pointer font-bold text-center text-white_A700 text-xl w-[430px] sm:w-full mt-2 "
                       shape="RoundedBorder8"
                       size="lg"
                       variant="FillRed900"
@@ -135,16 +157,31 @@ const Login = () => {
                     </Button>
                     {loginError && <p>{loginError}</p>}
 
-                
-
-                    {/* <SignupColumnsearchone
+                      {/* <SignupColumnsearchone
                       className="flex flex-col items-center justify-center w-[430px] sm:w-full"
                       loginwithgoogleOne="Login with google"
                       onClick={handleGoogleLogin}
 
                     /> */}
-                    <Button
-                        className="cursor-pointer font-bold text-center text-white_A700 text-xl w-[430px] sm:w-full mt-2"
+{/* .. */}
+                  <div className="bg-gray_900 items-center gap-[29px] justify-center p-4 mt-2 mb-4 rounded-lg w-full flex sm:flex-row gap-[10px] pl-0 pr-0 pt-4 pb-4"
+                   onClick={continueWithGoogle}>
+                          <Img
+                            src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927734/HeartStrings/SVG/img_search1_hp3pkh.png"
+                            className="h-[100%] w-[30px] md:h-auto ml-[65px] object-cover w-[15px]"
+                            alt="searchOne"
+                          />
+                          <Text
+                            className="font-bold font-roboto mr-[118px] text-center text-white_A700 w-auto md:mr-[10px]"
+                            as="h6"
+                            variant="h6"
+                          >
+                            Login with Google
+                          </Text>
+                        </div>
+                    {/* ... */}
+                    {/* <Button
+                        className="cursor-pointer font-bold text-center text-white_A700 text-xl  w-[430px] sm:w-full mt-2 "
                         shape="RoundedBorder8"
                         size="lg"
                         variant="FillRed900"
@@ -152,16 +189,14 @@ const Login = () => {
                         onClick={continueWithGoogle}
                       >
                         Login with Google
-                      </Button>
+                      </Button> */}
+                      
                   </div>
 
                   </form>
+
+          {/* )} */}
             </div>
-
-
-
-
-
             <div
               className="common-pointer flex flex-col gap-4 items-center justify-start self-stretch w-auto sm:w-full"
               onClick={() => navigate("/forgot-password")}
@@ -174,36 +209,35 @@ const Login = () => {
               </a>
               <Line className="bg-gray_900_63 mt-5 h-px w-full" />
             </div>
-          </div>
-
-
-
-          <div className="flex flex-col gap-4 items-center justify-start self-stretch w-auto sm:w-full">
-
-            <a
-              href="javascript:"
-              className="font-normal not-italic text-base text-left text-white_A700 w-auto"
-            >
-              <Text className="mb-2">Don’t have an account?</Text>
-            </a>
-
-
-            <Button
-              className="cursor-pointer font-bold text-center text-white_A700 text-xl  w-[430px] sm:w-full"
-              shape="RoundedBorder8"
-              size="lg"
-              variant="OutlineWhiteA700_1"
-              onClick={() => navigate("/signup")}
-            >
-              Sign up for a new account
-            </Button>
-
 
           </div>
         </div>
+        
+        <div className="flex flex-col gap-4 items-center justify-start self-stretch w-auto sm:w-full">
+
+        <a
+          href="javascript:"
+          className="font-normal not-italic text-base text-left text-white_A700 w-auto"
+        >
+          <Text className="mb-2">Don’t have an account?</Text>
+        </a>
+
+
+        <Button
+          className="cursor-pointer font-bold text-center text-white_A700 text-xl  w-[430px] sm:w-3/4"
+          shape="RoundedBorder8"
+          size="lg"
+          variant="OutlineWhiteA700_1"
+          onClick={() => navigate("/signup")}
+        >
+          Sign up for a new account
+        </Button>
+
+
+        </div>
       </div>
+
     </>
-    
   );
 };
 
