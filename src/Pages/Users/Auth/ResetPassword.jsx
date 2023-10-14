@@ -88,7 +88,13 @@ const ResetPassword = () => {
   return (
     <>
       <div className="bg-black_900 flex flex-col font-roboto sm:gap-10 md:gap-10 gap-6 items-center justify-start mx-auto pb-[680px] w-full">
-        <SignupColumnlogotwo className="flex flex-col items-center justify-start p-8 sm:px-5 w-full" />
+
+      <img  
+      src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689933646/HeartStrings/logo/HeartStringsLogo.png"
+      className="h-[80px] w-[80px] mt-[4em]"
+      alt="Heart Strings Entertainment logo"
+      onClick={() => navigate("/")} 
+      />
         <div className="flex flex-col gap-12 items-center justify-start md:px-5 self-stretch w-auto sm:w-full">
           <a
             className="font-bold text-2xl md:text-[22px] text-left text-white_A700 sm:text-xl w-auto"
