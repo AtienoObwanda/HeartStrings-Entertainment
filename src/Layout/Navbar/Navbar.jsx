@@ -31,11 +31,17 @@ const Navbar = (props) => {
     <header className={props.className}>
     <nav className="mt-2 w-full flex justify-between items-center navbar">
     <div className="h-50">
-    <img  
+    {/* <img  
       src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689933646/HeartStrings/logo/HeartStringsLogo.png"
       className="h-[30%] w-[6em] md:ml-[0] ml-[150px] my-2 w-auto md:h-20 md:w-full md:mb-4"
     // className="h-[30%] w-[4em] md:w-full md:ml-[0] ml-[150px] my-2 w-auto md:h-30 sm:object-fit: scale-down"
 
+      alt="Heart Strings Entertainment logo"
+      onClick={() => navigate("/")} 
+      /> */}
+       <img  
+      src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689933646/HeartStrings/logo/HeartStringsLogo.png"
+      className="h-[80px] w-[80px]  md:ml-[0] ml-[150px] my-2 w-auto md:h-20 md:w-full md:mb-4 mt-[3em]"
       alt="Heart Strings Entertainment logo"
       onClick={() => navigate("/")} 
       />
