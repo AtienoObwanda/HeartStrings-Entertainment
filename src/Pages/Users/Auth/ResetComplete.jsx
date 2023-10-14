@@ -17,7 +17,7 @@ const ResetComplete = () => {
       alt="Heart Strings Entertainment logo"
       onClick={() => navigate("/")} 
       />      
-      <div className="bg-black_900_01 border border-gray_300 border-solid flex flex-col items-center justify-center px-40 md:px-5 py-12 rounded-lg self-stretch w-3/4 md:w-90% md:mt-[130px] sm:w-full  mx-auto">
+      <div className="bg-black_900_01 border border-gray_300 border-solid flex flex-col items-center justify-center px-40 md:px-5 py-12 rounded-lg self-stretch w-3/4 md:w-90% md:mt-[20px] sm:w-full  mx-auto">
 
         <div className="flex flex-col items-center justify-start self-stretch w-auto sm:w-full">
           <div className="flex flex-col gap-4 items-center justify-center self-stretch w-auto sm:w-full">

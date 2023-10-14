@@ -56,9 +56,9 @@ const AccountActivation = () => {
       alt="Heart Strings Entertainment logo"
       onClick={() => navigate("/")} 
       />
-      
+
 <div className="h-40 md:h-0"></div>
-<div className="bg-black_900_01 border border-gray_300 border-solid flex flex-col items-center justify-center px-40 md:px-5 py-12 rounded-lg self-stretch w-1/2 md:w-90% md:mt-[130px] sm:w-full  mx-auto">
+<div className="bg-black_900_01 border border-gray_300 border-solid flex flex-col items-center justify-center px-40 md:px-5 py-12 rounded-lg self-stretch w-1/2 md:w-90% md:mt-[20px] sm:w-full  mx-auto">
 
   <div className="flex flex-col items-center justify-start self-stretch w-auto sm:w-full">
   <Text className="text-gray_300 text-left w-auto" as="h3" variant="h3">
