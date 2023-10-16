@@ -35,8 +35,8 @@ const HomePage = () => {
 
 
         {/* Footer Section*/}
-        <Footer className="border-gray_800 border-solid border-t-[13px] flex items-center justify-center mt-24 md:px-5 w-full"
-          copyrightheartsOne="Copyright Heartstrings Entertainment"
+        <Footer 
+          // copyrightheartsOne="Copyright Heartstrings Entertainment"
         />
 
       </div>
