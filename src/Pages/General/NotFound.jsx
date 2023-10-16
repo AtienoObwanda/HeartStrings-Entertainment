@@ -81,7 +81,7 @@ const NotFound = () => {
 
 
         {/* Display Medium Screens  */}
-        <div className="md:mt-[300px] sm:mt-[200px] hidden md:flex flex-col gap-4 items-center justify-center md:px-5 self-stretch w-auto md:w-full">
+        <div className="md:mt-[200px] sm:mt-[90px] hidden md:flex flex-col gap-4 items-center justify-center md:px-5 self-stretch w-auto md:w-full">
         <Text
             className="text-left text-white_A700 w-auto"
             as="h1"

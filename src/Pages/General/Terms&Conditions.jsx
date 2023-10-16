@@ -23,14 +23,14 @@ const TermsAndConditions = () => {
 
         <div className="flex flex-col gap-5 h-[870px] md:h-auto items-start justify-start md:ml-[0] ml-[150px] mr-20 mt-24 md:px-5 self-stretch w-auto md:w-full">
           <Text
-            className="text-left text-white_A700 w-auto md:m-5 sm:m-10"
+            className="text-left text-white_A700 w-auto md:ml-5 sm:ml-10"
             as="h2"
             variant="h2"
           >
             Terms & Conditions
           </Text>
           <Text
-            className="font-normal leading-[175.00%] not-italic text-left text-white_A700 md:m-5 sm:m-10"
+            className="font-normal leading-[175.00%] not-italic text-left text-white_A700 md:ml-5 sm:ml-10"
             as="h6"
             variant="h6"
           >Here are some key general guidelines, and you may need to consider or adapt to fit the specific procedures at heartstrings and considerations for your 

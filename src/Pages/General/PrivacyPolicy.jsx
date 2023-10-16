@@ -11,8 +11,7 @@ const PrivacyPolicy = () => {
   return (
     <>
     <div className="bg-black_900 flex flex-col font-roboto items-start justify-start mx-auto w-full">
-    {/* <div className="bg-black_900 flex flex-col font-roboto items-center justify-start mx-auto w-full"> */}
-        {/* Navbar Section */}
+   
         <Navbar
           className="flex flex-row items-center justify-center md:px-5 w-full"
           buyTicketS="Buy ticket (s)"
@@ -23,20 +22,21 @@ const PrivacyPolicy = () => {
 
         <div className="flex flex-col gap-5 h-[800px] md:h-auto items-start justify-start md:ml-[0] ml-[150px] mr-20 mt-24 md:px-5 self-stretch w-auto md:w-full">
           <Text
-            className="text-left text-white_A700 w-auto md:m-5 sm:m-10"
+            className="text-left text-white_A700 w-auto md:ml-5 sm:ml-10"
             as="h2"
             variant="h2"
           >
             Privacy Policy
           </Text>
           <Text
-            className="font-normal leading-[175.00%] not-italic text-left text-white_A700 md:m-5 sm:m-10"
+            className="font-normal leading-[175.00%] not-italic text-left text-white_A700 md:ml-5 sm:ml-10"
             as="h6"
             variant="h6"
           >
             A privacy statement for a ticketing and online streaming platform COULD include the following information:
             <br  />
             <br  />
+
             <>
               
             <strong>Information Collection:</strong> Explain what types of personal information you collect from users, such as names, email addresses, payment details, and any additional information necessary for ticketing and streaming services.

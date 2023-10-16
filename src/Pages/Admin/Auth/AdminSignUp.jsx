@@ -108,7 +108,7 @@ const AdminSignUp = () => {
           ) : ( */}
 
               <form onSubmit={onSubmit}>
-              <div className="flex flex-col gap-8 items-start justify-start self-stretch min-w-[320px] sm:max-w-[320px]">
+              <div className="flex flex-col gap-8 items-start justify-start self-stretch  max-w-[420px] sm:max-w-[320px]">
                 <div className="flex flex-col gap-2 items-start justify-start self-stretch w-auto sm:w-full">
 
                   <Text

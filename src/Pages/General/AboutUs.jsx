@@ -17,7 +17,7 @@ const AboutUs = () => {
   return (
     <>
     {/* <div className="bg-black_900 flex flex-col font-roboto items-center justify-start mx-auto w-full"> */}
-    <div className="bg-black_900 flex flex-col font-roboto sm:gap-10 md:gap-10 gap-24 items-center justify-start mx-auto w-full">
+    <div className="bg-black_900 flex flex-col font-roboto  md:gap-10 gap-24 items-center justify-start mx-auto w-full sm:gap-10">
       {/* Navbar Section */}
         <Navbar
           className="flex flex-row items-center justify-center md:px-5 w-full"
@@ -27,11 +27,11 @@ const AboutUs = () => {
         />
        
           {/* Hero Section */}
-          <div className="max-w-full mx-auto md:px-5 self-stretch w-full mt-[-4em]">
+          <div className="max-w-full mx-auto self-stretch w-full mt-[-6em] md:px-5 md:mt-[-28px]">
           <Img
             src="https://res.cloudinary.com/dyiuol5sx/image/upload/v1689927777/HeartStrings/SVG/img_rectangle2_760x1440_llofwi.png"
             className="w-full m-auto object-cover"
-            alt="rectangleTwo"
+            alt="About us"
           />
           </div>
           <div className="flex flex-col md:gap-10 gap-16 items-center justify-start max-w-[1159px] mx-auto md:px-5 self-stretch w-full">

@@ -54,8 +54,8 @@ const ContactUs = () => {
 
         
         {/* Main Page Section */}
-          <div className="flex flex-col gap-12 items-center justify-start mt-20 md:px-5 self-stretch w-auto sm:w-full">              
-          <div className="flex flex-col items-center justify-center mt-20 md:px-5 self-stretch w-full">
+          <div className="flex flex-col gap-6 items-center justify-start mt-5 md:px-5 self-stretch w-auto sm:w-full">              
+          <div className="flex flex-col items-center justify-center mt-5 md:px-5 self-stretch w-full">
             <div className="flex flex-col gap-6 items-center justify-center w-full">
               <Text
                 className="text-center text-white_A700"

@@ -17,7 +17,7 @@ const Hero = () => {
               About us
             </Text>
             <Text
-              className="leading-[175.00%] max-w-[1159px] md:max-w-full text-center text-white_A700"
+              className="leading-[175.00%] max-w-[1159px] md:max-w-full text-center text-white_A700 sm:text-[32px]"
               as="h1"
               variant="h1"
             >
